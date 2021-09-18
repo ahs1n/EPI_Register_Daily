@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="edu.aku.hassannaqvi.epi_register">
+    package="edu.aku.hassannaqvi.epi_register_daily">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -23,7 +23,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name=".core.MainApp"
+        android:name="edu.aku.hassannaqvi.epi_register_daily.core.MainApp"
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
         android:immersive="true"
@@ -35,7 +35,7 @@
 
 
         <activity
-            android:name=".ui.LoginActivity"
+            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.splashscreen"
             android:windowSoftInputMode="adjustResize|stateHidden">
@@ -48,31 +48,31 @@
 
 
         <activity
-            android:name=".database.AndroidManager"
+            android:name="edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".ui.sections.SectionCRActivity"
+            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionCRActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeUrdu"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".ui.sections.SectionWRActivity"
+            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionWRActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeUrdu"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name=".ui.SyncActivity"
+            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="edu.aku.hassannaqvi.epi_register_daily.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="edu.aku.hassannaqvi.epi_register_daily.MainActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
     </application>

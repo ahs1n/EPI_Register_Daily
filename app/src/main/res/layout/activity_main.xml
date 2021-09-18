@@ -8,7 +8,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.epi_register.MainActivity" />
+            type="edu.aku.hassannaqvi.epi_register_daily.MainActivity" />
     </data>
 
     <LinearLayout
