@@ -1,0 +1,849 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <!--        <variable
+                    name="form"
+                    type="edu.aku.hassannaqvi.epi_register.models.FormCR" />-->
+
+        <variable
+            name="callback"
+            type="edu.aku.hassannaqvi.epi_register.ui.sections.SectionWRActivity" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <!-- CUSTOM TOOLBAR -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/CustomToolbarTheme"
+            app:popupTheme="@style/CustomPopupTheme"
+            app:subtitleTextAppearance="@style/Toolbar.SubtitleText"
+            app:title="@string/wr_mainheading"
+            app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:id="@+id/GrpName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    style="@style/labelsHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wr_register_title"
+                    android:textAlignment="center" />
+
+
+                <!-- wr_dmu_register  Input-Numeric   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVwr_dmu_register"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <!--<TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_wr_dmu_register" />-->
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/wr_dmu_register"
+                                android:textSize="22dp" />
+
+                            <TextView
+                                android:id="@+id/wr_dmu_register"
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+
+                                android:text="@string/wr_dmu_register"
+                                android:textSize="22dp" />
+
+                        </LinearLayout>
+
+                        <!--<com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/wr_dmu_register"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="##"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            app:maxValue="40"
+                            app:minValue="1"
+                            android:enabled="false"
+                            app:type="range" />-->
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <!-- <TextView
+                                 style="@style/quesNum"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="match_parent"
+                                 android:text="@string/Q_wr_reg_number" />-->
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/wr_reg_number"
+                                android:textSize="22dp" />
+
+                            <TextView
+                                android:id="@+id/wr_reg_number"
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_reg_number"
+                                android:textSize="22dp" />
+
+                        </LinearLayout>
+
+                        <!--<com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/wr_reg_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="##-##"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            app:mask="##-##"
+                            app:pattern="^(\\d{2,2}\\-\\d{2,2})$"
+                            android:enabled="false"/>-->
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- wr_page_number  Input-Numeric   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVwr_page_number"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_page_number" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_rsno" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_card_number" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wr_page_number"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:hint="###"
+                                android:inputType="number"
+                                android:maxLength="3"
+                                app:maxValue="500"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wr_rsno"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:hint="####"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                app:maxValue="9999"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wr_card_number"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:hint="#####"
+                                android:inputType="number"
+                                android:maxLength="5"
+                                app:maxValue="99999"
+                                app:minValue="1"
+                                app:type="range" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- wr_women_name  Input   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVwr_women_name"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_women_name" />
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/wr_women_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
+                            android:hint="@string/wr_women_name" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- wr_husband_name  Input   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVwr_husband_name"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_husband_name" />
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/wr_husband_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
+                            android:hint="@string/wr_husband_name" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- wr_age_years  Input-Numeric   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVwr_age_years"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_age_years" />
+                        </LinearLayout>
+
+                        <com.edittextpicker.aliazaz.EditTextPicker
+                            android:id="@+id/wr_age_years"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/wr_age_years"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            app:maxValue="49"
+                            app:minValue="14"
+                            app:type="range" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- wr_address  Input   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVwr_address"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_address" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/wr_address"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="top"
+                                android:hint="@string/wr_address"
+                                android:lines="5"
+                                android:minLines="5" />
+
+                            <CheckBox
+                                android:id="@+id/wr_address_previous"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:backgroundTint="@color/lightPink"
+                                android:tag="-1"
+                                android:text="@string/wr_address_previous"
+                                android:textColor="@color/redDark" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- wr_phone  Input-Numeric   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVwr_phone"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_phone" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wr_phone"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:hint="@string/wr_phone"
+                                android:inputType="number"
+                                android:maxLength="11"
+                                app:maxValue="99999999999"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <CheckBox
+                                android:id="@+id/wr_phone_na"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/lightPink"
+                                android:tag="-1"
+                                android:text="@string/nav"
+                                android:textColor="@color/redDark" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- wr_tt_title  Title   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVwr_tt_title"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/wr_tt_title" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/wr_ttd1" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wr_ttd1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="DD/MM/YYYY"
+                                android:inputType="number"
+                                app:mask="##/##/####"
+                                app:pattern="^(\\d{2,2}\\/\\d{2,2}\\/\\d{4,4})$" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/wr_ttd1dscheck"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:tag="-1">
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd1ds1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd1ds1" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd1ds2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd1ds2" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd1na"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nap" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorPrimaryDark" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/wr_ttd2" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wr_ttd2"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="DD/MM/YYYY"
+                                android:inputType="number"
+                                app:mask="##/##/####"
+                                app:pattern="^(\\d{2,2}\\/\\d{2,2}\\/\\d{4,4})$" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/wr_ttd2dscheck"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:tag="-1">
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd2ds1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd2ds1" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd2ds2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd2ds2" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd2na"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nap" />
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorPrimaryDark" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/wr_ttd3" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wr_ttd3"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="DD/MM/YYYY"
+                                android:inputType="number"
+                                app:mask="##/##/####"
+                                app:pattern="^(\\d{2,2}\\/\\d{2,2}\\/\\d{4,4})$" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/wr_ttd3dscheck"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:tag="-1">
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd3ds1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd3ds1" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd3ds2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd3ds2" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd3na"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nap" />
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="4dp"
+                            android:background="@color/colorPrimaryDark" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/wr_ttd4" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wr_ttd4"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="DD/MM/YYYY"
+                                android:inputType="number"
+                                app:mask="##/##/####"
+                                app:pattern="^(\\d{2,2}\\/\\d{2,2}\\/\\d{4,4})$" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/wr_ttd4dscheck"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:tag="-1">
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd4ds1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd4ds1" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd4ds2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd4ds2" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd4na"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nap" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorPrimaryDark" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/wr_ttd5" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/wr_ttd5"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="DD/MM/YYYY"
+                                android:inputType="number"
+                                app:mask="##/##/####"
+                                app:pattern="^(\\d{2,2}\\/\\d{2,2}\\/\\d{4,4})$" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/wr_ttd5dscheck"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal"
+                            android:tag="-1">
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd5ds1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd5ds1" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd5ds2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wr_ttd5ds2" />
+
+                            <CheckBox
+                                android:id="@+id/wr_ttd5na"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nap" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- wr_comments  Input   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVwr_comments"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/wr_comments" />
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/wr_comments"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="top"
+                            android:hint="@string/wr_comments"
+                            android:lines="5"
+                            android:minLines="5"
+                            android:tag="-1" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <LinearLayout
+                    android:id="@+id/navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginBottom="56dp"
+                    android:background="@color/whiteOverlay"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:elevation="50dp">
+
+                    <Button
+                        android:id="@+id/btn_End"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/button_shape_red"
+                        android:drawableTint="#ea0000"
+                        android:fontFamily="@font/roboto"
+                        android:onClick="btnEnd"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="Exit"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/btn_Continue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/button_shape_green"
+                        android:drawableTint="#00ea00"
+                        android:fontFamily="@font/roboto"
+                        android:onClick="btnContinue"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="Save"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>
