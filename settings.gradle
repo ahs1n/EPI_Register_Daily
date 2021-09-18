@@ -1,2 +1,2 @@
-rootProject.name = "EPI_Register"
+rootProject.name = "EPI_Register_Daily"
 include ':app'
