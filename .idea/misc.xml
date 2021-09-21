@@ -11,9 +11,14 @@
         <entry key="..\:/Android/EPI_Register/app/src/main/res/layout/activity_main.xml" value="0.56328125" />
         <entry key="..\:/Android/EPI_Register/app/src/main/res/layout/activity_section_cr.xml" value="0.5503816793893129" />
         <entry key="..\:/Android/EPI_Register/app/src/main/res/layout/activity_section_wr.xml" value="0.5034916201117319" />
+        <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_login.xml" value="0.58125" />
+        <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_main.xml" value="0.58125" />
+        <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_cr.xml" value="0.56015625" />
+        <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_wr.xml" value="0.56015625" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
