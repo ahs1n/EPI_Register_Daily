@@ -53,13 +53,13 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionCRActivity"
+            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeUrdu"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionWRActivity"
+            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeUrdu"
             android:windowSoftInputMode="adjustResize" />

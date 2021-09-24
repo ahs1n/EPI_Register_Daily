@@ -8,13 +8,10 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.validatorcrawler.aliazaz.Validator;
-
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionCRActivity;
-import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionWRActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,31 +26,18 @@ public class MainActivity extends AppCompatActivity {
         bi.setCallback(this);
         bi.adminView.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
         bi.username.setText("Welcome, " + MainApp.user.getFullname() + "!");
-
-        MainApp.crAddress = "";
-        MainApp.wrAddress = "";
-
     }
 
     public void sectionPress(View view) {
-        if (!Validator.emptyCheckingContainer(this, bi.llregno)) return;
 
         switch (view.getId()) {
 
             case R.id.openChildForm:
                 //MainApp.cr = new FormCR();
                 finish();
-                startActivity(new Intent(this, SectionCRActivity.class)
-                        .putExtra("dmureg", bi.dmureg.getText().toString())
-                        .putExtra("reg", bi.reg.getText().toString()));
+                startActivity(new Intent(this, SectionVAActivity.class));
                 break;
-            case R.id.openWomenForm:
-                //MainApp.wr = new FormWR();
-                finish();
-                startActivity(new Intent(this, SectionWRActivity.class)
-                        .putExtra("dmureg", bi.dmureg.getText().toString())
-                        .putExtra("reg", bi.reg.getText().toString()));
-                break;
+
             case R.id.dbm:
                 startActivity(new Intent(this, AndroidManager.class));
                 break;

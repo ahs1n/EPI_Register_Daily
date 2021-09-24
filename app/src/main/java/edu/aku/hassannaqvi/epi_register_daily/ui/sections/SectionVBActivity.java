@@ -26,12 +26,12 @@ import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
-import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionWrBinding;
+import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 
-public class SectionWRActivity extends AppCompatActivity {
+public class SectionVBActivity extends AppCompatActivity {
     private static final String TAG = "SectionWRActivity";
-    ActivitySectionWrBinding bi;
+    ActivitySectionVbBinding bi;
     String st = "";
     private DatabaseHelper db;
 
@@ -39,7 +39,7 @@ public class SectionWRActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppThemeUrdu);
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_wr);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_vb);
         bi.setCallback(this);
         setupSkips();
         st = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH).format(new Date().getTime());
@@ -142,7 +142,7 @@ public class SectionWRActivity extends AppCompatActivity {
         }
         if (insertRecord()) {
             finish();
-            startActivity(new Intent(this, SectionWRActivity.class)
+            startActivity(new Intent(this, SectionVBActivity.class)
                     .putExtra("dmureg", bi.wrDmuRegister.getText().toString())
                     .putExtra("reg", bi.wrRegNumber.getText().toString()));
         } else {

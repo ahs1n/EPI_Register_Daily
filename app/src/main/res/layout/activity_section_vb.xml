@@ -11,7 +11,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionWRActivity" />
+            type="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity" />
     </data>
 
 
