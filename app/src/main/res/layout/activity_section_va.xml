@@ -4,21 +4,19 @@
     <data>
 
         <import type="android.view.View" />
-        <!--<variable
-            name="form"
-            type="edu.aku.hassannaqvi.seiska.models.Form" />-->
+
         <variable
-            name="callback"
-            type="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity" />
+            name="form"
+            type="edu.aku.hassannaqvi.epi_register_daily.models.Form" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/app_bg_effect"
         android:orientation="vertical">
 
 
-        <!-- CUSTOM TOOLBAR -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             style="@null"
@@ -43,38 +41,18 @@
                 android:orientation="vertical">
 
                 <!-- maintitle  Title   -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVmaintitle"
-                    style="@style/cardView">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/maintitle" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                <TextView
+                    style="@style/sub_labels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/maintitle" />
 
                 <!-- va  Title   -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVva"
-                    style="@style/cardView">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/va" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                <TextView
+                    style="@style/sub_labels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/va" />
 
                 <!-- va01  Title   -->
                 <androidx.cardview.widget.CardView
@@ -86,59 +64,41 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/va01" />
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/va01d" />
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_va01" />
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/va01d"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/va01d"
-                            android:inputType="number"
-                            android:maxLength="2"
-                            app:maxValue="31"
-                            app:minValue="1"
-                            app:type="range" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/va01" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/va01m" />
+                        </LinearLayout>
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/va01m"
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/va01"
+                            style="@style/textInput"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/va01m"
-                            android:inputType="number"
-                            android:maxLength="2"
-                            app:maxValue="12"
-                            app:minValue="1"
-                            app:type="range" />
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="0dp"
+                            android:datePickerMode="spinner"
+                            android:gravity="center"
+                            android:hint="YYYY-MM-DD"
+                            android:text="@={form.va01}"
+                            app:dateFormat="yyyy-MM-dd"
+                            app:maxDate="CR_DATE"
+                            app:theme="@style/DatePickerEditTextDialogTheme" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/va01y" />
-
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/va01y"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/va01y"
-                            android:inputType="number"
-                            android:maxLength="4"
-                            app:maxValue="2021"
-                            app:minValue="2021"
-                            app:type="range" />
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
                 <!-- va02  Input   -->
@@ -164,17 +124,19 @@
                                 android:text="@string/Q_va02" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/va02" />
+
                         </LinearLayout>
 
                         <EditText
                             android:id="@+id/va02"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/va02" />
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/va02"
+                            android:text="@={form.va02}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -201,10 +163,10 @@
                                 android:text="@string/Q_va03" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/va03" />
+
                         </LinearLayout>
 
                         <TextView
@@ -238,10 +200,10 @@
                                 android:text="@string/Q_va04" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/va04" />
+
                         </LinearLayout>
 
                         <com.edittextpicker.aliazaz.EditTextPicker
@@ -251,6 +213,7 @@
                             android:hint="@string/va04"
                             android:inputType="number"
                             android:maxLength="5"
+                            android:text="@={form.va04}"
                             app:maxValue="99999"
                             app:minValue="1"
                             app:type="range" />
@@ -280,10 +243,10 @@
                                 android:text="@string/Q_va05" />
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="@string/va05" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -293,242 +256,399 @@
                             android:orientation="vertical"
                             android:tag="0">
 
-                            <CheckBox
-                                android:id="@+id/va05a"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/va05a" />
+                                android:orientation="horizontal">
 
-                            <EditText
-                                android:id="@+id/va05ax"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/va05a"
-                                android:tag="va05a"
-                                android:text='@{va05a.checked ? va05ax.getText().toString() : ""}'
-                                android:visibility='@{va05a.checked? View.VISIBLE : View.GONE}' />
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
 
-                            <CheckBox
-                                android:id="@+id/va05acheck"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05acheck" />
+                                    <CheckBox
+                                        android:id="@+id/va05a"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05a.equals(`1`)}"
+                                        android:onClick="@{()->form.setVa05a(form.va05a.equals(`1`)?``:`1`)}"
+                                        android:text="@string/va05a" />
 
-                            <CheckBox
-                                android:id="@+id/va05b"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05b" />
+                                    <CheckBox
+                                        android:id="@+id/va05acheck"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05acheck.equals(`77`)}"
+                                        android:enabled="@{form.va05a.equals(`1`)}"
+                                        android:onClick="@{()->form.setVa05acheck(form.va05acheck.equals(`77`)?``:`77`)}"
+                                        android:text="@string/va05acheck" />
 
-                            <EditText
-                                android:id="@+id/va05bx"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/va05b"
-                                android:tag="va05b"
-                                android:text='@{va05b.checked ? va05bx.getText().toString() : ""}'
-                                android:visibility='@{va05b.checked? View.VISIBLE : View.GONE}' />
+                                </LinearLayout>
 
-                            <CheckBox
-                                android:id="@+id/va05bcheck"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05bcheck" />
 
-                            <CheckBox
-                                android:id="@+id/va05c"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05c" />
+                                <EditText
+                                    android:id="@+id/va05ax"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:enabled="@{form.va05a.equals(`1`)}"
+                                    android:hint="@string/va05a"
+                                    android:tag="va05a"
+                                    android:text="@={form.va05ax}" />
 
-                            <EditText
-                                android:id="@+id/va05cx"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/va05c"
-                                android:tag="va05c"
-                                android:text='@{va05c.checked ? va05cx.getText().toString() : ""}'
-                                android:visibility='@{va05c.checked? View.VISIBLE : View.GONE}' />
+                            </LinearLayout>
 
-                            <CheckBox
-                                android:id="@+id/va05ccheck"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/va05ccheck" />
+                                android:orientation="horizontal">
 
-                            <CheckBox
-                                android:id="@+id/va05d"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05d" />
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
 
-                            <EditText
-                                android:id="@+id/va05dx"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/va05d"
-                                android:tag="va05d"
-                                android:text='@{va05d.checked ? va05dx.getText().toString() : ""}'
-                                android:visibility='@{va05d.checked? View.VISIBLE : View.GONE}' />
 
-                            <CheckBox
-                                android:id="@+id/va05dcheck"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05dcheck" />
+                                    <CheckBox
+                                        android:id="@+id/va05b"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05b.equals(`1`)}"
+                                        android:onClick="@{()->form.setVa05b(form.va05b.equals(`1`)?``:`1`)}"
+                                        android:text="@string/va05b" />
 
-                            <CheckBox
-                                android:id="@+id/va05e"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05e" />
+                                    <CheckBox
+                                        android:id="@+id/va05bcheck"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05bcheck.equals(`77`)}"
+                                        android:onClick="@{()->form.setVa05bcheck(form.va05bcheck.equals(`77`)?``:`77`)}"
+                                        android:text="@string/va05bcheck" />
 
-                            <EditText
-                                android:id="@+id/va05ex"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/va05e"
-                                android:tag="va05e"
-                                android:text='@{va05e.checked ? va05ex.getText().toString() : ""}'
-                                android:visibility='@{va05e.checked? View.VISIBLE : View.GONE}' />
+                                </LinearLayout>
 
-                            <CheckBox
-                                android:id="@+id/va05echeck"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05echeck" />
+                                <EditText
+                                    android:id="@+id/va05bx"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:enabled="@{form.va05b.equals(`1`)}"
+                                    android:hint="@string/va05b"
+                                    android:tag="va05b"
+                                    android:text="@={form.va05bx}" />
 
-                            <CheckBox
-                                android:id="@+id/va05f"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05f" />
+                            </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/va05fx"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/va05f"
-                                android:tag="va05f"
-                                android:text='@{va05f.checked ? va05fx.getText().toString() : ""}'
-                                android:visibility='@{va05f.checked? View.VISIBLE : View.GONE}' />
+                                android:orientation="horizontal">
 
-                            <CheckBox
-                                android:id="@+id/va05fcheck"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05fcheck" />
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
 
-                            <CheckBox
-                                android:id="@+id/va05g"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05g" />
 
-                            <EditText
-                                android:id="@+id/va05gx"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/va05g"
-                                android:tag="va05g"
-                                android:text='@{va05g.checked ? va05gx.getText().toString() : ""}'
-                                android:visibility='@{va05g.checked? View.VISIBLE : View.GONE}' />
+                                    <CheckBox
+                                        android:id="@+id/va05c"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05c.equals(`1`)}"
+                                        android:onClick="@{()->form.setVa05c(form.va05c.equals(`1`)?``:`1`)}"
+                                        android:text="@string/va05c" />
 
-                            <CheckBox
-                                android:id="@+id/va05gcheck"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05gcheck" />
+                                    <CheckBox
+                                        android:id="@+id/va05ccheck"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05ccheck.equals(`77`)}"
+                                        android:onClick="@{()->form.setVa05ccheck(form.va05ccheck.equals(`77`)?``:`77`)}"
+                                        android:text="@string/va05ccheck" />
+                                </LinearLayout>
 
-                            <CheckBox
-                                android:id="@+id/va05h"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05h" />
+                                <EditText
+                                    android:id="@+id/va05cx"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:enabled="@{form.va05c.equals(`1`)}"
+                                    android:hint="@string/va05c"
+                                    android:tag="va05c"
+                                    android:text="@={form.va05cx}" />
+                            </LinearLayout>
 
-                            <EditText
-                                android:id="@+id/va05hx"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/va05h"
-                                android:tag="va05h"
-                                android:text='@{va05h.checked ? va05hx.getText().toString() : ""}'
-                                android:visibility='@{va05h.checked? View.VISIBLE : View.GONE}' />
+                                android:orientation="horizontal">
 
-                            <CheckBox
-                                android:id="@+id/va05hcheck"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05hcheck" />
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
 
-                            <CheckBox
-                                android:id="@+id/va05i"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/va05i" />
+                                    <CheckBox
+                                        android:id="@+id/va05d"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05d.equals(`1`)}"
+                                        android:onClick="@{()->form.setVa05d(form.va05d.equals(`1`)?``:`1`)}"
+                                        android:text="@string/va05d" />
 
-                            <EditText
-                                android:id="@+id/va05ix"
+                                    <CheckBox
+                                        android:id="@+id/va05dcheck"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05dcheck.equals(`77`)}"
+                                        android:onClick="@{()->form.setVa05dcheck(form.va05dcheck.equals(`77`)?``:`77`)}"
+                                        android:text="@string/va05dcheck" />
+                                </LinearLayout>
+
+                                <EditText
+                                    android:id="@+id/va05dx"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:enabled="@{form.va05d.equals(`1`)}"
+                                    android:hint="@string/va05d"
+                                    android:tag="va05d"
+                                    android:text="@={form.va05dx}" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="@string/va05i"
-                                android:tag="va05i"
-                                android:text='@{va05i.checked ? va05ix.getText().toString() : ""}'
-                                android:visibility='@{va05i.checked? View.VISIBLE : View.GONE}' />
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <CheckBox
+                                        android:id="@+id/va05e"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05e.equals(`1`)}"
+                                        android:onClick="@{()->form.setVa05e(form.va05e.equals(`1`)?``:`1`)}"
+                                        android:text="@string/va05e" />
+
+                                    <CheckBox
+                                        android:id="@+id/va05echeck"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05echeck.equals(`77`)}"
+                                        android:onClick="@{()->form.setVa05echeck(form.va05echeck.equals(`77`)?``:`77`)}"
+                                        android:text="@string/va05echeck" />
+                                </LinearLayout>
+
+                                <EditText
+                                    android:id="@+id/va05ex"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:enabled="@{form.va05e.equals(`1`)}"
+                                    android:hint="@string/va05e"
+                                    android:tag="va05e"
+                                    android:text="@={form.va05ex}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <CheckBox
+                                        android:id="@+id/va05f"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05f.equals(`1`)}"
+                                        android:onClick="@{()->form.setVa05f(form.va05f.equals(`1`)?``:`1`)}"
+                                        android:text="@string/va05f" />
+
+                                    <CheckBox
+                                        android:id="@+id/va05fcheck"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05fcheck.equals(`77`)}"
+                                        android:onClick="@{()->form.setVa05fcheck(form.va05fcheck.equals(`77`)?``:`77`)}"
+                                        android:text="@string/va05fcheck" />
+                                </LinearLayout>
+
+                                <EditText
+                                    android:id="@+id/va05fx"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:enabled="@{form.va05f.equals(`1`)}"
+                                    android:hint="@string/va05f"
+                                    android:tag="va05f"
+                                    android:text="@={form.va05fx}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <CheckBox
+                                        android:id="@+id/va05g"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05g.equals(`1`)}"
+                                        android:onClick="@{()->form.setVa05g(form.va05g.equals(`1`)?``:`1`)}"
+                                        android:text="@string/va05g" />
+
+                                    <CheckBox
+                                        android:id="@+id/va05gcheck"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05gcheck.equals(`77`)}"
+                                        android:onClick="@{()->form.setVa05gcheck(form.va05gcheck.equals(`77`)?``:`77`)}"
+                                        android:text="@string/va05gcheck" />
+                                </LinearLayout>
+
+                                <EditText
+                                    android:id="@+id/va05gx"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:enabled="@{form.va05g.equals(`1`)}"
+                                    android:hint="@string/va05g"
+                                    android:tag="va05g"
+                                    android:text="@={form.va05gx}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <CheckBox
+                                        android:id="@+id/va05h"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05h.equals(`1`)}"
+                                        android:onClick="@{()->form.setVa05h(form.va05h.equals(`1`)?``:`1`)}"
+                                        android:text="@string/va05h" />
+
+                                    <CheckBox
+                                        android:id="@+id/va05hcheck"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.va05hcheck.equals(`77`)}"
+                                        android:onClick="@{()->form.setVa05hcheck(form.va05hcheck.equals(`77`)?``:`77`)}"
+                                        android:text="@string/va05hcheck" />
+
+                                </LinearLayout>
+
+                                <EditText
+                                    android:id="@+id/va05hx"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:enabled="@{form.va05h.equals(`1`)}"
+                                    android:hint="@string/va05h"
+                                    android:tag="va05h"
+                                    android:text="@={form.va05hx}" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <CheckBox
+                                    android:id="@+id/va05i"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="@{form.va05i.equals(`1`)}"
+                                    android:onClick="@{()->form.setVa05i(form.va05i.equals(`1`)?``:`1`)}"
+                                    android:text="@string/va05i" />
+
+                                <EditText
+                                    android:id="@+id/va05ix"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:enabled="@{form.va05i.equals(`1`)}"
+                                    android:hint="@string/va05i"
+                                    android:tag="va05i"
+                                    android:text="@={form.va05ix}" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+
                 <!--EndButton LinearLayout-->
                 <LinearLayout
-                    android:id="@+id/navigation"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="56dp"
-                    android:layout_marginBottom="56dp"
-                    android:background="@color/whiteOverlay"
-                    android:elevation="10dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    app:elevation="50dp">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btn_End"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
-                        android:background="@drawable/button_shape_red"
-                        android:drawableTint="#ea0000"
-                        android:fontFamily="@font/roboto"
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@color/redOverlay"
+                        android:elevation="20dp"
                         android:onClick="btnEnd"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:text="Exit"
+                        android:text="@string/cancel"
                         android:textColor="@color/white" />
 
                     <Button
                         android:id="@+id/btn_Continue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="12dp"
-                        android:background="@drawable/button_shape_green"
-                        android:drawableTint="#00ea00"
-                        android:fontFamily="@font/roboto"
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@color/greenOverlay"
+                        android:elevation="20dp"
                         android:onClick="btnContinue"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp"
-                        android:text="Save"
+                        android:text="@string/btnSave"
                         android:textColor="@color/white" />
 
                 </LinearLayout>
+                <!--EndButton LinearLayout-->
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

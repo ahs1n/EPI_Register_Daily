@@ -9,6 +9,25 @@ object CreateTable {
     const val DATABASE_COPY = "${PROJECT_NAME}_copy.db"
     const val DATABASE_VERSION = 1
 
+    const val SQL_CREATE_FORMS = ("CREATE TABLE "
+            + FormsTable.TABLE_NAME + "("
+            + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + FormsTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + FormsTable.COLUMN_UID + " TEXT,"
+            + FormsTable.COLUMN_SNO + " TEXT,"
+            + FormsTable.COLUMN_USERNAME + " TEXT,"
+            + FormsTable.COLUMN_SYSDATE + " TEXT,"
+            + FormsTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsTable.COLUMN_DEVICEID + " TEXT,"
+            + FormsTable.COLUMN_DEVICETAGID + " TEXT,"
+            + FormsTable.COLUMN_SYNCED + " TEXT,"
+            + FormsTable.COLUMN_SYNC_DATE + " TEXT,"
+            + FormsTable.COLUMN_APPVERSION + " TEXT,"
+            + FormsTable.COLUMN_VA + " TEXT,"
+            + FormsTable.COLUMN_VB + " TEXT"
+            + " );"
+            )
+
     const val SQL_CREATE_FORMCR = ("CREATE TABLE "
             + FormCRTable.TABLE_NAME + "("
             + FormCRTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"

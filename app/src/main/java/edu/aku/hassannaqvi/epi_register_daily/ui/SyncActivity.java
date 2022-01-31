@@ -51,6 +51,7 @@ import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormWRTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
@@ -141,6 +142,16 @@ public class SyncActivity extends AppCompatActivity {
                 bi.pBar.setVisibility(View.GONE);
                 uploadTables.clear();
                 MainApp.uploadData.clear();
+
+                // Forms
+                uploadTables.add(new SyncModel(FormsTable.TABLE_NAME));
+                try {
+                    MainApp.uploadData.add(db.getUnsyncedForm());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "ProcessStart: JSONException(Forms): " + e.getMessage());
+                    Toast.makeText(this, "JSONException(Forms): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
 
                 // FormsCR
                 uploadTables.add(new SyncModel(FormCRTable.TABLE_NAME));

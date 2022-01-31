@@ -1,6 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.cr;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.form;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,104 +14,88 @@ import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVaBinding;
-import edu.aku.hassannaqvi.epi_register_daily.models.FormCR;
 
 public class SectionVAActivity extends AppCompatActivity {
-    private static final String TAG = "SectionCRActivity";
+    private static final String TAG = "SectionVAActivity";
     ActivitySectionVaBinding bi;
-    String st = "";
     private DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_va);
-        bi.setCallback(this);
-        st = new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH).format(new Date().getTime());
-        setupSkips();
-/*        bi.setForm(form);
-        if (form == null) form = new Form();*/
-//        bi.setForm(form);
+        bi.setForm(form);
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
 
+        MainApp.previousPage = form.getVa04();
+
+        if (bi.va05acheck.isChecked()) {
+            bi.va05ax.setText(MainApp.previousPage);
+        } else {
+            bi.va05ax.setText("");
+        }
     }
 
 
-    private void setupSkips() {
-    }
+    private boolean insertNewRecord() {
+        if (!form.getUid().equals("") || MainApp.superuser) return true;
 
+        form.populateMeta();
 
-    private boolean insertRecord() {
-        DatabaseHelper db = MainApp.appInfo.getDbHelper();
         long rowId = 0;
-
         try {
-            rowId = db.addCR(cr);
-
-            if (rowId > 0) {
-                long updCount = 0;
-
-                cr.setId(String.valueOf(rowId));
-                cr.setUid(cr.getDeviceId() + cr.getId());
-
-                updCount = db.updateCrColumn(TableContracts.FormCRTable.COLUMN_UID, cr.getUid());
-
-                if (updCount > 0) {
-                    return true;
-                }
-
-            } else {
-                Toast.makeText(this, "Updating Database… ERROR!", Toast.LENGTH_SHORT).show();
-                return false;
-            }
+            rowId = db.addForm(form);
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(this, "JSONException(CR):" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
+            return false;
         }
+        form.setId(String.valueOf(rowId));
+        if (rowId > 0) {
+            form.setUid(form.getDeviceId() + form.getId());
+            db.updatesFormColumn(TableContracts.FormsTable.COLUMN_UID, form.getUid());
+            return true;
+        } else {
+            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
 
-        return false;
+
+    private boolean updateDB() {
+        if (MainApp.superuser) return true;
+
+        int updcount = 0;
+        try {
+            updcount = db.updatesFormColumn(TableContracts.FormsTable.COLUMN_VA, form.vAtoString());
+        } catch (JSONException e) {
+            Toast.makeText(this, R.string.upd_db + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        if (updcount == 1) {
+            return true;
+        } else {
+            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
 
     public void btnContinue(View view) {
         if (!formValidation()) return;
-        saveDraft();
-        if (insertRecord()) {
+        if (!insertNewRecord()) return;
+        if (updateDB()) {
             finish();
-            startActivity(new Intent(this, SectionVAActivity.class));
-        } else Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-    }
-
-
-    private void saveDraft() {
-        cr = new FormCR();
-        cr.setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
-        cr.setUserName(MainApp.user.getUserName());
-        cr.setDeviceId(MainApp.appInfo.getDeviceID());
-        cr.setDeviceTag(MainApp.appInfo.getTagName());
-        cr.setAppver(MainApp.appInfo.getAppVersion());
-        cr.setStartTime(st);
-        cr.setEndTime(new SimpleDateFormat("HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
-
-
-        try {
-            cr.setcR(cr.cRtoString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "JSONException(CR): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, SectionVBActivity.class).putExtra("complete", true));
+        } else {
+            Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
         }
-
     }
 
 
@@ -122,8 +106,15 @@ public class SectionVAActivity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName))
+            return false;
+
+        if (bi.va05a.isChecked() && bi.va05ax.getText().toString().isEmpty())
+            return Validator.emptyCustomTextBox(this, bi.va05ax, "Empty");
+
+        return true;
     }
+
 
     @Override
     public void onBackPressed() {
@@ -131,4 +122,5 @@ public class SectionVAActivity extends AppCompatActivity {
         finish();
         startActivity(new Intent(this, MainActivity.class));
     }
+
 }

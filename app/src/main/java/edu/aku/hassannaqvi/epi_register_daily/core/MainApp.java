@@ -18,6 +18,7 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.BuildConfig;
 import edu.aku.hassannaqvi.epi_register_daily.R;
+import edu.aku.hassannaqvi.epi_register_daily.models.Form;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormCR;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
@@ -36,6 +37,9 @@ public class MainApp extends Application {
     public static final String _SERVER_GET_URL = "getData.php";
     public static final String _PHOTO_UPLOAD_URL = _HOST_URL + "uploads.php";
     public static final String _UPDATE_URL = MainApp._IP + "/epi_register/app/";
+    public static final String _EMPTY_ = "";
+    private static final String TAG = "MainApp";
+    public static String IBAHC = "";
 
     //COUNTRIES
     public static int PAKISTAN = 1;
@@ -46,6 +50,9 @@ public class MainApp extends Application {
     public static String[] downloadData;
     public static FormCR cr;
     public static FormWR wr;
+    public static Form form;
+    public static boolean superuser;
+    public static String previousPage;
 
     public static String DeviceURL = "devices.php";
     public static AppInfo appInfo;

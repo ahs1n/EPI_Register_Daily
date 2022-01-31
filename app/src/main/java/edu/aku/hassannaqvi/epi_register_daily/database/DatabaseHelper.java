@@ -2,8 +2,7 @@ package edu.aku.hassannaqvi.epi_register_daily.database;
 
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_VERSION;
-import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMCR;
-import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMWR;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
 
@@ -25,9 +24,11 @@ import java.util.Date;
 
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormWRTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
+import edu.aku.hassannaqvi.epi_register_daily.models.Form;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormCR;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
@@ -52,8 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_USERS);
-        db.execSQL(SQL_CREATE_FORMCR);
-        db.execSQL(SQL_CREATE_FORMWR);
+        db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_VERSIONAPP);
 
     }
@@ -68,6 +68,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //ADDITION in DB
+    public Long addForm(Form form) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_PROJECT_NAME, form.getProjectName());
+        values.put(FormsTable.COLUMN_UID, form.getUid());
+        values.put(FormsTable.COLUMN_SNO, form.getSno());
+        values.put(FormsTable.COLUMN_USERNAME, form.getUserName());
+        values.put(FormsTable.COLUMN_SYSDATE, form.getSysDate());
+        values.put(FormsTable.COLUMN_VA, form.vAtoString());
+        values.put(FormsTable.COLUMN_VB, form.vBtoString());
+        values.put(FormsTable.COLUMN_ISTATUS, form.getiStatus());
+        values.put(FormsTable.COLUMN_DEVICETAGID, form.getDeviceTag());
+        values.put(FormsTable.COLUMN_DEVICEID, form.getDeviceId());
+        values.put(FormsTable.COLUMN_APPVERSION, form.getAppver());
+        values.put(FormsTable.COLUMN_SYNCED, form.getSynced());
+        values.put(FormsTable.COLUMN_SYNC_DATE, form.getSyncDate());
+
+        long newRowId;
+        newRowId = db.insert(
+                FormsTable.TABLE_NAME,
+                FormsTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
     public Long addCR(FormCR cr) throws JSONException {
 
         // Gets the data repository in write mode
@@ -126,6 +151,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //UPDATE in DB
+    public int updatesFormColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = FormsTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.form.getId())};
+
+        return db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
     public int updateCrColumn(String column, String value) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -488,6 +528,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //get UnSyncedTables
+    public JSONArray getUnsyncedForm() throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        //whereClause = null;
+        whereClause = FormsTable.COLUMN_SYNCED + " = '' AND " +
+                FormsTable.COLUMN_ISTATUS + "!= ''";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsTable.COLUMN_ID + " ASC";
+
+        JSONArray allForms = new JSONArray();
+        c = db.query(
+                FormsTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            /** WorkManager Upload
+             /*Form fc = new Form();
+             allFC.add(fc.Hydrate(c));*/
+            Log.d(TAG, "getUnsyncedForm: " + c.getCount());
+            Form form = new Form();
+            allForms.put(form.Hydrate(c).toJSONObject());
+
+
+        }
+
+        c.close();
+        db.close();
+
+        Log.d(TAG, "getUnsyncedForm: " + allForms.toString().length());
+        Log.d(TAG, "getUnsyncedForm: " + allForms);
+        return allForms;
+    }
+
     public JSONArray getUnsyncedFormCR() throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;

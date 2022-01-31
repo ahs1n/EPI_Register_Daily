@@ -4,6 +4,25 @@ import android.provider.BaseColumns;
 
 public class TableContracts {
 
+    public static abstract class FormsTable implements BaseColumns {
+        public static final String TABLE_NAME = "Form";
+        public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
+        public static final String COLUMN_PROJECT_NAME = "projectName";
+        public static final String COLUMN_ID = "_id";
+        public static final String COLUMN_UID = "_uid";
+        public static final String COLUMN_SNO = "sno";
+        public static final String COLUMN_USERNAME = "username";
+        public static final String COLUMN_SYSDATE = "sysdate";
+        public static final String COLUMN_VA = "vA";
+        public static final String COLUMN_VB = "vB";
+        public static final String COLUMN_DEVICEID = "deviceid";
+        public static final String COLUMN_DEVICETAGID = "devicetagid";
+        public static final String COLUMN_SYNCED = "synced";
+        public static final String COLUMN_SYNC_DATE = "sync_date";
+        public static final String COLUMN_APPVERSION = "appversion";
+        public static final String COLUMN_ISTATUS = "istatus";
+    }
+
     public static abstract class FormCRTable implements BaseColumns {
         public static final String TABLE_NAME = "FormCR";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
