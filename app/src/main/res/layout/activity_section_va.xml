@@ -441,6 +441,7 @@
                                     android:layout_height="55sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05a.equals(`1`)}"
+                                    android:gravity="center"
                                     android:hint="@string/va05a"
                                     android:text="@={form.va05ax}" />
 
@@ -450,6 +451,7 @@
                                     android:layout_height="55sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05b.equals(`1`)}"
+                                    android:gravity="center"
                                     android:hint="@string/va05b"
                                     android:text="@={form.va05bx}" />
 
@@ -459,6 +461,7 @@
                                     android:layout_height="55sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05c.equals(`1`)}"
+                                    android:gravity="center"
                                     android:hint="@string/va05c"
                                     android:text="@={form.va05cx}" />
 
@@ -468,6 +471,7 @@
                                     android:layout_height="55sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05d.equals(`1`)}"
+                                    android:gravity="center"
                                     android:hint="@string/va05d"
                                     android:text="@={form.va05dx}" />
 
@@ -477,6 +481,7 @@
                                     android:layout_height="55sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05e.equals(`1`)}"
+                                    android:gravity="center"
                                     android:hint="@string/va05e"
                                     android:text="@={form.va05ex}" />
 
@@ -486,6 +491,7 @@
                                     android:layout_height="55sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05f.equals(`1`)}"
+                                    android:gravity="center"
                                     android:hint="@string/va05f"
                                     android:text="@={form.va05fx}" />
 
@@ -495,6 +501,7 @@
                                     android:layout_height="55sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05g.equals(`1`)}"
+                                    android:gravity="center"
                                     android:hint="@string/va05g"
                                     android:text="@={form.va05gx}" />
 
@@ -504,6 +511,7 @@
                                     android:layout_height="55sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05h.equals(`1`)}"
+                                    android:gravity="center"
                                     android:hint="@string/va05h"
                                     android:text="@={form.va05hx}" />
 
@@ -513,6 +521,7 @@
                                     android:layout_height="55sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05i.equals(`1`)}"
+                                    android:gravity="center"
                                     android:hint="@string/va05i"
                                     android:text="@={form.va05ix}" />
 

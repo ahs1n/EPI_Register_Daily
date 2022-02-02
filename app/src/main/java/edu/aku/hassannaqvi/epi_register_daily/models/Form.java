@@ -340,11 +340,11 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05acheck(String va05acheck) {
         if (this.va05acheck.equals(va05acheck)) return; // for all checkboxes
         this.va05acheck = va05acheck;
-        if (va05acheck.equals("77") && va04.length() > 0) {
+        /*if (va05acheck.equals("77") && va04.length() > 0) {
             setVa05ax(this.va04);
         } else {
             setVa05ax("");
-        }
+        }*/
         notifyPropertyChanged(BR.va05acheck);
     }
 
