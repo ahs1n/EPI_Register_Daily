@@ -23,6 +23,7 @@ public class TableContracts {
         public static final String COLUMN_ISTATUS = "istatus";
     }
 
+
     public static abstract class FormCRTable implements BaseColumns {
         public static final String TABLE_NAME = "FormCR";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
@@ -41,6 +42,7 @@ public class TableContracts {
         public static final String COLUMN_END_TIME = "end_time";
         public static final String COLUMN_START_TIME = "start_time";
     }
+
 
     public static abstract class FormWRTable implements BaseColumns {
         public static final String TABLE_NAME = "FormWR";
@@ -61,6 +63,7 @@ public class TableContracts {
         public static final String COLUMN_START_TIME = "start_time";
     }
 
+
     public static abstract class UsersTable implements BaseColumns {
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String TABLE_NAME = "users";
@@ -70,6 +73,7 @@ public class TableContracts {
         public static final String COLUMN_FULLNAME = "full_name";
 
     }
+
 
     public static abstract class VersionTable implements BaseColumns {
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
@@ -82,4 +86,5 @@ public class TableContracts {
         public static final String SERVER_URI = "output-metadata.json";
 
     }
+
 }

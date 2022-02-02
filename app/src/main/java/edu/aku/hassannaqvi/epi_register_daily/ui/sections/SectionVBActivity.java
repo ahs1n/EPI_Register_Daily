@@ -58,6 +58,7 @@ public class SectionVBActivity extends AppCompatActivity {
         if (!formValidation()) return;
         if (updateDB()) {
             finish();
+            Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class).putExtra("complete", true));
         } else {
             Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();

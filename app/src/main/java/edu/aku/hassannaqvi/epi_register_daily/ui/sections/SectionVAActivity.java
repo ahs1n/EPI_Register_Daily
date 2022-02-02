@@ -4,6 +4,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.form;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -36,11 +37,21 @@ public class SectionVAActivity extends AppCompatActivity {
 
         MainApp.previousPage = form.getVa04();
 
-        if (bi.va05acheck.isChecked()) {
+/*        if (bi.va05acheck.isChecked()) {
             bi.va05ax.setText(MainApp.previousPage);
         } else {
             bi.va05ax.setText("");
-        }
+        }*/
+    }
+
+    public void previousPage(CharSequence s, int start, int before, int count) {
+        if (TextUtils.isEmpty(bi.va04.getText()))
+            return;
+
+        /*if (bi.va05acheck.isChecked()){
+            bi.va05ax.setText(form.getVa04());
+        }*/
+
     }
 
 
@@ -106,13 +117,19 @@ public class SectionVAActivity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-        if (!Validator.emptyCheckingContainer(this, bi.GrpName))
+        return Validator.emptyCheckingContainer(this, bi.GrpName);
+        /*if (!Validator.emptyCheckingContainer(this, bi.GrpName))
             return false;
 
-        if (bi.va05a.isChecked() && bi.va05ax.getText().toString().isEmpty())
+        if (bi.va05a.isChecked() && bi.va05ax.getText().toString().isEmpty()) {
             return Validator.emptyCustomTextBox(this, bi.va05ax, "Empty");
+        }
 
-        return true;
+        if (bi.va05b.isChecked() && bi.va05bx.getText().toString().isEmpty()) {
+            return Validator.emptyCustomTextBox(this, bi.va05bx, "Empty");
+        }
+
+        return true;*/
     }
 
 

@@ -211,7 +211,7 @@
                             android:id="@+id/vb04a"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
                             android:hint="@string/vb04a"
                             android:text="@={form.vb04a}" />
                     </LinearLayout>
@@ -250,7 +250,7 @@
                             android:id="@+id/vb04"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
                             android:hint="@string/vb04"
                             android:text="@={form.vb04}" />
                     </LinearLayout>
@@ -266,67 +266,119 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/vb05" />
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_vb05" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/vb05" />
+
+                        </LinearLayout>
 
                         <TextView
+                            style="@style/sub_labels"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:text="@string/vb05t" />
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/vb05y" />
+                            android:orientation="horizontal">
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/vb05y"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/vb05y"
-                            android:inputType="number"
-                            android:maxLength="2"
-                            android:text="@={form.vb05y}"
-                            app:maxValue="49"
-                            app:minValue="0"
-                            app:type="range" />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/vb05m" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/vb05y" />
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/vb05m"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/vb05m"
-                            android:inputType="number"
-                            android:maxLength="2"
-                            android:text="@={form.vb05m}"
-                            app:maxValue="59"
-                            app:minValue="0"
-                            app:type="range" />
+                                <com.edittextpicker.aliazaz.EditTextPicker
+                                    android:id="@+id/vb05y"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:hint="@string/vb05y"
+                                    android:inputType="number"
+                                    android:maxLength="2"
+                                    android:text="@={form.vb05y}"
+                                    app:maxValue="49"
+                                    app:minValue="0"
+                                    app:type="range" />
+                            </LinearLayout>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/vb05d" />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/vb05d"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/vb05d"
-                            android:inputType="number"
-                            android:maxLength="2"
-                            android:text="@={form.vb05d}"
-                            app:maxValue="30"
-                            app:minValue="0"
-                            app:type="range" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/vb05m" />
+
+                                <com.edittextpicker.aliazaz.EditTextPicker
+                                    android:id="@+id/vb05m"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:enabled="@{!form.vb03.equals(`1`)}"
+                                    android:gravity="center"
+                                    android:hint="@string/vb05m"
+                                    android:inputType="number"
+                                    android:maxLength="2"
+                                    android:text="@={form.vb05m}"
+                                    app:maxValue="59"
+                                    app:minValue="0"
+                                    app:type="range" />
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="@string/vb05d" />
+
+                                <com.edittextpicker.aliazaz.EditTextPicker
+                                    android:id="@+id/vb05d"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:enabled="@{!form.vb03.equals(`1`)}"
+                                    android:gravity="center"
+                                    android:hint="@string/vb05d"
+                                    android:inputType="number"
+                                    android:maxLength="2"
+                                    android:text="@={form.vb05d}"
+                                    app:maxValue="30"
+                                    app:minValue="0"
+                                    app:type="range" />
+                            </LinearLayout>
+
+                        </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -421,6 +473,7 @@
                             android:layout_height="wrap_content"
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/vb06"
+                            android:lines="3"
                             android:text="@={form.vb06}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -458,8 +511,9 @@
                             android:id="@+id/vb07"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                            android:hint="@string/vb07"
+                            android:hint="###########"
+                            android:inputType="number"
+                            android:maxLength="11"
                             android:text="@={form.vb07}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -467,7 +521,8 @@
                 <!-- vb08c  CheckBox   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08c"
-                    style="@style/cardView">
+                    style="@style/cardView"
+                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"

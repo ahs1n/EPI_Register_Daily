@@ -317,6 +317,8 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05a(String va05a) {
         if (this.va05a.equals(va05a)) return; // for all checkboxes
         this.va05a = va05a;
+        setVa05acheck(va05a.equals("1") ? this.va05acheck : "");
+        setVa05ax(va05a.equals("1") ? this.va05ax : "");
         notifyPropertyChanged(BR.va05a);
     }
 
@@ -338,6 +340,11 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05acheck(String va05acheck) {
         if (this.va05acheck.equals(va05acheck)) return; // for all checkboxes
         this.va05acheck = va05acheck;
+        if (va05acheck.equals("77") && va04.length() > 0) {
+            setVa05ax(this.va04);
+        } else {
+            setVa05ax("");
+        }
         notifyPropertyChanged(BR.va05acheck);
     }
 
@@ -349,6 +356,8 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05b(String va05b) {
         if (this.va05b.equals(va05b)) return; // for all checkboxes
         this.va05b = va05b;
+        setVa05bcheck(va05b.equals("1") ? this.va05bcheck : "");
+        setVa05bx(va05b.equals("1") ? this.va05bx : "");
         notifyPropertyChanged(BR.va05b);
     }
 
@@ -381,6 +390,8 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05c(String va05c) {
         if (this.va05c.equals(va05c)) return; // for all checkboxes
         this.va05c = va05c;
+        setVa05ccheck(va05c.equals("1") ? this.va05ccheck : "");
+        setVa05cx(va05c.equals("1") ? this.va05cx : "");
         notifyPropertyChanged(BR.va05c);
     }
 
@@ -413,6 +424,8 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05d(String va05d) {
         if (this.va05d.equals(va05d)) return; // for all checkboxes
         this.va05d = va05d;
+        setVa05dcheck(va05d.equals("1") ? this.va05dcheck : "");
+        setVa05dx(va05d.equals("1") ? this.va05dx : "");
         notifyPropertyChanged(BR.va05d);
     }
 
@@ -445,6 +458,8 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05e(String va05e) {
         if (this.va05e.equals(va05e)) return; // for all checkboxes
         this.va05e = va05e;
+        setVa05echeck(va05e.equals("1") ? this.va05echeck : "");
+        setVa05ex(va05e.equals("1") ? this.va05ex : "");
         notifyPropertyChanged(BR.va05e);
     }
 
@@ -477,6 +492,8 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05f(String va05f) {
         if (this.va05f.equals(va05f)) return; // for all checkboxes
         this.va05f = va05f;
+        setVa05fcheck(va05f.equals("1") ? this.va05fcheck : "");
+        setVa05fx(va05f.equals("1") ? this.va05fx : "");
         notifyPropertyChanged(BR.va05f);
     }
 
@@ -509,6 +526,8 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05g(String va05g) {
         if (this.va05g.equals(va05g)) return; // for all checkboxes
         this.va05g = va05g;
+        setVa05gcheck(va05g.equals("1") ? this.va05gcheck : "");
+        setVa05gx(va05g.equals("1") ? this.va05gx : "");
         notifyPropertyChanged(BR.va05g);
     }
 
@@ -541,6 +560,8 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05h(String va05h) {
         if (this.va05h.equals(va05h)) return; // for all checkboxes
         this.va05h = va05h;
+        setVa05hcheck(va05h.equals("1") ? this.va05hcheck : "");
+        setVa05hx(va05h.equals("1") ? this.va05hx : "");
         notifyPropertyChanged(BR.va05h);
     }
 
@@ -573,6 +594,7 @@ public class Form extends BaseObservable implements Observable {
     public void setVa05i(String va05i) {
         if (this.va05i.equals(va05i)) return; // for all checkboxes
         this.va05i = va05i;
+        setVa05ix(va05i.equals("1") ? this.va05ix : "");
         notifyPropertyChanged(BR.va05i);
     }
 
@@ -613,6 +635,24 @@ public class Form extends BaseObservable implements Observable {
 
     public void setVb03(String vb03) {
         this.vb03 = vb03;
+        setVb05d(vb03.equals("2") ? this.vb05d : "");
+        setVb05m(vb03.equals("2") ? this.vb05m : "");
+
+        setVb08ca(vb03.equals("2") ? this.vb08ca : "");
+        setVb08cb(vb03.equals("2") ? this.vb08cb : "");
+        setVb08cc(vb03.equals("2") ? this.vb08cc : "");
+        setVb08cd(vb03.equals("2") ? this.vb08cd : "");
+        setVb08ce(vb03.equals("2") ? this.vb08ce : "");
+        setVb08cf(vb03.equals("2") ? this.vb08cf : "");
+        setVb08cg(vb03.equals("2") ? this.vb08cg : "");
+        setVb08ch(vb03.equals("2") ? this.vb08ch : "");
+        setVb08ci(vb03.equals("2") ? this.vb08ci : "");
+        setVb08cj(vb03.equals("2") ? this.vb08cj : "");
+        setVb08ck(vb03.equals("2") ? this.vb08ck : "");
+        setVb08cl(vb03.equals("2") ? this.vb08cl : "");
+        setVb08cm(vb03.equals("2") ? this.vb08cm : "");
+        setVb08cn(vb03.equals("2") ? this.vb08cn : "");
+        setVb08co(vb03.equals("2") ? this.vb08co : "");
         notifyPropertyChanged(BR.vb03);
     }
 
@@ -712,6 +752,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ca(String vb08ca) {
+        if (this.vb08ca.equals(vb08ca)) return; // for all checkboxes
         this.vb08ca = vb08ca;
         notifyPropertyChanged(BR.vb08ca);
     }
@@ -722,6 +763,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cb(String vb08cb) {
+        if (this.vb08cb.equals(vb08cb)) return; // for all checkboxes
         this.vb08cb = vb08cb;
         notifyPropertyChanged(BR.vb08cb);
     }
@@ -732,6 +774,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cc(String vb08cc) {
+        if (this.vb08cc.equals(vb08cc)) return; // for all checkboxes
         this.vb08cc = vb08cc;
         notifyPropertyChanged(BR.vb08cc);
     }
@@ -742,6 +785,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cd(String vb08cd) {
+        if (this.vb08cd.equals(vb08cd)) return; // for all checkboxes
         this.vb08cd = vb08cd;
         notifyPropertyChanged(BR.vb08cd);
     }
@@ -752,6 +796,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ce(String vb08ce) {
+        if (this.vb08ce.equals(vb08ce)) return; // for all checkboxes
         this.vb08ce = vb08ce;
         notifyPropertyChanged(BR.vb08ce);
     }
@@ -762,6 +807,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cf(String vb08cf) {
+        if (this.vb08cf.equals(vb08cf)) return; // for all checkboxes
         this.vb08cf = vb08cf;
         notifyPropertyChanged(BR.vb08cf);
     }
@@ -772,6 +818,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cg(String vb08cg) {
+        if (this.vb08cg.equals(vb08cg)) return; // for all checkboxes
         this.vb08cg = vb08cg;
         notifyPropertyChanged(BR.vb08cg);
     }
@@ -782,6 +829,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ch(String vb08ch) {
+        if (this.vb08ch.equals(vb08ch)) return; // for all checkboxes
         this.vb08ch = vb08ch;
         notifyPropertyChanged(BR.vb08ch);
     }
@@ -792,6 +840,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ci(String vb08ci) {
+        if (this.vb08ci.equals(vb08ci)) return; // for all checkboxes
         this.vb08ci = vb08ci;
         notifyPropertyChanged(BR.vb08ci);
     }
@@ -802,6 +851,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cj(String vb08cj) {
+        if (this.vb08cj.equals(vb08cj)) return; // for all checkboxes
         this.vb08cj = vb08cj;
         notifyPropertyChanged(BR.vb08cj);
     }
@@ -812,6 +862,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ck(String vb08ck) {
+        if (this.vb08ck.equals(vb08ck)) return; // for all checkboxes
         this.vb08ck = vb08ck;
         notifyPropertyChanged(BR.vb08ck);
     }
@@ -822,6 +873,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cl(String vb08cl) {
+        if (this.vb08cl.equals(vb08cl)) return; // for all checkboxes
         this.vb08cl = vb08cl;
         notifyPropertyChanged(BR.vb08cl);
     }
@@ -832,6 +884,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cm(String vb08cm) {
+        if (this.vb08cm.equals(vb08cm)) return; // for all checkboxes
         this.vb08cm = vb08cm;
         notifyPropertyChanged(BR.vb08cm);
     }
@@ -842,6 +895,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cn(String vb08cn) {
+        if (this.vb08cn.equals(vb08cn)) return; // for all checkboxes
         this.vb08cn = vb08cn;
         notifyPropertyChanged(BR.vb08cn);
     }
@@ -852,6 +906,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08co(String vb08co) {
+        if (this.vb08co.equals(vb08co)) return; // for all checkboxes
         this.vb08co = vb08co;
         notifyPropertyChanged(BR.vb08co);
     }
@@ -872,6 +927,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08wa(String vb08wa) {
+        if (this.vb08wa.equals(vb08wa)) return; // for all checkboxes
         this.vb08wa = vb08wa;
         notifyPropertyChanged(BR.vb08wa);
     }
@@ -882,6 +938,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08wb(String vb08wb) {
+        if (this.vb08wb.equals(vb08wb)) return; // for all checkboxes
         this.vb08wb = vb08wb;
         notifyPropertyChanged(BR.vb08wb);
     }
@@ -892,6 +949,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08wc(String vb08wc) {
+        if (this.vb08wc.equals(vb08wc)) return; // for all checkboxes
         this.vb08wc = vb08wc;
         notifyPropertyChanged(BR.vb08wc);
     }
@@ -902,6 +960,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08wd(String vb08wd) {
+        if (this.vb08wd.equals(vb08wd)) return; // for all checkboxes
         this.vb08wd = vb08wd;
         notifyPropertyChanged(BR.vb08wd);
     }
@@ -912,6 +971,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08we(String vb08we) {
+        if (this.vb08we.equals(vb08we)) return; // for all checkboxes
         this.vb08we = vb08we;
         notifyPropertyChanged(BR.vb08we);
     }
