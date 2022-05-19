@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.epi_register_daily.BR;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
@@ -608,21 +608,21 @@ public class FormVB extends BaseObservable implements Observable {
 
 
     public FormVB Hydrate(Cursor cursor) throws JSONException {
-        this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_UID));
-        this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_PROJECT_NAME));
-        this.sno = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SNO));
-        this.userName = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYSDATE));
-        this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_DEVICEID));
-        this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_DEVICETAGID));
-        //   this.entryType = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ENTRY_TYPE));
-        this.appver = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_APPVERSION));
-        this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ISTATUS));
-        this.synced = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYNC_DATE));
+        this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UID));
+        this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_PROJECT_NAME));
+        this.sno = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SNO));
+        this.userName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_USERNAME));
+        this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYSDATE));
+        this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICETAGID));
+        //   this.entryType = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ENTRY_TYPE));
+        this.appver = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_APPVERSION));
+        this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ISTATUS));
+        this.synced = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYNC_DATE));
 
-        vBHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_VB)));
+        vBHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VB)));
         return this;
     }
 
@@ -710,20 +710,20 @@ public class FormVB extends BaseObservable implements Observable {
     public JSONObject toJSONObject() throws JSONException {
         JSONObject json = new JSONObject();
 
-        json.put(FormsTable.COLUMN_ID, this.id);
-        json.put(FormsTable.COLUMN_UID, this.uid);
-        json.put(FormsTable.COLUMN_PROJECT_NAME, this.projectName);
-        json.put(FormsTable.COLUMN_SNO, this.sno);
-        json.put(FormsTable.COLUMN_USERNAME, this.userName);
-        json.put(FormsTable.COLUMN_SYSDATE, this.sysDate);
-        json.put(FormsTable.COLUMN_DEVICEID, this.deviceId);
-        json.put(FormsTable.COLUMN_DEVICETAGID, this.deviceTag);
-        //    json.put(FormsTable.COLUMN_ENTRY_TYPE, this.entryType);
-        json.put(FormsTable.COLUMN_ISTATUS, this.iStatus);
-        json.put(FormsTable.COLUMN_SYNCED, this.synced);
-        json.put(FormsTable.COLUMN_SYNC_DATE, this.syncDate);
-        json.put(FormsTable.COLUMN_APPVERSION, this.appver);
-        json.put(FormsTable.COLUMN_VB, new JSONObject(vBtoString()));
+        json.put(FormsVBTable.COLUMN_ID, this.id);
+        json.put(FormsVBTable.COLUMN_UID, this.uid);
+        json.put(FormsVBTable.COLUMN_PROJECT_NAME, this.projectName);
+        json.put(FormsVBTable.COLUMN_SNO, this.sno);
+        json.put(FormsVBTable.COLUMN_USERNAME, this.userName);
+        json.put(FormsVBTable.COLUMN_SYSDATE, this.sysDate);
+        json.put(FormsVBTable.COLUMN_DEVICEID, this.deviceId);
+        json.put(FormsVBTable.COLUMN_DEVICETAGID, this.deviceTag);
+        //    json.put(FormsVBTable.COLUMN_ENTRY_TYPE, this.entryType);
+        json.put(FormsVBTable.COLUMN_ISTATUS, this.iStatus);
+        json.put(FormsVBTable.COLUMN_SYNCED, this.synced);
+        json.put(FormsVBTable.COLUMN_SYNC_DATE, this.syncDate);
+        json.put(FormsVBTable.COLUMN_APPVERSION, this.appver);
+        json.put(FormsVBTable.COLUMN_VB, new JSONObject(vBtoString()));
         return json;
     }
 }
