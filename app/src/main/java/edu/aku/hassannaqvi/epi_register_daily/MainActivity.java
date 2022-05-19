@@ -13,6 +13,7 @@ import edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.Form;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
                 MainApp.form = new Form();
                 finish();
                 startActivity(new Intent(this, SectionVAActivity.class));
+                break;
+
+            case R.id.secA:
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionVAActivity.class));
+                break;
+
+            case R.id.secB:
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionVBActivity.class));
                 break;
 
             case R.id.dbm:
