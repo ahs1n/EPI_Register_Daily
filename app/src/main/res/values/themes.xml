@@ -182,6 +182,7 @@
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingBottom">4dp</item>
         <item name="android:minHeight">52dp</item>
+        <item name="android:buttonTint">@drawable/radio_button_selector</item>
         <item name="android:background">@drawable/options_separator</item>
     </style>
 
@@ -195,6 +196,7 @@
         <item name="android:textSize">18sp</item>
         <item name="android:minHeight">52dp</item>
         <item name="android:clickable">true</item>
+        <item name="android:buttonTint">@drawable/radio_button_selector</item>
         <item name="android:background">@drawable/options_separator</item>
     </style>
 
@@ -252,8 +254,8 @@
     </style>
 
     <style name="quesNum">
-        <item name="android:background">@color/colorAccentLight</item>
-        <item name="android:textColor">@color/grayDark</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorTextOnAccent</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:padding">4dp</item>
         <item name="android:minHeight">52dp</item>

@@ -909,17 +909,23 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="BCG" />
 
                                 <CheckBox
                                     android:id="@+id/vb08ca98"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="3"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08ca(``) + vb08ca.clearCheck()}"
+                                    android:text="BCG" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="1" />
 
                                 <RadioButton
                                     android:id="@+id/vb08caa"
@@ -928,6 +934,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08ca98.checked ? true : false}'
                                     android:checked="@{form.vb08ca.equals(`1`)}"
                                     android:onClick="@{()->form.setVb08ca(`1`)}" />
 
@@ -985,17 +992,23 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="OPV" />
 
                                 <CheckBox
                                     android:id="@+id/vb08cb98"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="3"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cb(``) + vb08cb.clearCheck()}"
+                                    android:text="OPV" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="1" />
 
                                 <RadioButton
                                     android:id="@+id/vb08cba"
@@ -1004,6 +1017,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cb98.checked ? true : false}'
                                     android:checked="@{form.vb08cb.equals(`0`)}"
                                     android:onClick="@{()->form.setVb08cb(`0`)}" />
 
@@ -1013,6 +1027,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="1" />
 
+
                                 <RadioButton
                                     android:id="@+id/vb08cbb"
                                     android:layout_width="0dp"
@@ -1020,6 +1035,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cb98.checked ? true : false}'
                                     android:checked="@{form.vb08cb.equals(`1`)}"
                                     android:onClick="@{()->form.setVb08cb(`1`)}" />
 
@@ -1036,6 +1052,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cb98.checked ? true : false}'
                                     android:checked="@{form.vb08cb.equals(`2`)}"
                                     android:onClick="@{()->form.setVb08cb(`2`)}" />
 
@@ -1051,6 +1068,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cb98.checked ? true : false}'
                                     android:checked="@{form.vb08cb.equals(`3`)}"
                                     android:onClick="@{()->form.setVb08cb(`3`)}" />
 
@@ -1067,17 +1085,23 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="Penta" />
 
                                 <CheckBox
                                     android:id="@+id/vb08cc98"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="3"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cc(``) + vb08cc.clearCheck()}"
+                                    android:text="Penta" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="1" />
 
                                 <RadioButton
                                     android:id="@+id/vb08cca"
@@ -1086,6 +1110,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cc98.checked ? true : false}'
                                     android:checked="@{form.vb08cc.equals(`1`)}"
                                     android:onClick="@{()->form.setVb08cc(`1`)}" />
 
@@ -1101,6 +1126,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cc98.checked ? true : false}'
                                     android:checked="@{form.vb08cc.equals(`2`)}"
                                     android:onClick="@{()->form.setVb08cc(`2`)}" />
 
@@ -1116,6 +1142,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cc98.checked ? true : false}'
                                     android:checked="@{form.vb08cc.equals(`3`)}"
                                     android:onClick="@{()->form.setVb08cc(`3`)}" />
 
@@ -1146,17 +1173,22 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="PCV" />
-
                                 <CheckBox
                                     android:id="@+id/vb08cd98"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="3"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cd(``) + vb08cd.clearCheck()}"
+                                    android:text="PCV" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="1" />
 
                                 <RadioButton
                                     android:id="@+id/vb08cda"
@@ -1165,6 +1197,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cd98.checked ? true : false}'
                                     android:checked="@{form.vb08cd.equals(`1`)}"
                                     android:onClick="@{()->form.setVb08cd(`1`)}" />
 
@@ -1180,6 +1213,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cd98.checked ? true : false}'
                                     android:checked="@{form.vb08cd.equals(`2`)}"
                                     android:onClick="@{()->form.setVb08cd(`2`)}" />
 
@@ -1195,6 +1229,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cd98.checked ? true : false}'
                                     android:checked="@{form.vb08cd.equals(`3`)}"
                                     android:onClick="@{()->form.setVb08cd(`3`)}" />
 
@@ -1225,17 +1260,22 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="IPV" />
-
                                 <CheckBox
                                     android:id="@+id/vb08ce98"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="3"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08ce(``) + vb08ce.clearCheck()}"
+                                    android:text="IPV" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="1" />
 
                                 <RadioButton
                                     android:id="@+id/vb08cea"
@@ -1244,6 +1284,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08ce98.checked ? true : false}'
                                     android:checked="@{form.vb08ce.equals(`1`)}"
                                     android:onClick="@{()->form.setVb08ce(`1`)}" />
 
@@ -1259,6 +1300,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08ce98.checked ? true : false}'
                                     android:checked="@{form.vb08ce.equals(`2`)}"
                                     android:onClick="@{()->form.setVb08ce(`2`)}" />
 
@@ -1303,17 +1345,22 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="Measles" />
-
                                 <CheckBox
                                     android:id="@+id/vb08cf98"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="3"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cf(``) + vb08cf.clearCheck()}"
+                                    android:text="Measles" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="1" />
 
                                 <RadioButton
                                     android:id="@+id/vb08cfa"
@@ -1322,6 +1369,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cf98.checked ? true : false}'
                                     android:checked="@{form.vb08cf.equals(`1`)}"
                                     android:onClick="@{()->form.setVb08cf(`1`)}" />
 
@@ -1337,6 +1385,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cf98.checked ? true : false}'
                                     android:checked="@{form.vb08cf.equals(`2`)}"
                                     android:onClick="@{()->form.setVb08cf(`2`)}" />
 
@@ -1382,17 +1431,22 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="Rota" />
-
                                 <CheckBox
                                     android:id="@+id/vb08cg98"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="3"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cg(``) + vb08cg.clearCheck()}"
+                                    android:text="Rota" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="1" />
 
                                 <RadioButton
                                     android:id="@+id/vb08cga"
@@ -1401,6 +1455,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cg98.checked ? true : false}'
                                     android:checked="@{form.vb08cg.equals(`1`)}"
                                     android:onClick="@{()->form.setVb08cg(`1`)}" />
 
@@ -1416,6 +1471,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08cg98.checked ? true : false}'
                                     android:checked="@{form.vb08cg.equals(`2`)}"
                                     android:onClick="@{()->form.setVb08cg(`2`)}" />
 
@@ -1461,17 +1517,22 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="Hepatitis" />
-
                                 <CheckBox
                                     android:id="@+id/vb08ch98"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent" />
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="3"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08ch(``) + vb08ch.clearCheck()}"
+                                    android:text="Hepatitis" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:layout_weight="1" />
 
                                 <RadioButton
                                     android:id="@+id/vb08cha"
@@ -1480,6 +1541,7 @@
                                     android:layout_gravity="center_horizontal|center_vertical"
                                     android:layout_weight="2"
                                     android:background="@null"
+                                    android:enabled='@{vb08ch98.checked ? true : false}'
                                     android:checked="@{form.vb08ch.equals(`1`)}"
                                     android:onClick="@{()->form.setVb08ch(`1`)}" />
 
