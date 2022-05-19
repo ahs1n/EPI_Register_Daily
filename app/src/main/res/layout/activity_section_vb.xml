@@ -1705,8 +1705,8 @@
                                 android:layout_gravity="center_horizontal|center_vertical"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{form.vb08wa.equals(`1`)}"
-                                android:onClick="@{()->form.setVb08wa(`1`)}" />
+                                android:checked="@{form.vb08w.equals(`1`)}"
+                                android:onClick="@{()->form.setVb08w(`1`)}" />
 
                             <View
                                 android:layout_width="0dp"
@@ -1720,8 +1720,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{form.vb08wa.equals(`2`)}"
-                                android:onClick="@{()->form.setVb08wa(`2`)}" />
+                                android:checked="@{form.vb08w.equals(`2`)}"
+                                android:onClick="@{()->form.setVb08w(`2`)}" />
 
                             <View
                                 android:layout_width="0dp"
@@ -1735,8 +1735,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{form.vb08wa.equals(`3`)}"
-                                android:onClick="@{()->form.setVb08wa(`3`)}" />
+                                android:checked="@{form.vb08w.equals(`3`)}"
+                                android:onClick="@{()->form.setVb08w(`3`)}" />
 
                             <View
                                 android:layout_width="0dp"
@@ -1750,8 +1750,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{form.vb08wa.equals(`4`)}"
-                                android:onClick="@{()->form.setVb08wa(`4`)}" />
+                                android:checked="@{form.vb08w.equals(`4`)}"
+                                android:onClick="@{()->form.setVb08w(`4`)}" />
 
                             <View
                                 android:layout_width="0dp"
@@ -1765,8 +1765,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{form.vb08wa.equals(`5`)}"
-                                android:onClick="@{()->form.setVb08wa(`5`)}" />
+                                android:checked="@{form.vb08w.equals(`5`)}"
+                                android:onClick="@{()->form.setVb08w(`5`)}" />
 
                         </RadioGroup>
 
