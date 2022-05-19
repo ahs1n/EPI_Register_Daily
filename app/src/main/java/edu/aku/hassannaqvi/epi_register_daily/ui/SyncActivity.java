@@ -49,6 +49,7 @@ import java.util.concurrent.TimeUnit;
 
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.SyncListAdapter;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormWRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTable;
@@ -143,7 +144,7 @@ public class SyncActivity extends AppCompatActivity {
                 uploadTables.clear();
                 MainApp.uploadData.clear();
 
-                // Forms
+                // FormsVA
                 uploadTables.add(new SyncModel(FormsTable.TABLE_NAME));
                 try {
                     MainApp.uploadData.add(db.getUnsyncedForm());
@@ -151,6 +152,16 @@ public class SyncActivity extends AppCompatActivity {
                     e.printStackTrace();
                     Log.d(TAG, "ProcessStart: JSONException(Forms): " + e.getMessage());
                     Toast.makeText(this, "JSONException(Forms): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                // FormsVB
+                uploadTables.add(new SyncModel(TableContracts.FormsVBTable.TABLE_NAME));
+                try {
+                    MainApp.uploadData.add(db.getUnsyncedFormVB());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "ProcessStart: JSONException(FormsVB): " + e.getMessage());
+                    Toast.makeText(this, "JSONException(FormsVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
                 // FormsCR

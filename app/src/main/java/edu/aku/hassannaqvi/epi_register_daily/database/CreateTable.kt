@@ -23,8 +23,25 @@ object CreateTable {
             + FormsTable.COLUMN_SYNCED + " TEXT,"
             + FormsTable.COLUMN_SYNC_DATE + " TEXT,"
             + FormsTable.COLUMN_APPVERSION + " TEXT,"
-            + FormsTable.COLUMN_VA + " TEXT,"
-            + FormsTable.COLUMN_VB + " TEXT"
+            + FormsTable.COLUMN_VA + " TEXT"
+            + " );"
+            )
+
+    const val SQL_CREATE_FORMSVB = ("CREATE TABLE "
+            + FormsVBTable.TABLE_NAME + "("
+            + FormsVBTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + FormsVBTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + FormsVBTable.COLUMN_UID + " TEXT,"
+            + FormsVBTable.COLUMN_SNO + " TEXT,"
+            + FormsVBTable.COLUMN_USERNAME + " TEXT,"
+            + FormsVBTable.COLUMN_SYSDATE + " TEXT,"
+            + FormsVBTable.COLUMN_ISTATUS + " TEXT,"
+            + FormsVBTable.COLUMN_DEVICEID + " TEXT,"
+            + FormsVBTable.COLUMN_DEVICETAGID + " TEXT,"
+            + FormsVBTable.COLUMN_SYNCED + " TEXT,"
+            + FormsVBTable.COLUMN_SYNC_DATE + " TEXT,"
+            + FormsVBTable.COLUMN_APPVERSION + " TEXT,"
+            + FormsVBTable.COLUMN_VB + " TEXT"
             + " );"
             )
 

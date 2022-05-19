@@ -20,6 +20,7 @@ import edu.aku.hassannaqvi.epi_register_daily.BuildConfig;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.models.Form;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormCR;
+import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 
@@ -51,6 +52,7 @@ public class MainApp extends Application {
     public static FormCR cr;
     public static FormWR wr;
     public static Form form;
+    public static FormVB formVB;
     public static boolean superuser;
     public static String previousPage;
 

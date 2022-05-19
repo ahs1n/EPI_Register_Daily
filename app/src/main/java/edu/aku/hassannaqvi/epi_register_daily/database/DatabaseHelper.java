@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.epi_register_daily.database;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMS;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMSVB;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
 
@@ -25,11 +26,13 @@ import java.util.Date;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormWRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.models.Form;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormCR;
+import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.VersionApp;
@@ -54,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
+        db.execSQL(SQL_CREATE_FORMSVB);
         db.execSQL(SQL_CREATE_VERSIONAPP);
 
     }
@@ -77,13 +81,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_USERNAME, form.getUserName());
         values.put(FormsTable.COLUMN_SYSDATE, form.getSysDate());
         values.put(FormsTable.COLUMN_VA, form.vAtoString());
-        values.put(FormsTable.COLUMN_VB, form.vBtoString());
         values.put(FormsTable.COLUMN_ISTATUS, form.getiStatus());
         values.put(FormsTable.COLUMN_DEVICETAGID, form.getDeviceTag());
         values.put(FormsTable.COLUMN_DEVICEID, form.getDeviceId());
         values.put(FormsTable.COLUMN_APPVERSION, form.getAppver());
         values.put(FormsTable.COLUMN_SYNCED, form.getSynced());
         values.put(FormsTable.COLUMN_SYNC_DATE, form.getSyncDate());
+
+        long newRowId;
+        newRowId = db.insert(
+                FormsTable.TABLE_NAME,
+                FormsTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    public Long addFormVB(FormVB formVB) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(FormsVBTable.COLUMN_PROJECT_NAME, formVB.getProjectName());
+        values.put(FormsVBTable.COLUMN_UID, formVB.getUid());
+        values.put(FormsVBTable.COLUMN_SNO, formVB.getSno());
+        values.put(FormsVBTable.COLUMN_USERNAME, formVB.getUserName());
+        values.put(FormsVBTable.COLUMN_SYSDATE, formVB.getSysDate());
+        values.put(FormsVBTable.COLUMN_VB, formVB.vBtoString());
+        values.put(FormsVBTable.COLUMN_ISTATUS, formVB.getiStatus());
+        values.put(FormsVBTable.COLUMN_DEVICETAGID, formVB.getDeviceTag());
+        values.put(FormsVBTable.COLUMN_DEVICEID, formVB.getDeviceId());
+        values.put(FormsVBTable.COLUMN_APPVERSION, formVB.getAppver());
+        values.put(FormsVBTable.COLUMN_SYNCED, formVB.getSynced());
+        values.put(FormsVBTable.COLUMN_SYNC_DATE, formVB.getSyncDate());
 
         long newRowId;
         newRowId = db.insert(
@@ -161,6 +189,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.form.getId())};
 
         return db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+
+    public int updatesFormVBColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = FormsVBTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.formVB.getId())};
+
+        return db.update(FormsVBTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -574,6 +618,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
+    public JSONArray getUnsyncedFormVB() throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        //whereClause = null;
+        whereClause = FormsVBTable.COLUMN_SYNCED + " = '' AND " +
+                FormsVBTable.COLUMN_ISTATUS + "!= ''";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsVBTable.COLUMN_ID + " ASC";
+
+        JSONArray allForms = new JSONArray();
+        c = db.query(
+                FormsVBTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            /** WorkManager Upload
+             /*Form fc = new Form();
+             allFC.add(fc.Hydrate(c));*/
+            Log.d(TAG, "getUnsyncedFormVB: " + c.getCount());
+            Form form = new Form();
+            allForms.put(form.Hydrate(c).toJSONObject());
+
+
+        }
+
+        c.close();
+        db.close();
+
+        Log.d(TAG, "getUnsyncedFormVB: " + allForms.toString().length());
+        Log.d(TAG, "getUnsyncedFormVB: " + allForms);
+        return allForms;
+    }
+
     public JSONArray getUnsyncedFormCR() throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -669,6 +759,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //update SyncedTables
+    public void updateSyncedForm(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_SYNCED, true);
+        values.put(FormsTable.COLUMN_SYNC_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = FormsTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FormsTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedFormVB(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsVBTable.COLUMN_SYNCED, true);
+        values.put(FormsVBTable.COLUMN_SYNC_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = FormsVBTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FormsVBTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
     public void updateSyncedFormCR(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
