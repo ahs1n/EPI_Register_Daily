@@ -46,6 +46,7 @@ public class Form extends BaseObservable implements Observable {
     private String entryType = _EMPTY_;
     private String backfilename = _EMPTY_;
     private String frontfilename = _EMPTY_;
+    private String childfilename = _EMPTY_;
 
     // FIELD VARIABLES
     private String va01 = _EMPTY_;
@@ -283,6 +284,18 @@ public class Form extends BaseObservable implements Observable {
         this.frontfilename = frontfilename;
 
         notifyPropertyChanged(BR.frontfilename);
+    }
+
+    @Bindable
+    public String getChildfilename() {
+        return childfilename;
+    }
+
+    public void setChildfilename(String childfilename) {
+        if (this.childfilename.equals(childfilename)) return;
+        this.childfilename = childfilename;
+
+        notifyPropertyChanged(BR.childfilename);
     }
 
     @Bindable
@@ -1092,6 +1105,7 @@ public class Form extends BaseObservable implements Observable {
             this.vb09 = json.getString("vb09");
             this.backfilename = json.getString("backfilename");
             this.frontfilename = json.getString("frontfilename");
+            this.childfilename = json.getString("childfilename");
 
         }
     }
@@ -1169,7 +1183,8 @@ public class Form extends BaseObservable implements Observable {
                 .put("vb08we", vb08we)
                 .put("vb09", vb09)
                 .put("backfilename", backfilename)
-                .put("frontfilename", frontfilename);
+                .put("frontfilename", frontfilename)
+                .put("childfilename", childfilename);
         return json.toString();
     }
 
