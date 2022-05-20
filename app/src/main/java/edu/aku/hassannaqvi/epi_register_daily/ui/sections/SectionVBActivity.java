@@ -117,4 +117,64 @@ public class SectionVBActivity extends AppCompatActivity {
             startActivityForResult(intent, 3); // Activity is started with requestCode 3 = Child
         }
     }
+
+
+    // Call Back method  to get the Message form other Activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_CANCELED) {
+            Toast.makeText(this, requestCode + "_" + resultCode, Toast.LENGTH_SHORT).show();
+
+            String fileName = data.getStringExtra("FileName");
+
+            // Check if the requestCode 1 = Front : 2 = Back -- resultCode 1 = Success : 2 = Failure
+            // Results received with requestCode 1 = Front
+
+            if (requestCode == 1 && resultCode == RESULT_OK) {
+                Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
+
+                bi.frontFileName.setText(fileName);
+                bi.frontPhoto.setEnabled(false);
+
+            } else if (requestCode == 1 && resultCode != RESULT_CANCELED) {
+                Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
+
+                //TODO: Implement functionality below when photo was not taken
+                // ...
+                //     bi.frontFileName.setText("Photo not taken.");
+
+            }
+
+            // Results received with requestCode 2 = Back
+            if (requestCode == 2 && resultCode == RESULT_OK) {
+                Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
+                bi.backFileName.setText(fileName);
+                bi.backPhoto.setEnabled(false);
+            } else if (requestCode == 2 && resultCode != RESULT_CANCELED) {
+
+                Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
+
+                //TODO: Implement functionality below when photo was not taken
+                // ...
+                //      bi.backFileName.setText("Photo not taken.");
+
+            }
+
+            // Results received with requestCode 2 = child
+            if (requestCode == 3 && resultCode == RESULT_OK) {
+                Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
+                bi.childFileName.setText(fileName);
+                bi.childPhoto.setEnabled(false);
+            } else if (requestCode == 3 && resultCode != RESULT_CANCELED) {
+
+                Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
+
+                //TODO: Implement functionality below when photo was not taken
+                // ...
+                //      bi.backFileName.setText("Photo not taken.");
+
+            }
+        }
+    }
 }

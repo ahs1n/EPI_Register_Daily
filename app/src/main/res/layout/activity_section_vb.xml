@@ -1954,7 +1954,7 @@
                             android:background="@null"
                             android:enabled="false"
                             android:minHeight="48dp"
-                            android:text="@={form.frontfilename}"
+                            android:text="@={form.childfilename}"
                             android:textColor="#7f7f7f7f"
                             android:textSize="14sp" />
 
