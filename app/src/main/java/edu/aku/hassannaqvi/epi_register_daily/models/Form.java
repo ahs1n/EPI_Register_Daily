@@ -44,6 +44,8 @@ public class Form extends BaseObservable implements Observable {
     private String synced = _EMPTY_;
     private String syncDate = _EMPTY_;
     private String entryType = _EMPTY_;
+    private String backfilename = _EMPTY_;
+    private String frontfilename = _EMPTY_;
 
     // FIELD VARIABLES
     private String va01 = _EMPTY_;
@@ -258,6 +260,30 @@ public class Form extends BaseObservable implements Observable {
         this.syncDate = syncDate;
     }
 
+
+    @Bindable
+    public String getBackfilename() {
+        return backfilename;
+    }
+
+    public void setBackfilename(String backfilename) {
+        if (this.backfilename.equals(backfilename)) return;
+        this.backfilename = backfilename;
+
+        notifyPropertyChanged(BR.backfilename);
+    }
+
+    @Bindable
+    public String getFrontfilename() {
+        return frontfilename;
+    }
+
+    public void setFrontfilename(String frontfilename) {
+        if (this.frontfilename.equals(frontfilename)) return;
+        this.frontfilename = frontfilename;
+
+        notifyPropertyChanged(BR.frontfilename);
+    }
 
     @Bindable
     public String getVa01() {
@@ -1064,6 +1090,8 @@ public class Form extends BaseObservable implements Observable {
             this.vb08wd = json.getString("vb08wd");
             this.vb08we = json.getString("vb08we");
             this.vb09 = json.getString("vb09");
+            this.backfilename = json.getString("backfilename");
+            this.frontfilename = json.getString("frontfilename");
 
         }
     }
@@ -1139,7 +1167,9 @@ public class Form extends BaseObservable implements Observable {
                 .put("vb08wc", vb08wc)
                 .put("vb08wd", vb08wd)
                 .put("vb08we", vb08we)
-                .put("vb09", vb09);
+                .put("vb09", vb09)
+                .put("backfilename", backfilename)
+                .put("frontfilename", frontfilename);
         return json.toString();
     }
 

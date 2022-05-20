@@ -1829,6 +1829,139 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+                <!-- Take Photo   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVtakePhoto"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/sub_labels"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Vaccination Card Photo" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layoutDirection="ltr"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/frontPhoto"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="15dp"
+                                android:background="@drawable/button_shape_gray"
+                                android:backgroundTint="@color/colorAccent"
+                                android:drawableStart="@drawable/ic_camera"
+                                android:onClick="takePhoto"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="Take Front Photo" />
+
+                            <Button
+                                android:id="@+id/backPhoto"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="15dp"
+                                android:background="@drawable/button_shape_gray"
+                                android:backgroundTint="@color/colorAccent"
+                                android:drawableStart="@drawable/ic_camera"
+                                android:onClick="takePhoto"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="Take Back Photo" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:layoutDirection="ltr"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/frontFileName"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:enabled="false"
+                                android:minHeight="48dp"
+                                android:text="@={form.frontfilename}"
+                                android:textColor="#7f7f7f7f"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/backFileName"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:enabled="false"
+                                android:minHeight="48dp"
+                                android:text="@={form.backfilename}"
+                                android:textColor="#7f7f7f7f"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            style="@style/sub_labels"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Child Photo" />
+
+
+                        <Button
+                            android:id="@+id/childPhoto"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/button_shape_gray"
+                            android:backgroundTint="@color/colorAccent"
+                            android:drawableStart="@drawable/ic_camera"
+                            android:onClick="takePhoto"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="Take Child Photo" />
+
+                        <TextView
+                            android:id="@+id/childFileName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:enabled="false"
+                            android:minHeight="48dp"
+                            android:text="@={form.frontfilename}"
+                            android:textColor="#7f7f7f7f"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
                 <!--EndButton LinearLayout-->
                 <LinearLayout
                     android:layout_width="match_parent"

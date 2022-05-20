@@ -14,7 +14,6 @@ import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Base64;
@@ -118,6 +117,9 @@ public class LoginActivity extends AppCompatActivity {
                         Manifest.permission.ACCESS_NETWORK_STATE,
                         Manifest.permission.WAKE_LOCK,
                         Manifest.permission.INTERNET,
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.READ_PHONE_STATE
                 ).withListener(new MultiplePermissionsListener() {
             @Override
@@ -211,7 +213,8 @@ public class LoginActivity extends AppCompatActivity {
                 editor.apply();
             }
 
-            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + PROJECT_NAME);
+            // File folder = new File(Environment.getExternalStorageDirectory() + File.separator + PROJECT_NAME);
+            File folder = new File(this.getExternalFilesDir("Backups"), File.separator);
             boolean success = true;
             if (!folder.exists()) {
                 success = folder.mkdirs();

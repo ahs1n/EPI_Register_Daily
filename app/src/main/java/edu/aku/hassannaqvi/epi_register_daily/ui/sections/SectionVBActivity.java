@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.form;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,7 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
+import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 
 public class SectionVBActivity extends AppCompatActivity {
     private static final String TAG = "SectionVBActivity";
@@ -29,7 +32,7 @@ public class SectionVBActivity extends AppCompatActivity {
         setTheme(R.style.AppThemeUrdu);
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_vb);
-        bi.setForm(MainApp.form);
+        bi.setForm(form);
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
     }
@@ -40,7 +43,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
         int updcount = 0;
         try {
-            updcount = db.updatesFormColumn(TableContracts.FormsTable.COLUMN_VB, MainApp.form.vBtoString());
+            updcount = db.updatesFormColumn(TableContracts.FormsTable.COLUMN_VB, form.vBtoString());
         } catch (JSONException e) {
             Toast.makeText(this, R.string.upd_db + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -72,14 +75,46 @@ public class SectionVBActivity extends AppCompatActivity {
 
 
     private boolean formValidation() {
-        return Validator.emptyCheckingContainer(this, bi.GrpName);
-    }
 
+        if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
+            return false;
+        }
+        if (form.getFrontfilename().equals("")) {
+            return Validator.emptyCustomTextBox(this, bi.frontFileName, "Please take front photo of Vaccination Card.");
+        }
+
+        // Check back photo taken
+        if (form.getBackfilename().equals("")) {
+            return Validator.emptyCustomTextBox(this, bi.backFileName, "Please take back photo of Vaccination Card.");
+
+        }
+        return true;
+    }
 
     @Override
     public void onBackPressed() {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+
+    public void takePhoto(View view) {
+
+        Intent intent = new Intent(this, TakePhoto.class);
+
+        intent.putExtra("picID", form.getVb02() + "_" + MainApp.form.getVb02() + "_");
+        intent.putExtra("Name", form.getVb04a());
+
+        if (view.getId() == R.id.frontPhoto) {
+            intent.putExtra("picView", "front".toUpperCase());
+            startActivityForResult(intent, 1); // Activity is started with requestCode 1 = Front
+        } else if (view.getId() == R.id.backPhoto) {
+            intent.putExtra("picView", "back".toUpperCase());
+            startActivityForResult(intent, 2); // Activity is started with requestCode 2 = Back
+        } else {
+            intent.putExtra("picView", "child".toUpperCase());
+            startActivityForResult(intent, 3); // Activity is started with requestCode 3 = Child
+        }
     }
 }
