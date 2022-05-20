@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui;
 
+
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 
 import android.app.Activity;
@@ -114,7 +115,7 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
                     Camera.Parameters parameters = camera.getParameters();
                     //parameters.setJpegQuality(88);
                     parameters.setAutoWhiteBalanceLock(true);
-                    if (parameters.getFlashMode() != null) {
+                    if(parameters.getFlashMode() !=null) {
                         parameters.setFlashMode(Camera.Parameters.WHITE_BALANCE_AUTO);
                     }
                     parameters.set("rotation", 90);
@@ -245,14 +246,8 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
     public void onPictureTaken(byte[] data, Camera camera) {
 
         File pictureFileDir = getDir(0);
-        boolean madeDir = false;
-        try {
-            madeDir = pictureFileDir.mkdirs();
-        } catch (Exception e) {
-            Log.d(TAG, "onPictureTaken: " + e.getMessage());
-        }
-
-        if (!pictureFileDir.exists() && !madeDir) {
+        Log.d(TAG, "onPictureTaken(folder): "+pictureFileDir);
+        if (!pictureFileDir.exists() && !pictureFileDir.mkdirs()) {
 
             Log.d(TAG, "Can't create directory to save image.");
             Toast.makeText(this, "Can't create directory to save image.",
@@ -260,7 +255,6 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
             return;
 
         } else {
-
             Log.d(TAG, "Directory created" + pictureFileDir);
 
         }
