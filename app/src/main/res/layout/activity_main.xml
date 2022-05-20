@@ -87,7 +87,7 @@
                             app:cardCornerRadius="24dp">
 
                             <LinearLayout
-                                android:id="@+id/openChildForm"
+                                android:id="@+id/openForm"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorAccentLightOverlay"

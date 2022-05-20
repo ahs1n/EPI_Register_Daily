@@ -77,7 +77,7 @@ public class Form extends BaseObservable implements Observable {
     private String va05hcheck = _EMPTY_;
     private String va05i = _EMPTY_;
     private String va05ix = _EMPTY_;
-    /*private String vb01 = _EMPTY_;
+    private String vb01 = _EMPTY_;
     private String vb02 = _EMPTY_;
     private String vb03 = _EMPTY_;
     private String vb04a = _EMPTY_;
@@ -110,7 +110,7 @@ public class Form extends BaseObservable implements Observable {
     private String vb08wc = _EMPTY_;
     private String vb08wd = _EMPTY_;
     private String vb08we = _EMPTY_;
-    private String vb09 = _EMPTY_;*/
+    private String vb09 = _EMPTY_;
 
 
     public Form() {
@@ -608,7 +608,7 @@ public class Form extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.va05ix);
     }
 
-    /*@Bindable
+    @Bindable
     public String getVb01() {
         return vb01;
     }
@@ -647,12 +647,8 @@ public class Form extends BaseObservable implements Observable {
         setVb08cg(vb03.equals("2") ? this.vb08cg : "");
         setVb08ch(vb03.equals("2") ? this.vb08ch : "");
         setVb08ci(vb03.equals("2") ? this.vb08ci : "");
-        setVb08cj(vb03.equals("2") ? this.vb08cj : "");
-        setVb08ck(vb03.equals("2") ? this.vb08ck : "");
-        setVb08cl(vb03.equals("2") ? this.vb08cl : "");
-        setVb08cm(vb03.equals("2") ? this.vb08cm : "");
-        setVb08cn(vb03.equals("2") ? this.vb08cn : "");
-        setVb08co(vb03.equals("2") ? this.vb08co : "");
+
+        setVb08w(vb03.equals("1") ? this.vb08w : "");
         notifyPropertyChanged(BR.vb03);
     }
 
@@ -752,7 +748,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ca(String vb08ca) {
-        if (this.vb08ca.equals(vb08ca)) return; // for all checkboxes
         this.vb08ca = vb08ca;
         notifyPropertyChanged(BR.vb08ca);
     }
@@ -763,7 +758,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cb(String vb08cb) {
-        if (this.vb08cb.equals(vb08cb)) return; // for all checkboxes
         this.vb08cb = vb08cb;
         notifyPropertyChanged(BR.vb08cb);
     }
@@ -774,7 +768,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cc(String vb08cc) {
-        if (this.vb08cc.equals(vb08cc)) return; // for all checkboxes
         this.vb08cc = vb08cc;
         notifyPropertyChanged(BR.vb08cc);
     }
@@ -785,7 +778,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cd(String vb08cd) {
-        if (this.vb08cd.equals(vb08cd)) return; // for all checkboxes
         this.vb08cd = vb08cd;
         notifyPropertyChanged(BR.vb08cd);
     }
@@ -796,7 +788,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ce(String vb08ce) {
-        if (this.vb08ce.equals(vb08ce)) return; // for all checkboxes
         this.vb08ce = vb08ce;
         notifyPropertyChanged(BR.vb08ce);
     }
@@ -807,7 +798,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cf(String vb08cf) {
-        if (this.vb08cf.equals(vb08cf)) return; // for all checkboxes
         this.vb08cf = vb08cf;
         notifyPropertyChanged(BR.vb08cf);
     }
@@ -818,7 +808,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cg(String vb08cg) {
-        if (this.vb08cg.equals(vb08cg)) return; // for all checkboxes
         this.vb08cg = vb08cg;
         notifyPropertyChanged(BR.vb08cg);
     }
@@ -829,7 +818,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ch(String vb08ch) {
-        if (this.vb08ch.equals(vb08ch)) return; // for all checkboxes
         this.vb08ch = vb08ch;
         notifyPropertyChanged(BR.vb08ch);
     }
@@ -840,7 +828,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ci(String vb08ci) {
-        if (this.vb08ci.equals(vb08ci)) return; // for all checkboxes
         this.vb08ci = vb08ci;
         notifyPropertyChanged(BR.vb08ci);
     }
@@ -851,7 +838,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cj(String vb08cj) {
-        if (this.vb08cj.equals(vb08cj)) return; // for all checkboxes
         this.vb08cj = vb08cj;
         notifyPropertyChanged(BR.vb08cj);
     }
@@ -862,7 +848,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08ck(String vb08ck) {
-        if (this.vb08ck.equals(vb08ck)) return; // for all checkboxes
         this.vb08ck = vb08ck;
         notifyPropertyChanged(BR.vb08ck);
     }
@@ -873,7 +858,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cl(String vb08cl) {
-        if (this.vb08cl.equals(vb08cl)) return; // for all checkboxes
         this.vb08cl = vb08cl;
         notifyPropertyChanged(BR.vb08cl);
     }
@@ -884,7 +868,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cm(String vb08cm) {
-        if (this.vb08cm.equals(vb08cm)) return; // for all checkboxes
         this.vb08cm = vb08cm;
         notifyPropertyChanged(BR.vb08cm);
     }
@@ -895,7 +878,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08cn(String vb08cn) {
-        if (this.vb08cn.equals(vb08cn)) return; // for all checkboxes
         this.vb08cn = vb08cn;
         notifyPropertyChanged(BR.vb08cn);
     }
@@ -906,7 +888,6 @@ public class Form extends BaseObservable implements Observable {
     }
 
     public void setVb08co(String vb08co) {
-        if (this.vb08co.equals(vb08co)) return; // for all checkboxes
         this.vb08co = vb08co;
         notifyPropertyChanged(BR.vb08co);
     }
@@ -984,7 +965,7 @@ public class Form extends BaseObservable implements Observable {
     public void setVb09(String vb09) {
         this.vb09 = vb09;
         notifyPropertyChanged(BR.vb09);
-    }*/
+    }
 
 
     public Form Hydrate(Cursor cursor) throws JSONException {
@@ -1003,7 +984,7 @@ public class Form extends BaseObservable implements Observable {
         this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYNC_DATE));
 
         vAHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_VA)));
-//        vBHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_VB)));
+        vBHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_VB)));
         return this;
     }
 
@@ -1046,7 +1027,7 @@ public class Form extends BaseObservable implements Observable {
         }
     }
 
-    /*public void vBHydrate(String string) throws JSONException {
+    public void vBHydrate(String string) throws JSONException {
         Log.d(TAG, "vBHydrate: " + string);
         if (string != null) {
             JSONObject json = null;
@@ -1085,7 +1066,7 @@ public class Form extends BaseObservable implements Observable {
             this.vb09 = json.getString("vb09");
 
         }
-    }*/
+    }
 
     public String vAtoString() throws JSONException {
         Log.d(TAG, "vAtoString: ");
@@ -1124,7 +1105,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
 
-    /*public String vBtoString() throws JSONException {
+    public String vBtoString() throws JSONException {
         Log.d(TAG, "vBtoString: ");
         JSONObject json = new JSONObject();
         json.put("vb01", vb01)
@@ -1160,7 +1141,7 @@ public class Form extends BaseObservable implements Observable {
                 .put("vb08we", vb08we)
                 .put("vb09", vb09);
         return json.toString();
-    }*/
+    }
 
 
     public JSONObject toJSONObject() throws JSONException {
@@ -1180,7 +1161,7 @@ public class Form extends BaseObservable implements Observable {
         json.put(FormsTable.COLUMN_SYNC_DATE, this.syncDate);
         json.put(FormsTable.COLUMN_APPVERSION, this.appver);
         json.put(FormsTable.COLUMN_VA, new JSONObject(vAtoString()));
-//        json.put(FormsTable.COLUMN_VB, new JSONObject(vBtoString()));
+        json.put(FormsTable.COLUMN_VB, new JSONObject(vBtoString()));
         return json;
     }
 }

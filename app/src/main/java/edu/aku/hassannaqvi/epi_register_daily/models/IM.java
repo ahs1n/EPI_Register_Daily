@@ -23,7 +23,7 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTa
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
-public class FormVB extends BaseObservable implements Observable {
+public class IM extends BaseObservable implements Observable {
 
     private final String TAG = "FormVB";
     private final transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
@@ -46,17 +46,6 @@ public class FormVB extends BaseObservable implements Observable {
     private String entryType = _EMPTY_;
 
     // FIELD VARIABLES
-    private String vb01 = _EMPTY_;
-    private String vb02 = _EMPTY_;
-    private String vb03 = _EMPTY_;
-    private String vb04a = _EMPTY_;
-    private String vb04 = _EMPTY_;
-    private String vb05y = _EMPTY_;
-    private String vb05m = _EMPTY_;
-    private String vb05d = _EMPTY_;
-    private String vb05a = _EMPTY_;
-    private String vb06 = _EMPTY_;
-    private String vb07 = _EMPTY_;
     private String vb08c = _EMPTY_;
     private String vb08ca = _EMPTY_;
     private String vb08cb = _EMPTY_;
@@ -79,10 +68,9 @@ public class FormVB extends BaseObservable implements Observable {
     private String vb08wc = _EMPTY_;
     private String vb08wd = _EMPTY_;
     private String vb08we = _EMPTY_;
-    private String vb09 = _EMPTY_;
 
 
-    public FormVB() {
+    public IM() {
 
 /*        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
@@ -225,131 +213,6 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setSyncDate(String syncDate) {
         this.syncDate = syncDate;
-    }
-
-
-    @Bindable
-    public String getVb01() {
-        return vb01;
-    }
-
-    public void setVb01(String vb01) {
-        this.vb01 = vb01;
-        notifyPropertyChanged(BR.vb01);
-    }
-
-    @Bindable
-    public String getVb02() {
-        return vb02;
-    }
-
-    public void setVb02(String vb02) {
-        this.vb02 = vb02;
-        notifyPropertyChanged(BR.vb02);
-    }
-
-    @Bindable
-    public String getVb03() {
-        return vb03;
-    }
-
-    public void setVb03(String vb03) {
-        this.vb03 = vb03;
-        setVb05d(vb03.equals("2") ? this.vb05d : "");
-        setVb05m(vb03.equals("2") ? this.vb05m : "");
-
-        setVb08ca(vb03.equals("2") ? this.vb08ca : "");
-        setVb08cb(vb03.equals("2") ? this.vb08cb : "");
-        setVb08cc(vb03.equals("2") ? this.vb08cc : "");
-        setVb08cd(vb03.equals("2") ? this.vb08cd : "");
-        setVb08ce(vb03.equals("2") ? this.vb08ce : "");
-        setVb08cf(vb03.equals("2") ? this.vb08cf : "");
-        setVb08cg(vb03.equals("2") ? this.vb08cg : "");
-        setVb08ch(vb03.equals("2") ? this.vb08ch : "");
-        setVb08ci(vb03.equals("2") ? this.vb08ci : "");
-
-        setVb08w(vb03.equals("1") ? this.vb08w : "");
-        notifyPropertyChanged(BR.vb03);
-    }
-
-    @Bindable
-    public String getVb04a() {
-        return vb04a;
-    }
-
-    public void setVb04a(String vb04a) {
-        this.vb04a = vb04a;
-        notifyPropertyChanged(BR.vb04a);
-    }
-
-    @Bindable
-    public String getVb04() {
-        return vb04;
-    }
-
-    public void setVb04(String vb04) {
-        this.vb04 = vb04;
-        notifyPropertyChanged(BR.vb04);
-    }
-
-    @Bindable
-    public String getVb05y() {
-        return vb05y;
-    }
-
-    public void setVb05y(String vb05y) {
-        this.vb05y = vb05y;
-        notifyPropertyChanged(BR.vb05y);
-    }
-
-    @Bindable
-    public String getVb05m() {
-        return vb05m;
-    }
-
-    public void setVb05m(String vb05m) {
-        this.vb05m = vb05m;
-        notifyPropertyChanged(BR.vb05m);
-    }
-
-    @Bindable
-    public String getVb05d() {
-        return vb05d;
-    }
-
-    public void setVb05d(String vb05d) {
-        this.vb05d = vb05d;
-        notifyPropertyChanged(BR.vb05d);
-    }
-
-    @Bindable
-    public String getVb05a() {
-        return vb05a;
-    }
-
-    public void setVb05a(String vb05a) {
-        this.vb05a = vb05a;
-        notifyPropertyChanged(BR.vb05a);
-    }
-
-    @Bindable
-    public String getVb06() {
-        return vb06;
-    }
-
-    public void setVb06(String vb06) {
-        this.vb06 = vb06;
-        notifyPropertyChanged(BR.vb06);
-    }
-
-    @Bindable
-    public String getVb07() {
-        return vb07;
-    }
-
-    public void setVb07(String vb07) {
-        this.vb07 = vb07;
-        notifyPropertyChanged(BR.vb07);
     }
 
     @Bindable
@@ -577,18 +440,8 @@ public class FormVB extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.vb08we);
     }
 
-    @Bindable
-    public String getVb09() {
-        return vb09;
-    }
 
-    public void setVb09(String vb09) {
-        this.vb09 = vb09;
-        notifyPropertyChanged(BR.vb09);
-    }
-
-
-    public FormVB Hydrate(Cursor cursor) throws JSONException {
+    public IM Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_PROJECT_NAME));
@@ -612,17 +465,6 @@ public class FormVB extends BaseObservable implements Observable {
         if (string != null) {
             JSONObject json = null;
             json = new JSONObject(string);
-            this.vb01 = json.getString("vb01");
-            this.vb02 = json.getString("vb02");
-            this.vb03 = json.getString("vb03");
-            this.vb04a = json.getString("vb04a");
-            this.vb04 = json.getString("vb04");
-            this.vb05y = json.getString("vb05y");
-            this.vb05m = json.getString("vb05m");
-            this.vb05d = json.getString("vb05d");
-            this.vb05a = json.getString("vb05a");
-            this.vb06 = json.getString("vb06");
-            this.vb07 = json.getString("vb07");
             this.vb08ca = json.getString("vb08ca");
             this.vb08cb = json.getString("vb08cb");
             this.vb08cc = json.getString("vb08cc");
@@ -643,7 +485,6 @@ public class FormVB extends BaseObservable implements Observable {
             this.vb08wc = json.getString("vb08wc");
             this.vb08wd = json.getString("vb08wd");
             this.vb08we = json.getString("vb08we");
-            this.vb09 = json.getString("vb09");
 
         }
     }
@@ -652,18 +493,7 @@ public class FormVB extends BaseObservable implements Observable {
     public String vBtoString() throws JSONException {
         Log.d(TAG, "vBtoString: ");
         JSONObject json = new JSONObject();
-        json.put("vb01", vb01)
-                .put("vb02", vb02)
-                .put("vb03", vb03)
-                .put("vb04a", vb04a)
-                .put("vb04", vb04)
-                .put("vb05y", vb05y)
-                .put("vb05m", vb05m)
-                .put("vb05d", vb05d)
-                .put("vb05a", vb05a)
-                .put("vb06", vb06)
-                .put("vb07", vb07)
-                .put("vb08ca", vb08ca)
+        json.put("vb08ca", vb08ca)
                 .put("vb08cb", vb08cb)
                 .put("vb08cc", vb08cc)
                 .put("vb08cd", vb08cd)
@@ -682,8 +512,7 @@ public class FormVB extends BaseObservable implements Observable {
                 .put("vb08wb", vb08wb)
                 .put("vb08wc", vb08wc)
                 .put("vb08wd", vb08wd)
-                .put("vb08we", vb08we)
-                .put("vb09", vb09);
+                .put("vb08we", vb08we);
         return json.toString();
     }
 

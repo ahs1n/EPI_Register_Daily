@@ -7,7 +7,7 @@
 
         <variable
             name="form"
-            type="edu.aku.hassannaqvi.epi_register_daily.models.FormVB" />
+            type="edu.aku.hassannaqvi.epi_register_daily.models.Form" />
     </data>
 
     <LinearLayout
@@ -712,14 +712,129 @@
                             android:id="@+id/vb08ccheck"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
+                            android:orientation="horizontal"
                             android:tag="0">
 
-                            <!--<TableLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:tag="0">
 
-                                <TableRow>
+                                <TextView
+                                    style="@style/sub_labels"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:text="I"
+                                    android:visibility="invisible" />
+
+                                <CheckBox
+                                    android:id="@+id/vb08ca98"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08ca(``) + vb08ca.clearCheck()}"
+                                    android:text="BCG" />
+
+                                <CheckBox
+                                    android:id="@+id/vb08cb98"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cb(``) + vb08cb.clearCheck()}"
+                                    android:text="OPV" />
+
+                                <CheckBox
+                                    android:id="@+id/vb08cc98"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cc(``) + vb08cc.clearCheck()}"
+                                    android:text="Hep B" />
+
+                                <CheckBox
+                                    android:id="@+id/vb08cd98"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_weight="3"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cd(``) + vb08cd.clearCheck()}"
+                                    android:text="Penta" />
+
+                                <CheckBox
+                                    android:id="@+id/vb08ce98"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08ce(``) + vb08ce.clearCheck()}"
+                                    android:text="PCV" />
+
+                                <CheckBox
+                                    android:id="@+id/vb08cf98"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cf(``) + vb08cf.clearCheck()}"
+                                    android:text="Rota" />
+
+                                <CheckBox
+                                    android:id="@+id/vb08cg98"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08cg(``) + vb08cg.clearCheck()}"
+                                    android:text="IPV" />
+
+                                <CheckBox
+                                    android:id="@+id/vb08ch98"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08ch(``) + vb08ch.clearCheck()}"
+                                    android:text="Measles" />
+
+                                <CheckBox
+                                    android:id="@+id/vb08ci98"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="0dp"
+                                    android:background="@color/colorAccent"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:onClick="@{()->form.setVb08ci(``) + vb08ci.clearCheck()}"
+                                    android:text="Typhoid" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:tag="0">
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
 
                                     <TextView
                                         style="@style/sub_labels"
@@ -727,16 +842,14 @@
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:text="&#45;&#45;&#45;&#45;&#45;&#45;"
-                                        android:visibility="invisible" />
+                                        android:text="0" />
 
                                     <TextView
                                         style="@style/sub_labels"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
-                                        android:gravity="center_vertical|end"
-                                        android:paddingStart="16dp"
+                                        android:gravity="center_vertical|center_horizontal"
                                         android:text="I" />
 
                                     <TextView
@@ -754,842 +867,668 @@
                                         android:layout_weight="1"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:text="III" />
+                                </LinearLayout>
 
-                                    <TextView
-                                        style="@style/sub_labels"
+                                <RadioGroup
+                                    android:id="@+id/vb08ca"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <View
                                         android:layout_width="0dp"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="1"
-                                        android:gravity="center_vertical|center_horizontal"
-                                        android:text="IV" />
-
-                                </TableRow>
-
-                                <TableRow>
-
-                                    <RadioGroup
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:orientation="horizontal">
-
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="match_parent"
-                                            android:gravity="center_vertical|center_horizontal"
-                                            android:text="BCG" />
-
-
-                                        <RadioButton
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_horizontal|center_vertical"
-                                            android:layout_weight="2" />
-
-                                        <RadioButton
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="2"
-                                            android:visibility="invisible" />
-
-                                        <RadioButton
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="2"
-                                            android:text=""
-                                            android:visibility="invisible" />
-
-                                        <RadioButton
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="2"
-                                            android:visibility="invisible" />
-                                    </RadioGroup>
-                                </TableRow>
-
-                                <TableRow>
-                                    <RadioGroup
-                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
 
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_weight="2"
-                                            android:layout_height="match_parent"
-                                            android:gravity="center_vertical|center_horizontal"
-                                            android:text="OPV" />
-
-
-                                        <RadioButton
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_horizontal|center_vertical"
-                                            android:layout_weight="2" />
-
-                                        <RadioButton
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_horizontal|center_vertical"
-                                            android:layout_weight="2" />
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
 
 
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
 
-                                        <RadioButton
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_horizontal|center_vertical"
-                                            android:layout_weight="2" />
+                                    <RadioButton
+                                        android:id="@+id/vb08caa"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08ca.equals(`1`)}"
+                                        android:enabled='@{vb08ca98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08ca(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:text=""
+                                        android:visibility="invisible" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                </RadioGroup>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grayLight" />
 
 
-                                        <RadioButton
-                                            android:layout_width="0dp"
-                                            android:layout_height="wrap_content"
-                                            android:layout_weight="2" />
-
-                                    </RadioGroup>
-
-
-                                </TableRow>
+                                <RadioGroup
+                                    android:id="@+id/vb08cb"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
 
 
-                            </TableLayout>-->
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                    <RadioButton
+                                        android:id="@+id/vb08cba"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cb.equals(`0`)}"
+                                        android:enabled='@{vb08cb98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cb(`0`)}" />
 
-                                <TextView
-                                    style="@style/sub_labels"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="----"
-                                    android:visibility="invisible" />
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
 
 
-                                <TextView
-                                    style="@style/sub_labels"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="I" />
+                                    <RadioButton
+                                        android:id="@+id/vb08cbb"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cb.equals(`1`)}"
+                                        android:enabled='@{vb08cb98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cb(`1`)}" />
 
-                                <TextView
-                                    style="@style/sub_labels"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="II" />
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
 
-                                <TextView
-                                    style="@style/sub_labels"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="III" />
+                                    <RadioButton
+                                        android:id="@+id/vb08cbc"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cb.equals(`2`)}"
+                                        android:enabled='@{vb08cb98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cb(`2`)}" />
 
-                                <TextView
-                                    style="@style/sub_labels"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:text="IV" />
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cbd"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cb.equals(`3`)}"
+                                        android:enabled='@{vb08cb98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cb(`3`)}" />
+
+                                </RadioGroup>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grayLight" />
+
+                                <RadioGroup
+                                    android:id="@+id/vb08cc"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cca"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cc.equals(`1`)}"
+                                        android:enabled='@{vb08cc98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cc(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                </RadioGroup>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grayLight" />
+
+                                <RadioGroup
+                                    android:id="@+id/vb08cd"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cda"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cd.equals(`1`)}"
+                                        android:enabled='@{vb08cd98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cd(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cdb"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cd.equals(`2`)}"
+                                        android:enabled='@{vb08cd98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cd(`2`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cdc"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cd.equals(`3`)}"
+                                        android:enabled='@{vb08cd98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cd(`3`)}" />
+
+                                </RadioGroup>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grayLight" />
+
+                                <RadioGroup
+                                    android:id="@+id/vb08ce"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cea"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08ce.equals(`1`)}"
+                                        android:enabled='@{vb08ce98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08ce(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08ceb"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08ce.equals(`2`)}"
+                                        android:enabled='@{vb08ce98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08ce(`2`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cec"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08ce.equals(`3`)}"
+                                        android:enabled='@{vb08ce98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08ce(`3`)}" />
+
+                                </RadioGroup>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grayLight" />
+
+                                <RadioGroup
+                                    android:id="@+id/vb08cf"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cfa"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cf.equals(`1`)}"
+                                        android:enabled='@{vb08cf98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cf(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cfb"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cf.equals(`2`)}"
+                                        android:enabled='@{vb08cf98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cf(`2`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                </RadioGroup>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grayLight" />
+
+                                <RadioGroup
+                                    android:id="@+id/vb08cg"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cga"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cg.equals(`1`)}"
+                                        android:enabled='@{vb08cg98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cg(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cgb"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cg.equals(`2`)}"
+                                        android:enabled='@{vb08cg98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cg(`2`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                </RadioGroup>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grayLight" />
+
+                                <RadioGroup
+                                    android:id="@+id/vb08ch"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cha"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08ch.equals(`1`)}"
+                                        android:enabled='@{vb08ch98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08ch(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08chb"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08ch.equals(`2`)}"
+                                        android:enabled='@{vb08ch98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08ch(`2`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                </RadioGroup>
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/grayLight" />
+
+                                <RadioGroup
+                                    android:id="@+id/vb08ci"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cia"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08ci.equals(`1`)}"
+                                        android:enabled='@{vb08ci98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08ci(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
+
+                                </RadioGroup>
                             </LinearLayout>
-
-                            <RadioGroup
-                                android:id="@+id/vb08ca"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-
-                                <CheckBox
-                                    android:id="@+id/vb08ca98"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_weight="3"
-                                    android:background="@color/colorAccent"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->form.setVb08ca(``) + vb08ca.clearCheck()}"
-                                    android:text="BCG" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08caa"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08ca98.checked ? true : false}'
-                                    android:checked="@{form.vb08ca.equals(`1`)}"
-                                    android:onClick="@{()->form.setVb08ca(`1`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:text=""
-                                    android:visibility="invisible" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                            </RadioGroup>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/grayLight" />
-
-
-                            <RadioGroup
-                                android:id="@+id/vb08cb"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-
-                                <CheckBox
-                                    android:id="@+id/vb08cb98"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_weight="3"
-                                    android:background="@color/colorAccent"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->form.setVb08cb(``) + vb08cb.clearCheck()}"
-                                    android:text="OPV" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cba"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cb98.checked ? true : false}'
-                                    android:checked="@{form.vb08cb.equals(`0`)}"
-                                    android:onClick="@{()->form.setVb08cb(`0`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-
-                                <RadioButton
-                                    android:id="@+id/vb08cbb"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cb98.checked ? true : false}'
-                                    android:checked="@{form.vb08cb.equals(`1`)}"
-                                    android:onClick="@{()->form.setVb08cb(`1`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cbc"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cb98.checked ? true : false}'
-                                    android:checked="@{form.vb08cb.equals(`2`)}"
-                                    android:onClick="@{()->form.setVb08cb(`2`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cbd"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cb98.checked ? true : false}'
-                                    android:checked="@{form.vb08cb.equals(`3`)}"
-                                    android:onClick="@{()->form.setVb08cb(`3`)}" />
-
-                            </RadioGroup>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/grayLight" />
-
-                            <RadioGroup
-                                android:id="@+id/vb08cc"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-
-                                <CheckBox
-                                    android:id="@+id/vb08cc98"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_weight="3"
-                                    android:background="@color/colorAccent"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->form.setVb08cc(``) + vb08cc.clearCheck()}"
-                                    android:text="Penta" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cca"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cc98.checked ? true : false}'
-                                    android:checked="@{form.vb08cc.equals(`1`)}"
-                                    android:onClick="@{()->form.setVb08cc(`1`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08ccb"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cc98.checked ? true : false}'
-                                    android:checked="@{form.vb08cc.equals(`2`)}"
-                                    android:onClick="@{()->form.setVb08cc(`2`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08ccc"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cc98.checked ? true : false}'
-                                    android:checked="@{form.vb08cc.equals(`3`)}"
-                                    android:onClick="@{()->form.setVb08cc(`3`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08ccd"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                            </RadioGroup>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/grayLight" />
-
-                            <RadioGroup
-                                android:id="@+id/vb08cd"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <CheckBox
-                                    android:id="@+id/vb08cd98"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_weight="3"
-                                    android:background="@color/colorAccent"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->form.setVb08cd(``) + vb08cd.clearCheck()}"
-                                    android:text="PCV" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cda"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cd98.checked ? true : false}'
-                                    android:checked="@{form.vb08cd.equals(`1`)}"
-                                    android:onClick="@{()->form.setVb08cd(`1`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cdb"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cd98.checked ? true : false}'
-                                    android:checked="@{form.vb08cd.equals(`2`)}"
-                                    android:onClick="@{()->form.setVb08cd(`2`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cdc"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cd98.checked ? true : false}'
-                                    android:checked="@{form.vb08cd.equals(`3`)}"
-                                    android:onClick="@{()->form.setVb08cd(`3`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cdd"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                            </RadioGroup>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/grayLight" />
-
-                            <RadioGroup
-                                android:id="@+id/vb08ce"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <CheckBox
-                                    android:id="@+id/vb08ce98"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_weight="3"
-                                    android:background="@color/colorAccent"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->form.setVb08ce(``) + vb08ce.clearCheck()}"
-                                    android:text="IPV" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cea"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08ce98.checked ? true : false}'
-                                    android:checked="@{form.vb08ce.equals(`1`)}"
-                                    android:onClick="@{()->form.setVb08ce(`1`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08ceb"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08ce98.checked ? true : false}'
-                                    android:checked="@{form.vb08ce.equals(`2`)}"
-                                    android:onClick="@{()->form.setVb08ce(`2`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cec"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08ced"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                            </RadioGroup>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/grayLight" />
-
-                            <RadioGroup
-                                android:id="@+id/vb08cf"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <CheckBox
-                                    android:id="@+id/vb08cf98"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_weight="3"
-                                    android:background="@color/colorAccent"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->form.setVb08cf(``) + vb08cf.clearCheck()}"
-                                    android:text="Measles" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cfa"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cf98.checked ? true : false}'
-                                    android:checked="@{form.vb08cf.equals(`1`)}"
-                                    android:onClick="@{()->form.setVb08cf(`1`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cfb"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cf98.checked ? true : false}'
-                                    android:checked="@{form.vb08cf.equals(`2`)}"
-                                    android:onClick="@{()->form.setVb08cf(`2`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cfc"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:text=""
-                                    android:visibility="invisible" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cfd"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                            </RadioGroup>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/grayLight" />
-
-                            <RadioGroup
-                                android:id="@+id/vb08cg"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <CheckBox
-                                    android:id="@+id/vb08cg98"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_weight="3"
-                                    android:background="@color/colorAccent"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->form.setVb08cg(``) + vb08cg.clearCheck()}"
-                                    android:text="Rota" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cga"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cg98.checked ? true : false}'
-                                    android:checked="@{form.vb08cg.equals(`1`)}"
-                                    android:onClick="@{()->form.setVb08cg(`1`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cgb"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08cg98.checked ? true : false}'
-                                    android:checked="@{form.vb08cg.equals(`2`)}"
-                                    android:onClick="@{()->form.setVb08cg(`2`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cgc"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:text=""
-                                    android:visibility="invisible" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cgd"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                            </RadioGroup>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/grayLight" />
-
-                            <RadioGroup
-                                android:id="@+id/vb08ch"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <CheckBox
-                                    android:id="@+id/vb08ch98"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginTop="0dp"
-                                    android:layout_weight="3"
-                                    android:background="@color/colorAccent"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->form.setVb08ch(``) + vb08ch.clearCheck()}"
-                                    android:text="Hepatitis" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08cha"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:enabled='@{vb08ch98.checked ? true : false}'
-                                    android:checked="@{form.vb08ch.equals(`1`)}"
-                                    android:onClick="@{()->form.setVb08ch(`1`)}" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08chb"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08chc"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:text=""
-                                    android:visibility="invisible" />
-
-                                <View
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_weight="1" />
-
-                                <RadioButton
-                                    android:id="@+id/vb08chd"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:background="@null"
-                                    android:visibility="invisible" />
-
-                            </RadioGroup>
                         </LinearLayout>
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

@@ -23,7 +23,8 @@ object CreateTable {
             + FormsTable.COLUMN_SYNCED + " TEXT,"
             + FormsTable.COLUMN_SYNC_DATE + " TEXT,"
             + FormsTable.COLUMN_APPVERSION + " TEXT,"
-            + FormsTable.COLUMN_VA + " TEXT"
+            + FormsTable.COLUMN_VA + " TEXT,"
+            + FormsTable.COLUMN_VB + " TEXT"
             + " );"
             )
 

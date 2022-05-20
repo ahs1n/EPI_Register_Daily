@@ -1,7 +1,5 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +18,6 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
-import edu.aku.hassannaqvi.epi_register_daily.ui.EndingActivity;
 
 public class SectionVBActivity extends AppCompatActivity {
     private static final String TAG = "SectionVBActivity";
@@ -32,34 +29,9 @@ public class SectionVBActivity extends AppCompatActivity {
         setTheme(R.style.AppThemeUrdu);
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_vb);
-        bi.setForm(MainApp.formVB);
+        bi.setForm(MainApp.form);
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
-    }
-
-
-    private boolean insertNewRecord() {
-        if (!formVB.getUid().equals("") || MainApp.superuser) return true;
-
-        formVB.populateMeta();
-
-        long rowId = 0;
-        try {
-            rowId = db.addFormVB(formVB);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        formVB.setId(String.valueOf(rowId));
-        if (rowId > 0) {
-            formVB.setUid(formVB.getDeviceId() + formVB.getId());
-            db.updatesFormVBColumn(TableContracts.FormsVBTable.COLUMN_UID, formVB.getUid());
-            return true;
-        } else {
-            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
     }
 
 
@@ -68,7 +40,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
         int updcount = 0;
         try {
-            updcount = db.updatesFormVBColumn(TableContracts.FormsVBTable.COLUMN_VB, formVB.vBtoString());
+            updcount = db.updatesFormColumn(TableContracts.FormsTable.COLUMN_VB, MainApp.form.vBtoString());
         } catch (JSONException e) {
             Toast.makeText(this, R.string.upd_db + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -95,7 +67,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         finish();
-        startActivity(new Intent(this, EndingActivity.class).putExtra("complete", false));
+        startActivity(new Intent(this, MainActivity.class));
     }
 
 
