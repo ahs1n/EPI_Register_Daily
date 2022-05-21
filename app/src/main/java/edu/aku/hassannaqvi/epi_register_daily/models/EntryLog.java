@@ -24,7 +24,7 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 public class EntryLog extends BaseObservable implements Observable {
 
-    private final String TAG = "Form";
+    private final String TAG = "EntryLog";
     private final transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 
     private String id = _EMPTY_;

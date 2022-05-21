@@ -130,10 +130,11 @@ dependencies {
     implementation 'id.zelory:compressor:2.1.1'
 
     // Sqlcipher
-    implementation "net.zetetic:android-database-sqlcipher:4.5.0"
+    implementation "net.zetetic:android-database-sqlcipher:4.5.1"
     implementation "androidx.sqlite:sqlite-ktx:2.2.0"
     implementation "androidx.sqlite:sqlite:2.2.0"
 
     //Rooted
     implementation 'com.scottyab:rootbeer-lib:0.1.0'
+
 }

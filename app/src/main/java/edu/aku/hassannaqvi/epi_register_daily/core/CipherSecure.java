@@ -39,7 +39,7 @@ import javax.net.ssl.TrustManagerFactory;
 public class CipherSecure {
     private static final String TAG = "CipherSecure";
 
-    public static String encrypt(String plain) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+    public static String encrypt(String plain) throws NoSuchPaddingException, IllegalArgumentException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         Log.d(TAG, "encrypt: " + IBAHC);
         byte[] iv = new byte[16];
         new SecureRandom().nextBytes(iv);
@@ -53,8 +53,7 @@ public class CipherSecure {
 
     }
 
-    public static String decrypt(String encoded) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException {
-        Log.d(TAG, "decrypt: encoded " + encoded);
+    public static String decrypt(String encoded) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, IllegalArgumentException, InvalidAlgorithmParameterException, InvalidKeyException {
         byte[] ivAndCipherText = Base64.decode(encoded, Base64.NO_WRAP);
         byte[] iv = Arrays.copyOfRange(ivAndCipherText, 0, 16);
         byte[] cipherText = Arrays.copyOfRange(ivAndCipherText, 16, ivAndCipherText.length);
@@ -70,11 +69,11 @@ public class CipherSecure {
 
             CertificateFactory cf = CertificateFactory.getInstance("X.509");
             AssetManager assetManager = context.getAssets();
-            InputStream caInput = assetManager.open("vcoe1_aku_edu.cer");
+            InputStream caInput = assetManager.open("star_aku_edu.crt");
             Certificate ca;
             try {
                 ca = cf.generateCertificate(caInput);
-                System.out.println("ca=" + ((X509Certificate) ca).getSubjectDN());
+                //  System.out.println("ca=" + ((X509Certificate) ca).getSubjectDN());
             } finally {
                 caInput.close();
             }
@@ -120,13 +119,13 @@ public class CipherSecure {
 
     public static boolean certIsValid(Certificate[] certs, Certificate ca) {
         for (Certificate cert : certs) {
-            System.out.println("Certificate is: " + cert);
+            //      System.out.println("Certificate is: " + cert);
             if (cert instanceof X509Certificate) {
 
                 try {
                     ((X509Certificate) cert).checkValidity();
 
-                    System.out.println("Certificate is active for current date");
+                    // System.out.println("Certificate is active for current date");
                     if (cert.equals(ca)) {
 
                         return true;

@@ -99,7 +99,6 @@ public class TableContracts {
         public static final String COLUMN_ISNEW_USER = "isNewUser";
         public static final String COLUMN_PWD_EXPIRY = "pwdExpiry";
         public static final String COLUMN_DIST_ID = "dist_id";
-
     }
 
 

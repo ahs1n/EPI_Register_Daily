@@ -193,7 +193,7 @@
         <item name="android:paddingEnd">8dp</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingBottom">4dp</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:minHeight">52dp</item>
         <item name="android:clickable">true</item>
         <item name="android:buttonTint">@drawable/radio_button_selector</item>

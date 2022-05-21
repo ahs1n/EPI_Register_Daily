@@ -14,6 +14,8 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.Form;
+import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
@@ -59,10 +61,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = null;
+        switch (item.getItemId()) {
+            case R.id.action_database:
+                intent = new Intent(MainActivity.this, AndroidManager.class);
+                startActivity(intent);
+                break;
+
+            case R.id.onSync:
+                intent = new Intent(MainActivity.this, SyncActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.changePassword:
+                intent = new Intent(MainActivity.this, ChangePasswordActivity.class);
+                startActivity(intent);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.item_menu, menu);
         MenuItem action_database = menu.findItem(R.id.action_database);
 
         action_database.setVisible(MainApp.admin);

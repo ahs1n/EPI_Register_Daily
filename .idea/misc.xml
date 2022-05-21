@@ -10,19 +10,21 @@
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/button_shape_gray.xml" value="0.58203125" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/edit_text_selector.xml" value="0.3880208333333333" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/ic_camera.xml" value="0.58203125" />
+        <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/ic_menu_hamburger.xml" value="0.2450657894736842" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/ic_mother_face.xml" value="0.2450657894736842" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/options_separator.xml" value="0.3880208333333333" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/radio_button_selector.xml" value="0.3880208333333333" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_camera.xml" value="0.20885416666666667" />
-        <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_change_password.xml" value="0.371875" />
+        <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_change_password.xml" value="0.2348684210526316" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_ending.xml" value="0.371875" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_login.xml" value="0.371875" />
-        <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_main.xml" value="0.371875" />
+        <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_main.xml" value="0.2348684210526316" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_section_cr.xml" value="0.33" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_section_va.xml" value="0.2348684210526316" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_section_vb.xml" value="0.2348684210526316" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_section_wr.xml" value="0.33" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_sync.xml" value="0.371875" />
+        <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/menu/item_menu.xml" value="0.2348684210526316" />
         <entry key="..\:/Android Office Work/EPI_Register_Daily/app/src/main/res/menu/main_menu.xml" value="0.371875" />
         <entry key="..\:/Android/EPI_Register/app/src/main/res/drawable/ic_item_right_arrow.xml" value="0.5875" />
         <entry key="..\:/Android/EPI_Register/app/src/main/res/layout-v17/sync_list_adapter.xml" value="0.56328125" />

@@ -15,7 +15,6 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.database.SQLException;
 import android.util.Log;
-import android.widget.Toast;
 
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteException;
@@ -324,7 +323,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
      * Functions that dealing with table data
      * */
-    public boolean doLogin(String username, String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+
+    public boolean doLogin(String username, String password) throws InvalidKeySpecException, NoSuchAlgorithmException, IllegalArgumentException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
@@ -352,13 +352,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         c.close();
 
         db.close();
-        if (loggedInUser.getPassword().equals("")) {
-            Toast.makeText(mContext, "Stored password is invalid", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+
         if (checkPassword(password, loggedInUser.getPassword())) {
             MainApp.user = loggedInUser;
-            //  MainApp.selectedDistrict = loggedInUser.getDist_id();
             return c.getCount() > 0;
         } else {
             return false;
@@ -397,10 +393,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 FormCR forms = new FormCR();
-                forms.setId(c.getString(c.getColumnIndex(FormCRTable.COLUMN_ID)));
-                forms.setUid(c.getString(c.getColumnIndex(FormCRTable.COLUMN_UID)));
-                forms.setSysDate(c.getString(c.getColumnIndex(FormCRTable.COLUMN_SYSDATE)));
-                forms.setUserName(c.getString(c.getColumnIndex(FormCRTable.COLUMN_USERNAME)));
+                forms.setId(c.getString(c.getColumnIndexOrThrow(FormCRTable.COLUMN_ID)));
+                forms.setUid(c.getString(c.getColumnIndexOrThrow(FormCRTable.COLUMN_UID)));
+                forms.setSysDate(c.getString(c.getColumnIndexOrThrow(FormCRTable.COLUMN_SYSDATE)));
+                forms.setUserName(c.getString(c.getColumnIndexOrThrow(FormCRTable.COLUMN_USERNAME)));
                 allForms.add(forms);
             }
         } finally {
@@ -556,6 +552,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(UsersTable.COLUMN_USERNAME, user.getUserName());
                 values.put(UsersTable.COLUMN_PASSWORD, user.getPassword());
                 values.put(UsersTable.COLUMN_FULLNAME, user.getFullname());
+                values.put(UsersTable.COLUMN_ENABLED, user.getEnabled());
+                values.put(UsersTable.COLUMN_ISNEW_USER, user.getNewUser());
+                values.put(UsersTable.COLUMN_PWD_EXPIRY, user.getPwdExpiry());
+                values.put(UsersTable.COLUMN_DESIGNATION, user.getDesignation());
+                values.put(UsersTable.COLUMN_DIST_ID, user.getDist_id());
                 long rowID = db.insert(UsersTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }

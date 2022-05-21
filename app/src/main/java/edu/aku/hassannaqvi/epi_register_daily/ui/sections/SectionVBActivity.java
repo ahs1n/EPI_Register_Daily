@@ -61,7 +61,7 @@ public class SectionVBActivity extends AppCompatActivity {
         if (updateDB()) {
             finish();
             Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, SectionVBActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         } else {
             Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
         }
@@ -79,12 +79,12 @@ public class SectionVBActivity extends AppCompatActivity {
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
             return false;
         }
-        if (form.getFrontfilename().equals("")) {
+        if (form.getVb03().equals("2") && form.getFrontfilename().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.frontFileName, "Please take front photo of Vaccination Card.");
         }
 
         // Check back photo taken
-        if (form.getBackfilename().equals("")) {
+        if (form.getVb03().equals("2") && form.getBackfilename().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.backFileName, "Please take back photo of Vaccination Card.");
 
         }
