@@ -88,6 +88,12 @@
             android:exported="true"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize" />
+             <meta-data
+            android:name="YEK_REVRES"
+            android:value="8x/A%D*2S!urviVoP%RACTiC1$BSE(H+MbQeThWmZq4t7w!z%C*F-J@NcRfUjXn2" />
+        <meta-data
+            android:name="YEK_TRATS"
+            android:value="8" />
 
     </application>
 
