@@ -9,11 +9,13 @@
     <string name="btnLogin">Login</string>
     <string name="btnDownloadData">Download Data</string>
     <string name="cs_MAexist">might be already exist</string>
-    <string name="upd_db_form" translatable="false"> updateDB(Form):\t </string>
+    <string name="upd_db_form" translatable="false"> updateDB(FormSEI):\t </string>
     <string name="upd_db_error" translatable="false"> Updating Database… ERROR! </string>
     <string name="db_excp_error" translatable="false"> Database Exception... ERROR! </string>
     <string name="upd_db" translatable="false"> Updating Database...\t </string>
     <string name="fail_db_upd" translatable="false"> Failed to Update Database! </string>
+    <string name="confirmPassword" translatable="false">Confirm Password</string>
+    <string name="btnResetPassword">Reset Password</string>
 
     <string name="netwrok">Network connection not available!</string>
     <string name="invalidpass">Invalid Password</string>
@@ -307,7 +309,7 @@
     <!--EPI_Register_Daily-->
     <string name="va_mainheading">وی-اے: روزانہ   کارکردگی رجسٹر برائے ٹیکہ جات</string>
     <string name="vb_mainheading">وی-بی: ویکسین کی معلومات</string>
-    <string name="app_name">EPI Register Daily</string>
+    <string name="app_name">SEI App</string>
     <string name="va_info">This section will only appear once at the time of login</string>
     <string name="va02_info">selection will be from drop down table name is epi_register.reg_master </string>
     <string name="vb05t_info">if VB03=1 then only vb05y will be visible</string>

@@ -23,7 +23,7 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTabl
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
-public class Form extends BaseObservable implements Observable {
+public class FormSEI extends BaseObservable implements Observable {
 
     private final String TAG = "Form";
     private final transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
@@ -120,7 +120,7 @@ public class Form extends BaseObservable implements Observable {
     private String vb09 = _EMPTY_;
 
 
-    public Form() {
+    public FormSEI() {
 
 /*        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
@@ -732,6 +732,9 @@ public class Form extends BaseObservable implements Observable {
         setVb08ch(vb03.equals("2") ? this.vb08ch : "");
         setVb08ci(vb03.equals("2") ? this.vb08ci : "");
 
+        setVb05a(vb03.equals("2") ? this.vb05a : "");
+        setVb09(vb03.equals("2") ? this.vb09 : "");
+
         setVb08w(vb03.equals("1") ? this.vb08w : "");
         notifyPropertyChanged(BR.vb03);
     }
@@ -1052,7 +1055,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
 
-    public Form Hydrate(Cursor cursor) throws JSONException {
+    public FormSEI Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_UID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_PROJECT_NAME));
@@ -1140,17 +1143,7 @@ public class Form extends BaseObservable implements Observable {
             this.vb08cg = json.getString("vb08cg");
             this.vb08ch = json.getString("vb08ch");
             this.vb08ci = json.getString("vb08ci");
-            this.vb08cj = json.getString("vb08cj");
-            this.vb08ck = json.getString("vb08ck");
-            this.vb08cl = json.getString("vb08cl");
-            this.vb08cm = json.getString("vb08cm");
-            this.vb08cn = json.getString("vb08cn");
-            this.vb08co = json.getString("vb08co");
-            this.vb08wa = json.getString("vb08wa");
-            this.vb08wb = json.getString("vb08wb");
-            this.vb08wc = json.getString("vb08wc");
-            this.vb08wd = json.getString("vb08wd");
-            this.vb08we = json.getString("vb08we");
+            this.vb08w = json.getString("vb08w");
             this.vb09 = json.getString("vb09");
             this.backfilename = json.getString("backfilename");
             this.frontfilename = json.getString("frontfilename");
@@ -1219,17 +1212,7 @@ public class Form extends BaseObservable implements Observable {
                 .put("vb08cg", vb08cg)
                 .put("vb08ch", vb08ch)
                 .put("vb08ci", vb08ci)
-                .put("vb08cj", vb08cj)
-                .put("vb08ck", vb08ck)
-                .put("vb08cl", vb08cl)
-                .put("vb08cm", vb08cm)
-                .put("vb08cn", vb08cn)
-                .put("vb08co", vb08co)
-                .put("vb08wa", vb08wa)
-                .put("vb08wb", vb08wb)
-                .put("vb08wc", vb08wc)
-                .put("vb08wd", vb08wd)
-                .put("vb08we", vb08we)
+                .put("vb08w", vb08w)
                 .put("vb09", vb09)
                 .put("backfilename", backfilename)
                 .put("frontfilename", frontfilename)

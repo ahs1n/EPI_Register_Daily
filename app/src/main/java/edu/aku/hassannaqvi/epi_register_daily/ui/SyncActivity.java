@@ -168,6 +168,15 @@ public class SyncActivity extends AppCompatActivity {
                     Toast.makeText(this, "JSONException(FormsVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
+                //Entry Log
+                uploadTables.add(new SyncModel(TableContracts.EntryLogTable.TABLE_NAME));
+                try {
+                    MainApp.uploadData.add(db.getUnsyncedEntryLog());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(SyncActivity.this, "JSONException(EntryLog)" + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
                 // FormsCR
                 uploadTables.add(new SyncModel(FormCRTable.TABLE_NAME));
                 try {
@@ -200,8 +209,22 @@ public class SyncActivity extends AppCompatActivity {
                 downloadTables.clear();
                 boolean sync_flag = getIntent().getBooleanExtra("login", false);
 
-                downloadTables.add(new SyncModel(UsersTable.TABLE_NAME));
-                downloadTables.add(new SyncModel(VersionTable.TABLE_NAME));
+                // set select and filter to default, set again with the table in case of special requirements
+                String select = " * ";
+                String filter = " colflag is null ";
+
+                if (sync_flag) {
+                    select = " * ";
+                    filter = "  ";
+
+                    downloadTables.add(new SyncModel(UsersTable.TABLE_NAME));
+                    downloadTables.add(new SyncModel(VersionTable.TABLE_NAME));
+                } else {
+                    select = " * ";
+                    filter = " colflag is null AND dist_id = '" + MainApp.user.getDist_id() + "' ";
+                    downloadTables.add(new SyncModel(UsersTable.TABLE_NAME, select, filter));
+                    downloadTables.add(new SyncModel(VersionTable.TABLE_NAME, select, filter));
+                }
 
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
