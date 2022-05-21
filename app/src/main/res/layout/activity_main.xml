@@ -30,7 +30,7 @@
             app:layout_scrollFlags="scroll|enterAlways"
             android:backgroundTint="@color/colorAccent"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:menu="@menu/main_menu"
+            app:menu="@menu/item_menu"
             app:subtitleTextColor="@color/colorPrimaryLight"
             app:title="@string/app_name"
             app:titleTextColor="@color/colorPrimary" />

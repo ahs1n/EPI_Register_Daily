@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         bi.setCallback(this);
         bi.adminView.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
         bi.username.setText("Welcome, " + MainApp.user.getFullname() + "!");
+        invalidateOptionsMenu();
     }
 
     public void sectionPress(View view) {
