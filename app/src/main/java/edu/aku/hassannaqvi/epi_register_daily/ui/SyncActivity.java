@@ -50,8 +50,6 @@ import java.util.concurrent.TimeUnit;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormWRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
@@ -159,14 +157,14 @@ public class SyncActivity extends AppCompatActivity {
                 }
 
                 // FormsVB
-                uploadTables.add(new SyncModel(TableContracts.FormsVBTable.TABLE_NAME));
+                /*uploadTables.add(new SyncModel(TableContracts.FormsVBTable.TABLE_NAME));
                 try {
                     MainApp.uploadData.add(db.getUnsyncedFormVB());
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.d(TAG, "ProcessStart: JSONException(FormsVB): " + e.getMessage());
                     Toast.makeText(this, "JSONException(FormsVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
                 //Entry Log
                 uploadTables.add(new SyncModel(TableContracts.EntryLogTable.TABLE_NAME));
@@ -175,24 +173,6 @@ public class SyncActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(SyncActivity.this, "JSONException(EntryLog)" + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-
-                // FormsCR
-                uploadTables.add(new SyncModel(FormCRTable.TABLE_NAME));
-                try {
-                    MainApp.uploadData.add(db.getUnsyncedFormCR());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(this, "JSONException(FormCR): " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
-                // FormsWR
-                uploadTables.add(new SyncModel(FormWRTable.TABLE_NAME));
-                try {
-                    MainApp.uploadData.add(db.getUnsyncedFormWR());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(this, "JSONException(FormWR): " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 MainApp.downloadData = new String[uploadData.size()];
 

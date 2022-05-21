@@ -1,6 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formSEI;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.form;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,11 +35,11 @@ public class SectionVAActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_va);
-        bi.setFormSEI(formSEI);
+        bi.setForm(form);
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
 
-        MainApp.previousPage = formSEI.getVa04();
+        MainApp.previousPage = form.getVa04();
         setGPS();
 
 /*        if (bi.va05acheck.isChecked()) {
@@ -61,22 +61,22 @@ public class SectionVAActivity extends AppCompatActivity {
 
 
     private boolean insertNewRecord() {
-        if (!formSEI.getUid().equals("") || MainApp.superuser) return true;
+        if (!form.getUid().equals("") || MainApp.superuser) return true;
 
-        formSEI.populateMeta();
+        form.populateMeta();
 
         long rowId = 0;
         try {
-            rowId = db.addForm(formSEI);
+            rowId = db.addForm(form);
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
             return false;
         }
-        formSEI.setId(String.valueOf(rowId));
+        form.setId(String.valueOf(rowId));
         if (rowId > 0) {
-            formSEI.setUid(formSEI.getDeviceId() + formSEI.getId());
-            db.updatesFormColumn(TableContracts.FormsTable.COLUMN_UID, formSEI.getUid());
+            form.setUid(form.getDeviceId() + form.getId());
+            db.updatesFormColumn(TableContracts.FormsTable.COLUMN_UID, form.getUid());
             return true;
         } else {
             Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
@@ -90,7 +90,7 @@ public class SectionVAActivity extends AppCompatActivity {
 
         int updcount = 0;
         try {
-            updcount = db.updatesFormColumn(TableContracts.FormsTable.COLUMN_VA, formSEI.vAtoString());
+            updcount = db.updatesFormColumn(TableContracts.FormsTable.COLUMN_VA, form.vAtoString());
         } catch (JSONException e) {
             Toast.makeText(this, R.string.upd_db + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -160,10 +160,10 @@ public class SectionVAActivity extends AppCompatActivity {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-            formSEI.setGpsLat(lat);
-            formSEI.setGpsLng(lang);
-            formSEI.setGpsAcc(acc);
-            formSEI.setGpsDT(date); // Timestamp is converted to date above
+            form.setGpsLat(lat);
+            form.setGpsLng(lang);
+            form.setGpsAcc(acc);
+            form.setGpsDT(date); // Timestamp is converted to date above
 
             Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
 

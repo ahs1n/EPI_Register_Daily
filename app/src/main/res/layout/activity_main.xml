@@ -119,7 +119,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="36dp"
                                         android:gravity="center_horizontal|center_vertical"
-                                        android:text="Open to enter formSEI"
+                                        android:text="Open to enter form"
                                         android:textColor="@color/gray"
                                         android:textSize="14sp" />
                                 </LinearLayout>

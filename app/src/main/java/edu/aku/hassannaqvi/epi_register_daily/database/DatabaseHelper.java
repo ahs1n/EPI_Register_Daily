@@ -6,7 +6,6 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ENTRYLOGS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMS;
-import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMSVB;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
 
@@ -40,8 +39,8 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTabl
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.models.EntryLog;
+import edu.aku.hassannaqvi.epi_register_daily.models.Form;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormCR;
-import edu.aku.hassannaqvi.epi_register_daily.models.FormSEI;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
@@ -72,7 +71,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
-        db.execSQL(SQL_CREATE_FORMSVB);
+//        db.execSQL(SQL_CREATE_FORMSVB);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ENTRYLOGS);
 
@@ -88,26 +87,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //ADDITION in DB
-    public Long addForm(FormSEI formSEI) throws JSONException {
+    public Long addForm(Form form) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_PROJECT_NAME, formSEI.getProjectName());
-        values.put(FormsTable.COLUMN_UID, formSEI.getUid());
-        values.put(FormsTable.COLUMN_SNO, formSEI.getSno());
-        values.put(FormsTable.COLUMN_USERNAME, formSEI.getUserName());
-        values.put(FormsTable.COLUMN_SYSDATE, formSEI.getSysDate());
-        values.put(FormsTable.COLUMN_VA, formSEI.vAtoString());
-        values.put(FormsTable.COLUMN_VB, formSEI.vBtoString());
-        values.put(FormsTable.COLUMN_GPSLAT, formSEI.getGpsLat());
-        values.put(FormsTable.COLUMN_GPSLNG, formSEI.getGpsLng());
-        values.put(FormsTable.COLUMN_GPSDATE, formSEI.getGpsDT());
-        values.put(FormsTable.COLUMN_GPSACC, formSEI.getGpsAcc());
-        values.put(FormsTable.COLUMN_ISTATUS, formSEI.getiStatus());
-        values.put(FormsTable.COLUMN_DEVICETAGID, formSEI.getDeviceTag());
-        values.put(FormsTable.COLUMN_DEVICEID, formSEI.getDeviceId());
-        values.put(FormsTable.COLUMN_APPVERSION, formSEI.getAppver());
-        values.put(FormsTable.COLUMN_SYNCED, formSEI.getSynced());
-        values.put(FormsTable.COLUMN_SYNC_DATE, formSEI.getSyncDate());
+        values.put(FormsTable.COLUMN_PROJECT_NAME, form.getProjectName());
+        values.put(FormsTable.COLUMN_UID, form.getUid());
+        values.put(FormsTable.COLUMN_SNO, form.getSno());
+        values.put(FormsTable.COLUMN_USERNAME, form.getUserName());
+        values.put(FormsTable.COLUMN_SYSDATE, form.getSysDate());
+        values.put(FormsTable.COLUMN_VA, form.vAtoString());
+        values.put(FormsTable.COLUMN_VB, form.vBtoString());
+        values.put(FormsTable.COLUMN_GPSLAT, form.getGpsLat());
+        values.put(FormsTable.COLUMN_GPSLNG, form.getGpsLng());
+        values.put(FormsTable.COLUMN_GPSDATE, form.getGpsDT());
+        values.put(FormsTable.COLUMN_GPSACC, form.getGpsAcc());
+        values.put(FormsTable.COLUMN_ISTATUS, form.getiStatus());
+        values.put(FormsTable.COLUMN_DEVICETAGID, form.getDeviceTag());
+        values.put(FormsTable.COLUMN_DEVICEID, form.getDeviceId());
+        values.put(FormsTable.COLUMN_APPVERSION, form.getAppver());
+        values.put(FormsTable.COLUMN_SYNCED, form.getSynced());
+        values.put(FormsTable.COLUMN_SYNC_DATE, form.getSyncDate());
 
         long newRowId;
         newRowId = db.insert(
@@ -234,7 +233,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(column, value);
 
         String selection = FormsTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.formSEI.getId())};
+        String[] selectionArgs = {String.valueOf(MainApp.form.getId())};
 
         return db.update(FormsTable.TABLE_NAME,
                 values,
@@ -668,8 +667,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
              /*Form fc = new Form();
              allFC.add(fc.Hydrate(c));*/
             Log.d(TAG, "getUnsyncedForm: " + c.getCount());
-            FormSEI formSEI = new FormSEI();
-            allForms.put(formSEI.Hydrate(c).toJSONObject());
+            Form form = new Form();
+            allForms.put(form.Hydrate(c).toJSONObject());
 
 
         }
@@ -714,8 +713,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
              /*Form fc = new Form();
              allFC.add(fc.Hydrate(c));*/
             Log.d(TAG, "getUnsyncedFormVB: " + c.getCount());
-            FormSEI formSEI = new FormSEI();
-            allForms.put(formSEI.Hydrate(c).toJSONObject());
+            Form form = new Form();
+            allForms.put(form.Hydrate(c).toJSONObject());
 
 
         }

@@ -23,7 +23,7 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTabl
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
-public class FormSEI extends BaseObservable implements Observable {
+public class Form extends BaseObservable implements Observable {
 
     private final String TAG = "Form";
     private final transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
@@ -120,7 +120,7 @@ public class FormSEI extends BaseObservable implements Observable {
     private String vb09 = _EMPTY_;
 
 
-    public FormSEI() {
+    public Form() {
 
 /*        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
@@ -735,6 +735,10 @@ public class FormSEI extends BaseObservable implements Observable {
         setVb05a(vb03.equals("2") ? this.vb05a : "");
         setVb09(vb03.equals("2") ? this.vb09 : "");
 
+        setFrontfilename(vb03.equals("2") ? this.frontfilename : "");
+        setBackfilename(vb03.equals("2") ? this.backfilename : "");
+        setChildfilename(vb03.equals("2") ? this.childfilename : "");
+
         setVb08w(vb03.equals("1") ? this.vb08w : "");
         notifyPropertyChanged(BR.vb03);
     }
@@ -1055,7 +1059,7 @@ public class FormSEI extends BaseObservable implements Observable {
     }
 
 
-    public FormSEI Hydrate(Cursor cursor) throws JSONException {
+    public Form Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_UID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_PROJECT_NAME));

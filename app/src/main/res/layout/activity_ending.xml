@@ -9,7 +9,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="formSEI"
+            name="form"
             type="edu.aku.hassannaqvi.epi_register_daily.models.FormCR" />
     </data>
 

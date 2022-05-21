@@ -6,8 +6,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="formSEI"
-            type="edu.aku.hassannaqvi.epi_register_daily.models.FormSEI" />
+            name="form"
+            type="edu.aku.hassannaqvi.epi_register_daily.models.Form" />
     </data>
 
     <LinearLayout
@@ -76,7 +76,7 @@
                             android:hint="@string/vb01"
                             android:inputType="number"
                             android:maxLength="3"
-                            android:text="@={formSEI.vb01}"
+                            android:text="@={form.vb01}"
                             app:maxValue="100"
                             app:minValue="0"
                             app:type="range" />
@@ -118,7 +118,7 @@
                             android:layout_height="wrap_content"
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/vb02"
-                            android:text="@={formSEI.vb02}" />
+                            android:text="@={form.vb02}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -162,8 +162,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:checked="@{formSEI.vb03.equals(`1`)}"
-                                android:onClick="@{()->formSEI.setVb03(`1`) + vb05a.clearCheck() + vb08ca.clearCheck() + vb08cb.clearCheck() + vb08cc.clearCheck() + vb08cd.clearCheck() + vb08ce.clearCheck() + vb08cf.clearCheck() + vb08cg.clearCheck() + vb08ch.clearCheck() + vb08ci.clearCheck() + vb09.clearCheck()}"
+                                android:checked="@{form.vb03.equals(`1`)}"
+                                android:onClick="@{()->form.setVb03(`1`) + vb05a.clearCheck() + vb08ca.clearCheck() + vb08cb.clearCheck() + vb08cc.clearCheck() + vb08cd.clearCheck() + vb08ce.clearCheck() + vb08cf.clearCheck() + vb08cg.clearCheck() + vb08ch.clearCheck() + vb08ci.clearCheck() + vb09.clearCheck()}"
                                 android:text="@string/vb03a" />
 
                             <RadioButton
@@ -171,8 +171,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:checked="@{formSEI.vb03.equals(`2`)}"
-                                android:onClick="@{()->formSEI.setVb03(`2`)}"
+                                android:checked="@{form.vb03.equals(`2`)}"
+                                android:onClick="@{()->form.setVb03(`2`)}"
                                 android:text="@string/vb03b" />
                         </RadioGroup>
                     </LinearLayout>
@@ -213,7 +213,7 @@
                             android:layout_height="wrap_content"
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
                             android:hint="@string/vb04a"
-                            android:text="@={formSEI.vb04a}" />
+                            android:text="@={form.vb04a}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -252,7 +252,7 @@
                             android:layout_height="wrap_content"
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
                             android:hint="@string/vb04"
-                            android:text="@={formSEI.vb04}" />
+                            android:text="@={form.vb04}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -317,7 +317,7 @@
                                     android:hint="@string/vb05y"
                                     android:inputType="number"
                                     android:maxLength="2"
-                                    android:text="@={formSEI.vb05y}"
+                                    android:text="@={form.vb05y}"
                                     app:maxValue="49"
                                     app:minValue="0"
                                     app:type="range" />
@@ -339,12 +339,12 @@
                                     android:id="@+id/vb05m"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:enabled="@{!formSEI.vb03.equals(`1`)}"
+                                    android:enabled="@{!form.vb03.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/vb05m"
                                     android:inputType="number"
                                     android:maxLength="2"
-                                    android:text="@={formSEI.vb05m}"
+                                    android:text="@={form.vb05m}"
                                     app:maxValue="59"
                                     app:minValue="0"
                                     app:type="range" />
@@ -367,12 +367,12 @@
                                     android:id="@+id/vb05d"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:enabled="@{!formSEI.vb03.equals(`1`)}"
+                                    android:enabled="@{!form.vb03.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/vb05d"
                                     android:inputType="number"
                                     android:maxLength="2"
-                                    android:text="@={formSEI.vb05d}"
+                                    android:text="@={form.vb05d}"
                                     app:maxValue="30"
                                     app:minValue="0"
                                     app:type="range" />
@@ -386,7 +386,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb05a"
                     style="@style/cardView"
-                    android:visibility="@{formSEI.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
+                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -423,8 +423,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:checked="@{formSEI.vb05a.equals(`1`)}"
-                                android:onClick="@{()->formSEI.setVb05a(`1`)}"
+                                android:checked="@{form.vb05a.equals(`1`)}"
+                                android:onClick="@{()->form.setVb05a(`1`)}"
                                 android:text="@string/vb05aa" />
 
                             <RadioButton
@@ -432,8 +432,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:checked="@{formSEI.vb05a.equals(`2`)}"
-                                android:onClick="@{()->formSEI.setVb05a(`2`)}"
+                                android:checked="@{form.vb05a.equals(`2`)}"
+                                android:onClick="@{()->form.setVb05a(`2`)}"
                                 android:text="@string/vb05ab" />
                         </RadioGroup>
                     </LinearLayout>
@@ -475,7 +475,7 @@
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/vb06"
                             android:lines="3"
-                            android:text="@={formSEI.vb06}" />
+                            android:text="@={form.vb06}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -515,7 +515,7 @@
                             android:hint="###########"
                             android:inputType="number"
                             android:maxLength="11"
-                            android:text="@={formSEI.vb07}" />
+                            android:text="@={form.vb07}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -523,7 +523,7 @@
                 <!--<androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08c"
                     style="@style/cardView"
-                    android:visibility="@{formSEI.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
+                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -560,120 +560,120 @@
                                 android:id="@+id/vb08ca"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08ca.equals(`1`)}"
-                                android:onClick="@{()->formSEI.setVb08ca(formSEI.vb08ca.equals(`1`)?``:`1`)}"
+                                android:checked="@{form.vb08ca.equals(`1`)}"
+                                android:onClick="@{()->form.setVb08ca(form.vb08ca.equals(`1`)?``:`1`)}"
                                 android:text="@string/vb08ca" />
 
                             <CheckBox
                                 android:id="@+id/vb08cb"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08cb.equals(`2`)}"
-                                android:onClick="@{()->formSEI.setVb08cb(formSEI.vb08cb.equals(`2`)?``:`2`)}"
+                                android:checked="@{form.vb08cb.equals(`2`)}"
+                                android:onClick="@{()->form.setVb08cb(form.vb08cb.equals(`2`)?``:`2`)}"
                                 android:text="@string/vb08cb" />
 
                             <CheckBox
                                 android:id="@+id/vb08cc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08cc.equals(`3`)}"
-                                android:onClick="@{()->formSEI.setVb08cc(formSEI.vb08cc.equals(`3`)?``:`3`)}"
+                                android:checked="@{form.vb08cc.equals(`3`)}"
+                                android:onClick="@{()->form.setVb08cc(form.vb08cc.equals(`3`)?``:`3`)}"
                                 android:text="@string/vb08cc" />
 
                             <CheckBox
                                 android:id="@+id/vb08cd"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08cd.equals(`4`)}"
-                                android:onClick="@{()->formSEI.setVb08cd(formSEI.vb08cd.equals(`4`)?``:`4`)}"
+                                android:checked="@{form.vb08cd.equals(`4`)}"
+                                android:onClick="@{()->form.setVb08cd(form.vb08cd.equals(`4`)?``:`4`)}"
                                 android:text="@string/vb08cd" />
 
                             <CheckBox
                                 android:id="@+id/vb08ce"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08ce.equals(`5`)}"
-                                android:onClick="@{()->formSEI.setVb08ce(formSEI.vb08ce.equals(`5`)?``:`5`)}"
+                                android:checked="@{form.vb08ce.equals(`5`)}"
+                                android:onClick="@{()->form.setVb08ce(form.vb08ce.equals(`5`)?``:`5`)}"
                                 android:text="@string/vb08ce" />
 
                             <CheckBox
                                 android:id="@+id/vb08cf"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08cf.equals(`6`)}"
-                                android:onClick="@{()->formSEI.setVb08cf(formSEI.vb08cf.equals(`6`)?``:`6`)}"
+                                android:checked="@{form.vb08cf.equals(`6`)}"
+                                android:onClick="@{()->form.setVb08cf(form.vb08cf.equals(`6`)?``:`6`)}"
                                 android:text="@string/vb08cf" />
 
                             <CheckBox
                                 android:id="@+id/vb08cg"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08cg.equals(`7`)}"
-                                android:onClick="@{()->formSEI.setVb08cg(formSEI.vb08cg.equals(`7`)?``:`7`)}"
+                                android:checked="@{form.vb08cg.equals(`7`)}"
+                                android:onClick="@{()->form.setVb08cg(form.vb08cg.equals(`7`)?``:`7`)}"
                                 android:text="@string/vb08cg" />
 
                             <CheckBox
                                 android:id="@+id/vb08ch"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08ch.equals(`8`)}"
-                                android:onClick="@{()->formSEI.setVb08ch(formSEI.vb08ch.equals(`8`)?``:`8`)}"
+                                android:checked="@{form.vb08ch.equals(`8`)}"
+                                android:onClick="@{()->form.setVb08ch(form.vb08ch.equals(`8`)?``:`8`)}"
                                 android:text="@string/vb08ch" />
 
                             <CheckBox
                                 android:id="@+id/vb08ci"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08ci.equals(`9`)}"
-                                android:onClick="@{()->formSEI.setVb08ci(formSEI.vb08ci.equals(`9`)?``:`9`)}"
+                                android:checked="@{form.vb08ci.equals(`9`)}"
+                                android:onClick="@{()->form.setVb08ci(form.vb08ci.equals(`9`)?``:`9`)}"
                                 android:text="@string/vb08ci" />
 
                             <CheckBox
                                 android:id="@+id/vb08cj"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08cj.equals(`10`)}"
-                                android:onClick="@{()->formSEI.setVb08cj(formSEI.vb08cj.equals(`10`)?``:`10`)}"
+                                android:checked="@{form.vb08cj.equals(`10`)}"
+                                android:onClick="@{()->form.setVb08cj(form.vb08cj.equals(`10`)?``:`10`)}"
                                 android:text="@string/vb08cj" />
 
                             <CheckBox
                                 android:id="@+id/vb08ck"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08ck.equals(`11`)}"
-                                android:onClick="@{()->formSEI.setVb08ck(formSEI.vb08ck.equals(`11`)?``:`11`)}"
+                                android:checked="@{form.vb08ck.equals(`11`)}"
+                                android:onClick="@{()->form.setVb08ck(form.vb08ck.equals(`11`)?``:`11`)}"
                                 android:text="@string/vb08ck" />
 
                             <CheckBox
                                 android:id="@+id/vb08cl"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08cl.equals(`12`)}"
-                                android:onClick="@{()->formSEI.setVb08cl(formSEI.vb08cl.equals(`12`)?``:`12`)}"
+                                android:checked="@{form.vb08cl.equals(`12`)}"
+                                android:onClick="@{()->form.setVb08cl(form.vb08cl.equals(`12`)?``:`12`)}"
                                 android:text="@string/vb08cl" />
 
                             <CheckBox
                                 android:id="@+id/vb08cm"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08cm.equals(`13`)}"
-                                android:onClick="@{()->formSEI.setVb08cm(formSEI.vb08cm.equals(`13`)?``:`13`)}"
+                                android:checked="@{form.vb08cm.equals(`13`)}"
+                                android:onClick="@{()->form.setVb08cm(form.vb08cm.equals(`13`)?``:`13`)}"
                                 android:text="@string/vb08cm" />
 
                             <CheckBox
                                 android:id="@+id/vb08cn"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08cn.equals(`14`)}"
-                                android:onClick="@{()->formSEI.setVb08cn(formSEI.vb08cn.equals(`14`)?``:`14`)}"
+                                android:checked="@{form.vb08cn.equals(`14`)}"
+                                android:onClick="@{()->form.setVb08cn(form.vb08cn.equals(`14`)?``:`14`)}"
                                 android:text="@string/vb08cn" />
 
                             <CheckBox
                                 android:id="@+id/vb08co"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="@{formSEI.vb08co.equals(`15`)}"
-                                android:onClick="@{()->formSEI.setVb08co(formSEI.vb08co.equals(`15`)?``:`15`)}"
+                                android:checked="@{form.vb08co.equals(`15`)}"
+                                android:onClick="@{()->form.setVb08co(form.vb08co.equals(`15`)?``:`15`)}"
                                 android:text="@string/vb08co" />
                         </LinearLayout>
                     </LinearLayout>
@@ -683,7 +683,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08c"
                     style="@style/cardView"
-                    android:visibility="@{formSEI.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
+                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -737,7 +737,7 @@
                                     android:layout_marginTop="0dp"
                                     android:background="@color/colorAccent"
                                     android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->formSEI.setVb08ca(``) + vb08ca.clearCheck()}"
+                                    android:onClick="@{()->form.setVb08ca(``) + vb08ca.clearCheck()}"
                                     android:text="BCG" />
 
                                 <CheckBox
@@ -747,7 +747,7 @@
                                     android:layout_marginTop="0dp"
                                     android:background="@color/colorAccent"
                                     android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->formSEI.setVb08cb(``) + vb08cb.clearCheck()}"
+                                    android:onClick="@{()->form.setVb08cb(``) + vb08cb.clearCheck()}"
                                     android:text="OPV" />
 
                                 <CheckBox
@@ -757,7 +757,7 @@
                                     android:layout_marginTop="0dp"
                                     android:background="@color/colorAccent"
                                     android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->formSEI.setVb08cc(``) + vb08cc.clearCheck()}"
+                                    android:onClick="@{()->form.setVb08cc(``) + vb08cc.clearCheck()}"
                                     android:text="Hep B" />
 
                                 <CheckBox
@@ -768,7 +768,7 @@
                                     android:layout_weight="3"
                                     android:background="@color/colorAccent"
                                     android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->formSEI.setVb08cd(``) + vb08cd.clearCheck()}"
+                                    android:onClick="@{()->form.setVb08cd(``) + vb08cd.clearCheck()}"
                                     android:text="Penta" />
 
                                 <CheckBox
@@ -778,7 +778,7 @@
                                     android:layout_marginTop="0dp"
                                     android:background="@color/colorAccent"
                                     android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->formSEI.setVb08ce(``) + vb08ce.clearCheck()}"
+                                    android:onClick="@{()->form.setVb08ce(``) + vb08ce.clearCheck()}"
                                     android:text="PCV" />
 
                                 <CheckBox
@@ -788,7 +788,7 @@
                                     android:layout_marginTop="0dp"
                                     android:background="@color/colorAccent"
                                     android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->formSEI.setVb08cf(``) + vb08cf.clearCheck()}"
+                                    android:onClick="@{()->form.setVb08cf(``) + vb08cf.clearCheck()}"
                                     android:text="Rota" />
 
                                 <CheckBox
@@ -798,7 +798,7 @@
                                     android:layout_marginTop="0dp"
                                     android:background="@color/colorAccent"
                                     android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->formSEI.setVb08cg(``) + vb08cg.clearCheck()}"
+                                    android:onClick="@{()->form.setVb08cg(``) + vb08cg.clearCheck()}"
                                     android:text="IPV" />
 
                                 <CheckBox
@@ -808,7 +808,7 @@
                                     android:layout_marginTop="0dp"
                                     android:background="@color/colorAccent"
                                     android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->formSEI.setVb08ch(``) + vb08ch.clearCheck()}"
+                                    android:onClick="@{()->form.setVb08ch(``) + vb08ch.clearCheck()}"
                                     android:text="Measles" />
 
                                 <CheckBox
@@ -818,7 +818,7 @@
                                     android:layout_marginTop="0dp"
                                     android:background="@color/colorAccent"
                                     android:gravity="center_vertical|center_horizontal"
-                                    android:onClick="@{()->formSEI.setVb08ci(``) + vb08ci.clearCheck()}"
+                                    android:onClick="@{()->form.setVb08ci(``) + vb08ci.clearCheck()}"
                                     android:text="Typhoid" />
 
                             </LinearLayout>
@@ -903,9 +903,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08ca.equals(`1`)}"
+                                        android:checked="@{form.vb08ca.equals(`1`)}"
                                         android:enabled='@{vb08ca98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08ca(`1`)}" />
+                                        android:onClick="@{()->form.setVb08ca(`1`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -962,9 +962,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cb.equals(`0`)}"
+                                        android:checked="@{form.vb08cb.equals(`0`)}"
                                         android:enabled='@{vb08cb98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cb(`0`)}" />
+                                        android:onClick="@{()->form.setVb08cb(`0`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -980,9 +980,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cb.equals(`1`)}"
+                                        android:checked="@{form.vb08cb.equals(`1`)}"
                                         android:enabled='@{vb08cb98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cb(`1`)}" />
+                                        android:onClick="@{()->form.setVb08cb(`1`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -997,9 +997,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cb.equals(`2`)}"
+                                        android:checked="@{form.vb08cb.equals(`2`)}"
                                         android:enabled='@{vb08cb98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cb(`2`)}" />
+                                        android:onClick="@{()->form.setVb08cb(`2`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1013,9 +1013,9 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cb.equals(`3`)}"
+                                        android:checked="@{form.vb08cb.equals(`3`)}"
                                         android:enabled='@{vb08cb98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cb(`3`)}" />
+                                        android:onClick="@{()->form.setVb08cb(`3`)}" />
 
                                 </RadioGroup>
 
@@ -1057,9 +1057,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cc.equals(`1`)}"
+                                        android:checked="@{form.vb08cc.equals(`1`)}"
                                         android:enabled='@{vb08cc98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cc(`1`)}" />
+                                        android:onClick="@{()->form.setVb08cc(`1`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1127,9 +1127,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cd.equals(`1`)}"
+                                        android:checked="@{form.vb08cd.equals(`1`)}"
                                         android:enabled='@{vb08cd98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cd(`1`)}" />
+                                        android:onClick="@{()->form.setVb08cd(`1`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1143,9 +1143,9 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cd.equals(`2`)}"
+                                        android:checked="@{form.vb08cd.equals(`2`)}"
                                         android:enabled='@{vb08cd98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cd(`2`)}" />
+                                        android:onClick="@{()->form.setVb08cd(`2`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1159,9 +1159,9 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cd.equals(`3`)}"
+                                        android:checked="@{form.vb08cd.equals(`3`)}"
                                         android:enabled='@{vb08cd98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cd(`3`)}" />
+                                        android:onClick="@{()->form.setVb08cd(`3`)}" />
 
                                 </RadioGroup>
 
@@ -1203,9 +1203,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08ce.equals(`1`)}"
+                                        android:checked="@{form.vb08ce.equals(`1`)}"
                                         android:enabled='@{vb08ce98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08ce(`1`)}" />
+                                        android:onClick="@{()->form.setVb08ce(`1`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1219,9 +1219,9 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08ce.equals(`2`)}"
+                                        android:checked="@{form.vb08ce.equals(`2`)}"
                                         android:enabled='@{vb08ce98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08ce(`2`)}" />
+                                        android:onClick="@{()->form.setVb08ce(`2`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1235,9 +1235,9 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08ce.equals(`3`)}"
+                                        android:checked="@{form.vb08ce.equals(`3`)}"
                                         android:enabled='@{vb08ce98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08ce(`3`)}" />
+                                        android:onClick="@{()->form.setVb08ce(`3`)}" />
 
                                 </RadioGroup>
 
@@ -1279,9 +1279,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cf.equals(`1`)}"
+                                        android:checked="@{form.vb08cf.equals(`1`)}"
                                         android:enabled='@{vb08cf98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cf(`1`)}" />
+                                        android:onClick="@{()->form.setVb08cf(`1`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1295,9 +1295,9 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cf.equals(`2`)}"
+                                        android:checked="@{form.vb08cf.equals(`2`)}"
                                         android:enabled='@{vb08cf98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cf(`2`)}" />
+                                        android:onClick="@{()->form.setVb08cf(`2`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1352,9 +1352,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cg.equals(`1`)}"
+                                        android:checked="@{form.vb08cg.equals(`1`)}"
                                         android:enabled='@{vb08cg98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cg(`1`)}" />
+                                        android:onClick="@{()->form.setVb08cg(`1`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1368,9 +1368,9 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08cg.equals(`2`)}"
+                                        android:checked="@{form.vb08cg.equals(`2`)}"
                                         android:enabled='@{vb08cg98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08cg(`2`)}" />
+                                        android:onClick="@{()->form.setVb08cg(`2`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1424,9 +1424,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08ch.equals(`1`)}"
+                                        android:checked="@{form.vb08ch.equals(`1`)}"
                                         android:enabled='@{vb08ch98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08ch(`1`)}" />
+                                        android:onClick="@{()->form.setVb08ch(`1`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1440,9 +1440,9 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08ch.equals(`2`)}"
+                                        android:checked="@{form.vb08ch.equals(`2`)}"
                                         android:enabled='@{vb08ch98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08ch(`2`)}" />
+                                        android:onClick="@{()->form.setVb08ch(`2`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1496,9 +1496,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{formSEI.vb08ci.equals(`1`)}"
+                                        android:checked="@{form.vb08ci.equals(`1`)}"
                                         android:enabled='@{vb08ci98.checked ? true : false}'
-                                        android:onClick="@{()->formSEI.setVb08ci(`1`)}" />
+                                        android:onClick="@{()->form.setVb08ci(`1`)}" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1537,7 +1537,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08w"
                     style="@style/cardView"
-                    android:visibility="@{formSEI.vb03.equals(`2`) ? View.GONE : View.VISIBLE}">
+                    android:visibility="@{form.vb03.equals(`2`) ? View.GONE : View.VISIBLE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1645,8 +1645,8 @@
                                 android:layout_gravity="center_horizontal|center_vertical"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{formSEI.vb08w.equals(`1`)}"
-                                android:onClick="@{()->formSEI.setVb08w(`1`)}" />
+                                android:checked="@{form.vb08w.equals(`1`)}"
+                                android:onClick="@{()->form.setVb08w(`1`)}" />
 
                             <View
                                 android:layout_width="0dp"
@@ -1660,8 +1660,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{formSEI.vb08w.equals(`2`)}"
-                                android:onClick="@{()->formSEI.setVb08w(`2`)}" />
+                                android:checked="@{form.vb08w.equals(`2`)}"
+                                android:onClick="@{()->form.setVb08w(`2`)}" />
 
                             <View
                                 android:layout_width="0dp"
@@ -1675,8 +1675,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{formSEI.vb08w.equals(`3`)}"
-                                android:onClick="@{()->formSEI.setVb08w(`3`)}" />
+                                android:checked="@{form.vb08w.equals(`3`)}"
+                                android:onClick="@{()->form.setVb08w(`3`)}" />
 
                             <View
                                 android:layout_width="0dp"
@@ -1690,8 +1690,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{formSEI.vb08w.equals(`4`)}"
-                                android:onClick="@{()->formSEI.setVb08w(`4`)}" />
+                                android:checked="@{form.vb08w.equals(`4`)}"
+                                android:onClick="@{()->form.setVb08w(`4`)}" />
 
                             <View
                                 android:layout_width="0dp"
@@ -1705,8 +1705,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:background="@null"
-                                android:checked="@{formSEI.vb08w.equals(`5`)}"
-                                android:onClick="@{()->formSEI.setVb08w(`5`)}" />
+                                android:checked="@{form.vb08w.equals(`5`)}"
+                                android:onClick="@{()->form.setVb08w(`5`)}" />
 
                         </RadioGroup>
 
@@ -1722,8 +1722,8 @@
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
-                                android:checked="@{formSEI.vb08wa.equals(`1`)}"
-                                android:onClick="@{()->formSEI.setVb08wa(formSEI.vb08wa.equals(`1`)?``:`1`)}"
+                                android:checked="@{form.vb08wa.equals(`1`)}"
+                                android:onClick="@{()->form.setVb08wa(form.vb08wa.equals(`1`)?``:`1`)}"
                                 android:text="@string/vb08wa" />
 
                             <CheckBox
@@ -1731,8 +1731,8 @@
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
-                                android:checked="@{formSEI.vb08wb.equals(`2`)}"
-                                android:onClick="@{()->formSEI.setVb08wb(formSEI.vb08wb.equals(`2`)?``:`2`)}"
+                                android:checked="@{form.vb08wb.equals(`2`)}"
+                                android:onClick="@{()->form.setVb08wb(form.vb08wb.equals(`2`)?``:`2`)}"
                                 android:text="@string/vb08wb" />
 
                             <CheckBox
@@ -1740,8 +1740,8 @@
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
-                                android:checked="@{formSEI.vb08wc.equals(`3`)}"
-                                android:onClick="@{()->formSEI.setVb08wc(formSEI.vb08wc.equals(`3`)?``:`3`)}"
+                                android:checked="@{form.vb08wc.equals(`3`)}"
+                                android:onClick="@{()->form.setVb08wc(form.vb08wc.equals(`3`)?``:`3`)}"
                                 android:text="@string/vb08wc" />
 
                             <CheckBox
@@ -1749,8 +1749,8 @@
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
-                                android:checked="@{formSEI.vb08wd.equals(`4`)}"
-                                android:onClick="@{()->formSEI.setVb08wd(formSEI.vb08wd.equals(`4`)?``:`4`)}"
+                                android:checked="@{form.vb08wd.equals(`4`)}"
+                                android:onClick="@{()->form.setVb08wd(form.vb08wd.equals(`4`)?``:`4`)}"
                                 android:text="@string/vb08wd" />
 
                             <CheckBox
@@ -1758,8 +1758,8 @@
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
-                                android:checked="@{formSEI.vb08we.equals(`5`)}"
-                                android:onClick="@{()->formSEI.setVb08we(formSEI.vb08we.equals(`5`)?``:`5`)}"
+                                android:checked="@{form.vb08we.equals(`5`)}"
+                                android:onClick="@{()->form.setVb08we(form.vb08we.equals(`5`)?``:`5`)}"
                                 android:text="@string/vb08we" />
                         </LinearLayout>-->
                     </LinearLayout>
@@ -1769,7 +1769,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb09"
                     style="@style/cardView"
-                    android:visibility="@{formSEI.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
+                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
 
 
                     <LinearLayout
@@ -1807,8 +1807,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:checked="@{formSEI.vb09.equals(`1`)}"
-                                android:onClick="@{()->formSEI.setVb09(`1`)}"
+                                android:checked="@{form.vb09.equals(`1`)}"
+                                android:onClick="@{()->form.setVb09(`1`)}"
                                 android:text="@string/vb09a" />
 
                             <RadioButton
@@ -1816,8 +1816,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:checked="@{formSEI.vb09.equals(`2`)}"
-                                android:onClick="@{()->formSEI.setVb09(`2`)}"
+                                android:checked="@{form.vb09.equals(`2`)}"
+                                android:onClick="@{()->form.setVb09(`2`)}"
                                 android:text="@string/vb09b" />
 
                             <RadioButton
@@ -1825,8 +1825,8 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:checked="@{formSEI.vb09.equals(`98`)}"
-                                android:onClick="@{()->formSEI.setVb09(`98`)}"
+                                android:checked="@{form.vb09.equals(`98`)}"
+                                android:onClick="@{()->form.setVb09(`98`)}"
                                 android:text="@string/vb0998" />
                         </RadioGroup>
                     </LinearLayout>
@@ -1835,19 +1835,35 @@
                 <!-- Take Photo   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVtakePhoto"
-                    style="@style/cardView">
+                    style="@style/cardView"
+                    android:visibility="@{form.vb03.equals(`2`) ? View.VISIBLE : View.GONE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
-                            style="@style/sub_labels"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Vaccination Card Photo" />
+                            android:layout_marginTop="4dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@null"
+                                android:gravity="start|center_vertical"
+                                android:text="Vaccination Card Photo" />
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/vaccine" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1871,7 +1887,8 @@
                                 android:onClick="takePhoto"
                                 android:paddingStart="12dp"
                                 android:paddingEnd="12dp"
-                                android:text="Take Front Photo" />
+                                android:text="Take Front Photo"
+                                android:textSize="10sp" />
 
                             <Button
                                 android:id="@+id/backPhoto"
@@ -1888,7 +1905,8 @@
                                 android:onClick="takePhoto"
                                 android:paddingStart="12dp"
                                 android:paddingEnd="12dp"
-                                android:text="Take Back Photo" />
+                                android:text="Take Back Photo"
+                                android:textSize="10sp" />
 
                         </LinearLayout>
 
@@ -1907,7 +1925,7 @@
                                 android:background="@null"
                                 android:enabled="false"
                                 android:minHeight="48dp"
-                                android:text="@={formSEI.frontfilename}"
+                                android:text="@={form.frontfilename}"
                                 android:textColor="#7f7f7f7f"
                                 android:textSize="14sp" />
 
@@ -1919,18 +1937,34 @@
                                 android:background="@null"
                                 android:enabled="false"
                                 android:minHeight="48dp"
-                                android:text="@={formSEI.backfilename}"
+                                android:text="@={form.backfilename}"
                                 android:textColor="#7f7f7f7f"
                                 android:textSize="14sp" />
 
                         </LinearLayout>
 
-                        <TextView
-                            style="@style/sub_labels"
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="Child Photo" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:background="@null"
+                                android:gravity="start|center_vertical"
+                                android:text="Child Photo" />
+
+                            <ImageView
+                                android:layout_width="5dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/childvaccine" />
+
+                        </LinearLayout>
 
 
                         <Button
@@ -1948,7 +1982,8 @@
                             android:onClick="takePhoto"
                             android:paddingStart="12dp"
                             android:paddingEnd="12dp"
-                            android:text="Take Child Photo" />
+                            android:text="Take Child Photo"
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/childFileName"
@@ -1956,10 +1991,10 @@
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:enabled="false"
-                            android:minHeight="48dp"
-                            android:text="@={formSEI.childfilename}"
-                            android:textColor="#7f7f7f7f"
                             android:gravity="center"
+                            android:minHeight="48dp"
+                            android:text="@={form.childfilename}"
+                            android:textColor="#7f7f7f7f"
                             android:textSize="14sp" />
 
                     </LinearLayout>
