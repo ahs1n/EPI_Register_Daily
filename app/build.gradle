@@ -137,4 +137,7 @@ dependencies {
     //Rooted
     implementation 'com.scottyab:rootbeer-lib:0.1.0'
 
+    //SDP
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
 }
