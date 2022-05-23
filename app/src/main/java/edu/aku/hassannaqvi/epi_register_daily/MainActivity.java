@@ -29,9 +29,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        setSupportActionBar(bi.toolbar);
+        bi.toolbar.setSubtitle("Welcome, " + MainApp.user.getFullname() + (MainApp.admin ? " (Admin)" : "") + "!");
         bi.setCallback(this);
         bi.adminView.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
-        bi.username.setText("Welcome, " + MainApp.user.getFullname() + "!");
+//        bi.username.setText("Welcome, " + MainApp.user.getFullname() + "!");
         invalidateOptionsMenu();
     }
 

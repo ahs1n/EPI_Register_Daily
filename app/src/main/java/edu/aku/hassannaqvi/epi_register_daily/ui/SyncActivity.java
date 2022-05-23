@@ -60,7 +60,6 @@ import edu.aku.hassannaqvi.epi_register_daily.models.SyncModel;
 import edu.aku.hassannaqvi.epi_register_daily.workers.DataDownWorkerALL;
 import edu.aku.hassannaqvi.epi_register_daily.workers.DataUpWorkerALL;
 import edu.aku.hassannaqvi.epi_register_daily.workers.PhotoUploadWorker2;
-import edu.aku.hassannaqvi.epi_register_daily.workers.ReadJSONWorker;
 
 
 public class SyncActivity extends AppCompatActivity {
@@ -102,10 +101,10 @@ public class SyncActivity extends AppCompatActivity {
 
         db = MainApp.appInfo.dbHelper;
         //dbBackup(this);
-        OneTimeWorkRequest JSONWorker =
+/*        OneTimeWorkRequest JSONWorker =
                 new OneTimeWorkRequest.Builder(ReadJSONWorker.class)
                         .build();
-        WorkManager.getInstance(this).enqueue(JSONWorker);
+        WorkManager.getInstance(this).enqueue(JSONWorker);*/
 
     }
 
