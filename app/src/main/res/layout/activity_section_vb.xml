@@ -288,6 +288,8 @@
 
                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                             android:id="@+id/vb04b"
+                            style="@style/textInput"
+                            android:datePickerMode="spinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
@@ -296,7 +298,7 @@
                             app:dateFormat="dd-MM-yyyy"
                             app:maxDate="CR_DATE"
                             app:minDate="CR_DATE"
-                            app:theme="@style/DatePickerStyle" />
+                            app:theme="@style/DatePickerEditTextDialogTheme" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

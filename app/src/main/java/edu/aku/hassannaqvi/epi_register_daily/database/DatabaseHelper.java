@@ -643,8 +643,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String whereClause;
         //whereClause = null;
-        whereClause = FormsTable.COLUMN_SYNCED + " = '' AND " +
-                FormsTable.COLUMN_ISTATUS + "!= ''";
+        /*whereClause = FormsTable.COLUMN_SYNCED + " = '' AND " +
+                FormsTable.COLUMN_ISTATUS + "!= ''";*/
+        whereClause = FormsTable.COLUMN_SYNCED + " = '' ";
 
         String[] whereArgs = null;
 
@@ -856,7 +857,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //update SyncedTables
-    public void updateSyncedForm(String id) {
+    public void updateSyncedFormSEI(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
 
 // New value for one column
