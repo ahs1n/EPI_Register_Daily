@@ -9,7 +9,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.text.format.DateFormat;
-import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
@@ -44,13 +43,13 @@ public class GPSLocationListener implements LocationListener {
             editor.putString("Accuracy", String.valueOf(location.getAccuracy()));
             editor.putString("Time", String.valueOf(location.getTime()));
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(String.valueOf(location.getTime()))).toString();
-            Toast.makeText(mainApp,
+           /* Toast.makeText(mainApp,
                     "GPS Commit! LAT: " + location.getLongitude() +
                             " LNG: " + location.getLatitude() +
                             " Accuracy: " + location.getAccuracy() +
                             " Time: " + date +
                             "Provider: " + location.getProvider(),
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_SHORT).show();*/
 
             editor.apply();
         }

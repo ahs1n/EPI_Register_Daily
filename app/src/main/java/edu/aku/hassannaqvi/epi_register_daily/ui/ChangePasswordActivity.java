@@ -24,10 +24,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+
 import edu.aku.hassannaqvi.epi_register_daily.R;
+import edu.aku.hassannaqvi.epi_register_daily.core.CipherSecure;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.core.UserAuth;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
@@ -187,12 +194,35 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         }
                     });
 
+
+            Log.d(TAG, "attemptReset: " + CipherSecure.encrypt(bi.password2.getText().toString()));
+
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             Toast.makeText(this, "NoSuchAlgorithmException(UserAuth):" + e.getMessage(), Toast.LENGTH_SHORT).show();
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
             Toast.makeText(this, "InvalidKeySpecException(UserAuth):" + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "InvalidKeyException(UserAuth):" + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } catch (InvalidAlgorithmParameterException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "InvalidAlgorithmParameterException(UserAuth):" + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "NoSuchPaddingException(UserAuth):" + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "BadPaddingException(UserAuth):" + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "IllegalBlockSizeException(UserAuth):" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
         }
 

@@ -48,11 +48,11 @@ public class UserAuth {
 
 
     public static boolean checkPassword(String password, String oldPassword)
-            throws NoSuchAlgorithmException, InvalidKeySpecException {
+            throws NoSuchAlgorithmException, InvalidKeySpecException, IllegalArgumentException {
 
 //        byte[] salt = Base64.decode(oldPassword.substring(0, 24), Base64.NO_WRAP);
-        byte[] salt = Arrays.copyOfRange(Base64.decode(oldPassword, Base64.NO_WRAP), 0, SALT_BYTE_SIZE);
         Log.d(TAG, "oldStorngPasswordHash: " + oldPassword);
+        byte[] salt = Arrays.copyOfRange(Base64.decode(oldPassword, Base64.NO_WRAP), 0, SALT_BYTE_SIZE);
 
         String genPass = generatePassword(password, salt);
 

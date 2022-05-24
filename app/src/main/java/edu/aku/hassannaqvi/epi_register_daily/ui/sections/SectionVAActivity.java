@@ -165,7 +165,7 @@ public class SectionVAActivity extends AppCompatActivity {
             form.setGpsAcc(acc);
             form.setGpsDT(date); // Timestamp is converted to date above
 
-            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             Log.e(TAG, "setGPS: " + e.getMessage());
