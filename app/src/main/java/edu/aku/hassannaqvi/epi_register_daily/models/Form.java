@@ -89,6 +89,7 @@ public class Form extends BaseObservable implements Observable {
     private String vb03 = _EMPTY_;
     private String vb04a = _EMPTY_;
     private String vb04 = _EMPTY_;
+    private String vb04b = _EMPTY_;
     private String vb05y = _EMPTY_;
     private String vb05m = _EMPTY_;
     private String vb05d = _EMPTY_;
@@ -719,6 +720,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setVb03(String vb03) {
         this.vb03 = vb03;
+        setVb04b(vb03.equals("2") ? this.vb04b : "");
+
         setVb05d(vb03.equals("2") ? this.vb05d : "");
         setVb05m(vb03.equals("2") ? this.vb05m : "");
 
@@ -761,6 +764,16 @@ public class Form extends BaseObservable implements Observable {
     public void setVb04(String vb04) {
         this.vb04 = vb04;
         notifyPropertyChanged(BR.vb04);
+    }
+
+    @Bindable
+    public String getVb04b() {
+        return vb04b;
+    }
+
+    public void setVb04b(String vb04b) {
+        this.vb04b = vb04b;
+        notifyPropertyChanged(BR.vb04b);
     }
 
     @Bindable
@@ -1132,6 +1145,7 @@ public class Form extends BaseObservable implements Observable {
             this.vb03 = json.getString("vb03");
             this.vb04a = json.getString("vb04a");
             this.vb04 = json.getString("vb04");
+            this.vb04b = json.getString("vb04b");
             this.vb05y = json.getString("vb05y");
             this.vb05m = json.getString("vb05m");
             this.vb05d = json.getString("vb05d");
@@ -1201,6 +1215,7 @@ public class Form extends BaseObservable implements Observable {
                 .put("vb03", vb03)
                 .put("vb04a", vb04a)
                 .put("vb04", vb04)
+                .put("vb04b", vb04b)
                 .put("vb05y", vb05y)
                 .put("vb05m", vb05m)
                 .put("vb05d", vb05d)

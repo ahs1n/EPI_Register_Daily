@@ -256,6 +256,50 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+                <!-- vb04b  Date   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVvb04b"
+                    style="@style/cardView"
+                    android:visibility="@{form.vb03.equals(`2`)  ? View.VISIBLE : View.GONE}">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_vb04b" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/vb04b" />
+
+                        </LinearLayout>
+
+                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
+                            android:id="@+id/vb04b"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="DD-MM-YYYY"
+                            android:text="@={form.vb04b}"
+                            app:dateFormat="dd-MM-yyyy"
+                            app:maxDate="CR_DATE"
+                            app:minDate="CR_DATE"
+                            app:theme="@style/DatePickerStyle" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
                 <!-- vb05  Title   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb05"

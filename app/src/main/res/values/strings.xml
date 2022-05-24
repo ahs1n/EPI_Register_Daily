@@ -397,6 +397,7 @@
     <string name="vb03b">بچہ</string>
     <string name="vb04a">نام</string>
     <string name="vb04">باپ یا شوہر کا نام</string>
+    <string name="vb04b">بچے کی تاریخ پیدائش</string>
     <string name="vb05">عمر</string>
     <string name="vb05t">(اگر گروپ1 ہے تو عمر صرف سال میں لکھیں)</string>
     <string name="vb05y">سال</string>
@@ -452,6 +453,7 @@
     <string name='Q_vb03'>vb03</string>
     <string name='Q_vb04a'>vb04a</string>
     <string name='Q_vb04'>vb04</string>
+    <string name='Q_vb04b'>vb04b</string>
     <string name='Q_vb05'>vb05</string>
     <string name='Q_vb05a'>vb05a</string>
     <string name='Q_vb06'>vb06</string>
