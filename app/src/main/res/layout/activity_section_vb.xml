@@ -286,19 +286,85 @@
 
                         </LinearLayout>
 
-                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                            android:id="@+id/vb04b"
-                            style="@style/textInput"
-                            android:datePickerMode="spinner"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:hint="DD-MM-YYYY"
-                            android:text="@={form.vb04b}"
-                            app:dateFormat="dd-MM-yyyy"
-                            app:maxDate="CR_DATE"
-                            app:minDate="CR_DATE"
-                            app:theme="@style/DatePickerEditTextDialogTheme" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/vb04by" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/vb04bm" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/vb04bd" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/vb04by"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="####"
+                                android:inputType="number"
+                                android:maxLength="4"
+                                android:text="@={form.vb04by}"
+                                app:defaultValue="9998"
+                                app:maxValue="2022"
+                                app:minValue="2015"
+                                app:type="range" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/vb04bm"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:text="@={form.vb04bm}"
+                                app:defaultValue="98"
+                                app:maxValue="12"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/vb04bd"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="##"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:text="@={form.vb04bd}"
+                                app:defaultValue="98"
+                                app:maxValue="30"
+                                app:minValue="1"
+                                app:type="range" />
+
+                        </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -922,19 +988,6 @@
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
 
-                                    <View
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal|center_vertical"
-                                        android:layout_weight="1" />
-
-                                    <RadioButton
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="2"
-                                        android:background="@null"
-                                        android:visibility="invisible" />
-
 
                                     <View
                                         android:layout_width="0dp"
@@ -952,6 +1005,19 @@
                                         android:checked="@{form.vb08ca.equals(`1`)}"
                                         android:enabled='@{vb08ca98.checked ? true : false}'
                                         android:onClick="@{()->form.setVb08ca(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
 
                                     <View
                                         android:layout_width="0dp"
@@ -1008,24 +1074,6 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
-                                        android:checked="@{form.vb08cb.equals(`0`)}"
-                                        android:enabled='@{vb08cb98.checked ? true : false}'
-                                        android:onClick="@{()->form.setVb08cb(`0`)}" />
-
-                                    <View
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal|center_vertical"
-                                        android:layout_weight="1" />
-
-
-                                    <RadioButton
-                                        android:id="@+id/vb08cbb"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal|center_vertical"
-                                        android:layout_weight="2"
-                                        android:background="@null"
                                         android:checked="@{form.vb08cb.equals(`1`)}"
                                         android:enabled='@{vb08cb98.checked ? true : false}'
                                         android:onClick="@{()->form.setVb08cb(`1`)}" />
@@ -1036,8 +1084,9 @@
                                         android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="1" />
 
+
                                     <RadioButton
-                                        android:id="@+id/vb08cbc"
+                                        android:id="@+id/vb08cbb"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_horizontal|center_vertical"
@@ -1054,14 +1103,31 @@
                                         android:layout_weight="1" />
 
                                     <RadioButton
-                                        android:id="@+id/vb08cbd"
+                                        android:id="@+id/vb08cbc"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cb.equals(`3`)}"
                                         android:enabled='@{vb08cb98.checked ? true : false}'
                                         android:onClick="@{()->form.setVb08cb(`3`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:id="@+id/vb08cbd"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:checked="@{form.vb08cb.equals(`4`)}"
+                                        android:enabled='@{vb08cb98.checked ? true : false}'
+                                        android:onClick="@{()->form.setVb08cb(`4`)}" />
 
                                 </RadioGroup>
 
@@ -1075,19 +1141,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
-
-                                    <View
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center_horizontal|center_vertical"
-                                        android:layout_weight="1" />
-
-                                    <RadioButton
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="2"
-                                        android:background="@null"
-                                        android:visibility="invisible" />
 
 
                                     <View
@@ -1106,6 +1159,19 @@
                                         android:checked="@{form.vb08cc.equals(`1`)}"
                                         android:enabled='@{vb08cc98.checked ? true : false}'
                                         android:onClick="@{()->form.setVb08cc(`1`)}" />
+
+                                    <View
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_weight="1" />
+
+                                    <RadioButton
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="2"
+                                        android:background="@null"
+                                        android:visibility="invisible" />
 
                                     <View
                                         android:layout_width="0dp"

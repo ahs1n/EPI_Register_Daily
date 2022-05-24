@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.models;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp._EMPTY_;
 
@@ -14,7 +15,9 @@ import androidx.databinding.PropertyChangeRegistry;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -89,7 +92,9 @@ public class Form extends BaseObservable implements Observable {
     private String vb03 = _EMPTY_;
     private String vb04a = _EMPTY_;
     private String vb04 = _EMPTY_;
-    private String vb04b = _EMPTY_;
+    private String vb04bd = _EMPTY_;
+    private String vb04bm = _EMPTY_;
+    private String vb04by = _EMPTY_;
     private String vb05y = _EMPTY_;
     private String vb05m = _EMPTY_;
     private String vb05d = _EMPTY_;
@@ -720,7 +725,9 @@ public class Form extends BaseObservable implements Observable {
 
     public void setVb03(String vb03) {
         this.vb03 = vb03;
-        setVb04b(vb03.equals("2") ? this.vb04b : "");
+        setVb04bd(vb03.equals("2") ? this.vb04bd : "");
+        setVb04bm(vb03.equals("2") ? this.vb04bm : "");
+        setVb04by(vb03.equals("2") ? this.vb04by : "");
 
         setVb05d(vb03.equals("2") ? this.vb05d : "");
         setVb05m(vb03.equals("2") ? this.vb05m : "");
@@ -767,13 +774,36 @@ public class Form extends BaseObservable implements Observable {
     }
 
     @Bindable
-    public String getVb04b() {
-        return vb04b;
+    public String getVb04bd() {
+        return vb04bd;
     }
 
-    public void setVb04b(String vb04b) {
-        this.vb04b = vb04b;
-        notifyPropertyChanged(BR.vb04b);
+    public void setVb04bd(String vb04bd) {
+        this.vb04bd = vb04bd;
+        CaluculateAge();
+        notifyPropertyChanged(BR.vb04bd);
+    }
+
+    @Bindable
+    public String getVb04bm() {
+        return vb04bm;
+    }
+
+    public void setVb04bm(String vb04bm) {
+        this.vb04bm = vb04bm;
+        CaluculateAge();
+        notifyPropertyChanged(BR.vb04bm);
+    }
+
+    @Bindable
+    public String getVb04by() {
+        return vb04by;
+    }
+
+    public void setVb04by(String vb04by) {
+        this.vb04by = vb04by;
+        CaluculateAge();
+        notifyPropertyChanged(BR.vb04by);
     }
 
     @Bindable
@@ -1145,7 +1175,9 @@ public class Form extends BaseObservable implements Observable {
             this.vb03 = json.getString("vb03");
             this.vb04a = json.getString("vb04a");
             this.vb04 = json.getString("vb04");
-            this.vb04b = json.getString("vb04b");
+            this.vb04bd = json.getString("vb04bd");
+            this.vb04bm = json.getString("vb04bm");
+            this.vb04by = json.getString("vb04by");
             this.vb05y = json.getString("vb05y");
             this.vb05m = json.getString("vb05m");
             this.vb05d = json.getString("vb05d");
@@ -1215,7 +1247,9 @@ public class Form extends BaseObservable implements Observable {
                 .put("vb03", vb03)
                 .put("vb04a", vb04a)
                 .put("vb04", vb04)
-                .put("vb04b", vb04b)
+                .put("vb04bd", vb04bd)
+                .put("vb04bm", vb04bm)
+                .put("vb04by", vb04by)
                 .put("vb05y", vb05y)
                 .put("vb05m", vb05m)
                 .put("vb05d", vb05d)
@@ -1263,5 +1297,55 @@ public class Form extends BaseObservable implements Observable {
         json.put(FormsTable.COLUMN_VA, new JSONObject(vAtoString()));
         json.put(FormsTable.COLUMN_VB, new JSONObject(vBtoString()));
         return json;
+    }
+
+
+    private void CaluculateAge() {
+        Log.d(TAG, "CaluculateAge: " + this.vb04by + "-" + this.vb04bm + "-" + this.vb04bd);
+
+        if (!this.vb04by.equals("") && !this.vb04by.equals("9998") && !this.vb04bm.equals("") && !this.vb04bd.equals("")) {
+
+            int day = !this.vb04bd.equals("98") ? Integer.parseInt(this.vb04bd) : 15;
+            int month = !this.vb04bm.equals("98") ? Integer.parseInt(this.vb04bm) : 6;
+            int year = Integer.parseInt(this.vb04by);
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyy MM dd", Locale.ENGLISH);
+            String todayDate = df.format(Calendar.getInstance().getTime());
+            Calendar cal = Calendar.getInstance();
+            Calendar cur = Calendar.getInstance();
+
+            try {
+                cal.setTime(df.parse(year + " " + month + " " + day));
+                long millis = System.currentTimeMillis() - cal.getTimeInMillis();
+                cal.setTimeInMillis(millis);
+
+             /*   int mYear = cal.get(Calendar.YEAR)-1970;
+                int mMonth = cal.get(Calendar.MONTH);
+                int mDay = cal.get(Calendar.DAY_OF_MONTH)-1;
+
+                Log.d(TAG, "CaluculateAge: " + (mYear) + "-" + mMonth + "-" + mDay);
+*/
+                long tYear = MILLISECONDS.toDays(millis) / 365;
+                long tMonth = (MILLISECONDS.toDays(millis) - (tYear * 365)) / 30;
+                long tDay = MILLISECONDS.toDays(millis) - ((tYear * 365) + (tMonth * 30));
+
+                Log.d(TAG, "CaluculateAge: Y-" + tYear + " M-" + tMonth + " D-" + tDay);
+                setVb05d(String.valueOf(tDay));
+                setVb05m(String.valueOf(tMonth));
+                setVb05y(String.valueOf(tYear));
+                //setAge(String.valueOf(((tYear) * 12) + tMonth));
+
+
+        /*        String.format("%d min, %d sec",
+                        ,
+                        TimeUnit.MILLISECONDS.toSeconds(millis) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
+                );*/
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 }
