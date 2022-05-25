@@ -180,8 +180,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+                            android:enabled="false"
+                            android:gravity="center"
                             android:hint="@string/va03"
-                            android:text="@={form.va03}" />
+                            android:text="@={form.va03}"
+                            android:textColor="@color/redOverlay" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -221,8 +224,8 @@
                             android:hint="@string/va04"
                             android:inputType="number"
                             android:maxLength="5"
-                            android:text="@={form.va04}"
                             android:onTextChanged="@{callback::previousPage}"
+                            android:text="@={form.va04}"
                             app:maxValue="99999"
                             app:minValue="1"
                             app:type="range" />
@@ -347,13 +350,13 @@
 
 
                             <LinearLayout
-                                android:visibility="gone"
                                 android:id="@+id/va05check77"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="2"
                                 android:orientation="vertical"
-                                android:tag="-1">
+                                android:tag="-1"
+                                android:visibility="gone">
 
                                 <CheckBox
                                     android:id="@+id/va05acheck"

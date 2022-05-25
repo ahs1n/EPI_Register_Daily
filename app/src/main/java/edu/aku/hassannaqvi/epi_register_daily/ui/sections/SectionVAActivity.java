@@ -47,6 +47,7 @@ public class SectionVAActivity extends AppCompatActivity {
         } else {
             bi.va05ax.setText("");
         }*/
+        form.setVa03(MainApp.user.getFullname());
     }
 
     public void previousPage(CharSequence s, int start, int before, int count) {
@@ -153,9 +154,9 @@ public class SectionVAActivity extends AppCompatActivity {
             String acc = GPSPref.getString("Accuracy", "0");
 
             if (lat == "0" && lang == "0") {
-                Toast.makeText(this, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Could not obtained points", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
             }
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();

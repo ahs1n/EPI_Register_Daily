@@ -88,6 +88,35 @@ public class SectionVBActivity extends AppCompatActivity {
             return Validator.emptyCustomTextBox(this, bi.backFileName, "Please take back photo of Vaccination Card.");
 
         }
+
+        if (bi.vb08ca98.isChecked() && form.getVb08ca().equals(""))
+            return Validator.emptyRadioButton(this, bi.vb08ca, bi.vb08caa);
+
+        if (bi.vb08cb98.isChecked() && form.getVb08cb().equals(""))
+            return Validator.emptyRadioButton(this, bi.vb08cb, bi.vb08cba);
+
+        if (bi.vb08cc98.isChecked() && form.getVb08cc().equals(""))
+            return Validator.emptyRadioButton(this, bi.vb08cc, bi.vb08cca);
+
+        if (bi.vb08cd98.isChecked() && form.getVb08cd().equals(""))
+            return Validator.emptyRadioButton(this, bi.vb08cd, bi.vb08cda);
+
+        if (bi.vb08ce98.isChecked() && form.getVb08ce().equals(""))
+            return Validator.emptyRadioButton(this, bi.vb08ce, bi.vb08cea);
+
+        if (bi.vb08cf98.isChecked() && form.getVb08cf().equals(""))
+            return Validator.emptyRadioButton(this, bi.vb08cf, bi.vb08cfa);
+
+        if (bi.vb08cg98.isChecked() && form.getVb08cg().equals(""))
+            return Validator.emptyRadioButton(this, bi.vb08cg, bi.vb08cga);
+
+        if (bi.vb08ch98.isChecked() && form.getVb08ch().equals(""))
+            return Validator.emptyRadioButton(this, bi.vb08ch, bi.vb08cha);
+
+        if (bi.vb08ci98.isChecked() && form.getVb08ci().equals(""))
+            return Validator.emptyRadioButton(this, bi.vb08ci, bi.vb08cia);
+
+
         return true;
     }
 

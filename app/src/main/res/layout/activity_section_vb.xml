@@ -329,9 +329,9 @@
                                 android:inputType="number"
                                 android:maxLength="4"
                                 android:text="@={form.vb04by}"
-                                app:defaultValue="9998"
                                 app:maxValue="2022"
                                 app:minValue="2015"
+                                app:defaultValue="9998"
                                 app:type="range" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -344,9 +344,9 @@
                                 android:inputType="number"
                                 android:maxLength="2"
                                 android:text="@={form.vb04bm}"
-                                app:defaultValue="98"
                                 app:maxValue="12"
                                 app:minValue="1"
+                                app:defaultValue="98"
                                 app:type="range" />
 
                             <com.edittextpicker.aliazaz.EditTextPicker
@@ -359,9 +359,9 @@
                                 android:inputType="number"
                                 android:maxLength="2"
                                 android:text="@={form.vb04bd}"
-                                app:defaultValue="98"
                                 app:maxValue="30"
                                 app:minValue="1"
+                                app:defaultValue="98"
                                 app:type="range" />
 
                         </LinearLayout>
@@ -631,167 +631,8 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb08c  CheckBox   -->
-                <!--<androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVvb08c"
-                    style="@style/cardView"
-                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bottom"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                style="@style/quesNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="@string/Q_vb08c" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="@string/vb08c" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/vb08ccheck"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:tag="0">
-
-                            <CheckBox
-                                android:id="@+id/vb08ca"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08ca.equals(`1`)}"
-                                android:onClick="@{()->form.setVb08ca(form.vb08ca.equals(`1`)?``:`1`)}"
-                                android:text="@string/vb08ca" />
-
-                            <CheckBox
-                                android:id="@+id/vb08cb"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08cb.equals(`2`)}"
-                                android:onClick="@{()->form.setVb08cb(form.vb08cb.equals(`2`)?``:`2`)}"
-                                android:text="@string/vb08cb" />
-
-                            <CheckBox
-                                android:id="@+id/vb08cc"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08cc.equals(`3`)}"
-                                android:onClick="@{()->form.setVb08cc(form.vb08cc.equals(`3`)?``:`3`)}"
-                                android:text="@string/vb08cc" />
-
-                            <CheckBox
-                                android:id="@+id/vb08cd"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08cd.equals(`4`)}"
-                                android:onClick="@{()->form.setVb08cd(form.vb08cd.equals(`4`)?``:`4`)}"
-                                android:text="@string/vb08cd" />
-
-                            <CheckBox
-                                android:id="@+id/vb08ce"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08ce.equals(`5`)}"
-                                android:onClick="@{()->form.setVb08ce(form.vb08ce.equals(`5`)?``:`5`)}"
-                                android:text="@string/vb08ce" />
-
-                            <CheckBox
-                                android:id="@+id/vb08cf"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08cf.equals(`6`)}"
-                                android:onClick="@{()->form.setVb08cf(form.vb08cf.equals(`6`)?``:`6`)}"
-                                android:text="@string/vb08cf" />
-
-                            <CheckBox
-                                android:id="@+id/vb08cg"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08cg.equals(`7`)}"
-                                android:onClick="@{()->form.setVb08cg(form.vb08cg.equals(`7`)?``:`7`)}"
-                                android:text="@string/vb08cg" />
-
-                            <CheckBox
-                                android:id="@+id/vb08ch"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08ch.equals(`8`)}"
-                                android:onClick="@{()->form.setVb08ch(form.vb08ch.equals(`8`)?``:`8`)}"
-                                android:text="@string/vb08ch" />
-
-                            <CheckBox
-                                android:id="@+id/vb08ci"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08ci.equals(`9`)}"
-                                android:onClick="@{()->form.setVb08ci(form.vb08ci.equals(`9`)?``:`9`)}"
-                                android:text="@string/vb08ci" />
-
-                            <CheckBox
-                                android:id="@+id/vb08cj"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08cj.equals(`10`)}"
-                                android:onClick="@{()->form.setVb08cj(form.vb08cj.equals(`10`)?``:`10`)}"
-                                android:text="@string/vb08cj" />
-
-                            <CheckBox
-                                android:id="@+id/vb08ck"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08ck.equals(`11`)}"
-                                android:onClick="@{()->form.setVb08ck(form.vb08ck.equals(`11`)?``:`11`)}"
-                                android:text="@string/vb08ck" />
-
-                            <CheckBox
-                                android:id="@+id/vb08cl"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08cl.equals(`12`)}"
-                                android:onClick="@{()->form.setVb08cl(form.vb08cl.equals(`12`)?``:`12`)}"
-                                android:text="@string/vb08cl" />
-
-                            <CheckBox
-                                android:id="@+id/vb08cm"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08cm.equals(`13`)}"
-                                android:onClick="@{()->form.setVb08cm(form.vb08cm.equals(`13`)?``:`13`)}"
-                                android:text="@string/vb08cm" />
-
-                            <CheckBox
-                                android:id="@+id/vb08cn"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08cn.equals(`14`)}"
-                                android:onClick="@{()->form.setVb08cn(form.vb08cn.equals(`14`)?``:`14`)}"
-                                android:text="@string/vb08cn" />
-
-                            <CheckBox
-                                android:id="@+id/vb08co"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:checked="@{form.vb08co.equals(`15`)}"
-                                android:onClick="@{()->form.setVb08co(form.vb08co.equals(`15`)?``:`15`)}"
-                                android:text="@string/vb08co" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>-->
-
-                <!-- vb08c  CheckBox   -->
+                <!-- vb08c  Radio   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08c"
                     style="@style/cardView"
@@ -830,7 +671,7 @@
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:orientation="vertical"
                                 android:tag="0">
 
@@ -939,8 +780,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:orientation="vertical"
-                                android:tag="0">
+                                android:orientation="vertical">
 
 
                                 <LinearLayout
@@ -988,7 +828,6 @@
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
 
-
                                     <View
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
@@ -1003,7 +842,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08ca.equals(`1`)}"
-                                        android:enabled='@{vb08ca98.checked ? true : false}'
+                                        android:enabled="@{vb08ca98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08ca(`1`)}" />
 
                                     <View
@@ -1075,7 +914,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cb.equals(`1`)}"
-                                        android:enabled='@{vb08cb98.checked ? true : false}'
+                                        android:enabled="@{vb08cb98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cb(`1`)}" />
 
                                     <View
@@ -1093,7 +932,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cb.equals(`2`)}"
-                                        android:enabled='@{vb08cb98.checked ? true : false}'
+                                        android:enabled="@{vb08cb98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cb(`2`)}" />
 
                                     <View
@@ -1110,7 +949,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cb.equals(`3`)}"
-                                        android:enabled='@{vb08cb98.checked ? true : false}'
+                                        android:enabled="@{vb08cb98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cb(`3`)}" />
 
                                     <View
@@ -1126,7 +965,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cb.equals(`4`)}"
-                                        android:enabled='@{vb08cb98.checked ? true : false}'
+                                        android:enabled="@{vb08cb98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cb(`4`)}" />
 
                                 </RadioGroup>
@@ -1157,7 +996,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cc.equals(`1`)}"
-                                        android:enabled='@{vb08cc98.checked ? true : false}'
+                                        android:enabled="@{vb08cc98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cc(`1`)}" />
 
                                     <View
@@ -1240,7 +1079,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cd.equals(`1`)}"
-                                        android:enabled='@{vb08cd98.checked ? true : false}'
+                                        android:enabled="@{vb08cd98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cd(`1`)}" />
 
                                     <View
@@ -1256,7 +1095,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cd.equals(`2`)}"
-                                        android:enabled='@{vb08cd98.checked ? true : false}'
+                                        android:enabled="@{vb08cd98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cd(`2`)}" />
 
                                     <View
@@ -1272,7 +1111,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cd.equals(`3`)}"
-                                        android:enabled='@{vb08cd98.checked ? true : false}'
+                                        android:enabled="@{vb08cd98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cd(`3`)}" />
 
                                 </RadioGroup>
@@ -1316,7 +1155,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08ce.equals(`1`)}"
-                                        android:enabled='@{vb08ce98.checked ? true : false}'
+                                        android:enabled="@{vb08ce98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08ce(`1`)}" />
 
                                     <View
@@ -1332,7 +1171,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08ce.equals(`2`)}"
-                                        android:enabled='@{vb08ce98.checked ? true : false}'
+                                        android:enabled="@{vb08ce98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08ce(`2`)}" />
 
                                     <View
@@ -1348,7 +1187,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08ce.equals(`3`)}"
-                                        android:enabled='@{vb08ce98.checked ? true : false}'
+                                        android:enabled="@{vb08ce98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08ce(`3`)}" />
 
                                 </RadioGroup>
@@ -1392,7 +1231,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cf.equals(`1`)}"
-                                        android:enabled='@{vb08cf98.checked ? true : false}'
+                                        android:enabled="@{vb08cf98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cf(`1`)}" />
 
                                     <View
@@ -1408,7 +1247,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cf.equals(`2`)}"
-                                        android:enabled='@{vb08cf98.checked ? true : false}'
+                                        android:enabled="@{vb08cf98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cf(`2`)}" />
 
                                     <View
@@ -1465,7 +1304,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cg.equals(`1`)}"
-                                        android:enabled='@{vb08cg98.checked ? true : false}'
+                                        android:enabled="@{vb08cg98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cg(`1`)}" />
 
                                     <View
@@ -1481,7 +1320,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08cg.equals(`2`)}"
-                                        android:enabled='@{vb08cg98.checked ? true : false}'
+                                        android:enabled="@{vb08cg98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08cg(`2`)}" />
 
                                     <View
@@ -1537,7 +1376,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08ch.equals(`1`)}"
-                                        android:enabled='@{vb08ch98.checked ? true : false}'
+                                        android:enabled="@{vb08ch98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08ch(`1`)}" />
 
                                     <View
@@ -1553,7 +1392,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08ch.equals(`2`)}"
-                                        android:enabled='@{vb08ch98.checked ? true : false}'
+                                        android:enabled="@{vb08ch98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08ch(`2`)}" />
 
                                     <View
@@ -1609,7 +1448,7 @@
                                         android:layout_weight="2"
                                         android:background="@null"
                                         android:checked="@{form.vb08ci.equals(`1`)}"
-                                        android:enabled='@{vb08ci98.checked ? true : false}'
+                                        android:enabled="@{vb08ci98.checked ? true : false}"
                                         android:onClick="@{()->form.setVb08ci(`1`)}" />
 
                                     <View
