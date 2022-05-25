@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(bi.toolbar);
         bi.toolbar.setSubtitle("Welcome, " + MainApp.user.getFullname() + (MainApp.admin ? " (Admin)" : "") + "!");
         bi.setCallback(this);
-//        bi.adminView.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
+        bi.adminView.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
 //        bi.username.setText("Welcome, " + MainApp.user.getFullname() + "!");
         invalidateOptionsMenu();
     }
