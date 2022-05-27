@@ -23,9 +23,9 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTa
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
-public class IM extends BaseObservable implements Observable {
+public class Vaccines extends BaseObservable implements Observable {
 
-    private final String TAG = "FormVB";
+    private final String TAG = "Vaccines";
     private final transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
     // APP VARIABLES
     private String projectName = PROJECT_NAME;
@@ -46,7 +46,8 @@ public class IM extends BaseObservable implements Observable {
     private String entryType = _EMPTY_;
 
     // FIELD VARIABLES
-    private String vb08c = _EMPTY_;
+    private String vb02 = _EMPTY_;
+    private String vb04a = _EMPTY_;
     private String vb08ca = _EMPTY_;
     private String vb08cb = _EMPTY_;
     private String vb08cc = _EMPTY_;
@@ -56,13 +57,6 @@ public class IM extends BaseObservable implements Observable {
     private String vb08cg = _EMPTY_;
     private String vb08ch = _EMPTY_;
     private String vb08ci = _EMPTY_;
-    private String vb08cj = _EMPTY_;
-    private String vb08ck = _EMPTY_;
-    private String vb08cl = _EMPTY_;
-    private String vb08cm = _EMPTY_;
-    private String vb08cn = _EMPTY_;
-    private String vb08co = _EMPTY_;
-    private String vb08w = _EMPTY_;
     private String vb08wa = _EMPTY_;
     private String vb08wb = _EMPTY_;
     private String vb08wc = _EMPTY_;
@@ -70,7 +64,7 @@ public class IM extends BaseObservable implements Observable {
     private String vb08we = _EMPTY_;
 
 
-    public IM() {
+    public Vaccines() {
 
 /*        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
@@ -216,13 +210,23 @@ public class IM extends BaseObservable implements Observable {
     }
 
     @Bindable
-    public String getVb08c() {
-        return vb08c;
+    public String getVb02() {
+        return vb02;
     }
 
-    public void setVb08c(String vb08c) {
-        this.vb08c = vb08c;
-        notifyPropertyChanged(BR.vb08c);
+    public void setVb02(String vb02) {
+        this.vb02 = vb02;
+        notifyPropertyChanged(BR.vb02);
+    }
+
+    @Bindable
+    public String getVb04a() {
+        return vb04a;
+    }
+
+    public void setVb04a(String vb04a) {
+        this.vb04a = vb04a;
+        notifyPropertyChanged(BR.vb04a);
     }
 
     @Bindable
@@ -316,76 +320,6 @@ public class IM extends BaseObservable implements Observable {
     }
 
     @Bindable
-    public String getVb08cj() {
-        return vb08cj;
-    }
-
-    public void setVb08cj(String vb08cj) {
-        this.vb08cj = vb08cj;
-        notifyPropertyChanged(BR.vb08cj);
-    }
-
-    @Bindable
-    public String getVb08ck() {
-        return vb08ck;
-    }
-
-    public void setVb08ck(String vb08ck) {
-        this.vb08ck = vb08ck;
-        notifyPropertyChanged(BR.vb08ck);
-    }
-
-    @Bindable
-    public String getVb08cl() {
-        return vb08cl;
-    }
-
-    public void setVb08cl(String vb08cl) {
-        this.vb08cl = vb08cl;
-        notifyPropertyChanged(BR.vb08cl);
-    }
-
-    @Bindable
-    public String getVb08cm() {
-        return vb08cm;
-    }
-
-    public void setVb08cm(String vb08cm) {
-        this.vb08cm = vb08cm;
-        notifyPropertyChanged(BR.vb08cm);
-    }
-
-    @Bindable
-    public String getVb08cn() {
-        return vb08cn;
-    }
-
-    public void setVb08cn(String vb08cn) {
-        this.vb08cn = vb08cn;
-        notifyPropertyChanged(BR.vb08cn);
-    }
-
-    @Bindable
-    public String getVb08co() {
-        return vb08co;
-    }
-
-    public void setVb08co(String vb08co) {
-        this.vb08co = vb08co;
-        notifyPropertyChanged(BR.vb08co);
-    }
-
-    @Bindable
-    public String getVb08w() {
-        return vb08w;
-    }
-
-    public void setVb08w(String vb08w) {
-        this.vb08w = vb08w;
-        notifyPropertyChanged(BR.vb08w);
-    }
-
-    @Bindable
     public String getVb08wa() {
         return vb08wa;
     }
@@ -441,7 +375,7 @@ public class IM extends BaseObservable implements Observable {
     }
 
 
-    public IM Hydrate(Cursor cursor) throws JSONException {
+    public Vaccines Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_PROJECT_NAME));
@@ -456,15 +390,18 @@ public class IM extends BaseObservable implements Observable {
         this.synced = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYNCED));
         this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYNC_DATE));
 
-        vBHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VB)));
+        sVACHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VB)));
         return this;
     }
 
-    public void vBHydrate(String string) throws JSONException {
-        Log.d(TAG, "vBHydrate: " + string);
+
+    public void sVACHydrate(String string) throws JSONException {
+        Log.d(TAG, "vACHydrate: " + string);
         if (string != null) {
             JSONObject json = null;
             json = new JSONObject(string);
+            this.vb02 = json.getString("vb02");
+            this.vb04a = json.getString("vb04a");
             this.vb08ca = json.getString("vb08ca");
             this.vb08cb = json.getString("vb08cb");
             this.vb08cc = json.getString("vb08cc");
@@ -474,12 +411,6 @@ public class IM extends BaseObservable implements Observable {
             this.vb08cg = json.getString("vb08cg");
             this.vb08ch = json.getString("vb08ch");
             this.vb08ci = json.getString("vb08ci");
-            this.vb08cj = json.getString("vb08cj");
-            this.vb08ck = json.getString("vb08ck");
-            this.vb08cl = json.getString("vb08cl");
-            this.vb08cm = json.getString("vb08cm");
-            this.vb08cn = json.getString("vb08cn");
-            this.vb08co = json.getString("vb08co");
             this.vb08wa = json.getString("vb08wa");
             this.vb08wb = json.getString("vb08wb");
             this.vb08wc = json.getString("vb08wc");
@@ -490,10 +421,12 @@ public class IM extends BaseObservable implements Observable {
     }
 
 
-    public String vBtoString() throws JSONException {
+    public String sVACtoString() throws JSONException {
         Log.d(TAG, "vBtoString: ");
         JSONObject json = new JSONObject();
-        json.put("vb08ca", vb08ca)
+        json.put("vb02", vb02)
+                .put("vb04a", vb04a)
+                .put("vb08ca", vb08ca)
                 .put("vb08cb", vb08cb)
                 .put("vb08cc", vb08cc)
                 .put("vb08cd", vb08cd)
@@ -502,12 +435,6 @@ public class IM extends BaseObservable implements Observable {
                 .put("vb08cg", vb08cg)
                 .put("vb08ch", vb08ch)
                 .put("vb08ci", vb08ci)
-                .put("vb08cj", vb08cj)
-                .put("vb08ck", vb08ck)
-                .put("vb08cl", vb08cl)
-                .put("vb08cm", vb08cm)
-                .put("vb08cn", vb08cn)
-                .put("vb08co", vb08co)
                 .put("vb08wa", vb08wa)
                 .put("vb08wb", vb08wb)
                 .put("vb08wc", vb08wc)
@@ -533,7 +460,7 @@ public class IM extends BaseObservable implements Observable {
         json.put(FormsVBTable.COLUMN_SYNCED, this.synced);
         json.put(FormsVBTable.COLUMN_SYNC_DATE, this.syncDate);
         json.put(FormsVBTable.COLUMN_APPVERSION, this.appver);
-        json.put(FormsVBTable.COLUMN_VB, new JSONObject(vBtoString()));
+        json.put(FormsVBTable.COLUMN_VB, new JSONObject(sVACtoString()));
         return json;
     }
 }

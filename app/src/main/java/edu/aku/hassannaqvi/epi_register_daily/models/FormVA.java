@@ -1,6 +1,5 @@
 package edu.aku.hassannaqvi.epi_register_daily.models;
 
-import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp._EMPTY_;
 
@@ -15,20 +14,18 @@ import androidx.databinding.PropertyChangeRegistry;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.epi_register_daily.BR;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
-public class Form extends BaseObservable implements Observable {
+public class FormVA extends BaseObservable implements Observable {
 
-    private final String TAG = "Form";
+    private final String TAG = "FormVA";
     private final transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
     // APP VARIABLES
     private String projectName = PROJECT_NAME;
@@ -87,46 +84,9 @@ public class Form extends BaseObservable implements Observable {
     private String va05hcheck = _EMPTY_;
     private String va05i = _EMPTY_;
     private String va05ix = _EMPTY_;
-    private String vb01 = _EMPTY_;
-    private String vb02 = _EMPTY_;
-    private String vb03 = _EMPTY_;
-    private String vb04a = _EMPTY_;
-    private String vb04 = _EMPTY_;
-    private String vb04bd = _EMPTY_;
-    private String vb04bm = _EMPTY_;
-    private String vb04by = _EMPTY_;
-    private String vb05y = _EMPTY_;
-    private String vb05m = _EMPTY_;
-    private String vb05d = _EMPTY_;
-    private String vb05a = _EMPTY_;
-    private String vb06 = _EMPTY_;
-    private String vb07 = _EMPTY_;
-    private String vb08c = _EMPTY_;
-    private String vb08ca = _EMPTY_;
-    private String vb08cb = _EMPTY_;
-    private String vb08cc = _EMPTY_;
-    private String vb08cd = _EMPTY_;
-    private String vb08ce = _EMPTY_;
-    private String vb08cf = _EMPTY_;
-    private String vb08cg = _EMPTY_;
-    private String vb08ch = _EMPTY_;
-    private String vb08ci = _EMPTY_;
-    private String vb08cj = _EMPTY_;
-    private String vb08ck = _EMPTY_;
-    private String vb08cl = _EMPTY_;
-    private String vb08cm = _EMPTY_;
-    private String vb08cn = _EMPTY_;
-    private String vb08co = _EMPTY_;
-    private String vb08w = _EMPTY_;
-    private String vb08wa = _EMPTY_;
-    private String vb08wb = _EMPTY_;
-    private String vb08wc = _EMPTY_;
-    private String vb08wd = _EMPTY_;
-    private String vb08we = _EMPTY_;
-    private String vb09 = _EMPTY_;
 
 
-    public Form() {
+    public FormVA() {
 
 /*        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
@@ -698,431 +658,27 @@ public class Form extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.va05ix);
     }
 
-    @Bindable
-    public String getVb01() {
-        return vb01;
-    }
 
-    public void setVb01(String vb01) {
-        this.vb01 = vb01;
-        notifyPropertyChanged(BR.vb01);
-    }
-
-    @Bindable
-    public String getVb02() {
-        return vb02;
-    }
-
-    public void setVb02(String vb02) {
-        this.vb02 = vb02;
-        notifyPropertyChanged(BR.vb02);
-    }
-
-    @Bindable
-    public String getVb03() {
-        return vb03;
-    }
-
-    public void setVb03(String vb03) {
-        this.vb03 = vb03;
-        setVb04bd(vb03.equals("2") ? this.vb04bd : "");
-        setVb04bm(vb03.equals("2") ? this.vb04bm : "");
-        setVb04by(vb03.equals("2") ? this.vb04by : "");
-
-        setVb05d(vb03.equals("2") ? this.vb05d : "");
-        setVb05m(vb03.equals("2") ? this.vb05m : "");
-
-        setVb08ca(vb03.equals("2") ? this.vb08ca : "");
-        setVb08cb(vb03.equals("2") ? this.vb08cb : "");
-        setVb08cc(vb03.equals("2") ? this.vb08cc : "");
-        setVb08cd(vb03.equals("2") ? this.vb08cd : "");
-        setVb08ce(vb03.equals("2") ? this.vb08ce : "");
-        setVb08cf(vb03.equals("2") ? this.vb08cf : "");
-        setVb08cg(vb03.equals("2") ? this.vb08cg : "");
-        setVb08ch(vb03.equals("2") ? this.vb08ch : "");
-        setVb08ci(vb03.equals("2") ? this.vb08ci : "");
-
-        setVb05a(vb03.equals("2") ? this.vb05a : "");
-        setVb09(vb03.equals("2") ? this.vb09 : "");
-
-        setFrontfilename(vb03.equals("2") ? this.frontfilename : "");
-        setBackfilename(vb03.equals("2") ? this.backfilename : "");
-        setChildfilename(vb03.equals("2") ? this.childfilename : "");
-
-        setVb08w(vb03.equals("1") ? this.vb08w : "");
-        notifyPropertyChanged(BR.vb03);
-    }
-
-    @Bindable
-    public String getVb04a() {
-        return vb04a;
-    }
-
-    public void setVb04a(String vb04a) {
-        this.vb04a = vb04a;
-        notifyPropertyChanged(BR.vb04a);
-    }
-
-    @Bindable
-    public String getVb04() {
-        return vb04;
-    }
-
-    public void setVb04(String vb04) {
-        this.vb04 = vb04;
-        notifyPropertyChanged(BR.vb04);
-    }
-
-    @Bindable
-    public String getVb04bd() {
-        return vb04bd;
-    }
-
-    public void setVb04bd(String vb04bd) {
-        this.vb04bd = vb04bd;
-        CaluculateAge();
-        notifyPropertyChanged(BR.vb04bd);
-    }
-
-    @Bindable
-    public String getVb04bm() {
-        return vb04bm;
-    }
-
-    public void setVb04bm(String vb04bm) {
-        this.vb04bm = vb04bm;
-        CaluculateAge();
-        notifyPropertyChanged(BR.vb04bm);
-    }
-
-    @Bindable
-    public String getVb04by() {
-        return vb04by;
-    }
-
-    public void setVb04by(String vb04by) {
-        this.vb04by = vb04by;
-        CaluculateAge();
-        notifyPropertyChanged(BR.vb04by);
-    }
-
-    @Bindable
-    public String getVb05y() {
-        return vb05y;
-    }
-
-    public void setVb05y(String vb05y) {
-        this.vb05y = vb05y;
-        notifyPropertyChanged(BR.vb05y);
-    }
-
-    @Bindable
-    public String getVb05m() {
-        return vb05m;
-    }
-
-    public void setVb05m(String vb05m) {
-        this.vb05m = vb05m;
-        notifyPropertyChanged(BR.vb05m);
-    }
-
-    @Bindable
-    public String getVb05d() {
-        return vb05d;
-    }
-
-    public void setVb05d(String vb05d) {
-        this.vb05d = vb05d;
-        notifyPropertyChanged(BR.vb05d);
-    }
-
-    @Bindable
-    public String getVb05a() {
-        return vb05a;
-    }
-
-    public void setVb05a(String vb05a) {
-        this.vb05a = vb05a;
-        notifyPropertyChanged(BR.vb05a);
-    }
-
-    @Bindable
-    public String getVb06() {
-        return vb06;
-    }
-
-    public void setVb06(String vb06) {
-        this.vb06 = vb06;
-        notifyPropertyChanged(BR.vb06);
-    }
-
-    @Bindable
-    public String getVb07() {
-        return vb07;
-    }
-
-    public void setVb07(String vb07) {
-        this.vb07 = vb07;
-        notifyPropertyChanged(BR.vb07);
-    }
-
-    @Bindable
-    public String getVb08c() {
-        return vb08c;
-    }
-
-    public void setVb08c(String vb08c) {
-        this.vb08c = vb08c;
-        notifyPropertyChanged(BR.vb08c);
-    }
-
-    @Bindable
-    public String getVb08ca() {
-        return vb08ca;
-    }
-
-    public void setVb08ca(String vb08ca) {
-        this.vb08ca = vb08ca;
-        notifyPropertyChanged(BR.vb08ca);
-    }
-
-    @Bindable
-    public String getVb08cb() {
-        return vb08cb;
-    }
-
-    public void setVb08cb(String vb08cb) {
-        this.vb08cb = vb08cb;
-        notifyPropertyChanged(BR.vb08cb);
-    }
-
-    @Bindable
-    public String getVb08cc() {
-        return vb08cc;
-    }
-
-    public void setVb08cc(String vb08cc) {
-        this.vb08cc = vb08cc;
-        notifyPropertyChanged(BR.vb08cc);
-    }
-
-    @Bindable
-    public String getVb08cd() {
-        return vb08cd;
-    }
-
-    public void setVb08cd(String vb08cd) {
-        this.vb08cd = vb08cd;
-        notifyPropertyChanged(BR.vb08cd);
-    }
-
-    @Bindable
-    public String getVb08ce() {
-        return vb08ce;
-    }
-
-    public void setVb08ce(String vb08ce) {
-        this.vb08ce = vb08ce;
-        notifyPropertyChanged(BR.vb08ce);
-    }
-
-    @Bindable
-    public String getVb08cf() {
-        return vb08cf;
-    }
-
-    public void setVb08cf(String vb08cf) {
-        this.vb08cf = vb08cf;
-        notifyPropertyChanged(BR.vb08cf);
-    }
-
-    @Bindable
-    public String getVb08cg() {
-        return vb08cg;
-    }
-
-    public void setVb08cg(String vb08cg) {
-        this.vb08cg = vb08cg;
-        notifyPropertyChanged(BR.vb08cg);
-    }
-
-    @Bindable
-    public String getVb08ch() {
-        return vb08ch;
-    }
-
-    public void setVb08ch(String vb08ch) {
-        this.vb08ch = vb08ch;
-        notifyPropertyChanged(BR.vb08ch);
-    }
-
-    @Bindable
-    public String getVb08ci() {
-        return vb08ci;
-    }
-
-    public void setVb08ci(String vb08ci) {
-        this.vb08ci = vb08ci;
-        notifyPropertyChanged(BR.vb08ci);
-    }
-
-    @Bindable
-    public String getVb08cj() {
-        return vb08cj;
-    }
-
-    public void setVb08cj(String vb08cj) {
-        this.vb08cj = vb08cj;
-        notifyPropertyChanged(BR.vb08cj);
-    }
-
-    @Bindable
-    public String getVb08ck() {
-        return vb08ck;
-    }
-
-    public void setVb08ck(String vb08ck) {
-        this.vb08ck = vb08ck;
-        notifyPropertyChanged(BR.vb08ck);
-    }
-
-    @Bindable
-    public String getVb08cl() {
-        return vb08cl;
-    }
-
-    public void setVb08cl(String vb08cl) {
-        this.vb08cl = vb08cl;
-        notifyPropertyChanged(BR.vb08cl);
-    }
-
-    @Bindable
-    public String getVb08cm() {
-        return vb08cm;
-    }
-
-    public void setVb08cm(String vb08cm) {
-        this.vb08cm = vb08cm;
-        notifyPropertyChanged(BR.vb08cm);
-    }
-
-    @Bindable
-    public String getVb08cn() {
-        return vb08cn;
-    }
-
-    public void setVb08cn(String vb08cn) {
-        this.vb08cn = vb08cn;
-        notifyPropertyChanged(BR.vb08cn);
-    }
-
-    @Bindable
-    public String getVb08co() {
-        return vb08co;
-    }
-
-    public void setVb08co(String vb08co) {
-        this.vb08co = vb08co;
-        notifyPropertyChanged(BR.vb08co);
-    }
-
-    @Bindable
-    public String getVb08w() {
-        return vb08w;
-    }
-
-    public void setVb08w(String vb08w) {
-        this.vb08w = vb08w;
-        notifyPropertyChanged(BR.vb08w);
-    }
-
-    @Bindable
-    public String getVb08wa() {
-        return vb08wa;
-    }
-
-    public void setVb08wa(String vb08wa) {
-        if (this.vb08wa.equals(vb08wa)) return; // for all checkboxes
-        this.vb08wa = vb08wa;
-        notifyPropertyChanged(BR.vb08wa);
-    }
-
-    @Bindable
-    public String getVb08wb() {
-        return vb08wb;
-    }
-
-    public void setVb08wb(String vb08wb) {
-        if (this.vb08wb.equals(vb08wb)) return; // for all checkboxes
-        this.vb08wb = vb08wb;
-        notifyPropertyChanged(BR.vb08wb);
-    }
-
-    @Bindable
-    public String getVb08wc() {
-        return vb08wc;
-    }
-
-    public void setVb08wc(String vb08wc) {
-        if (this.vb08wc.equals(vb08wc)) return; // for all checkboxes
-        this.vb08wc = vb08wc;
-        notifyPropertyChanged(BR.vb08wc);
-    }
-
-    @Bindable
-    public String getVb08wd() {
-        return vb08wd;
-    }
-
-    public void setVb08wd(String vb08wd) {
-        if (this.vb08wd.equals(vb08wd)) return; // for all checkboxes
-        this.vb08wd = vb08wd;
-        notifyPropertyChanged(BR.vb08wd);
-    }
-
-    @Bindable
-    public String getVb08we() {
-        return vb08we;
-    }
-
-    public void setVb08we(String vb08we) {
-        if (this.vb08we.equals(vb08we)) return; // for all checkboxes
-        this.vb08we = vb08we;
-        notifyPropertyChanged(BR.vb08we);
-    }
-
-    @Bindable
-    public String getVb09() {
-        return vb09;
-    }
-
-    public void setVb09(String vb09) {
-        this.vb09 = vb09;
-        notifyPropertyChanged(BR.vb09);
-    }
-
-
-    public Form Hydrate(Cursor cursor) throws JSONException {
-        this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_UID));
-        this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_PROJECT_NAME));
-        this.sno = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SNO));
-        this.userName = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYSDATE));
-        this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_DEVICEID));
-        this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_DEVICETAGID));
+    public FormVA Hydrate(Cursor cursor) throws JSONException {
+        this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_UID));
+        this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_PROJECT_NAME));
+        this.sno = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_SNO));
+        this.userName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_USERNAME));
+        this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_SYSDATE));
+        this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_DEVICETAGID));
         //   this.entryType = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ENTRY_TYPE));
-        this.appver = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_APPVERSION));
-        this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ISTATUS));
-        this.synced = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYNC_DATE));
-        this.gpsLat = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_GPSLAT));
-        this.gpsLng = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_GPSLNG));
-        this.gpsDT = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_GPSDATE));
-        this.gpsAcc = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_GPSACC));
+        this.appver = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_APPVERSION));
+        this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_ISTATUS));
+        this.synced = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_SYNC_DATE));
+        this.gpsLat = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_GPSLAT));
+        this.gpsLng = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_GPSLNG));
+        this.gpsDT = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_GPSDATE));
+        this.gpsAcc = cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_GPSACC));
 
-        vAHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_VA)));
-        vBHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_VB)));
+        vAHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsVATable.COLUMN_VA)));
         return this;
     }
 
@@ -1165,43 +721,6 @@ public class Form extends BaseObservable implements Observable {
         }
     }
 
-    public void vBHydrate(String string) throws JSONException {
-        Log.d(TAG, "vBHydrate: " + string);
-        if (string != null) {
-            JSONObject json = null;
-            json = new JSONObject(string);
-            this.vb01 = json.getString("vb01");
-            this.vb02 = json.getString("vb02");
-            this.vb03 = json.getString("vb03");
-            this.vb04a = json.getString("vb04a");
-            this.vb04 = json.getString("vb04");
-            this.vb04bd = json.getString("vb04bd");
-            this.vb04bm = json.getString("vb04bm");
-            this.vb04by = json.getString("vb04by");
-            this.vb05y = json.getString("vb05y");
-            this.vb05m = json.getString("vb05m");
-            this.vb05d = json.getString("vb05d");
-            this.vb05a = json.getString("vb05a");
-            this.vb06 = json.getString("vb06");
-            this.vb07 = json.getString("vb07");
-            this.vb08ca = json.getString("vb08ca");
-            this.vb08cb = json.getString("vb08cb");
-            this.vb08cc = json.getString("vb08cc");
-            this.vb08cd = json.getString("vb08cd");
-            this.vb08ce = json.getString("vb08ce");
-            this.vb08cf = json.getString("vb08cf");
-            this.vb08cg = json.getString("vb08cg");
-            this.vb08ch = json.getString("vb08ch");
-            this.vb08ci = json.getString("vb08ci");
-            this.vb08w = json.getString("vb08w");
-            this.vb09 = json.getString("vb09");
-            this.backfilename = json.getString("backfilename");
-            this.frontfilename = json.getString("frontfilename");
-            this.childfilename = json.getString("childfilename");
-
-        }
-    }
-
     public String vAtoString() throws JSONException {
         Log.d(TAG, "vAtoString: ");
         JSONObject json = new JSONObject();
@@ -1239,113 +758,27 @@ public class Form extends BaseObservable implements Observable {
     }
 
 
-    public String vBtoString() throws JSONException {
-        Log.d(TAG, "vBtoString: ");
-        JSONObject json = new JSONObject();
-        json.put("vb01", vb01)
-                .put("vb02", vb02)
-                .put("vb03", vb03)
-                .put("vb04a", vb04a)
-                .put("vb04", vb04)
-                .put("vb04bd", vb04bd)
-                .put("vb04bm", vb04bm)
-                .put("vb04by", vb04by)
-                .put("vb05y", vb05y)
-                .put("vb05m", vb05m)
-                .put("vb05d", vb05d)
-                .put("vb05a", vb05a)
-                .put("vb06", vb06)
-                .put("vb07", vb07)
-                .put("vb08ca", vb08ca)
-                .put("vb08cb", vb08cb)
-                .put("vb08cc", vb08cc)
-                .put("vb08cd", vb08cd)
-                .put("vb08ce", vb08ce)
-                .put("vb08cf", vb08cf)
-                .put("vb08cg", vb08cg)
-                .put("vb08ch", vb08ch)
-                .put("vb08ci", vb08ci)
-                .put("vb08w", vb08w)
-                .put("vb09", vb09)
-                .put("backfilename", backfilename)
-                .put("frontfilename", frontfilename)
-                .put("childfilename", childfilename);
-        return json.toString();
-    }
-
-
     public JSONObject toJSONObject() throws JSONException {
         JSONObject json = new JSONObject();
 
-        json.put(FormsTable.COLUMN_ID, this.id);
-        json.put(FormsTable.COLUMN_UID, this.uid);
-        json.put(FormsTable.COLUMN_PROJECT_NAME, this.projectName);
-        json.put(FormsTable.COLUMN_SNO, this.sno);
-        json.put(FormsTable.COLUMN_USERNAME, this.userName);
-        json.put(FormsTable.COLUMN_SYSDATE, this.sysDate);
-        json.put(FormsTable.COLUMN_DEVICEID, this.deviceId);
-        json.put(FormsTable.COLUMN_DEVICETAGID, this.deviceTag);
+        json.put(FormsVATable.COLUMN_ID, this.id);
+        json.put(FormsVATable.COLUMN_UID, this.uid);
+        json.put(FormsVATable.COLUMN_PROJECT_NAME, this.projectName);
+        json.put(FormsVATable.COLUMN_SNO, this.sno);
+        json.put(FormsVATable.COLUMN_USERNAME, this.userName);
+        json.put(FormsVATable.COLUMN_SYSDATE, this.sysDate);
+        json.put(FormsVATable.COLUMN_DEVICEID, this.deviceId);
+        json.put(FormsVATable.COLUMN_DEVICETAGID, this.deviceTag);
         //    json.put(FormsTable.COLUMN_ENTRY_TYPE, this.entryType);
-        json.put(FormsTable.COLUMN_ISTATUS, this.iStatus);
-        json.put(FormsTable.COLUMN_SYNCED, this.synced);
-        json.put(FormsTable.COLUMN_SYNC_DATE, this.syncDate);
-        json.put(FormsTable.COLUMN_APPVERSION, this.appver);
-        json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat);
-        json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng);
-        json.put(FormsTable.COLUMN_GPSDATE, this.gpsDT);
-        json.put(FormsTable.COLUMN_GPSACC, this.gpsAcc);
-        json.put(FormsTable.COLUMN_VA, new JSONObject(vAtoString()));
-        json.put(FormsTable.COLUMN_VB, new JSONObject(vBtoString()));
+        json.put(FormsVATable.COLUMN_ISTATUS, this.iStatus);
+        json.put(FormsVATable.COLUMN_SYNCED, this.synced);
+        json.put(FormsVATable.COLUMN_SYNC_DATE, this.syncDate);
+        json.put(FormsVATable.COLUMN_APPVERSION, this.appver);
+        json.put(FormsVATable.COLUMN_GPSLAT, this.gpsLat);
+        json.put(FormsVATable.COLUMN_GPSLNG, this.gpsLng);
+        json.put(FormsVATable.COLUMN_GPSDATE, this.gpsDT);
+        json.put(FormsVATable.COLUMN_GPSACC, this.gpsAcc);
+        json.put(FormsVATable.COLUMN_VA, new JSONObject(vAtoString()));
         return json;
-    }
-
-
-    private void CaluculateAge() {
-        Log.d(TAG, "CaluculateAge: " + this.vb04by + "-" + this.vb04bm + "-" + this.vb04bd);
-
-        if (!this.vb04by.equals("") && !this.vb04by.equals("9998") && !this.vb04bm.equals("") && !this.vb04bd.equals("")) {
-
-            int day = !this.vb04bd.equals("98") ? Integer.parseInt(this.vb04bd) : 15;
-            int month = !this.vb04bm.equals("98") ? Integer.parseInt(this.vb04bm) : 6;
-            int year = Integer.parseInt(this.vb04by);
-
-            SimpleDateFormat df = new SimpleDateFormat("yyyy MM dd", Locale.ENGLISH);
-            String todayDate = df.format(Calendar.getInstance().getTime());
-            Calendar cal = Calendar.getInstance();
-            Calendar cur = Calendar.getInstance();
-
-            try {
-                cal.setTime(df.parse(year + " " + month + " " + day));
-                long millis = System.currentTimeMillis() - cal.getTimeInMillis();
-                cal.setTimeInMillis(millis);
-
-             /*   int mYear = cal.get(Calendar.YEAR)-1970;
-                int mMonth = cal.get(Calendar.MONTH);
-                int mDay = cal.get(Calendar.DAY_OF_MONTH)-1;
-
-                Log.d(TAG, "CaluculateAge: " + (mYear) + "-" + mMonth + "-" + mDay);
-*/
-                long tYear = MILLISECONDS.toDays(millis) / 365;
-                long tMonth = (MILLISECONDS.toDays(millis) - (tYear * 365)) / 30;
-                long tDay = MILLISECONDS.toDays(millis) - ((tYear * 365) + (tMonth * 30));
-
-                Log.d(TAG, "CaluculateAge: Y-" + tYear + " M-" + tMonth + " D-" + tDay);
-                setVb05d(String.valueOf(tDay));
-                setVb05m(String.valueOf(tMonth));
-                setVb05y(String.valueOf(tYear));
-                //setAge(String.valueOf(((tYear) * 12) + tMonth));
-
-
-        /*        String.format("%d min, %d sec",
-                        ,
-                        TimeUnit.MILLISECONDS.toSeconds(millis) -
-                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
-                );*/
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-        }
     }
 }

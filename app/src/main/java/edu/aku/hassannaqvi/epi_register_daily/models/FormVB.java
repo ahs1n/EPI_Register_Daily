@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.models;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp._EMPTY_;
 
@@ -14,7 +15,9 @@ import androidx.databinding.PropertyChangeRegistry;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -32,6 +35,7 @@ public class FormVB extends BaseObservable implements Observable {
     // APP VARIABLES
     private String id = _EMPTY_;
     private String uid = _EMPTY_;
+    private String uuid = _EMPTY_;
     private String userName = _EMPTY_;
     private String sysDate = _EMPTY_;
     private String sno = _EMPTY_;
@@ -44,6 +48,13 @@ public class FormVB extends BaseObservable implements Observable {
     private String synced = _EMPTY_;
     private String syncDate = _EMPTY_;
     private String entryType = _EMPTY_;
+    private String backfilename = _EMPTY_;
+    private String frontfilename = _EMPTY_;
+    private String childfilename = _EMPTY_;
+    private String gpsLat = _EMPTY_;
+    private String gpsLng = _EMPTY_;
+    private String gpsDT = _EMPTY_;
+    private String gpsAcc = _EMPTY_;
 
     // FIELD VARIABLES
     private String vb01 = _EMPTY_;
@@ -51,6 +62,9 @@ public class FormVB extends BaseObservable implements Observable {
     private String vb03 = _EMPTY_;
     private String vb04a = _EMPTY_;
     private String vb04 = _EMPTY_;
+    private String vb04bd = _EMPTY_;
+    private String vb04bm = _EMPTY_;
+    private String vb04by = _EMPTY_;
     private String vb05y = _EMPTY_;
     private String vb05m = _EMPTY_;
     private String vb05d = _EMPTY_;
@@ -98,7 +112,7 @@ public class FormVB extends BaseObservable implements Observable {
         setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
         setDeviceId(MainApp.deviceid);
-        //   setUuid(MainApp.form.getUid());  // not applicable in Form table
+        setUuid(MainApp.formVA.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
         // setEntryType(String.valueOf(MainApp.entryType));
@@ -127,6 +141,14 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     @Bindable
@@ -229,6 +251,82 @@ public class FormVB extends BaseObservable implements Observable {
 
 
     @Bindable
+    public String getBackfilename() {
+        return backfilename;
+    }
+
+    public void setBackfilename(String backfilename) {
+        if (this.backfilename.equals(backfilename)) return;
+        this.backfilename = backfilename;
+
+        notifyPropertyChanged(BR.backfilename);
+    }
+
+    @Bindable
+    public String getFrontfilename() {
+        return frontfilename;
+    }
+
+    public void setFrontfilename(String frontfilename) {
+        if (this.frontfilename.equals(frontfilename)) return;
+        this.frontfilename = frontfilename;
+
+        notifyPropertyChanged(BR.frontfilename);
+    }
+
+    @Bindable
+    public String getChildfilename() {
+        return childfilename;
+    }
+
+    public void setChildfilename(String childfilename) {
+        if (this.childfilename.equals(childfilename)) return;
+        this.childfilename = childfilename;
+
+        notifyPropertyChanged(BR.childfilename);
+    }
+
+    @Bindable
+    public String getGpsLat() {
+        return gpsLat;
+    }
+
+    public void setGpsLat(String gpsLat) {
+        this.gpsLat = gpsLat;
+        notifyPropertyChanged(BR.gpsLat);
+    }
+
+    @Bindable
+    public String getGpsLng() {
+        return gpsLng;
+    }
+
+    public void setGpsLng(String gpsLng) {
+        this.gpsLng = gpsLng;
+        notifyPropertyChanged(BR.gpsLng);
+    }
+
+    @Bindable
+    public String getGpsDT() {
+        return gpsDT;
+    }
+
+    public void setGpsDT(String gpsDT) {
+        this.gpsDT = gpsDT;
+        notifyPropertyChanged(BR.gpsDT);
+    }
+
+    @Bindable
+    public String getGpsAcc() {
+        return gpsAcc;
+    }
+
+    public void setGpsAcc(String gpsAcc) {
+        this.gpsAcc = gpsAcc;
+        notifyPropertyChanged(BR.gpsAcc);
+    }
+
+    @Bindable
     public String getVb01() {
         return vb01;
     }
@@ -255,6 +353,10 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVb03(String vb03) {
         this.vb03 = vb03;
+        setVb04bd(vb03.equals("2") ? this.vb04bd : "");
+        setVb04bm(vb03.equals("2") ? this.vb04bm : "");
+        setVb04by(vb03.equals("2") ? this.vb04by : "");
+
         setVb05d(vb03.equals("2") ? this.vb05d : "");
         setVb05m(vb03.equals("2") ? this.vb05m : "");
 
@@ -267,6 +369,13 @@ public class FormVB extends BaseObservable implements Observable {
         setVb08cg(vb03.equals("2") ? this.vb08cg : "");
         setVb08ch(vb03.equals("2") ? this.vb08ch : "");
         setVb08ci(vb03.equals("2") ? this.vb08ci : "");
+
+        setVb05a(vb03.equals("2") ? this.vb05a : "");
+        setVb09(vb03.equals("2") ? this.vb09 : "");
+
+        setFrontfilename(vb03.equals("2") ? this.frontfilename : "");
+        setBackfilename(vb03.equals("2") ? this.backfilename : "");
+        setChildfilename(vb03.equals("2") ? this.childfilename : "");
 
         setVb08w(vb03.equals("1") ? this.vb08w : "");
         notifyPropertyChanged(BR.vb03);
@@ -290,6 +399,39 @@ public class FormVB extends BaseObservable implements Observable {
     public void setVb04(String vb04) {
         this.vb04 = vb04;
         notifyPropertyChanged(BR.vb04);
+    }
+
+    @Bindable
+    public String getVb04bd() {
+        return vb04bd;
+    }
+
+    public void setVb04bd(String vb04bd) {
+        this.vb04bd = vb04bd;
+        CaluculateAge();
+        notifyPropertyChanged(BR.vb04bd);
+    }
+
+    @Bindable
+    public String getVb04bm() {
+        return vb04bm;
+    }
+
+    public void setVb04bm(String vb04bm) {
+        this.vb04bm = vb04bm;
+        CaluculateAge();
+        notifyPropertyChanged(BR.vb04bm);
+    }
+
+    @Bindable
+    public String getVb04by() {
+        return vb04by;
+    }
+
+    public void setVb04by(String vb04by) {
+        this.vb04by = vb04by;
+        CaluculateAge();
+        notifyPropertyChanged(BR.vb04by);
     }
 
     @Bindable
@@ -591,6 +733,7 @@ public class FormVB extends BaseObservable implements Observable {
     public FormVB Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UUID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_PROJECT_NAME));
         this.sno = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SNO));
         this.userName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_USERNAME));
@@ -602,6 +745,10 @@ public class FormVB extends BaseObservable implements Observable {
         this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ISTATUS));
         this.synced = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYNCED));
         this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYNC_DATE));
+        this.gpsLat = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_GPSLAT));
+        this.gpsLng = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_GPSLNG));
+        this.gpsDT = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_GPSDATE));
+        this.gpsAcc = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_GPSACC));
 
         vBHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VB)));
         return this;
@@ -617,6 +764,9 @@ public class FormVB extends BaseObservable implements Observable {
             this.vb03 = json.getString("vb03");
             this.vb04a = json.getString("vb04a");
             this.vb04 = json.getString("vb04");
+            this.vb04bd = json.getString("vb04bd");
+            this.vb04bm = json.getString("vb04bm");
+            this.vb04by = json.getString("vb04by");
             this.vb05y = json.getString("vb05y");
             this.vb05m = json.getString("vb05m");
             this.vb05d = json.getString("vb05d");
@@ -632,18 +782,11 @@ public class FormVB extends BaseObservable implements Observable {
             this.vb08cg = json.getString("vb08cg");
             this.vb08ch = json.getString("vb08ch");
             this.vb08ci = json.getString("vb08ci");
-            this.vb08cj = json.getString("vb08cj");
-            this.vb08ck = json.getString("vb08ck");
-            this.vb08cl = json.getString("vb08cl");
-            this.vb08cm = json.getString("vb08cm");
-            this.vb08cn = json.getString("vb08cn");
-            this.vb08co = json.getString("vb08co");
-            this.vb08wa = json.getString("vb08wa");
-            this.vb08wb = json.getString("vb08wb");
-            this.vb08wc = json.getString("vb08wc");
-            this.vb08wd = json.getString("vb08wd");
-            this.vb08we = json.getString("vb08we");
+            this.vb08w = json.getString("vb08w");
             this.vb09 = json.getString("vb09");
+            this.backfilename = json.getString("backfilename");
+            this.frontfilename = json.getString("frontfilename");
+            this.childfilename = json.getString("childfilename");
 
         }
     }
@@ -657,6 +800,9 @@ public class FormVB extends BaseObservable implements Observable {
                 .put("vb03", vb03)
                 .put("vb04a", vb04a)
                 .put("vb04", vb04)
+                .put("vb04bd", vb04bd)
+                .put("vb04bm", vb04bm)
+                .put("vb04by", vb04by)
                 .put("vb05y", vb05y)
                 .put("vb05m", vb05m)
                 .put("vb05d", vb05d)
@@ -672,18 +818,11 @@ public class FormVB extends BaseObservable implements Observable {
                 .put("vb08cg", vb08cg)
                 .put("vb08ch", vb08ch)
                 .put("vb08ci", vb08ci)
-                .put("vb08cj", vb08cj)
-                .put("vb08ck", vb08ck)
-                .put("vb08cl", vb08cl)
-                .put("vb08cm", vb08cm)
-                .put("vb08cn", vb08cn)
-                .put("vb08co", vb08co)
-                .put("vb08wa", vb08wa)
-                .put("vb08wb", vb08wb)
-                .put("vb08wc", vb08wc)
-                .put("vb08wd", vb08wd)
-                .put("vb08we", vb08we)
-                .put("vb09", vb09);
+                .put("vb08w", vb08w)
+                .put("vb09", vb09)
+                .put("backfilename", backfilename)
+                .put("frontfilename", frontfilename)
+                .put("childfilename", childfilename);
         return json.toString();
     }
 
@@ -694,6 +833,7 @@ public class FormVB extends BaseObservable implements Observable {
         json.put(FormsVBTable.COLUMN_ID, this.id);
         json.put(FormsVBTable.COLUMN_UID, this.uid);
         json.put(FormsVBTable.COLUMN_PROJECT_NAME, this.projectName);
+        json.put(FormsVBTable.COLUMN_UUID, this.uuid);
         json.put(FormsVBTable.COLUMN_SNO, this.sno);
         json.put(FormsVBTable.COLUMN_USERNAME, this.userName);
         json.put(FormsVBTable.COLUMN_SYSDATE, this.sysDate);
@@ -704,7 +844,61 @@ public class FormVB extends BaseObservable implements Observable {
         json.put(FormsVBTable.COLUMN_SYNCED, this.synced);
         json.put(FormsVBTable.COLUMN_SYNC_DATE, this.syncDate);
         json.put(FormsVBTable.COLUMN_APPVERSION, this.appver);
+        json.put(FormsVBTable.COLUMN_GPSLAT, this.gpsLat);
+        json.put(FormsVBTable.COLUMN_GPSLNG, this.gpsLng);
+        json.put(FormsVBTable.COLUMN_GPSDATE, this.gpsDT);
+        json.put(FormsVBTable.COLUMN_GPSACC, this.gpsAcc);
         json.put(FormsVBTable.COLUMN_VB, new JSONObject(vBtoString()));
         return json;
+    }
+
+
+    private void CaluculateAge() {
+        Log.d(TAG, "CaluculateAge: " + this.vb04by + "-" + this.vb04bm + "-" + this.vb04bd);
+
+        if (!this.vb04by.equals("") && !this.vb04by.equals("9998") && !this.vb04bm.equals("") && !this.vb04bd.equals("")) {
+
+            int day = !this.vb04bd.equals("98") ? Integer.parseInt(this.vb04bd) : 15;
+            int month = !this.vb04bm.equals("98") ? Integer.parseInt(this.vb04bm) : 6;
+            int year = Integer.parseInt(this.vb04by);
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyy MM dd", Locale.ENGLISH);
+            String todayDate = df.format(Calendar.getInstance().getTime());
+            Calendar cal = Calendar.getInstance();
+            Calendar cur = Calendar.getInstance();
+
+            try {
+                cal.setTime(df.parse(year + " " + month + " " + day));
+                long millis = System.currentTimeMillis() - cal.getTimeInMillis();
+                cal.setTimeInMillis(millis);
+
+             /*   int mYear = cal.get(Calendar.YEAR)-1970;
+                int mMonth = cal.get(Calendar.MONTH);
+                int mDay = cal.get(Calendar.DAY_OF_MONTH)-1;
+
+                Log.d(TAG, "CaluculateAge: " + (mYear) + "-" + mMonth + "-" + mDay);
+*/
+                long tYear = MILLISECONDS.toDays(millis) / 365;
+                long tMonth = (MILLISECONDS.toDays(millis) - (tYear * 365)) / 30;
+                long tDay = MILLISECONDS.toDays(millis) - ((tYear * 365) + (tMonth * 30));
+
+                Log.d(TAG, "CaluculateAge: Y-" + tYear + " M-" + tMonth + " D-" + tDay);
+                setVb05d(String.valueOf(tDay));
+                setVb05m(String.valueOf(tMonth));
+                setVb05y(String.valueOf(tYear));
+                //setAge(String.valueOf(((tYear) * 12) + tMonth));
+
+
+        /*        String.format("%d min, %d sec",
+                        ,
+                        TimeUnit.MILLISECONDS.toSeconds(millis) -
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
+                );*/
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 }

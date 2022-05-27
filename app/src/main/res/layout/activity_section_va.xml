@@ -7,7 +7,7 @@
 
         <variable
             name="form"
-            type="edu.aku.hassannaqvi.epi_register_daily.models.Form" />
+            type="edu.aku.hassannaqvi.epi_register_daily.models.FormVA" />
 
         <variable
             name="callback"

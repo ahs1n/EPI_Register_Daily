@@ -54,15 +54,15 @@ public class EntryLog extends BaseObservable implements Observable {
     public void populateMeta() {
 
         setProjectName(PROJECT_NAME);
-        setUuid(MainApp.form.getUid());  // not applicable in Form table
+        setUuid(MainApp.formVA.getUid());  // not applicable in Form table
         setUserName(MainApp.user.getUserName());
-        setSysDate(MainApp.form.getSysDate());
+        setSysDate(MainApp.formVA.getSysDate());
         setEntryDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
 //        setPsuCode(MainApp.form.getPsuCode());
-        setiStatus(MainApp.form.getiStatus());
-        setiStatus96x(MainApp.form.getiStatus96x());
+        setiStatus(MainApp.formVA.getiStatus());
+        setiStatus96x(MainApp.formVA.getiStatus96x());
         setAppver(MainApp.appInfo.getAppVersion());
-        setEntryType(MainApp.form.getEntryType());
+        setEntryType(MainApp.formVA.getEntryType());
         setDeviceId(MainApp.deviceid);
 
     }

@@ -1,9 +1,13 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.form;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,10 +20,11 @@ import org.json.JSONException;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
+import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 
 public class SectionVBActivity extends AppCompatActivity {
@@ -32,9 +37,37 @@ public class SectionVBActivity extends AppCompatActivity {
         setTheme(R.style.AppThemeUrdu);
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_vb);
-        bi.setForm(form);
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
+        setGPS();
+
+        formVB = new FormVB();
+        bi.setForm(formVB);
+    }
+
+
+    private boolean insertNewRecord() {
+        if (!formVB.getUid().equals("") || MainApp.superuser) return true;
+
+        formVB.populateMeta();
+
+        long rowId = 0;
+        try {
+            rowId = db.addFormVB(formVB);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        formVB.setId(String.valueOf(rowId));
+        if (rowId > 0) {
+            formVB.setUid(formVB.getDeviceId() + formVB.getId());
+            db.updatesFormVBColumn(FormsVBTable.COLUMN_UID, formVB.getUid());
+            return true;
+        } else {
+            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
 
@@ -43,8 +76,10 @@ public class SectionVBActivity extends AppCompatActivity {
 
         int updcount = 0;
         try {
-            updcount = db.updatesFormColumn(TableContracts.FormsTable.COLUMN_VB, form.vBtoString());
+            updcount = db.updatesFormVBColumn(FormsVBTable.COLUMN_VB, formVB.vBtoString());
         } catch (JSONException e) {
+            e.printStackTrace();
+            Log.d(TAG, R.string.upd_db + e.getMessage());
             Toast.makeText(this, R.string.upd_db + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         if (updcount == 1) {
@@ -58,10 +93,11 @@ public class SectionVBActivity extends AppCompatActivity {
 
     public void btnContinue(View view) {
         if (!formValidation()) return;
+        if (!insertNewRecord()) return;
         if (updateDB()) {
             finish();
             Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, SectionVBActivity.class));
         } else {
             Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
         }
@@ -79,41 +115,41 @@ public class SectionVBActivity extends AppCompatActivity {
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
             return false;
         }
-        if (form.getVb03().equals("2") && form.getFrontfilename().equals("")) {
+        if (formVB.getVb03().equals("2") && formVB.getFrontfilename().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.frontFileName, "Please take front photo of Vaccination Card.");
         }
 
         // Check back photo taken
-        if (form.getVb03().equals("2") && form.getBackfilename().equals("")) {
+        if (formVB.getVb03().equals("2") && formVB.getBackfilename().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.backFileName, "Please take back photo of Vaccination Card.");
 
         }
 
-        if (bi.vb08ca98.isChecked() && form.getVb08ca().equals(""))
+        if (bi.vb08ca98.isChecked() && formVB.getVb08ca().equals(""))
             return Validator.emptyRadioButton(this, bi.vb08ca, bi.vb08caa);
 
-        if (bi.vb08cb98.isChecked() && form.getVb08cb().equals(""))
+        if (bi.vb08cb98.isChecked() && formVB.getVb08cb().equals(""))
             return Validator.emptyRadioButton(this, bi.vb08cb, bi.vb08cba);
 
-        if (bi.vb08cc98.isChecked() && form.getVb08cc().equals(""))
+        if (bi.vb08cc98.isChecked() && formVB.getVb08cc().equals(""))
             return Validator.emptyRadioButton(this, bi.vb08cc, bi.vb08cca);
 
-        if (bi.vb08cd98.isChecked() && form.getVb08cd().equals(""))
+        if (bi.vb08cd98.isChecked() && formVB.getVb08cd().equals(""))
             return Validator.emptyRadioButton(this, bi.vb08cd, bi.vb08cda);
 
-        if (bi.vb08ce98.isChecked() && form.getVb08ce().equals(""))
+        if (bi.vb08ce98.isChecked() && formVB.getVb08ce().equals(""))
             return Validator.emptyRadioButton(this, bi.vb08ce, bi.vb08cea);
 
-        if (bi.vb08cf98.isChecked() && form.getVb08cf().equals(""))
+        if (bi.vb08cf98.isChecked() && formVB.getVb08cf().equals(""))
             return Validator.emptyRadioButton(this, bi.vb08cf, bi.vb08cfa);
 
-        if (bi.vb08cg98.isChecked() && form.getVb08cg().equals(""))
+        if (bi.vb08cg98.isChecked() && formVB.getVb08cg().equals(""))
             return Validator.emptyRadioButton(this, bi.vb08cg, bi.vb08cga);
 
-        if (bi.vb08ch98.isChecked() && form.getVb08ch().equals(""))
+        if (bi.vb08ch98.isChecked() && formVB.getVb08ch().equals(""))
             return Validator.emptyRadioButton(this, bi.vb08ch, bi.vb08cha);
 
-        if (bi.vb08ci98.isChecked() && form.getVb08ci().equals(""))
+        if (bi.vb08ci98.isChecked() && formVB.getVb08ci().equals(""))
             return Validator.emptyRadioButton(this, bi.vb08ci, bi.vb08cia);
 
 
@@ -132,8 +168,8 @@ public class SectionVBActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, TakePhoto.class);
 
-        intent.putExtra("picID", form.getVb02() + "_" + MainApp.form.getVb02() + "_");
-        intent.putExtra("Name", form.getVb04a());
+        intent.putExtra("picID", formVB.getVb02() + "_" + MainApp.formVB.getVb02() + "_");
+        intent.putExtra("Name", formVB.getVb04a());
 
         if (view.getId() == R.id.frontPhoto) {
             intent.putExtra("picView", "front".toUpperCase());
@@ -205,5 +241,33 @@ public class SectionVBActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    public void setGPS() {
+        SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
+
+            if (lat == "0" && lang == "0") {
+                Toast.makeText(this, "Could not obtained points", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
+            }
+
+            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+            formVB.setGpsLat(lat);
+            formVB.setGpsLng(lang);
+            formVB.setGpsAcc(acc);
+            formVB.setGpsDT(date); // Timestamp is converted to date above
+
+//            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            Log.e(TAG, "setGPS: " + e.getMessage());
+        }
+
     }
 }

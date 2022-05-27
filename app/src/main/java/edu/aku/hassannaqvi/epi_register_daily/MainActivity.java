@@ -13,7 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
-import edu.aku.hassannaqvi.epi_register_daily.models.Form;
+import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity;
@@ -42,18 +42,18 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.openForm:
-                MainApp.form = new Form();
+                MainApp.formVA = new FormVA();
                 finish();
                 startActivity(new Intent(this, SectionVAActivity.class));
                 break;
 
             case R.id.secA:
-                MainApp.form = new Form();
+                MainApp.formVA = new FormVA();
                 startActivity(new Intent(this, SectionVAActivity.class));
                 break;
 
             case R.id.secB:
-                MainApp.form = new Form();
+                MainApp.formVA = new FormVA();
                 startActivity(new Intent(this, SectionVBActivity.class));
                 break;
 

@@ -50,7 +50,8 @@ import java.util.concurrent.TimeUnit;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
@@ -145,25 +146,25 @@ public class SyncActivity extends AppCompatActivity {
                 uploadTables.clear();
                 MainApp.uploadData.clear();
 
-                // FormsVA
-                uploadTables.add(new SyncModel(FormsTable.TABLE_NAME));
+                // FormVA
+                uploadTables.add(new SyncModel(FormsVATable.TABLE_NAME));
                 try {
-                    MainApp.uploadData.add(db.getUnsyncedForm());
+                    MainApp.uploadData.add(db.getUnsyncedFormVA());
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.d(TAG, "ProcessStart: JSONException(Forms): " + e.getMessage());
-                    Toast.makeText(this, "JSONException(Forms): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "ProcessStart: JSONException(FormVA): " + e.getMessage());
+                    Toast.makeText(this, "JSONException(FormVA): " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
-                // FormsVB
-                /*uploadTables.add(new SyncModel(TableContracts.FormsVBTable.TABLE_NAME));
+                // FormVB
+                uploadTables.add(new SyncModel(FormsVBTable.TABLE_NAME));
                 try {
                     MainApp.uploadData.add(db.getUnsyncedFormVB());
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.d(TAG, "ProcessStart: JSONException(FormsVB): " + e.getMessage());
-                    Toast.makeText(this, "JSONException(FormsVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }*/
+                    Log.d(TAG, "ProcessStart: JSONException(FormVB): " + e.getMessage());
+                    Toast.makeText(this, "JSONException(FormVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
 
                 //Entry Log
                 uploadTables.add(new SyncModel(TableContracts.EntryLogTable.TABLE_NAME));
@@ -190,8 +191,8 @@ public class SyncActivity extends AppCompatActivity {
 
                 // set select and filter to default, set again with the table in case of special requirements
 
-                    downloadTables.add(new SyncModel(UsersTable.TABLE_NAME));
-                    downloadTables.add(new SyncModel(VersionTable.TABLE_NAME));
+                downloadTables.add(new SyncModel(UsersTable.TABLE_NAME));
+                downloadTables.add(new SyncModel(VersionTable.TABLE_NAME));
 
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
