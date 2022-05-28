@@ -66,6 +66,12 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredMembersListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
             android:name="edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity"
             android:exported="false"
             android:parentActivityName="edu.aku.hassannaqvi.epi_register_daily.MainActivity"

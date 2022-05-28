@@ -32,6 +32,7 @@ public class Vaccines extends BaseObservable implements Observable {
     // APP VARIABLES
     private String id = _EMPTY_;
     private String uid = _EMPTY_;
+    private String uuid = _EMPTY_;
     private String userName = _EMPTY_;
     private String sysDate = _EMPTY_;
     private String sno = _EMPTY_;
@@ -80,7 +81,7 @@ public class Vaccines extends BaseObservable implements Observable {
         setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
         setDeviceId(MainApp.deviceid);
-        //   setUuid(MainApp.form.getUid());  // not applicable in Form table
+        setUuid(MainApp.formVA.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
         // setEntryType(String.valueOf(MainApp.entryType));
@@ -207,6 +208,14 @@ public class Vaccines extends BaseObservable implements Observable {
 
     public void setSyncDate(String syncDate) {
         this.syncDate = syncDate;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     @Bindable
@@ -378,6 +387,7 @@ public class Vaccines extends BaseObservable implements Observable {
     public Vaccines Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UUID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_PROJECT_NAME));
         this.sno = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SNO));
         this.userName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_USERNAME));
@@ -449,6 +459,7 @@ public class Vaccines extends BaseObservable implements Observable {
 
         json.put(FormsVBTable.COLUMN_ID, this.id);
         json.put(FormsVBTable.COLUMN_UID, this.uid);
+        json.put(FormsVBTable.COLUMN_UUID, this.uuid);
         json.put(FormsVBTable.COLUMN_PROJECT_NAME, this.projectName);
         json.put(FormsVBTable.COLUMN_SNO, this.sno);
         json.put(FormsVBTable.COLUMN_USERNAME, this.userName);

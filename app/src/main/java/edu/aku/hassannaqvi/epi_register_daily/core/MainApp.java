@@ -71,6 +71,8 @@ public class MainApp extends Application {
     public static boolean superuser;
     public static String previousPage;
 
+    public static List<FormVB> formVBList;
+
     public static String DeviceURL = "devices.php";
     public static AppInfo appInfo;
     public static Users user;
@@ -85,23 +87,7 @@ public class MainApp extends Application {
     private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 1; // in Meters
     private static final long MINIMUM_TIME_BETWEEN_UPDATES = 1000; // in Milliseconds
     public static boolean permissionCheck = false;
-    public static int idType = 0;
-    public static boolean mwraComplete;
-    public static boolean childComplete;
-    public static boolean pregComplete;
-
-    public static int mwraCount = 0;
-    public static int childCount = 0;
-    public static int pregCount = 0;
-    public static String selectedFemale = "";
     public static String selectedChild = "";
-    public static String selectedPreg = "";
-    public static int mwraCountComplete = 0;
-    public static int childCountComplete = 0;
-    public static int pregCountComplete = 0;
-    public static List<String> subjectNames;
-    public static String crAddress;
-    public static String wrAddress;
     protected static LocationManager locationManager;
 
 

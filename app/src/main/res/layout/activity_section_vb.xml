@@ -211,7 +211,7 @@
                             android:id="@+id/vb04a"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                             android:hint="@string/vb04a"
                             android:text="@={form.vb04a}" />
                     </LinearLayout>
@@ -250,7 +250,7 @@
                             android:id="@+id/vb04"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                             android:hint="@string/vb04"
                             android:text="@={form.vb04}" />
                     </LinearLayout>
@@ -422,7 +422,7 @@
                                     android:text="@string/vb05y" />
 
                                 <com.edittextpicker.aliazaz.EditTextPicker
-                                    android:id="@+id/vb05y"
+                                    android:id="@+id/ageY"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"

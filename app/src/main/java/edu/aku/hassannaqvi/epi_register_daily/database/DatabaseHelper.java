@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.epi_register_daily.database;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.IBAHC;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ENTRYLOGS;
@@ -29,6 +30,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.EntryLogTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
@@ -251,7 +253,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(column, value);
 
         String selection = FormsVBTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.formVB.getId())};
+        String[] selectionArgs = {String.valueOf(formVB.getId())};
 
         return db.update(FormsVBTable.TABLE_NAME,
                 values,
@@ -1034,4 +1036,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return alc;
         }
     }
+
+
+    public List<FormVB> getAllMembers() {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsVBTable.COLUMN_ID + " ASC";
+        List<FormVB> allForm = new ArrayList<>();
+
+        c = db.query(
+                FormsVBTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            try {
+                FormVB formVB = new FormVB().Hydrate(c);
+                allForm.add(formVB);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        c.close();
+        db.close();
+        return allForm;
+    }
+
+
 }

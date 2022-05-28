@@ -26,6 +26,7 @@ import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
+import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredMembersListActivity;
 
 public class SectionVBActivity extends AppCompatActivity {
     private static final String TAG = "SectionVBActivity";
@@ -160,7 +161,7 @@ public class SectionVBActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, RegisteredMembersListActivity.class));
     }
 
 
