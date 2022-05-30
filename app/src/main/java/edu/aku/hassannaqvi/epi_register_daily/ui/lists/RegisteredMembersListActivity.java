@@ -1,5 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVBList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +41,7 @@ public class RegisteredMembersListActivity extends AppCompatActivity {
                         //Intent data = result.getData();
                         Intent data = result.getData();
 
-                        MainApp.formVBList.add(MainApp.formVB);
+                        formVBList.add(MainApp.formVB);
 
                     }
 
@@ -58,7 +60,7 @@ public class RegisteredMembersListActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_vaccinated_list);
         bi.setCallback(this);
         db = MainApp.appInfo.dbHelper;
-        MainApp.formVBList = db.getAllMembers();
+        formVBList = db.getAllMembers();
         //MainApp.formVBList = new ArrayList<>();
 
 /*        Log.d(TAG, "onCreate: formVBList " + MainApp.formVBList.size());
@@ -72,9 +74,11 @@ public class RegisteredMembersListActivity extends AppCompatActivity {
         }*/
         MainApp.selectedChild = "";
 
-        vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, MainApp.formVBList);
-        bi.rvMwra.setAdapter(vaccinatedMembersAdapter);
-        bi.rvMwra.setLayoutManager(new LinearLayoutManager(this));
+        vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList);
+        bi.rvMember.setAdapter(vaccinatedMembersAdapter);
+
+
+        bi.rvMember.setLayoutManager(new LinearLayoutManager(this));
 
         bi.fab.setOnClickListener(view -> {
             MainApp.formVB = new FormVB();
@@ -97,8 +101,18 @@ public class RegisteredMembersListActivity extends AppCompatActivity {
     private void addMoreMember() {
         MainApp.formVB = new FormVB();
         Intent intent = new Intent(this, SectionVBActivity.class);
-        //   finish();
+        finish();
         MemberInfoLauncher.launch(intent);
+    }
+
+    public void filterForms(View view) {
+        Toast.makeText(this, "Searched", Toast.LENGTH_SHORT).show();
+
+        formVBList = db.getAllMembersByCardNo(bi.memberId.getText().toString());
+        vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList);
+        vaccinatedMembersAdapter.notifyDataSetChanged();
+        bi.rvMember.setAdapter(vaccinatedMembersAdapter);
+
     }
 
     public void btnEnd(View view) {

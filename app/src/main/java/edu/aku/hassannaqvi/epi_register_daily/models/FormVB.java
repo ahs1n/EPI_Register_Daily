@@ -55,6 +55,7 @@ public class FormVB extends BaseObservable implements Observable {
     private String gpsLng = _EMPTY_;
     private String gpsDT = _EMPTY_;
     private String gpsAcc = _EMPTY_;
+    private String cardNo = _EMPTY_;
 
     // FIELD VARIABLES
     private String vb01 = _EMPTY_;
@@ -326,6 +327,14 @@ public class FormVB extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.gpsAcc);
     }
 
+    public String getCardNo() {
+        return cardNo;
+    }
+
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
+    }
+
     @Bindable
     public String getVb01() {
         return vb01;
@@ -343,6 +352,7 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVb02(String vb02) {
         this.vb02 = vb02;
+        setCardNo(vb02);
         notifyPropertyChanged(BR.vb02);
     }
 
@@ -740,6 +750,7 @@ public class FormVB extends BaseObservable implements Observable {
         this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYSDATE));
         this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICETAGID));
+        this.cardNo = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_CARD_NO));
         //   this.entryType = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ENTRY_TYPE));
         this.appver = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_APPVERSION));
         this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ISTATUS));
@@ -839,6 +850,7 @@ public class FormVB extends BaseObservable implements Observable {
         json.put(FormsVBTable.COLUMN_SYSDATE, this.sysDate);
         json.put(FormsVBTable.COLUMN_DEVICEID, this.deviceId);
         json.put(FormsVBTable.COLUMN_DEVICETAGID, this.deviceTag);
+        json.put(FormsVBTable.COLUMN_CARD_NO, this.cardNo);
         //    json.put(FormsVBTable.COLUMN_ENTRY_TYPE, this.entryType);
         json.put(FormsVBTable.COLUMN_ISTATUS, this.iStatus);
         json.put(FormsVBTable.COLUMN_SYNCED, this.synced);

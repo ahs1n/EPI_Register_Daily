@@ -43,6 +43,7 @@ public class TableContracts {
         public static final String COLUMN_GPSACC = "gpsacc";
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";
+        public static final String COLUMN_CARD_NO = "cardNo";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNC_DATE = "sync_date";
         public static final String COLUMN_APPVERSION = "appversion";

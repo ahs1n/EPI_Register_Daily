@@ -130,6 +130,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsVBTable.COLUMN_VB, formVB.vBtoString());
         values.put(FormsVBTable.COLUMN_ISTATUS, formVB.getiStatus());
         values.put(FormsVBTable.COLUMN_DEVICETAGID, formVB.getDeviceTag());
+        values.put(FormsVBTable.COLUMN_CARD_NO, formVB.getCardNo());
         values.put(FormsVBTable.COLUMN_DEVICEID, formVB.getDeviceId());
         values.put(FormsVBTable.COLUMN_APPVERSION, formVB.getAppver());
         values.put(FormsVBTable.COLUMN_SYNCED, formVB.getSynced());
@@ -1048,6 +1049,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy = FormsVBTable.COLUMN_ID + " ASC";
+        List<FormVB> allForm = new ArrayList<>();
+
+        c = db.query(
+                FormsVBTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            try {
+                FormVB formVB = new FormVB().Hydrate(c);
+                allForm.add(formVB);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        c.close();
+        db.close();
+        return allForm;
+    }
+
+
+    public List<FormVB> getAllMembersByCardNo(String cardNo) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+
+        String whereClause = FormsVBTable.COLUMN_CARD_NO + " = ? ";
+        String[] whereArgs = new String[]{cardNo};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsVBTable.COLUMN_ID + " ASC";
+
         List<FormVB> allForm = new ArrayList<>();
 
         c = db.query(

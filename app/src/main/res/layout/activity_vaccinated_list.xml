@@ -55,8 +55,30 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@color/grayLight" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+                    <com.edittextpicker.aliazaz.EditTextPicker
+                        android:id="@+id/memberId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Card Number"
+                        android:importantForAutofill="no"
+                        android:inputType="number" />
+
+                    <Button
+                        android:layout_width="56dp"
+                        android:layout_height="match_parent"
+                        android:drawableStart="@drawable/search"
+                        android:onClick="filterForms" />
+                </LinearLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_mwra"
+                    android:id="@+id/rv_member"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_20sdp"

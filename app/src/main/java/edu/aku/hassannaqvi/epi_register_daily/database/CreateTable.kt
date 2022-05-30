@@ -43,6 +43,7 @@ object CreateTable {
             + FormsVBTable.COLUMN_ISTATUS + " TEXT,"
             + FormsVBTable.COLUMN_DEVICEID + " TEXT,"
             + FormsVBTable.COLUMN_DEVICETAGID + " TEXT,"
+            + FormsVBTable.COLUMN_CARD_NO + " TEXT,"
             + FormsVBTable.COLUMN_SYNCED + " TEXT,"
             + FormsVBTable.COLUMN_SYNC_DATE + " TEXT,"
             + FormsVBTable.COLUMN_APPVERSION + " TEXT,"

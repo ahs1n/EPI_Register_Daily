@@ -44,19 +44,18 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
         FormVB members = this.member.get(position);        // Get element from your dataset at this position and replace the contents of the view
         // with that element
 
-        TextView fName = viewHolder.fName;
+        TextView fName = viewHolder.mName;
         TextView fAgeY = viewHolder.mAgeY;
         TextView fatherName = viewHolder.fatherName;
-        ImageView fmRow = viewHolder.fmRow;
+        TextView cardNo = viewHolder.cardNo;
         ImageView mainIcon = viewHolder.mainIcon;
-        View cloaked = viewHolder.cloak;
-        View indexedBar = viewHolder.indexedBar;
 
         fName.setText(members.getVb04a());
         if (members.getVb03().equals("1")) {
             fAgeY.setText(members.getVb05y() + " Y ");
         } else fAgeY.setText(members.getVb05y() + " Y " + members.getVb05m() + " M ");
         fatherName.setText(members.getVb04());
+        cardNo.setText(members.getVb02());
 
 
         mainIcon.setImageResource(members.getVb03().equals("2") ? (members.getVb05a().equals("1") ? R.drawable.malebabyicon : R.drawable.femalebabyicon) : R.drawable.mwraicon);
@@ -81,31 +80,25 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
      * Provide a reference to the type of views that you are using (custom ViewHolder)
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView fName;
+        private final TextView mName;
         private final TextView mAgeY;
         private final TextView fatherName;
-        //private final TextView addSec;
-        //private final LinearLayout subItem;
-        private final ImageView fmRow;
+        private final TextView cardNo;
         private final ImageView mainIcon;
-        private final View cloak;
-        private final View indexedBar;
 
 
         public ViewHolder(View v) {
             super(v);
-            fName = v.findViewById(R.id.chh02);
+            mName = v.findViewById(R.id.mName);
             mAgeY = v.findViewById(R.id.ageY);
-            fatherName = v.findViewById(R.id.vb04);
-            fmRow = v.findViewById(R.id.cfmRow);
+            fatherName = v.findViewById(R.id.fName);
+            cardNo = v.findViewById(R.id.cardNo);
             mainIcon = v.findViewById(R.id.mainIcon);
-            cloak = v.findViewById(R.id.cloaked);
-            indexedBar = v.findViewById(R.id.indexedBar);
 
         }
 
         public TextView getTextView() {
-            return fName;
+            return mName;
         }
     }
 
