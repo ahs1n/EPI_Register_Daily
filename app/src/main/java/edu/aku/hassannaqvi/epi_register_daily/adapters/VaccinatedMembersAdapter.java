@@ -23,16 +23,24 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
     private final List<FormVB> member;
     private final int completeCount;
     private final boolean motherPresent = false;
+    private final OnItemClickListener onItemClickListener;
 
     /**
      * Initialize the dataset of the Adapter.
      *
      * @param members List<FemaleMembersModel> containing the data to populate views to be used by RecyclerView.
      */
-    public VaccinatedMembersAdapter(Context mContext, List<FormVB> members) {
+   /* public VaccinatedMembersAdapter(Context mContext, List<FormVB> members) {
         this.member = members;
         this.mContext = mContext;
         completeCount = 0;
+
+    }*/
+    public VaccinatedMembersAdapter(Context mContext, List<FormVB> members, OnItemClickListener onItemClickListener) {
+        this.member = members;
+        this.mContext = mContext;
+        completeCount = 0;
+        this.onItemClickListener = onItemClickListener;
 
     }
 
@@ -60,6 +68,8 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
 
         mainIcon.setImageResource(members.getVb03().equals("2") ? (members.getVb05a().equals("1") ? R.drawable.malebabyicon : R.drawable.femalebabyicon) : R.drawable.mwraicon);
 
+
+        viewHolder.itemView.setOnClickListener(view -> onItemClickListener.onItemClick(member.get(position)));
     }
 
     @Override
@@ -74,6 +84,10 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
     @Override
     public int getItemCount() {
         return member.size();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(FormVB member);
     }
 
     /**

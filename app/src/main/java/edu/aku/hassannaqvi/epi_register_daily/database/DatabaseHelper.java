@@ -1111,5 +1111,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForm;
     }
 
+    public FormVB getSelectedMembers(String uid) throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+        String whereClause = FormsVBTable.COLUMN_UID + " = ? ";
+        String[] whereArgs = new String[]{uid};
+        String groupBy = null;
+        String having = null;
+        String orderBy = FormsVBTable.COLUMN_ID + " ASC";
+        FormVB vb = new FormVB();
+        c = db.query(
+                FormsVBTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) vb = new FormVB().Hydrate(c);
+        c.close();
+        db.close();
+        return vb;
+    }
+
 
 }

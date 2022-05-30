@@ -397,6 +397,8 @@
     <string name="vb03b">بچہ</string>
     <string name="vb04a">نام</string>
     <string name="vb04">باپ یا شوہر کا نام</string>
+    <string name="vb0401">باپ کا نام</string>
+    <string name="vb0402">شوہر کا نام</string>
     <string name="vb04b">بچے کی تاریخ پیدائش</string>
     <string name="vb04by">سال</string>
     <string name="vb04bm">مہینے</string>

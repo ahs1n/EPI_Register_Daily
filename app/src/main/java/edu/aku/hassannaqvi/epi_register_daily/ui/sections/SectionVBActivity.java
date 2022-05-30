@@ -32,6 +32,7 @@ public class SectionVBActivity extends AppCompatActivity {
     private static final String TAG = "SectionVBActivity";
     ActivitySectionVbBinding bi;
     private DatabaseHelper db;
+    boolean b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +42,26 @@ public class SectionVBActivity extends AppCompatActivity {
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
         setGPS();
+        setupListeners();
 
-        formVB = new FormVB();
+        b = getIntent().getBooleanExtra("b", true);
+
+        if (b) formVB = new FormVB();
         bi.setForm(formVB);
     }
 
+    private void setupListeners() {
+        bi.vb03.setOnCheckedChangeListener(((radioGroup, i) -> {
+            if (bi.vb03a.isChecked()) {
+                bi.vb04Name.setText(R.string.vb0402);
+            } else bi.vb04Name.setText(R.string.vb0401);
+        }));
+    }
 
+
+    //TODO: Won't insert if Opening Editable
     private boolean insertNewRecord() {
         if (!formVB.getUid().equals("") || MainApp.superuser) return true;
-
         formVB.populateMeta();
 
         long rowId = 0;
@@ -94,7 +106,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
     public void btnContinue(View view) {
         if (!formValidation()) return;
-        if (!insertNewRecord()) return;
+        if (b) if (!insertNewRecord()) return;
         if (updateDB()) {
             finish();
             Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
