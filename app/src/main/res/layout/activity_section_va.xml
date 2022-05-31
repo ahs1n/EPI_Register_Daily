@@ -442,7 +442,7 @@
                                 <EditText
                                     android:id="@+id/va05ax"
                                     android:layout_width="match_parent"
-                                    android:layout_height="55sp"
+                                    android:layout_height="63sp"
                                     android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                     android:enabled="@{form.va05a.equals(`1`)}"
                                     android:gravity="center"

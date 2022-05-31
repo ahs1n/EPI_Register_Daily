@@ -28,7 +28,7 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
     /**
      * Initialize the dataset of the Adapter.
      *
-     * @param members List<FemaleMembersModel> containing the data to populate views to be used by RecyclerView.
+     * @param members List<MembersModel> containing the data to populate views to be used by RecyclerView.
      */
    /* public VaccinatedMembersAdapter(Context mContext, List<FormVB> members) {
         this.member = members;

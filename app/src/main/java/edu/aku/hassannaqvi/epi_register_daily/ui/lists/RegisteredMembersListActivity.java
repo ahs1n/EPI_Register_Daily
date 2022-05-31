@@ -67,7 +67,6 @@ public class RegisteredMembersListActivity extends AppCompatActivity {
 
 
         vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
-            //TODO: UR CODE
             try {
                 formVB = db.getSelectedMembers(member.getUid());
                 Toast.makeText(RegisteredMembersListActivity.this,
