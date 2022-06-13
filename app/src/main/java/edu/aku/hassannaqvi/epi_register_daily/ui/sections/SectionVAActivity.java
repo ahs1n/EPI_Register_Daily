@@ -10,6 +10,8 @@ import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,18 +21,24 @@ import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVaBinding;
+import edu.aku.hassannaqvi.epi_register_daily.models.HealthFacilities;
+import edu.aku.hassannaqvi.epi_register_daily.models.UCs;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredMembersListActivity;
 
 public class SectionVAActivity extends AppCompatActivity {
     private static final String TAG = "SectionVAActivity";
     ActivitySectionVaBinding bi;
     private DatabaseHelper db;
+    private ArrayList<String> ucNames, ucCodes, healthFacilityNames, healthFacilityCodes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,7 @@ public class SectionVAActivity extends AppCompatActivity {
         bi.setForm(formVA);
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
+        populateSpinner();
 
         MainApp.previousPage = formVA.getVa04();
         setGPS();
@@ -49,6 +58,72 @@ public class SectionVAActivity extends AppCompatActivity {
             bi.va05ax.setText("");
         }*/
         formVA.setVa03(MainApp.user.getFullname());
+    }
+
+    private void populateSpinner() {
+
+        Collection<UCs> unionCouncil = db.getAllUCs();
+
+        ucNames = new ArrayList<>();
+        ucCodes = new ArrayList<>();
+        ucNames.add("...");
+        ucCodes.add("...");
+
+        for (UCs uc : unionCouncil) {
+            ucNames.add(uc.getUcName());
+            ucCodes.add(uc.getUcCode());
+        }
+
+        if (MainApp.user.getUserName().contains("test") || MainApp.user.getUserName().contains("dmu") || MainApp.user.getUserName().contains("user")) {
+            ucNames.add("Test UC 1");
+            ucCodes.add("001");
+            ucNames.add("Test UC 2");
+            ucCodes.add("002");
+            ucNames.add("Test UC 3");
+            ucCodes.add("003");
+
+        }
+        // Apply the adapter to the spinner
+        bi.va02.setAdapter(new ArrayAdapter<>(SectionVAActivity.this, R.layout.custom_spinner, ucNames));
+
+        bi.va02.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
+                /*if (position != 0) {
+                    MainApp.selectedUCName = (ucNames.get(bi.va02.getSelectedItemPosition()));
+                    formVA.setVa02(MainApp.selectedUCName);
+                }*/
+                if (position == 0) return;
+                Collection<HealthFacilities> healthFacilities = db.getHealthFacilityByUC(MainApp.user.getDist_id());
+                healthFacilityNames = new ArrayList<>();
+                healthFacilityCodes = new ArrayList<>();
+                healthFacilityNames.add("...");
+                healthFacilityCodes.add("...");
+
+                for (HealthFacilities hf : healthFacilities) {
+                    healthFacilityNames.add(hf.getHfName());
+                    healthFacilityCodes.add(hf.getHfCode());
+                }
+                if (MainApp.user.getUserName().contains("test") || MainApp.user.getUserName().contains("dmu")) {
+
+                    healthFacilityNames.add("Test Facility 1 " + ucNames.get(position));
+                    healthFacilityNames.add("Test Facility 2 " + ucNames.get(position));
+                    healthFacilityNames.add("Test Facility 3 " + ucNames.get(position));
+                    healthFacilityCodes.add(ucCodes.get(position) + "001");
+                    healthFacilityCodes.add(ucCodes.get(position) + "002");
+                    healthFacilityCodes.add(ucCodes.get(position) + "003");
+                }
+                // Apply the adapter to the spinner
+                bi.va02a.setAdapter(new ArrayAdapter<>(SectionVAActivity.this, R.layout.custom_spinner, healthFacilityNames));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public void previousPage(CharSequence s, int start, int before, int count) {

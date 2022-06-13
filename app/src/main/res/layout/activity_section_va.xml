@@ -128,13 +128,48 @@
 
                         </LinearLayout>
 
-                        <EditText
+                        <androidx.appcompat.widget.AppCompatSpinner
                             android:id="@+id/va02"
                             android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/va02" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- va02a  Input   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVva02a"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                            android:hint="@string/va02"
-                            android:text="@={form.va02}" />
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_va02a" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/va02a" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/va02a"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="@string/va02a" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
