@@ -32,7 +32,6 @@ import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVaBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.HealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.models.UCs;
-import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredMembersListActivity;
 
 public class SectionVAActivity extends AppCompatActivity {
     private static final String TAG = "SectionVAActivity";
@@ -185,7 +184,7 @@ public class SectionVAActivity extends AppCompatActivity {
         if (!insertNewRecord()) return;
         if (updateDB()) {
             finish();
-            startActivity(new Intent(this, RegisteredMembersListActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         } else {
             Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
         }

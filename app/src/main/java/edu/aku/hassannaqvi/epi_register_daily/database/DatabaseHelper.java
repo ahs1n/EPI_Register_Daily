@@ -5,9 +5,12 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_VERSION;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ATTENDANCE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ENTRYLOGS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMSVA;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMSVB;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_HF;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_UC;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
 
@@ -29,22 +32,29 @@ import org.json.JSONObject;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.EntryLogTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormWRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
+import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.EntryLog;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormCR;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
+import edu.aku.hassannaqvi.epi_register_daily.models.HealthFacilities;
+import edu.aku.hassannaqvi.epi_register_daily.models.UCs;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.VersionApp;
 
@@ -74,6 +84,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMSVA);
         db.execSQL(SQL_CREATE_FORMSVB);
+        db.execSQL(SQL_CREATE_ATTENDANCE);
+        db.execSQL(SQL_CREATE_HF);
+        db.execSQL(SQL_CREATE_UC);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ENTRYLOGS);
 
@@ -131,6 +144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsVBTable.COLUMN_ISTATUS, formVB.getiStatus());
         values.put(FormsVBTable.COLUMN_DEVICETAGID, formVB.getDeviceTag());
         values.put(FormsVBTable.COLUMN_CARD_NO, formVB.getCardNo());
+        values.put(FormsVBTable.COLUMN_VB04A_NAME, formVB.getVb04aName());
         values.put(FormsVBTable.COLUMN_DEVICEID, formVB.getDeviceId());
         values.put(FormsVBTable.COLUMN_APPVERSION, formVB.getAppver());
         values.put(FormsVBTable.COLUMN_SYNCED, formVB.getSynced());
@@ -140,6 +154,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         newRowId = db.insert(
                 FormsVBTable.TABLE_NAME,
                 FormsVBTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    //ADDITION in DB
+    public Long addAttandence(Attendance attendance) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        ContentValues values = new ContentValues();
+        values.put(AttendanceTable.COLUMN_PROJECT_NAME, attendance.getProjectName());
+        values.put(AttendanceTable.COLUMN_UID, attendance.getUid());
+        values.put(AttendanceTable.COLUMN_SNO, attendance.getSno());
+        values.put(AttendanceTable.COLUMN_USERNAME, attendance.getUserName());
+        values.put(AttendanceTable.COLUMN_SYSDATE, attendance.getSysDate());
+        values.put(AttendanceTable.COLUMN_ATT, attendance.aTTtoString());
+        values.put(AttendanceTable.COLUMN_GPSLAT, attendance.getGpsLat());
+        values.put(AttendanceTable.COLUMN_GPSLNG, attendance.getGpsLng());
+        values.put(AttendanceTable.COLUMN_GPSDATE, attendance.getGpsDT());
+        values.put(AttendanceTable.COLUMN_GPSACC, attendance.getGpsAcc());
+        values.put(AttendanceTable.COLUMN_ISTATUS, attendance.getiStatus());
+        values.put(AttendanceTable.COLUMN_DEVICETAGID, attendance.getDeviceTag());
+        values.put(AttendanceTable.COLUMN_DEVICEID, attendance.getDeviceId());
+        values.put(AttendanceTable.COLUMN_APPVERSION, attendance.getAppver());
+        values.put(AttendanceTable.COLUMN_SYNCED, attendance.getSynced());
+        values.put(AttendanceTable.COLUMN_SYNC_DATE, attendance.getSyncDate());
+
+        long newRowId;
+        newRowId = db.insert(
+                AttendanceTable.TABLE_NAME,
+                AttendanceTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -257,6 +301,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(formVB.getId())};
 
         return db.update(FormsVBTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+    public int updatesAttendanceColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = AttendanceTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.attendance.getId())};
+
+        return db.update(AttendanceTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -738,6 +797,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForms;
     }
 
+    public JSONArray getUnsyncedAttendance() throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        /*whereClause = AttendanceTable.COLUMN_SYNCED + " = '' AND " +
+                AttendanceTable.COLUMN_ISTATUS + "!= ''";*/
+        whereClause = AttendanceTable.COLUMN_SYNCED + " = '' ";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = AttendanceTable.COLUMN_ID + " ASC";
+
+        JSONArray allAttendance = new JSONArray();
+        c = db.query(
+                AttendanceTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            /** WorkManager Upload
+             /*Form fc = new Form();
+             allFC.add(fc.Hydrate(c));*/
+            Log.d(TAG, "getUnsyncedAttendance: " + c.getCount());
+            Attendance attendance = new Attendance();
+            allAttendance.put(attendance.Hydrate(c).toJSONObject());
+
+
+        }
+
+        c.close();
+        db.close();
+
+        Log.d(TAG, "getUnsyncedAttendance: " + allAttendance.toString().length());
+        Log.d(TAG, "getUnsyncedAttendance: " + allAttendance);
+        return allAttendance;
+    }
+
 
     public JSONArray getUnsyncedEntryLog() throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
@@ -770,6 +875,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "getUnsyncedEntryLog: " + all);
         return all;
     }
+
 
     public JSONArray getUnsyncedFormCR() throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
@@ -818,6 +924,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allCR;
     }
 
+
     public JSONArray getUnsyncedFormWR() throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
@@ -865,6 +972,55 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allWR;
     }
 
+
+    // Sync UCs
+    public int syncUCs(JSONArray ucList) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        db.delete(TableUCs.TABLE_NAME, null, null);
+        int insertCount = 0;
+
+        for (int i = 0; i < ucList.length(); i++) {
+            JSONObject jsonObjectUc = ucList.getJSONObject(i);
+            UCs uc = new UCs();
+            uc.sync(jsonObjectUc);
+            ContentValues values = new ContentValues();
+
+            values.put(TableUCs.COLUMN_UC_CODE, uc.getUcCode());
+            values.put(TableUCs.COLUMN_UC_NAME, uc.getUcName());
+
+            long rowID = db.insert(TableUCs.TABLE_NAME, null, values);
+            if (rowID != -1) insertCount++;
+        }
+        db.close();
+        return insertCount;
+    }
+
+
+    // Sync HF
+    public int syncHealthFacilities(JSONArray healthfacilities) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        db.delete(TableHealthFacilities.TABLE_NAME, null, null);
+        int insertCount = 0;
+
+        for (int i = 0; i < healthfacilities.length(); i++) {
+            JSONObject json = healthfacilities.getJSONObject(i);
+            HealthFacilities facilities = new HealthFacilities();
+            facilities.sync(json);
+            ContentValues values = new ContentValues();
+
+            values.put(TableHealthFacilities.COLUMN_HF_CODE, facilities.getHfCode());
+            values.put(TableHealthFacilities.COLUMN_HF_NAME, facilities.getHfName());
+            values.put(TableHealthFacilities.COLUMN_UC_CODE, facilities.getUc_code());
+
+            long rowID = db.insert(TableHealthFacilities.TABLE_NAME, null, values);
+            if (rowID != -1) insertCount++;
+        }
+        db.close();
+        db.close();
+
+        return insertCount;
+    }
+
     //update SyncedTables
     public void updateSyncedFormVA(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
@@ -884,6 +1040,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
 
     public void updateSyncedFormVB(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
@@ -905,6 +1062,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public void updateSyncedAttendance(String id) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(AttendanceTable.COLUMN_SYNCED, true);
+        values.put(AttendanceTable.COLUMN_SYNC_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = AttendanceTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                AttendanceTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
     public void updateSyncedEntryLog(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         ContentValues values = new ContentValues();
@@ -918,6 +1095,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
 
     public void updateSyncedFormCR(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
@@ -937,6 +1115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
 
     public void updateSyncedFormWR(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
@@ -1039,7 +1218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<FormVB> getAllMembers() {
+    public List<FormVB> getAllChilds() {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c;
         String[] columns = null;
@@ -1063,7 +1242,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while (c.moveToNext()) {
             try {
                 FormVB formVB = new FormVB().Hydrate(c);
-                allForm.add(formVB);
+                if (formVB.getVb03().equals("2"))
+                    allForm.add(formVB);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        c.close();
+        db.close();
+        return allForm;
+    }
+
+
+    public List<FormVB> getAllWomens() {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = FormsVBTable.COLUMN_ID + " ASC";
+        List<FormVB> allForm = new ArrayList<>();
+
+        c = db.query(
+                FormsVBTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            try {
+                FormVB formVB = new FormVB().Hydrate(c);
+                if (formVB.getVb03().equals("1"))
+                    allForm.add(formVB);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -1111,6 +1327,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForm;
     }
 
+
+    public List<FormVB> getAllMembersByName(String memberName) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+
+        String whereClause = FormsVBTable.COLUMN_VB04A_NAME + " = ? ";
+        String[] whereArgs = new String[]{memberName};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsVBTable.COLUMN_ID + " ASC";
+
+        List<FormVB> allForm = new ArrayList<>();
+
+        c = db.query(
+                FormsVBTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            try {
+                FormVB formVB = new FormVB().Hydrate(c);
+                allForm.add(formVB);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        c.close();
+        db.close();
+        return allForm;
+    }
+
+
     public FormVB getSelectedMembers(String uid) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c;
@@ -1134,6 +1389,71 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         c.close();
         db.close();
         return vb;
+    }
+
+
+    public Collection<UCs> getAllUCs() {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = {TableUCs.COLUMN_UC_CODE, TableUCs.COLUMN_UC_NAME};
+
+        String orderBy = TableUCs.COLUMN_UC_NAME + " ASC";
+
+        Collection<UCs> allUCs = new ArrayList<>();
+        c = db.query(
+                true,
+                TableUCs.TABLE_NAME,  // The table to query
+                columns,
+                null,
+                null,
+                null,
+                null,
+                orderBy,
+                "5000"
+
+                // The sort order
+        );
+        while (c.moveToNext()) {
+            allUCs.add(new UCs().hydrate(c));
+        }
+
+        db.close();
+        return allUCs;
+    }
+
+
+    public Collection<HealthFacilities> getHealthFacilityByUC(String ucCode) {
+
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        whereClause = TableHealthFacilities.COLUMN_UC_CODE + " = ? ";
+
+        String[] whereArgs = {ucCode};
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = TableHealthFacilities.COLUMN_ID + " ASC";
+
+        List<HealthFacilities> healthFacilities = new ArrayList<>();
+
+        c = db.query(
+                TableHealthFacilities.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            healthFacilities.add(new HealthFacilities().hydrate(c));
+        }
+        db.close();
+        return healthFacilities;
     }
 
 

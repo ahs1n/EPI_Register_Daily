@@ -56,6 +56,7 @@ public class FormVB extends BaseObservable implements Observable {
     private String gpsDT = _EMPTY_;
     private String gpsAcc = _EMPTY_;
     private String cardNo = _EMPTY_;
+    private String vb04aName = _EMPTY_;
 
     // FIELD VARIABLES
     private String vb01 = _EMPTY_;
@@ -89,12 +90,22 @@ public class FormVB extends BaseObservable implements Observable {
     private String vb08cn = _EMPTY_;
     private String vb08co = _EMPTY_;
     private String vb08w = _EMPTY_;
+    private String vb08wdt = _EMPTY_;
     private String vb08wa = _EMPTY_;
     private String vb08wb = _EMPTY_;
     private String vb08wc = _EMPTY_;
     private String vb08wd = _EMPTY_;
     private String vb08we = _EMPTY_;
     private String vb09 = _EMPTY_;
+    private String vb08cadt = _EMPTY_;
+    private String vb08cbdt = _EMPTY_;
+    private String vb08ccdt = _EMPTY_;
+    private String vb08cddt = _EMPTY_;
+    private String vb08cedt = _EMPTY_;
+    private String vb08cfdt = _EMPTY_;
+    private String vb08cgdt = _EMPTY_;
+    private String vb08chdt = _EMPTY_;
+    private String vb08cidt = _EMPTY_;
 
 
     public FormVB() {
@@ -335,6 +346,14 @@ public class FormVB extends BaseObservable implements Observable {
         this.cardNo = cardNo;
     }
 
+    public String getVb04aName() {
+        return vb04aName;
+    }
+
+    public void setVb04aName(String vb04aName) {
+        this.vb04aName = vb04aName;
+    }
+
     @Bindable
     public String getVb01() {
         return vb01;
@@ -379,6 +398,15 @@ public class FormVB extends BaseObservable implements Observable {
         setVb08cg(vb03.equals("2") ? this.vb08cg : "");
         setVb08ch(vb03.equals("2") ? this.vb08ch : "");
         setVb08ci(vb03.equals("2") ? this.vb08ci : "");
+        setVb08cadt(vb03.equals("2") ? this.vb08cadt : "");
+        setVb08cbdt(vb03.equals("2") ? this.vb08cbdt : "");
+        setVb08ccdt(vb03.equals("2") ? this.vb08ccdt : "");
+        setVb08cddt(vb03.equals("2") ? this.vb08cddt : "");
+        setVb08cedt(vb03.equals("2") ? this.vb08cedt : "");
+        setVb08cfdt(vb03.equals("2") ? this.vb08cfdt : "");
+        setVb08cgdt(vb03.equals("2") ? this.vb08cgdt : "");
+        setVb08chdt(vb03.equals("2") ? this.vb08chdt : "");
+        setVb08cidt(vb03.equals("2") ? this.vb08cidt : "");
 
         setVb05a(vb03.equals("2") ? this.vb05a : "");
         setVb09(vb03.equals("2") ? this.vb09 : "");
@@ -388,6 +416,7 @@ public class FormVB extends BaseObservable implements Observable {
         setChildfilename(vb03.equals("2") ? this.childfilename : "");
 
         setVb08w(vb03.equals("1") ? this.vb08w : "");
+        setVb08wdt(vb03.equals("1") ? this.vb08wdt : "");
         notifyPropertyChanged(BR.vb03);
     }
 
@@ -398,6 +427,7 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVb04a(String vb04a) {
         this.vb04a = vb04a;
+        setVb04aName(vb04a);
         notifyPropertyChanged(BR.vb04a);
     }
 
@@ -675,6 +705,16 @@ public class FormVB extends BaseObservable implements Observable {
     }
 
     @Bindable
+    public String getVb08wdt() {
+        return vb08wdt;
+    }
+
+    public void setVb08wdt(String vb08wdt) {
+        this.vb08wdt = vb08wdt;
+        notifyPropertyChanged(BR.vb08wdt);
+    }
+
+    @Bindable
     public String getVb08wa() {
         return vb08wa;
     }
@@ -740,6 +780,97 @@ public class FormVB extends BaseObservable implements Observable {
     }
 
 
+    @Bindable
+    public String getVb08cadt() {
+        return vb08cadt;
+    }
+
+    public void setVb08cadt(String vb08cadt) {
+        this.vb08cadt = vb08cadt;
+        notifyPropertyChanged(BR.vb08cadt);
+    }
+
+    @Bindable
+    public String getVb08cbdt() {
+        return vb08cbdt;
+    }
+
+    public void setVb08cbdt(String vb08cbdt) {
+        this.vb08cbdt = vb08cbdt;
+        notifyPropertyChanged(BR.vb08cbdt);
+    }
+
+    @Bindable
+    public String getVb08ccdt() {
+        return vb08ccdt;
+    }
+
+    public void setVb08ccdt(String vb08ccdt) {
+        this.vb08ccdt = vb08ccdt;
+        notifyPropertyChanged(BR.vb08ccdt);
+    }
+
+    @Bindable
+    public String getVb08cddt() {
+        return vb08cddt;
+    }
+
+    public void setVb08cddt(String vb08cddt) {
+        this.vb08cddt = vb08cddt;
+        notifyPropertyChanged(BR.vb08cddt);
+    }
+
+    @Bindable
+    public String getVb08cedt() {
+        return vb08cedt;
+    }
+
+    public void setVb08cedt(String vb08cedt) {
+        this.vb08cedt = vb08cedt;
+        notifyPropertyChanged(BR.vb08cedt);
+    }
+
+    @Bindable
+    public String getVb08cfdt() {
+        return vb08cfdt;
+    }
+
+    public void setVb08cfdt(String vb08cfdt) {
+        this.vb08cfdt = vb08cfdt;
+        notifyPropertyChanged(BR.vb08cfdt);
+    }
+
+    @Bindable
+    public String getVb08cgdt() {
+        return vb08cgdt;
+    }
+
+    public void setVb08cgdt(String vb08cgdt) {
+        this.vb08cgdt = vb08cgdt;
+        notifyPropertyChanged(BR.vb08cgdt);
+    }
+
+    @Bindable
+    public String getVb08chdt() {
+        return vb08chdt;
+    }
+
+    public void setVb08chdt(String vb08chdt) {
+        this.vb08chdt = vb08chdt;
+        notifyPropertyChanged(BR.vb08chdt);
+    }
+
+    @Bindable
+    public String getVb08cidt() {
+        return vb08cidt;
+    }
+
+    public void setVb08cidt(String vb08cidt) {
+        this.vb08cidt = vb08cidt;
+        notifyPropertyChanged(BR.vb08cidt);
+    }
+
+
     public FormVB Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UID));
@@ -751,6 +882,7 @@ public class FormVB extends BaseObservable implements Observable {
         this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICETAGID));
         this.cardNo = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_CARD_NO));
+        this.vb04aName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VB04A_NAME));
         //   this.entryType = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ENTRY_TYPE));
         this.appver = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_APPVERSION));
         this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ISTATUS));
@@ -785,15 +917,25 @@ public class FormVB extends BaseObservable implements Observable {
             this.vb06 = json.getString("vb06");
             this.vb07 = json.getString("vb07");
             this.vb08ca = json.getString("vb08ca");
+            this.vb08cadt = json.getString("vb08cadt");
             this.vb08cb = json.getString("vb08cb");
+            this.vb08cbdt = json.getString("vb08cbdt");
             this.vb08cc = json.getString("vb08cc");
+            this.vb08ccdt = json.getString("vb08ccdt");
             this.vb08cd = json.getString("vb08cd");
+            this.vb08cddt = json.getString("vb08cddt");
             this.vb08ce = json.getString("vb08ce");
+            this.vb08cedt = json.getString("vb08cedt");
             this.vb08cf = json.getString("vb08cf");
+            this.vb08cfdt = json.getString("vb08cfdt");
             this.vb08cg = json.getString("vb08cg");
+            this.vb08cgdt = json.getString("vb08cgdt");
             this.vb08ch = json.getString("vb08ch");
+            this.vb08chdt = json.getString("vb08chdt");
             this.vb08ci = json.getString("vb08ci");
+            this.vb08cidt = json.getString("vb08cidt");
             this.vb08w = json.getString("vb08w");
+            this.vb08wdt = json.getString("vb08wdt");
             this.vb09 = json.getString("vb09");
             this.backfilename = json.getString("backfilename");
             this.frontfilename = json.getString("frontfilename");
@@ -821,15 +963,25 @@ public class FormVB extends BaseObservable implements Observable {
                 .put("vb06", vb06)
                 .put("vb07", vb07)
                 .put("vb08ca", vb08ca)
+                .put("vb08cadt", vb08cadt)
                 .put("vb08cb", vb08cb)
+                .put("vb08cbdt", vb08cbdt)
                 .put("vb08cc", vb08cc)
+                .put("vb08ccdt", vb08ccdt)
                 .put("vb08cd", vb08cd)
+                .put("vb08cddt", vb08cddt)
                 .put("vb08ce", vb08ce)
+                .put("vb08cedt", vb08cedt)
                 .put("vb08cf", vb08cf)
+                .put("vb08cfdt", vb08cfdt)
                 .put("vb08cg", vb08cg)
+                .put("vb08cgdt", vb08cgdt)
                 .put("vb08ch", vb08ch)
+                .put("vb08chdt", vb08chdt)
                 .put("vb08ci", vb08ci)
+                .put("vb08cidt", vb08cidt)
                 .put("vb08w", vb08w)
+                .put("vb08wdt", vb08wdt)
                 .put("vb09", vb09)
                 .put("backfilename", backfilename)
                 .put("frontfilename", frontfilename)
@@ -851,6 +1003,7 @@ public class FormVB extends BaseObservable implements Observable {
         json.put(FormsVBTable.COLUMN_DEVICEID, this.deviceId);
         json.put(FormsVBTable.COLUMN_DEVICETAGID, this.deviceTag);
         json.put(FormsVBTable.COLUMN_CARD_NO, this.cardNo);
+        json.put(FormsVBTable.COLUMN_VB04A_NAME, this.vb04aName);
         //    json.put(FormsVBTable.COLUMN_ENTRY_TYPE, this.entryType);
         json.put(FormsVBTable.COLUMN_ISTATUS, this.iStatus);
         json.put(FormsVBTable.COLUMN_SYNCED, this.synced);

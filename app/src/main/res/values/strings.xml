@@ -363,11 +363,12 @@
     <string name="newHHheadname"> Name of new head of the household </string>
     <string name="maintitle"> روزانہ کارکردگی رجسٹر برائے ٹیکہ جات</string>
     <string name="va"> لاگن کے وقت کی معلومات</string>
-    <string name="va01"> ویکسین کی تاریخ</string>
+    <string name="va01">تاریخ</string>
     <string name="va01d">Day</string>
     <string name="va01m">Month</string>
     <string name="va01y">Year</string>
     <string name="va02">  یوسی کا نام </string>
+    <string name="va02a">  مرکز صحت کا نام </string>
     <string name="va03">ویکسین لگانے والے/والی کا نام</string>
     <string name="va03t"> (ایک سے زیادہ کی صورت میں / لگائیں اور مزید نام لکھیں)  </string>
     <string name="va04"> ویکسینیٹر کا رجسٹر نمبر</string>
@@ -445,10 +446,15 @@
     <string name="action_data_sync">Sync Data</string>
     <string name="open_child_form">OPEN FORM</string>
 
+    <string name="batch">Vaccine Batch Management</string>
+    <string name="vac_child">Vaccinate a Child</string>
+    <string name="vac_women">Vaccinate a Women</string>
+
     <string name='Q_maintitle'>maintitle</string>
     <string name='Q_va'>va</string>
     <string name='Q_va01'>va01</string>
     <string name='Q_va02'>va02</string>
+    <string name='Q_va02a'>va02a</string>
     <string name='Q_va03'>va03</string>
     <string name='Q_va04'>va04</string>
     <string name='Q_va05'>va05</string>

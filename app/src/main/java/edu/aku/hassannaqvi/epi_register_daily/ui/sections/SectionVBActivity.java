@@ -26,13 +26,13 @@ import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
-import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredMembersListActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
 
 public class SectionVBActivity extends AppCompatActivity {
     private static final String TAG = "SectionVBActivity";
     ActivitySectionVbBinding bi;
     private DatabaseHelper db;
-    boolean b;
+    boolean b, group;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +45,13 @@ public class SectionVBActivity extends AppCompatActivity {
         setupListeners();
 
         b = getIntent().getBooleanExtra("b", true);
-
         if (b) formVB = new FormVB();
+
+        group = getIntent().getBooleanExtra("group", true);
+        if (group) {
+            formVB.setVb03("2");
+        } else formVB.setVb03("1");
+
         bi.setForm(formVB);
     }
 
@@ -138,32 +143,33 @@ public class SectionVBActivity extends AppCompatActivity {
 
         }
 
-        if (bi.vb08ca98.isChecked() && formVB.getVb08ca().equals(""))
-            return Validator.emptyRadioButton(this, bi.vb08ca, bi.vb08caa);
+        if (bi.vb08ca98.isChecked() && formVB.getVb08ca().equals("") || bi.vb08ca98.isChecked() && formVB.getVb08cadt().equals(""))
+//            return Validator.emptyRadioButton(this, bi.vb08ca, bi.vb08caa);
+            return Validator.emptyCheckingContainer(this, bi.fldGrpVB08ca, false);
 
-        if (bi.vb08cb98.isChecked() && formVB.getVb08cb().equals(""))
-            return Validator.emptyRadioButton(this, bi.vb08cb, bi.vb08cba);
+        if (bi.vb08cb98.isChecked() && formVB.getVb08cb().equals("") || bi.vb08cb98.isChecked() && formVB.getVb08cbdt().equals(""))
+            return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cb, false);
 
-        if (bi.vb08cc98.isChecked() && formVB.getVb08cc().equals(""))
-            return Validator.emptyRadioButton(this, bi.vb08cc, bi.vb08cca);
+        if (bi.vb08cc98.isChecked() && formVB.getVb08cc().equals("") || bi.vb08cc98.isChecked() && formVB.getVb08ccdt().equals(""))
+            return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cc, false);
 
-        if (bi.vb08cd98.isChecked() && formVB.getVb08cd().equals(""))
-            return Validator.emptyRadioButton(this, bi.vb08cd, bi.vb08cda);
+        if (bi.vb08cd98.isChecked() && formVB.getVb08cd().equals("") || bi.vb08cd98.isChecked() && formVB.getVb08cddt().equals(""))
+            return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cd, false);
 
-        if (bi.vb08ce98.isChecked() && formVB.getVb08ce().equals(""))
-            return Validator.emptyRadioButton(this, bi.vb08ce, bi.vb08cea);
+        if (bi.vb08ce98.isChecked() && formVB.getVb08ce().equals("") || bi.vb08ce98.isChecked() && formVB.getVb08cedt().equals(""))
+            return Validator.emptyCheckingContainer(this, bi.fldGrpVB08ce, false);
 
-        if (bi.vb08cf98.isChecked() && formVB.getVb08cf().equals(""))
-            return Validator.emptyRadioButton(this, bi.vb08cf, bi.vb08cfa);
+        if (bi.vb08cf98.isChecked() && formVB.getVb08cf().equals("") || bi.vb08cf98.isChecked() && formVB.getVb08cfdt().equals(""))
+            return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cf, false);
 
-        if (bi.vb08cg98.isChecked() && formVB.getVb08cg().equals(""))
-            return Validator.emptyRadioButton(this, bi.vb08cg, bi.vb08cga);
+        if (bi.vb08cg98.isChecked() && formVB.getVb08cg().equals("") || bi.vb08cg98.isChecked() && formVB.getVb08cgdt().equals(""))
+            return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cg, false);
 
-        if (bi.vb08ch98.isChecked() && formVB.getVb08ch().equals(""))
-            return Validator.emptyRadioButton(this, bi.vb08ch, bi.vb08cha);
+        if (bi.vb08ch98.isChecked() && formVB.getVb08ch().equals("") || bi.vb08ch98.isChecked() && formVB.getVb08chdt().equals(""))
+            return Validator.emptyCheckingContainer(this, bi.fldGrpVB08ch, false);
 
-        if (bi.vb08ci98.isChecked() && formVB.getVb08ci().equals(""))
-            return Validator.emptyRadioButton(this, bi.vb08ci, bi.vb08cia);
+        if (bi.vb08ci98.isChecked() && formVB.getVb08ci().equals("") || bi.vb08ci98.isChecked() && formVB.getVb08cidt().equals(""))
+            return Validator.emptyCheckingContainer(this, bi.fldGrpVB08ci, false);
 
 
         return true;
@@ -173,7 +179,7 @@ public class SectionVBActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
-        startActivity(new Intent(this, RegisteredMembersListActivity.class));
+        startActivity(new Intent(this, RegisteredChildListActivity.class));
     }
 
 

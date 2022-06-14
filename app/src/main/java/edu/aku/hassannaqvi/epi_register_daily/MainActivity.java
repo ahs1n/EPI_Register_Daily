@@ -14,8 +14,11 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
+import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
@@ -40,10 +43,21 @@ public class MainActivity extends AppCompatActivity {
 
         switch (view.getId()) {
 
-            case R.id.openForm:
+            case R.id.openFormVA:
                 MainApp.formVA = new FormVA();
-                finish();
                 startActivity(new Intent(this, SectionVAActivity.class));
+                break;
+
+            case R.id.openChildVacForm:
+                MainApp.formVB = new FormVB();
+                finish();
+                startActivity(new Intent(this, RegisteredChildListActivity.class));
+                break;
+
+            case R.id.openWomenVacForm:
+                MainApp.formVB = new FormVB();
+                finish();
+                startActivity(new Intent(this, RegisteredWomenListActivity.class));
                 break;
 
             case R.id.secA:

@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:name="edu.aku.hassannaqvi.epi_register_daily.core.MainApp"
+        android:name=".core.MainApp"
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
         android:immersive="true"
@@ -26,10 +26,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-
         <activity
-            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.LoginActivity"
+            android:name=".ui.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.splashscreen"
             android:windowSoftInputMode="adjustResize|stateHidden">
@@ -39,63 +37,63 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
-            android:name="edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager"
+            android:name=".ui.AttendanceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeEnglish1"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".database.AndroidManager"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-
         <activity
-            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity"
+            android:name=".ui.sections.SectionVAActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeUrdu"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".ui.TakePhoto"
             android:hardwareAccelerated="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
-            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity"
+            android:name=".ui.sections.SectionVBActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeUrdu"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
-            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredMembersListActivity"
+            android:name=".ui.lists.RegisteredChildListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
-            android:name="edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity"
+            android:name=".ui.lists.RegisteredWomenListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.SyncActivity"
             android:exported="false"
-            android:parentActivityName="edu.aku.hassannaqvi.epi_register_daily.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-
         <activity
-            android:name="edu.aku.hassannaqvi.epi_register_daily.MainActivity"
+            android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
-     <meta-data
+        <meta-data
             android:name="YEK_REVRES"
             android:value="8x/A%D*2S!urviVoP%RACTiC1$BSE(H+MbQeThWmZq4t7w!z%C*F-J@NcRfUjXn2" />
         <meta-data
             android:name="YEK_TRATS"
             android:value="8" />
-        
+
         <activity
             android:name=".ui.ChangePasswordActivity"
             android:exported="true"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize" />
-
-
     </application>
 
 </manifest>

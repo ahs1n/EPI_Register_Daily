@@ -57,7 +57,6 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.core.AppInfo;
@@ -370,12 +369,12 @@ public class LoginActivity extends AppCompatActivity {
                     Intent iLogin = null;
                     if (MainApp.admin) {
                         recordEntry("Successful Login (Admin)");
-                        iLogin = new Intent(LoginActivity.this, MainActivity.class);
+                        iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
                         startActivity(iLogin);
                     } else if (MainApp.user.getEnabled().equals("1")) {
                         if (!MainApp.user.getNewUser().equals("1")) { // TODO: getEnabled().equals("1")
                             recordEntry("Successful Login");
-                            iLogin = new Intent(LoginActivity.this, MainActivity.class);
+                            iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
                             startActivity(iLogin);
                         } else if (MainApp.user.getNewUser().equals("1")) {
                             recordEntry("First Login");

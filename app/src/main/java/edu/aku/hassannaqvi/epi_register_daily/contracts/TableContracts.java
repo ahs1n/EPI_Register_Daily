@@ -44,6 +44,29 @@ public class TableContracts {
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_CARD_NO = "cardNo";
+        public static final String COLUMN_VB04A_NAME = "vb04aName";
+        public static final String COLUMN_SYNCED = "synced";
+        public static final String COLUMN_SYNC_DATE = "sync_date";
+        public static final String COLUMN_APPVERSION = "appversion";
+        public static final String COLUMN_ISTATUS = "istatus";
+    }
+
+    public static abstract class AttendanceTable implements BaseColumns {
+        public static final String TABLE_NAME = "Attendance";
+        public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
+        public static final String COLUMN_PROJECT_NAME = "projectName";
+        public static final String COLUMN_ID = "_id";
+        public static final String COLUMN_UID = "_uid";
+        public static final String COLUMN_SNO = "sno";
+        public static final String COLUMN_USERNAME = "username";
+        public static final String COLUMN_SYSDATE = "sysdate";
+        public static final String COLUMN_ATT = "aTT";
+        public static final String COLUMN_GPSLAT = "gpslat";
+        public static final String COLUMN_GPSLNG = "gpslng";
+        public static final String COLUMN_GPSDATE = "gpsdate";
+        public static final String COLUMN_GPSACC = "gpsacc";
+        public static final String COLUMN_DEVICEID = "deviceid";
+        public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNC_DATE = "sync_date";
         public static final String COLUMN_APPVERSION = "appversion";
@@ -140,4 +163,22 @@ public class TableContracts {
         public static final String COLUMN_ISTATUS96x = "istatus96x";
     }
 
+
+    public static abstract class TableUCs implements BaseColumns {
+        public static final String TABLE_NAME = "healthfacilities";
+        public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
+        public static final String COLUMN_ID = "_ID";
+        public static final String COLUMN_UC_CODE = "uc_code";
+        public static final String COLUMN_UC_NAME = "uc_name";
+    }
+
+
+    public static abstract class TableHealthFacilities implements BaseColumns {
+        public static final String TABLE_NAME = "uc";
+        public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
+        public static final String COLUMN_ID = "_ID";
+        public static final String COLUMN_UC_CODE = "uc_code";
+        public static final String COLUMN_HF_CODE = "hfcode";
+        public static final String COLUMN_HF_NAME = "hf_name";
+    }
 }

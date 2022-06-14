@@ -44,6 +44,7 @@ object CreateTable {
             + FormsVBTable.COLUMN_DEVICEID + " TEXT,"
             + FormsVBTable.COLUMN_DEVICETAGID + " TEXT,"
             + FormsVBTable.COLUMN_CARD_NO + " TEXT,"
+            + FormsVBTable.COLUMN_VB04A_NAME + " TEXT,"
             + FormsVBTable.COLUMN_SYNCED + " TEXT,"
             + FormsVBTable.COLUMN_SYNC_DATE + " TEXT,"
             + FormsVBTable.COLUMN_APPVERSION + " TEXT,"
@@ -52,6 +53,28 @@ object CreateTable {
             + FormsVATable.COLUMN_GPSDATE + " TEXT,"
             + FormsVATable.COLUMN_GPSACC + " TEXT,"
             + FormsVBTable.COLUMN_VB + " TEXT"
+            + " );"
+            )
+
+    const val SQL_CREATE_ATTENDANCE = ("CREATE TABLE "
+            + AttendanceTable.TABLE_NAME + "("
+            + AttendanceTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + AttendanceTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + AttendanceTable.COLUMN_UID + " TEXT,"
+            + AttendanceTable.COLUMN_SNO + " TEXT,"
+            + AttendanceTable.COLUMN_USERNAME + " TEXT,"
+            + AttendanceTable.COLUMN_SYSDATE + " TEXT,"
+            + AttendanceTable.COLUMN_ISTATUS + " TEXT,"
+            + AttendanceTable.COLUMN_DEVICEID + " TEXT,"
+            + AttendanceTable.COLUMN_DEVICETAGID + " TEXT,"
+            + AttendanceTable.COLUMN_SYNCED + " TEXT,"
+            + AttendanceTable.COLUMN_SYNC_DATE + " TEXT,"
+            + AttendanceTable.COLUMN_APPVERSION + " TEXT,"
+            + AttendanceTable.COLUMN_GPSLAT + " TEXT,"
+            + AttendanceTable.COLUMN_GPSLNG + " TEXT,"
+            + AttendanceTable.COLUMN_GPSDATE + " TEXT,"
+            + AttendanceTable.COLUMN_GPSACC + " TEXT,"
+            + AttendanceTable.COLUMN_ATT + " TEXT"
             + " );"
             )
 
@@ -137,4 +160,17 @@ object CreateTable {
             + EntryLogTable.COLUMN_APPVERSION + " TEXT"
             + " );"
             )
+
+    const val SQL_CREATE_HF = ("CREATE TABLE " + TableHealthFacilities.TABLE_NAME + "("
+            + TableHealthFacilities.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + TableHealthFacilities.COLUMN_HF_CODE + " TEXT,"
+            + TableHealthFacilities.COLUMN_HF_NAME + " TEXT,"
+            + TableHealthFacilities.COLUMN_UC_CODE + " TEXT"
+            + " );")
+
+    const val SQL_CREATE_UC = ("CREATE TABLE " + TableUCs.TABLE_NAME + "("
+            + TableUCs.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + TableUCs.COLUMN_UC_CODE + " TEXT,"
+            + TableUCs.COLUMN_UC_NAME + " TEXT"
+            + " );")
 }

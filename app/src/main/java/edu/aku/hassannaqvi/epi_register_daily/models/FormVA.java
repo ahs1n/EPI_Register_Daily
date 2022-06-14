@@ -55,6 +55,7 @@ public class FormVA extends BaseObservable implements Observable {
     // FIELD VARIABLES
     private String va01 = _EMPTY_;
     private String va02 = _EMPTY_;
+    private String va02a = _EMPTY_;
     private String va03 = _EMPTY_;
     private String va04 = _EMPTY_;
     private String va05 = _EMPTY_;
@@ -327,6 +328,16 @@ public class FormVA extends BaseObservable implements Observable {
     public void setVa02(String va02) {
         this.va02 = va02;
         notifyPropertyChanged(BR.va02);
+    }
+
+    @Bindable
+    public String getVa02a() {
+        return va02a;
+    }
+
+    public void setVa02a(String va02a) {
+        this.va02a = va02a;
+        notifyPropertyChanged(BR.va02a);
     }
 
     @Bindable
@@ -689,6 +700,7 @@ public class FormVA extends BaseObservable implements Observable {
             json = new JSONObject(string);
             this.va01 = json.getString("va01");
             this.va02 = json.getString("va02");
+            this.va02a = json.getString("va02a");
             this.va03 = json.getString("va03");
             this.va04 = json.getString("va04");
             this.va05a = json.getString("va05a");
@@ -726,6 +738,7 @@ public class FormVA extends BaseObservable implements Observable {
         JSONObject json = new JSONObject();
         json.put("va01", va01)
                 .put("va02", va02)
+                .put("va02a", va02a)
                 .put("va03", va03)
                 .put("va04", va04)
                 .put("va05a", va05a)

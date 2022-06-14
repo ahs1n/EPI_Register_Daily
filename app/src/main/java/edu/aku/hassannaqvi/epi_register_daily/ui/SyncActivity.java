@@ -52,6 +52,8 @@ import edu.aku.hassannaqvi.epi_register_daily.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
@@ -193,6 +195,8 @@ public class SyncActivity extends AppCompatActivity {
 
                 downloadTables.add(new SyncModel(UsersTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(VersionTable.TABLE_NAME));
+                downloadTables.add(new SyncModel(TableUCs.TABLE_NAME));
+                downloadTables.add(new SyncModel(TableHealthFacilities.TABLE_NAME));
 
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
@@ -217,9 +221,6 @@ public class SyncActivity extends AppCompatActivity {
                     .putInt("position", i)
                     .putString("select", downloadTables.get(i).getSelect() != null ? downloadTables.get(i).getSelect() : " * ")
                     .putString("filter", downloadTables.get(i).getFilter() != null ? downloadTables.get(i).getFilter() : " 1=1 ");
-            /*if (downloadTables.get(i).gettableName().equals(Doctor.TableDoctor.TABLE_NAME)) {
-                data.putString("where", Doctor.TableDoctor.COLUMN_ID_CAMP + "='" + campCode + "'");
-            }*/
 
             OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(DataDownWorkerALL.class)
                     .addTag(String.valueOf(i))

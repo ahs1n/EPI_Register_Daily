@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredMembersListActivity" />
+            type="edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity" />
     </data>
 
     <LinearLayout
@@ -55,6 +55,41 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@color/grayLight" />
 
+                <!-- search options -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:id="@+id/searchBy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/searchByCard"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Search with Card No" />
+
+                        <RadioButton
+                            android:id="@+id/searchByName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Search by Name" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/grayLight" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,7 +103,7 @@
                         android:layout_weight="1"
                         android:hint="Card Number"
                         android:importantForAutofill="no"
-                        android:inputType="number" />
+                        android:inputType="text" />
 
                     <Button
                         android:layout_width="56dp"
@@ -116,7 +151,7 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:minHeight="56dp"
                     android:radius="10dp"
-                    android:text="Vaccinated Members List"
+                    android:text="Vaccinated Childs List"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp" />

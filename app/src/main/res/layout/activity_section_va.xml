@@ -202,14 +202,6 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            style="@style/sub_labels"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="@string/va03t" />
-
-
                         <EditText
                             android:id="@+id/va03"
                             android:layout_width="match_parent"
@@ -478,90 +470,99 @@
                                     android:id="@+id/va05ax"
                                     android:layout_width="match_parent"
                                     android:layout_height="63sp"
-                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. "
                                     android:enabled="@{form.va05a.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/va05a"
+                                    android:inputType="textCapCharacters"
                                     android:text="@={form.va05ax}" />
 
                                 <EditText
                                     android:id="@+id/va05bx"
                                     android:layout_width="match_parent"
                                     android:layout_height="55sp"
-                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. "
                                     android:enabled="@{form.va05b.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/va05b"
+                                    android:inputType="textCapCharacters"
                                     android:text="@={form.va05bx}" />
 
                                 <EditText
                                     android:id="@+id/va05cx"
                                     android:layout_width="match_parent"
                                     android:layout_height="55sp"
-                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. "
                                     android:enabled="@{form.va05c.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/va05c"
+                                    android:inputType="textCapCharacters"
                                     android:text="@={form.va05cx}" />
 
                                 <EditText
                                     android:id="@+id/va05dx"
                                     android:layout_width="match_parent"
                                     android:layout_height="55sp"
-                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. "
                                     android:enabled="@{form.va05d.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/va05d"
+                                    android:inputType="textCapCharacters"
                                     android:text="@={form.va05dx}" />
 
                                 <EditText
                                     android:id="@+id/va05ex"
                                     android:layout_width="match_parent"
                                     android:layout_height="55sp"
-                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. "
                                     android:enabled="@{form.va05e.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/va05e"
+                                    android:inputType="textCapCharacters"
                                     android:text="@={form.va05ex}" />
 
                                 <EditText
                                     android:id="@+id/va05fx"
                                     android:layout_width="match_parent"
                                     android:layout_height="55sp"
-                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. "
                                     android:enabled="@{form.va05f.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/va05f"
+                                    android:inputType="textCapCharacters"
                                     android:text="@={form.va05fx}" />
 
                                 <EditText
                                     android:id="@+id/va05gx"
                                     android:layout_width="match_parent"
                                     android:layout_height="55sp"
-                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. "
                                     android:enabled="@{form.va05g.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/va05g"
+                                    android:inputType="textCapCharacters"
                                     android:text="@={form.va05gx}" />
 
                                 <EditText
                                     android:id="@+id/va05hx"
                                     android:layout_width="match_parent"
                                     android:layout_height="55sp"
-                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. "
                                     android:enabled="@{form.va05h.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/va05h"
+                                    android:inputType="textCapCharacters"
                                     android:text="@={form.va05hx}" />
 
                                 <EditText
                                     android:id="@+id/va05ix"
                                     android:layout_width="match_parent"
                                     android:layout_height="55sp"
-                                    android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,. "
                                     android:enabled="@{form.va05i.equals(`1`)}"
                                     android:gravity="center"
                                     android:hint="@string/va05i"
+                                    android:inputType="textCapCharacters"
                                     android:text="@={form.va05ix}" />
 
                             </LinearLayout>
