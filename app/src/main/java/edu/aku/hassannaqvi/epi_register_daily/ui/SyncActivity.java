@@ -50,6 +50,7 @@ import java.util.concurrent.TimeUnit;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
@@ -166,6 +167,16 @@ public class SyncActivity extends AppCompatActivity {
                     e.printStackTrace();
                     Log.d(TAG, "ProcessStart: JSONException(FormVB): " + e.getMessage());
                     Toast.makeText(this, "JSONException(FormVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                // Attendance
+                uploadTables.add(new SyncModel(AttendanceTable.TABLE_NAME));
+                try {
+                    MainApp.uploadData.add(db.getUnsyncedAttendance());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "ProcessStart: JSONException(Attendance): " + e.getMessage());
+                    Toast.makeText(this, "JSONException(Attendance): " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
                 //Entry Log
