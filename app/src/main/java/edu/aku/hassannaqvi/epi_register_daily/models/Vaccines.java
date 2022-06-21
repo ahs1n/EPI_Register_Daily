@@ -4,7 +4,6 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp._EMPTY_;
 
 import android.database.Cursor;
-import android.util.Log;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -19,7 +18,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.epi_register_daily.BR;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
@@ -49,39 +48,29 @@ public class Vaccines extends BaseObservable implements Observable {
     // FIELD VARIABLES
     private String vb02 = _EMPTY_;
     private String vb04a = _EMPTY_;
-    private String vb08ca = _EMPTY_;
-    private String vb08cb = _EMPTY_;
-    private String vb08cc = _EMPTY_;
-    private String vb08cd = _EMPTY_;
-    private String vb08ce = _EMPTY_;
-    private String vb08cf = _EMPTY_;
-    private String vb08cg = _EMPTY_;
-    private String vb08ch = _EMPTY_;
-    private String vb08ci = _EMPTY_;
-    private String vb08wa = _EMPTY_;
-    private String vb08wb = _EMPTY_;
-    private String vb08wc = _EMPTY_;
-    private String vb08wd = _EMPTY_;
-    private String vb08we = _EMPTY_;
-
-
-    public Vaccines() {
-
-/*        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
-        setUserName(MainApp.user.getUserName());
-        setDeviceId(MainApp.deviceid);
-        setAppver(MainApp.appInfo.getAppVersion());
-        setAppver(MainApp.appInfo.getAppVersion());*/
-
-    }
+    private String vb04 = _EMPTY_;
+    private String vb08CCode = _EMPTY_;
+    private String vb08CAntigen = _EMPTY_;
+    private String vb08CDate = _EMPTY_;
+    private String vb08WCode = _EMPTY_;
+    private String vb08WAntigen = _EMPTY_;
+    private String vb08WDate = _EMPTY_;
 
 
     public void populateMeta() {
 
+        setSysDate(MainApp.formVB.getSysDate());
+        setUserName(MainApp.formVB.getUserName());
+        setDeviceId(MainApp.formVB.getDeviceId());
+        setAppver(MainApp.formVB.getAppver());
+        setVb02(MainApp.formVB.getVb02());
+        setVb04a(MainApp.formVB.getVb04a());
+        setVb04(MainApp.formVB.getVb04());
+
         setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
-        setUserName(MainApp.user.getUserName());
-        setDeviceId(MainApp.deviceid);
-        setUuid(MainApp.formVA.getUid());  // not applicable in Form table
+//        setUserName(MainApp.user.getUserName());
+//        setDeviceId(MainApp.deviceid);
+//        setUuid(MainApp.formVA.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
         // setEntryType(String.valueOf(MainApp.entryType));
@@ -239,193 +228,113 @@ public class Vaccines extends BaseObservable implements Observable {
     }
 
     @Bindable
-    public String getVb08ca() {
-        return vb08ca;
+    public String getVb04() {
+        return vb04;
     }
 
-    public void setVb08ca(String vb08ca) {
-        this.vb08ca = vb08ca;
-        notifyPropertyChanged(BR.vb08ca);
-    }
-
-    @Bindable
-    public String getVb08cb() {
-        return vb08cb;
-    }
-
-    public void setVb08cb(String vb08cb) {
-        this.vb08cb = vb08cb;
-        notifyPropertyChanged(BR.vb08cb);
+    public void setVb04(String vb04) {
+        this.vb04 = vb04;
+        notifyPropertyChanged(BR.vb04);
     }
 
     @Bindable
-    public String getVb08cc() {
-        return vb08cc;
+    public String getVb08CCode() {
+        return vb08CCode;
     }
 
-    public void setVb08cc(String vb08cc) {
-        this.vb08cc = vb08cc;
-        notifyPropertyChanged(BR.vb08cc);
-    }
-
-    @Bindable
-    public String getVb08cd() {
-        return vb08cd;
-    }
-
-    public void setVb08cd(String vb08cd) {
-        this.vb08cd = vb08cd;
-        notifyPropertyChanged(BR.vb08cd);
+    public void setVb08CCode(String vb08CCode) {
+        this.vb08CCode = vb08CCode;
+        notifyPropertyChanged(BR.vb08CCode);
     }
 
     @Bindable
-    public String getVb08ce() {
-        return vb08ce;
+    public String getVb08CAntigen() {
+        return vb08CAntigen;
     }
 
-    public void setVb08ce(String vb08ce) {
-        this.vb08ce = vb08ce;
-        notifyPropertyChanged(BR.vb08ce);
-    }
-
-    @Bindable
-    public String getVb08cf() {
-        return vb08cf;
-    }
-
-    public void setVb08cf(String vb08cf) {
-        this.vb08cf = vb08cf;
-        notifyPropertyChanged(BR.vb08cf);
+    public void setVb08CAntigen(String vb08CAntigen) {
+        this.vb08CAntigen = vb08CAntigen;
+        notifyPropertyChanged(BR.vb08CAntigen);
     }
 
     @Bindable
-    public String getVb08cg() {
-        return vb08cg;
+    public String getVb08CDate() {
+        return vb08CDate;
     }
 
-    public void setVb08cg(String vb08cg) {
-        this.vb08cg = vb08cg;
-        notifyPropertyChanged(BR.vb08cg);
-    }
-
-    @Bindable
-    public String getVb08ch() {
-        return vb08ch;
-    }
-
-    public void setVb08ch(String vb08ch) {
-        this.vb08ch = vb08ch;
-        notifyPropertyChanged(BR.vb08ch);
+    public void setVb08CDate(String vb08CDate) {
+        this.vb08CDate = vb08CDate;
+        notifyPropertyChanged(BR.vb08CDate);
     }
 
     @Bindable
-    public String getVb08ci() {
-        return vb08ci;
+    public String getVb08WCode() {
+        return vb08WCode;
     }
 
-    public void setVb08ci(String vb08ci) {
-        this.vb08ci = vb08ci;
-        notifyPropertyChanged(BR.vb08ci);
-    }
-
-    @Bindable
-    public String getVb08wa() {
-        return vb08wa;
-    }
-
-    public void setVb08wa(String vb08wa) {
-        if (this.vb08wa.equals(vb08wa)) return; // for all checkboxes
-        this.vb08wa = vb08wa;
-        notifyPropertyChanged(BR.vb08wa);
+    public void setVb08WCode(String vb08WCode) {
+        this.vb08WCode = vb08WCode;
+        notifyPropertyChanged(BR.vb08WCode);
     }
 
     @Bindable
-    public String getVb08wb() {
-        return vb08wb;
+    public String getVb08WAntigen() {
+        return vb08WAntigen;
     }
 
-    public void setVb08wb(String vb08wb) {
-        if (this.vb08wb.equals(vb08wb)) return; // for all checkboxes
-        this.vb08wb = vb08wb;
-        notifyPropertyChanged(BR.vb08wb);
-    }
-
-    @Bindable
-    public String getVb08wc() {
-        return vb08wc;
-    }
-
-    public void setVb08wc(String vb08wc) {
-        if (this.vb08wc.equals(vb08wc)) return; // for all checkboxes
-        this.vb08wc = vb08wc;
-        notifyPropertyChanged(BR.vb08wc);
+    public void setVb08WAntigen(String vb08WAntigen) {
+        this.vb08WAntigen = vb08WAntigen;
+        notifyPropertyChanged(BR.vb08WAntigen);
     }
 
     @Bindable
-    public String getVb08wd() {
-        return vb08wd;
+    public String getVb08WDate() {
+        return vb08WDate;
     }
 
-    public void setVb08wd(String vb08wd) {
-        if (this.vb08wd.equals(vb08wd)) return; // for all checkboxes
-        this.vb08wd = vb08wd;
-        notifyPropertyChanged(BR.vb08wd);
-    }
-
-    @Bindable
-    public String getVb08we() {
-        return vb08we;
-    }
-
-    public void setVb08we(String vb08we) {
-        if (this.vb08we.equals(vb08we)) return; // for all checkboxes
-        this.vb08we = vb08we;
-        notifyPropertyChanged(BR.vb08we);
+    public void setVb08WDate(String vb08WDate) {
+        this.vb08WDate = vb08WDate;
+        notifyPropertyChanged(BR.vb08WDate);
     }
 
 
     public Vaccines Hydrate(Cursor cursor) throws JSONException {
-        this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UID));
-        this.uuid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UUID));
-        this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_PROJECT_NAME));
-        this.sno = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SNO));
-        this.userName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYSDATE));
-        this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICEID));
-        this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICETAGID));
-        //   this.entryType = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ENTRY_TYPE));
-        this.appver = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_APPVERSION));
-        this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ISTATUS));
-        this.synced = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYNC_DATE));
+        this.id = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_UID));
+        this.uuid = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_UUID));
+        this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_PROJECT_NAME));
+        this.sno = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_SNO));
+        this.userName = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_USERNAME));
+        this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_SYSDATE));
+        this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_DEVICETAGID));
+        this.appver = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_APPVERSION));
+        this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_ISTATUS));
+        this.synced = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_SYNC_DATE));
 
-        sVACHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VB)));
+        this.vb02 = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB02));
+        this.vb04a = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB04A));
+        this.vb04 = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB04));
+        this.vb08CCode = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08C_CODE));
+        this.vb08CAntigen = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08C_ANTIGEN));
+        this.vb08CDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08C_DATE));
+        this.vb08WCode = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08W_CODE));
+        this.vb08WAntigen = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08W_ANTIGEN));
+        this.vb08WDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08W_DATE));
+
+//        sVACHydrate(cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VACCINE)));
         return this;
     }
 
 
-    public void sVACHydrate(String string) throws JSONException {
+/*    public void sVACHydrate(String string) throws JSONException {
         Log.d(TAG, "vACHydrate: " + string);
         if (string != null) {
             JSONObject json = null;
             json = new JSONObject(string);
             this.vb02 = json.getString("vb02");
             this.vb04a = json.getString("vb04a");
-            this.vb08ca = json.getString("vb08ca");
-            this.vb08cb = json.getString("vb08cb");
-            this.vb08cc = json.getString("vb08cc");
-            this.vb08cd = json.getString("vb08cd");
-            this.vb08ce = json.getString("vb08ce");
-            this.vb08cf = json.getString("vb08cf");
-            this.vb08cg = json.getString("vb08cg");
-            this.vb08ch = json.getString("vb08ch");
-            this.vb08ci = json.getString("vb08ci");
-            this.vb08wa = json.getString("vb08wa");
-            this.vb08wb = json.getString("vb08wb");
-            this.vb08wc = json.getString("vb08wc");
-            this.vb08wd = json.getString("vb08wd");
-            this.vb08we = json.getString("vb08we");
 
         }
     }
@@ -435,43 +344,49 @@ public class Vaccines extends BaseObservable implements Observable {
         Log.d(TAG, "vBtoString: ");
         JSONObject json = new JSONObject();
         json.put("vb02", vb02)
-                .put("vb04a", vb04a)
-                .put("vb08ca", vb08ca)
-                .put("vb08cb", vb08cb)
-                .put("vb08cc", vb08cc)
-                .put("vb08cd", vb08cd)
-                .put("vb08ce", vb08ce)
-                .put("vb08cf", vb08cf)
-                .put("vb08cg", vb08cg)
-                .put("vb08ch", vb08ch)
-                .put("vb08ci", vb08ci)
-                .put("vb08wa", vb08wa)
-                .put("vb08wb", vb08wb)
-                .put("vb08wc", vb08wc)
-                .put("vb08wd", vb08wd)
-                .put("vb08we", vb08we);
+                .put("vb04a", vb04a);
         return json.toString();
-    }
+    }*/
 
 
     public JSONObject toJSONObject() throws JSONException {
         JSONObject json = new JSONObject();
 
-        json.put(FormsVBTable.COLUMN_ID, this.id);
-        json.put(FormsVBTable.COLUMN_UID, this.uid);
-        json.put(FormsVBTable.COLUMN_UUID, this.uuid);
-        json.put(FormsVBTable.COLUMN_PROJECT_NAME, this.projectName);
-        json.put(FormsVBTable.COLUMN_SNO, this.sno);
-        json.put(FormsVBTable.COLUMN_USERNAME, this.userName);
-        json.put(FormsVBTable.COLUMN_SYSDATE, this.sysDate);
-        json.put(FormsVBTable.COLUMN_DEVICEID, this.deviceId);
-        json.put(FormsVBTable.COLUMN_DEVICETAGID, this.deviceTag);
-        //    json.put(FormsVBTable.COLUMN_ENTRY_TYPE, this.entryType);
-        json.put(FormsVBTable.COLUMN_ISTATUS, this.iStatus);
-        json.put(FormsVBTable.COLUMN_SYNCED, this.synced);
-        json.put(FormsVBTable.COLUMN_SYNC_DATE, this.syncDate);
-        json.put(FormsVBTable.COLUMN_APPVERSION, this.appver);
-        json.put(FormsVBTable.COLUMN_VB, new JSONObject(sVACtoString()));
+        json.put(VaccinesTable.COLUMN_ID, this.id);
+        json.put(VaccinesTable.COLUMN_UID, this.uid);
+        json.put(VaccinesTable.COLUMN_UUID, this.uuid);
+        json.put(VaccinesTable.COLUMN_PROJECT_NAME, this.projectName);
+        json.put(VaccinesTable.COLUMN_SNO, this.sno);
+        json.put(VaccinesTable.COLUMN_USERNAME, this.userName);
+        json.put(VaccinesTable.COLUMN_SYSDATE, this.sysDate);
+        json.put(VaccinesTable.COLUMN_DEVICEID, this.deviceId);
+        json.put(VaccinesTable.COLUMN_DEVICETAGID, this.deviceTag);
+        json.put(VaccinesTable.COLUMN_ISTATUS, this.iStatus);
+        json.put(VaccinesTable.COLUMN_SYNCED, this.synced);
+        json.put(VaccinesTable.COLUMN_SYNC_DATE, this.syncDate);
+        json.put(VaccinesTable.COLUMN_APPVERSION, this.appver);
+
+        json.put(VaccinesTable.COLUMN_VB02, this.vb02);
+        json.put(VaccinesTable.COLUMN_VB04A, this.vb04a);
+        json.put(VaccinesTable.COLUMN_VB04, this.vb04);
+        json.put(VaccinesTable.COLUMN_VB08C_CODE, this.vb08CCode);
+        json.put(VaccinesTable.COLUMN_VB08C_ANTIGEN, this.vb08CAntigen);
+        json.put(VaccinesTable.COLUMN_VB08C_DATE, this.vb08CDate);
+        json.put(VaccinesTable.COLUMN_VB08W_CODE, this.vb08WCode);
+        json.put(VaccinesTable.COLUMN_VB08W_ANTIGEN, this.vb08WAntigen);
+        json.put(VaccinesTable.COLUMN_VB08W_DATE, this.vb08WDate);
+
+//        json.put(VaccinesTable.COLUMN_VACCINE, new JSONObject(sVACtoString()));
         return json;
+    }
+
+    public void updateAntigen(String vaccCode, String antigen, String vaccDate) {
+        setVb08CCode(vaccCode);
+        setVb08CAntigen(antigen);
+        setVb08CDate(vaccDate);
+        setVb08WCode(vaccCode);
+        setVb08WAntigen(antigen);
+        setVb08WDate(vaccDate);
+
     }
 }

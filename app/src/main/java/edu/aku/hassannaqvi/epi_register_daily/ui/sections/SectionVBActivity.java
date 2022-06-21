@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,11 +21,13 @@ import org.json.JSONException;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
+import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
 
@@ -45,6 +48,8 @@ public class SectionVBActivity extends AppCompatActivity {
         setupListeners();
 
         b = getIntent().getBooleanExtra("b", true);
+
+        //formVA = db.getFormVA(UID);
         if (b) formVB = new FormVB();
 
         group = getIntent().getBooleanExtra("group", true);
@@ -53,6 +58,7 @@ public class SectionVBActivity extends AppCompatActivity {
         } else formVB.setVb03("1");
 
         bi.setForm(formVB);
+
     }
 
     private void setupListeners() {
@@ -88,6 +94,30 @@ public class SectionVBActivity extends AppCompatActivity {
         }
     }
 
+    private boolean insertVaccineRecord(String vaccCode, String antigen, String vaccDate) {
+        //   if (!vaccines.getUid().equals("") || MainApp.superuser) return true;
+        //    vaccines.populateMeta();
+
+        vaccines.updateAntigen(vaccCode, antigen, vaccDate);
+        long rowId = 0;
+        try {
+            rowId = db.addVaccine(vaccines);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        vaccines.setId(String.valueOf(rowId));
+        if (rowId > 0) {
+            vaccines.setUid(vaccines.getDeviceId() + vaccines.getId());
+            db.updatesVaccineColumn(TableContracts.VaccinesTable.COLUMN_UID, vaccines.getUid());
+            return true;
+        } else {
+            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
 
     private boolean updateDB() {
         if (MainApp.superuser) return true;
@@ -112,6 +142,94 @@ public class SectionVBActivity extends AppCompatActivity {
     public void btnContinue(View view) {
         if (!formValidation()) return;
         if (b) if (!insertNewRecord()) return;
+        vaccines = new Vaccines();
+        vaccines.populateMeta();
+        String caAntigen = null;
+
+        // BCG
+        if (bi.vb08ca98.isChecked()) {
+            caAntigen = bi.vb08caa.isChecked() ? "1" : "-1";
+            insertVaccineRecord("ca", caAntigen, bi.vb08cadt.getText().toString());
+        }
+
+        // OPV
+        if (bi.vb08cb98.isChecked()) {
+            caAntigen = bi.vb08cba.isChecked() ? "1"
+                    : bi.vb08cbb.isChecked() ? "2"
+                    : bi.vb08cbc.isChecked() ? "3"
+                    : bi.vb08cbd.isChecked() ? "4"
+                    : "-1";
+            insertVaccineRecord("cb", caAntigen, bi.vb08cbdt.getText().toString());
+        }
+
+        // Hep B
+        if (bi.vb08cc98.isChecked()) {
+            caAntigen = bi.vb08cca.isChecked() ? "1"
+                    : "-1";
+            insertVaccineRecord("cc", caAntigen, bi.vb08ccdt.getText().toString());
+        }
+
+        // Penta
+        if (bi.vb08cd98.isChecked()) {
+            caAntigen = bi.vb08cda.isChecked() ? "1"
+                    : bi.vb08cdb.isChecked() ? "2"
+                    : bi.vb08cdc.isChecked() ? "3"
+                    : "-1";
+            insertVaccineRecord("cd", caAntigen, bi.vb08cddt.getText().toString());
+        }
+
+        // PCV
+        if (bi.vb08ce98.isChecked()) {
+            caAntigen = bi.vb08cea.isChecked() ? "1"
+                    : bi.vb08ceb.isChecked() ? "2"
+                    : bi.vb08cec.isChecked() ? "3"
+                    : "-1";
+            insertVaccineRecord("ce", caAntigen, bi.vb08cedt.getText().toString());
+        }
+
+        // Rota
+        if (bi.vb08cf98.isChecked()) {
+            caAntigen = bi.vb08cfa.isChecked() ? "1"
+                    : bi.vb08cfb.isChecked() ? "2"
+                    : "-1";
+            insertVaccineRecord("cf", caAntigen, bi.vb08cfdt.getText().toString());
+        }
+
+        // IPV
+        if (bi.vb08cg98.isChecked()) {
+            caAntigen = bi.vb08cga.isChecked() ? "1"
+                    : bi.vb08cgb.isChecked() ? "2"
+                    : "-1";
+            insertVaccineRecord("cg", caAntigen, bi.vb08cgdt.getText().toString());
+        }
+
+        // Measles
+        if (bi.vb08ch98.isChecked()) {
+            caAntigen = bi.vb08cha.isChecked() ? "1"
+                    : bi.vb08chb.isChecked() ? "2"
+                    : "-1";
+            insertVaccineRecord("ch", caAntigen, bi.vb08chdt.getText().toString());
+        }
+
+        // Typhoid
+        if (bi.vb08ci98.isChecked()) {
+            caAntigen = bi.vb08cia.isChecked() ? "1"
+                    : "-1";
+            insertVaccineRecord("ci", caAntigen, bi.vb08cidt.getText().toString());
+        }
+
+        // TT
+        if (bi.vb03a.isChecked()) {
+            caAntigen = bi.vb08waa.isChecked() ? "1"
+                    : bi.vb08wab.isChecked() ? "2"
+                    : bi.vb08wac.isChecked() ? "3"
+                    : bi.vb08wad.isChecked() ? "4"
+                    : bi.vb08wae.isChecked() ? "5"
+                    : "-1";
+            insertVaccineRecord("TT", caAntigen, bi.vb08wdt.getText().toString());
+        }
+
+
         if (updateDB()) {
             finish();
             Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();

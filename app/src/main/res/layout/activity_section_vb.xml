@@ -755,7 +755,6 @@
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
                                         android:background="@color/colorAccent"
-                                        android:enabled="@{vb08cd98.checked ? false : true}"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:onClick="@{()->form.setVb08ca(``) + form.setVb08cadt(``) + vb08ca.clearCheck()}"
                                         android:text="BCG" />
@@ -862,7 +861,6 @@
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
                                         android:background="@color/colorAccent"
-                                        android:enabled="@{vb08cd98.checked ? false : true}"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:onClick="@{()->form.setVb08cb(``) + form.setVb08cbdt(``) + vb08cb.clearCheck()}"
                                         android:text="OPV" />
@@ -982,7 +980,6 @@
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
                                         android:background="@color/colorAccent"
-                                        android:enabled="@{vb08cd98.checked ? false : true}"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:onClick="@{()->form.setVb08cc(``) + form.setVb08ccdt(``) + vb08cc.clearCheck()}"
                                         android:text="Hep B" />

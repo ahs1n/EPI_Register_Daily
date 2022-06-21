@@ -46,7 +46,11 @@ public class AttendanceActivity extends AppCompatActivity {
         db = MainApp.appInfo.dbHelper;
         attendance = new Attendance();
         bi.setForm(attendance);
-        populateSpinner();
+
+        bi.attendat.setOnCheckedChangeListener((radioGroup, i) -> {
+            if (i == bi.attendat01.getId()) populateSpinner();
+            else bi.facility.setAdapter(null);
+        });
     }
 
 

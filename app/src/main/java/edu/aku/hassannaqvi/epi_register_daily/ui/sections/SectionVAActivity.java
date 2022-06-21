@@ -47,8 +47,6 @@ public class SectionVAActivity extends AppCompatActivity {
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
         populateSpinner();
-
-        MainApp.previousPage = formVA.getVa04();
         setGPS();
 
 /*        if (bi.va05acheck.isChecked()) {

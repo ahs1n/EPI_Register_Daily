@@ -51,6 +51,36 @@ public class TableContracts {
         public static final String COLUMN_ISTATUS = "istatus";
     }
 
+    public static abstract class VaccinesTable implements BaseColumns {
+        public static final String TABLE_NAME = "Vaccines";
+        public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
+        public static final String COLUMN_PROJECT_NAME = "projectName";
+        public static final String COLUMN_ID = "_id";
+        public static final String COLUMN_UID = "_uid";
+        public static final String COLUMN_UUID = "_uuid";
+        public static final String COLUMN_SNO = "sno";
+        public static final String COLUMN_USERNAME = "username";
+        public static final String COLUMN_SYSDATE = "sysdate";
+        public static final String COLUMN_VACCINE = "vAC";
+
+        public static final String COLUMN_VB02 = "vb02";
+        public static final String COLUMN_VB04A = "vb04a";
+        public static final String COLUMN_VB04 = "vb04";
+        public static final String COLUMN_VB08C_CODE = "vb08cCode";
+        public static final String COLUMN_VB08C_ANTIGEN = "vb08cAnt";
+        public static final String COLUMN_VB08C_DATE = "vb08cDT";
+        public static final String COLUMN_VB08W_CODE = "vb08wCode";
+        public static final String COLUMN_VB08W_ANTIGEN = "vb08wAnt";
+        public static final String COLUMN_VB08W_DATE = "vb08wDT";
+
+        public static final String COLUMN_DEVICEID = "deviceid";
+        public static final String COLUMN_DEVICETAGID = "devicetagid";
+        public static final String COLUMN_SYNCED = "synced";
+        public static final String COLUMN_SYNC_DATE = "sync_date";
+        public static final String COLUMN_APPVERSION = "appversion";
+        public static final String COLUMN_ISTATUS = "istatus";
+    }
+
     public static abstract class AttendanceTable implements BaseColumns {
         public static final String TABLE_NAME = "Attendance";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";

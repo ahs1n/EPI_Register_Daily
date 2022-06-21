@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.epi_register_daily.database;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.IBAHC;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ATTENDANCE;
@@ -12,6 +13,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CR
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_HF;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_UC;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_USERS;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VACCINE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
 
 import android.content.ContentValues;
@@ -45,6 +47,7 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTa
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
@@ -56,6 +59,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.HealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.models.UCs;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
+import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VersionApp;
 
 
@@ -84,6 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMSVA);
         db.execSQL(SQL_CREATE_FORMSVB);
+        db.execSQL(SQL_CREATE_VACCINE);
         db.execSQL(SQL_CREATE_ATTENDANCE);
         db.execSQL(SQL_CREATE_HF);
         db.execSQL(SQL_CREATE_UC);
@@ -154,6 +159,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         newRowId = db.insert(
                 FormsVBTable.TABLE_NAME,
                 FormsVBTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+
+    public Long addVaccine(Vaccines vaccines) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        ContentValues values = new ContentValues();
+        values.put(VaccinesTable.COLUMN_PROJECT_NAME, vaccines.getProjectName());
+        values.put(VaccinesTable.COLUMN_UID, vaccines.getUid());
+        values.put(VaccinesTable.COLUMN_UUID, vaccines.getUuid());
+        values.put(VaccinesTable.COLUMN_SNO, vaccines.getSno());
+        values.put(VaccinesTable.COLUMN_USERNAME, vaccines.getUserName());
+        values.put(VaccinesTable.COLUMN_SYSDATE, vaccines.getSysDate());
+
+        values.put(VaccinesTable.COLUMN_VB02, vaccines.getVb02());
+        values.put(VaccinesTable.COLUMN_VB04A, vaccines.getVb04a());
+        values.put(VaccinesTable.COLUMN_VB04, vaccines.getVb04());
+        values.put(VaccinesTable.COLUMN_VB08C_CODE, vaccines.getVb08CCode());
+        values.put(VaccinesTable.COLUMN_VB08C_ANTIGEN, vaccines.getVb08CAntigen());
+        values.put(VaccinesTable.COLUMN_VB08C_DATE, vaccines.getVb08CDate());
+        values.put(VaccinesTable.COLUMN_VB08W_CODE, vaccines.getVb08WCode());
+        values.put(VaccinesTable.COLUMN_VB08W_ANTIGEN, vaccines.getVb08WAntigen());
+        values.put(VaccinesTable.COLUMN_VB08W_DATE, vaccines.getVb08WDate());
+
+        values.put(VaccinesTable.COLUMN_ISTATUS, vaccines.getiStatus());
+        values.put(VaccinesTable.COLUMN_DEVICETAGID, vaccines.getDeviceTag());
+        values.put(VaccinesTable.COLUMN_DEVICEID, vaccines.getDeviceId());
+        values.put(VaccinesTable.COLUMN_APPVERSION, vaccines.getAppver());
+        values.put(VaccinesTable.COLUMN_SYNCED, vaccines.getSynced());
+        values.put(VaccinesTable.COLUMN_SYNC_DATE, vaccines.getSyncDate());
+
+        long newRowId;
+        newRowId = db.insert(
+                VaccinesTable.TABLE_NAME,
+                VaccinesTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -301,6 +342,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(formVB.getId())};
 
         return db.update(FormsVBTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+
+    public int updatesVaccineColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = VaccinesTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(vaccines.getId())};
+
+        return db.update(VaccinesTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -795,6 +852,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "getUnsyncedFormVB: " + allForms.toString().length());
         Log.d(TAG, "getUnsyncedFormVB: " + allForms);
         return allForms;
+    }
+
+
+    public JSONArray getUnsyncedVaccine() throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        /*whereClause = FormsTable.COLUMN_SYNCED + " = '' AND " +
+                FormsTable.COLUMN_ISTATUS + "!= ''";*/
+        whereClause = VaccinesTable.COLUMN_SYNCED + " = '' ";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = VaccinesTable.COLUMN_ID + " ASC";
+
+        JSONArray allVaccines = new JSONArray();
+        c = db.query(
+                VaccinesTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            /** WorkManager Upload
+             /*Form fc = new Form();
+             allFC.add(fc.Hydrate(c));*/
+            Log.d(TAG, "getUnsyncedVaccines: " + c.getCount());
+            Vaccines vaccines = new Vaccines();
+            allVaccines.put(vaccines.Hydrate(c).toJSONObject());
+
+        }
+
+        c.close();
+        db.close();
+
+        Log.d(TAG, "getUnsyncedVaccines: " + allVaccines.toString().length());
+        Log.d(TAG, "getUnsyncedVaccines: " + allVaccines);
+        return allVaccines;
     }
 
     public JSONArray getUnsyncedAttendance() throws JSONException {
