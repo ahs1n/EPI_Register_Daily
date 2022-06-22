@@ -30,6 +30,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
 
 public class SectionVBActivity extends AppCompatActivity {
     private static final String TAG = "SectionVBActivity";
@@ -297,7 +298,10 @@ public class SectionVBActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
-        startActivity(new Intent(this, RegisteredChildListActivity.class));
+        if (group) {
+            startActivity(new Intent(this, RegisteredWomenListActivity.class));
+        } else startActivity(new Intent(this, RegisteredChildListActivity.class));
+//        startActivity(new Intent(this, RegisteredChildListActivity.class));
     }
 
 

@@ -1393,7 +1393,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<FormVB> getAllMembersByCardNo(String cardNo) {
+    public List<FormVB> getAllChildsByCardNo(String cardNo) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c;
         String[] columns = null;
@@ -1420,7 +1420,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while (c.moveToNext()) {
             try {
                 FormVB formVB = new FormVB().Hydrate(c);
-                allForm.add(formVB);
+                if (formVB.getVb03().equals("2"))
+                    allForm.add(formVB);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -1431,7 +1432,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<FormVB> getAllMembersByName(String memberName) {
+    public List<FormVB> getAllWomensByCardNo(String cardNo) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+
+        String whereClause = FormsVBTable.COLUMN_CARD_NO + " = ? ";
+        String[] whereArgs = new String[]{cardNo};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsVBTable.COLUMN_ID + " ASC";
+
+        List<FormVB> allForm = new ArrayList<>();
+
+        c = db.query(
+                FormsVBTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            try {
+                FormVB formVB = new FormVB().Hydrate(c);
+                if (formVB.getVb03().equals("1"))
+                    allForm.add(formVB);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        c.close();
+        db.close();
+        return allForm;
+    }
+
+
+    public List<FormVB> getAllChildsByName(String memberName) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c;
         String[] columns = null;
@@ -1458,7 +1498,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while (c.moveToNext()) {
             try {
                 FormVB formVB = new FormVB().Hydrate(c);
-                allForm.add(formVB);
+                if (formVB.getVb03().equals("2"))
+                    allForm.add(formVB);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        c.close();
+        db.close();
+        return allForm;
+    }
+
+
+    public List<FormVB> getAllWomensByName(String memberName) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+
+        String whereClause = FormsVBTable.COLUMN_VB04A_NAME + " = ? ";
+        String[] whereArgs = new String[]{memberName};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FormsVBTable.COLUMN_ID + " ASC";
+
+        List<FormVB> allForm = new ArrayList<>();
+
+        c = db.query(
+                FormsVBTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            try {
+                FormVB formVB = new FormVB().Hydrate(c);
+                if (formVB.getVb03().equals("1"))
+                    allForm.add(formVB);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

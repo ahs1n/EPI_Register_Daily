@@ -110,7 +110,7 @@ public class RegisteredChildListActivity extends AppCompatActivity {
         if (bi.searchByName.isChecked()) {
             Toast.makeText(this, "Searched", Toast.LENGTH_SHORT).show();
 
-            formVBList = db.getAllMembersByName(bi.memberId.getText().toString());
+            formVBList = db.getAllChildsByName(bi.memberId.getText().toString());
             vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
 
                 try {
@@ -130,7 +130,7 @@ public class RegisteredChildListActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Searched", Toast.LENGTH_SHORT).show();
 
-            formVBList = db.getAllMembersByCardNo(bi.memberId.getText().toString());
+            formVBList = db.getAllChildsByCardNo(bi.memberId.getText().toString());
             vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
 
                 try {
