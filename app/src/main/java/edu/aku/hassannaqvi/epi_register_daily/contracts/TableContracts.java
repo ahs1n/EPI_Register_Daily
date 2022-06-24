@@ -195,19 +195,19 @@ public class TableContracts {
 
 
     public static abstract class TableUCs implements BaseColumns {
-        public static final String TABLE_NAME = "healthfacilities";
         public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
-        public static final String COLUMN_ID = "_ID";
-        public static final String COLUMN_UC_CODE = "uc_code";
-        public static final String COLUMN_UC_NAME = "uc_name";
+        public static final String TABLE_NAME = "uclist";
+        public static final String COLUMN_ID = "_id";
+        public static final String COLUMN_UC_CODE = "uccode";
+        public static final String COLUMN_UC_NAME = "ucname";
     }
 
 
     public static abstract class TableHealthFacilities implements BaseColumns {
-        public static final String TABLE_NAME = "uc";
+        public static final String TABLE_NAME = "hf_list";
         public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
-        public static final String COLUMN_ID = "_ID";
-        public static final String COLUMN_UC_CODE = "uc_code";
+        public static final String COLUMN_ID = "_id";
+        public static final String COLUMN_UC_CODE = "uccode";
         public static final String COLUMN_HF_CODE = "hfcode";
         public static final String COLUMN_HF_NAME = "hf_name";
     }
