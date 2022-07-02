@@ -6,6 +6,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABA
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_NAME;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -57,6 +58,7 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.core.AppInfo;
@@ -369,13 +371,15 @@ public class LoginActivity extends AppCompatActivity {
                     Intent iLogin = null;
                     if (MainApp.admin) {
                         recordEntry("Successful Login (Admin)");
-                        iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
-                        startActivity(iLogin);
+                        alertDialouge();
+                        /*iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
+                        startActivity(iLogin);*/
                     } else if (MainApp.user.getEnabled().equals("1")) {
                         if (!MainApp.user.getNewUser().equals("1")) { // TODO: getEnabled().equals("1")
                             recordEntry("Successful Login");
-                            iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
-                            startActivity(iLogin);
+                            alertDialouge();
+                            /*iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
+                            startActivity(iLogin);*/
                         } else if (MainApp.user.getNewUser().equals("1")) {
                             recordEntry("First Login");
                             iLogin = new Intent(LoginActivity.this, ChangePasswordActivity.class);
@@ -506,6 +510,26 @@ public class LoginActivity extends AppCompatActivity {
         Configuration config = new Configuration();
         config.locale = locale;
         this.getResources().updateConfiguration(config, this.getResources().getDisplayMetrics());
+    }
+
+    private void alertDialouge() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Confirm");
+        builder.setMessage("Are you in same location?");
+
+        builder.setPositiveButton("YES", (dialog, which) -> {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            dialog.dismiss();
+        });
+
+        builder.setNegativeButton("NO", (dialog, which) -> {
+            startActivity(new Intent(LoginActivity.this, AttendanceActivity.class));
+            dialog.dismiss();
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
 

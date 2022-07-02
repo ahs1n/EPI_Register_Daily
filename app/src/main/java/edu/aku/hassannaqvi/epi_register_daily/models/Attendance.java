@@ -54,6 +54,7 @@ public class Attendance extends BaseObservable implements Observable {
     private String attendat = _EMPTY_;
     private String attendatx = _EMPTY_;
     private String facility = _EMPTY_;
+    private String village = _EMPTY_;
 
 
     public Attendance() {
@@ -283,6 +284,16 @@ public class Attendance extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.facility);
     }
 
+    @Bindable
+    public String getVillage() {
+        return village;
+    }
+
+    public void setVillage(String village) {
+        this.village = village;
+        notifyPropertyChanged(BR.village);
+    }
+
 
     public Attendance Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_ID));
@@ -316,6 +327,7 @@ public class Attendance extends BaseObservable implements Observable {
             this.attendat = json.getString("attendat");
             this.attendatx = json.getString("attendatx");
             this.facility = json.getString("facility");
+            this.village = json.getString("village");
 
 
         }
@@ -327,7 +339,8 @@ public class Attendance extends BaseObservable implements Observable {
         json.put("attenddt", attenddt)
                 .put("attendat", attendat)
                 .put("attendatx", attendatx)
-                .put("facility", facility);
+                .put("facility", facility)
+                .put("village", village);
         return json.toString();
     }
 

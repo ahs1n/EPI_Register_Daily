@@ -84,10 +84,10 @@
 
         <meta-data
             android:name="YEK_REVRES"
-            android:value="8x/A%D*2S!urviVoP%RACTiC1$BSE(H+MbQeThWmZq4t7w!z%C*F-J@NcRfUjXn2" />
+            android:value="(H+MbQeThWmZq4t7w!z%C*F-J@NcRfUjXn2r5u8x/A?D(G+KbPdSgVkYp3s6v9y$" />
         <meta-data
             android:name="YEK_TRATS"
-            android:value="8" />
+            android:value="2" />
 
         <activity
             android:name=".ui.ChangePasswordActivity"

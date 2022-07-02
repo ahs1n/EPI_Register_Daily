@@ -15,6 +15,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CR
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VACCINE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VILLAGES;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -46,9 +47,9 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATa
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVillages;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesTable;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.EntryLog;
@@ -60,7 +61,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.HealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.models.UCs;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
-import edu.aku.hassannaqvi.epi_register_daily.models.VersionApp;
+import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
 
 
 
@@ -92,6 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ATTENDANCE);
         db.execSQL(SQL_CREATE_HF);
         db.execSQL(SQL_CREATE_UC);
+        db.execSQL(SQL_CREATE_VILLAGES);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ENTRYLOGS);
 
@@ -615,27 +617,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }*/
 
 
-    public int syncVersionApp(JSONObject VersionList) throws JSONException {
+    public int syncversionApp(JSONArray VersionList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
-        db.delete(VersionTable.TABLE_NAME, null, null);
         long count = 0;
-        JSONObject jsonObjectCC = ((JSONArray) VersionList.get(VersionTable.COLUMN_VERSION_PATH)).getJSONObject(0);
-        VersionApp Vc = new VersionApp();
-        Vc.sync(jsonObjectCC);
 
-        ContentValues values = new ContentValues();
+        JSONObject jsonObjectVersion = ((JSONArray) VersionList.getJSONObject(0).get("elements")).getJSONObject(0);
 
-        values.put(VersionTable.COLUMN_PATH_NAME, Vc.getPathname());
+        String appPath = jsonObjectVersion.getString("outputFile");
+        String versionCode = jsonObjectVersion.getString("versionCode");
+
+        MainApp.editor.putString("outputFile", jsonObjectVersion.getString("outputFile"));
+        MainApp.editor.putString("versionCode", jsonObjectVersion.getString("versionCode"));
+        MainApp.editor.putString("versionName", jsonObjectVersion.getString("versionName") + ".");
+        MainApp.editor.apply();
+        count++;
+          /*  VersionApp Vc = new VersionApp();
+            Vc.sync(jsonObjectVersion);
+
+            ContentValues values = new ContentValues();
+
+            values.put(VersionTable.COLUMN_PATH_NAME, Vc.getPathname());
             values.put(VersionTable.COLUMN_VERSION_CODE, Vc.getVersioncode());
             values.put(VersionTable.COLUMN_VERSION_NAME, Vc.getVersionname());
 
             count = db.insert(VersionTable.TABLE_NAME, null, values);
             if (count > 0) count = 1;
+
+        } catch (Exception ignored) {
+        } finally {
+            db.close();
+        }*/
+
         return (int) count;
     }
 
 
-    public int syncUser(JSONArray userList) throws JSONException {
+    public int syncAppUser(JSONArray userList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(UsersTable.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1027,7 +1044,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     // Sync UCs
-    public int syncUCs(JSONArray ucList) throws JSONException {
+    public int syncuclist(JSONArray ucList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(TableUCs.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1048,8 +1065,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // Sync Villages
+    public int syncVillages(JSONArray villagesList) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        db.delete(TableVillages.TABLE_NAME, null, null);
+        int insertCount = 0;
+
+        for (int i = 0; i < villagesList.length(); i++) {
+            JSONObject jsonObjectVillage = villagesList.getJSONObject(i);
+            Villages villages = new Villages();
+            villages.sync(jsonObjectVillage);
+            ContentValues values = new ContentValues();
+
+            values.put(TableVillages.COLUMN_UC_CODE, villages.getUcCode());
+            values.put(TableVillages.COLUMN_VILLAGE_CODE, villages.getVillageCode());
+            values.put(TableVillages.COLUMN_VILLAGE_NAME, villages.getVillageName());
+
+            long rowID = db.insertOrThrow(TableVillages.TABLE_NAME, null, values);
+            if (rowID != -1) insertCount++;
+        }
+        return insertCount;
+    }
+
+
     // Sync HF
-    public int syncHealthFacilities(JSONArray healthfacilities) throws JSONException {
+    public int synchf_list(JSONArray healthfacilities) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(TableHealthFacilities.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1515,6 +1555,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    /*public FormVA getFormByuid() throws JSONException {
+
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+
+        Boolean distinct = false;
+        String tableName = FormsVATable.TABLE_NAME;
+        String[] columns = null;
+        String whereClause = FormsVATable.COLUMN_UID + "= ? AND ";
+        String[] whereArgs = {selectedHousehold.getHhid()};
+        String groupBy = null;
+        String having = null;
+        String orderBy = FormsVATable.COLUMN_SYSDATE + " ASC";
+        String limitRows = "1";
+
+        c = db.query(
+                distinct,       // Distinct values
+                tableName,      // The table to query
+                columns,        // The columns to return
+                whereClause,    // The columns for the WHERE clause
+                whereArgs,      // The values for the WHERE clause
+                groupBy,        // don't group the rows
+                having,         // don't filter by row groups
+                orderBy,
+                limitRows
+        );
+
+        FormVA formVA = new FormVA();
+        while (c.moveToNext()) {
+            formVA = (new FormVA().Hydrate(c));
+        }
+
+        if (c != null && !c.isClosed()) {
+            c.close();
+        }
+        return formVA;
+
+    }*/
+
+
     public Collection<UCs> getAllUCs() {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
@@ -1574,6 +1654,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             healthFacilities.add(new HealthFacilities().hydrate(c));
         }
         return healthFacilities;
+    }
+
+
+    public Collection<Villages> getAllVillages() {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = {TableVillages.COLUMN_UC_CODE,
+                TableVillages.COLUMN_VILLAGE_CODE,
+                TableVillages.COLUMN_VILLAGE_NAME
+        };
+
+        String orderBy = TableVillages.COLUMN_VILLAGE_NAME + " ASC";
+
+        Collection<Villages> allVillages = new ArrayList<>();
+        c = db.query(
+                true,
+                TableVillages.TABLE_NAME,  // The table to query
+                columns,
+                null,
+                null,
+                null,
+                null,
+                orderBy,
+                "5000"
+
+                // The sort order
+        );
+        while (c.moveToNext()) {
+            allVillages.add(new Villages().hydrate(c));
+        }
+        return allVillages;
     }
 
 

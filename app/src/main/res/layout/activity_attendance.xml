@@ -134,16 +134,6 @@
                                 android:checked="@{form.attendat.equals(`2`)}"
                                 android:onClick="@{()->form.setAttendat(`2`)}"
                                 android:text="Out Reach" />
-
-                            <EditText
-                                android:id="@+id/attendatx"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
-                                android:hint="Location Name"
-                                android:tag="attendat02"
-                                android:text="@={form.attendatx}"
-                                android:visibility="@{form.attendat.equals(`2`) ? View.VISIBLE : View.GONE}" />
                         </RadioGroup>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -178,6 +168,75 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Facility Name" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- village  Spinner   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVf1105"
+                    style="@style/cardView"
+                    android:visibility="@{form.attendat.equals(`2`) ? View.VISIBLE : View.GONE}">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Village Name" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/village"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Village Name" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- village  Spinner   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVf1104"
+                    style="@style/cardView"
+                    android:visibility="@{form.attendat.equals(`2`) ? View.VISIBLE : View.GONE}">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Name of Area" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/attendatx"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="Area Name"
+                            android:tag="attendat02"
+                            android:text="@={form.attendatx}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

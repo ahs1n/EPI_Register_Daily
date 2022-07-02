@@ -58,7 +58,11 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVillages;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySyncBinding;
@@ -207,10 +211,11 @@ public class SyncActivity extends AppCompatActivity {
 
                 // set select and filter to default, set again with the table in case of special requirements
 
-//                downloadTables.add(new SyncModel(UsersTable.TABLE_NAME));
-//                downloadTables.add(new SyncModel(VersionTable.TABLE_NAME));
+                downloadTables.add(new SyncModel(UsersTable.TABLE_NAME));
                 downloadTables.add(new SyncModel(TableUCs.TABLE_NAME));
-//                downloadTables.add(new SyncModel(TableHealthFacilities.TABLE_NAME));
+                downloadTables.add(new SyncModel(TableHealthFacilities.TABLE_NAME));
+                downloadTables.add(new SyncModel(TableVillages.TABLE_NAME));
+                downloadTables.add(new SyncModel(VersionTable.TABLE_NAME));
 
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);

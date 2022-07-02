@@ -201,4 +201,11 @@ object CreateTable {
             + TableUCs.COLUMN_UC_CODE + " TEXT,"
             + TableUCs.COLUMN_UC_NAME + " TEXT"
             + " );")
+
+    const val SQL_CREATE_VILLAGES = ("CREATE TABLE " + TableVillages.TABLE_NAME + "("
+            + TableVillages.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + TableVillages.COLUMN_UC_CODE + " TEXT,"
+            + TableVillages.COLUMN_VILLAGE_CODE + " TEXT,"
+            + TableVillages.COLUMN_VILLAGE_NAME + " TEXT"
+            + " );")
 }

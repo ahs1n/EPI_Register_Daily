@@ -48,6 +48,8 @@ public class SectionVBActivity extends AppCompatActivity {
         setGPS();
         setupListeners();
 
+        MainApp.formVB.setUuid(MainApp.formVA.getUid());
+
         b = getIntent().getBooleanExtra("b", true);
 
         //formVA = db.getFormVA(UID);
@@ -61,6 +63,20 @@ public class SectionVBActivity extends AppCompatActivity {
         bi.setForm(formVB);
 
     }
+
+/*    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //MainApp.formVB.setUuid(MainApp.formVA.getUid());
+        if (MainApp.formVA.getUid().equals("")){
+            try {
+                MainApp.formVA = db.getFormByuid();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
 
     private void setupListeners() {
         bi.vb03.setOnCheckedChangeListener(((radioGroup, i) -> {

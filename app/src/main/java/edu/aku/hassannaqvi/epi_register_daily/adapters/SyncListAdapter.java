@@ -80,8 +80,8 @@ public class SyncListAdapter extends RecyclerView.Adapter<SyncListAdapter.SyncLi
             String tableName = model.getTableTitle().toUpperCase();
 
             binding.tvTableName.setText(tableName);
-            binding.tvInfo.setText(model.getInfo());
-            binding.tvStatus.setText(model.getstatus());
+            binding.tvStatus.setText(model.getInfo());
+            binding.tvMsg.setText(model.getmessage());
             Log.d(TAG, "bindUser: " + tableName + " - " + model.getmessage());
             if (tableName.contains("VERSION") && model.getmessage().contains("New"))
                 binding.tvMsg.setTextColor(Color.RED);

@@ -49,8 +49,8 @@ public class MainApp extends Application {
     //public static final String _IP = "http://f38158/prosystem";// .TEST server
     //public static final String _IP = "http://43.245.131.159:8080";// .TEST server
     public static final String _HOST_URL = MainApp._IP + "/" + PROJECT_NAME + "/api/";// .TEST server;
-    public static final String _SERVER_URL = "syncenc.php";
-    public static final String _SERVER_GET_URL = "getDataenc.php";
+    public static final String _SERVER_URL = "syncgcm.php";
+    public static final String _SERVER_GET_URL = "getDatagcm.php";
     public static final String _PHOTO_UPLOAD_URL = _HOST_URL + "uploads.php";
     public static final String _UPDATE_URL = MainApp._IP + "/epi_register/app/";
     public static final String _USER_URL = "resetpassword.php";
@@ -80,6 +80,8 @@ public class MainApp extends Application {
     public static String selectedUCName;
     public static String selectedFacilityCode;
     public static String selectedFacilityName;
+    public static String selectedVillageCode;
+    public static String selectedVillageName;
 
     public static List<FormVB> formVBList;
 

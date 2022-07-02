@@ -31,12 +31,13 @@ import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityAttendanceBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.HealthFacilities;
+import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
 
 public class AttendanceActivity extends AppCompatActivity {
     private static final String TAG = "AttendanceActivity";
     ActivityAttendanceBinding bi;
     private DatabaseHelper db;
-    private ArrayList<String> healthFacilityNames, healthFacilityCodes;
+    private ArrayList<String> healthFacilityNames, healthFacilityCodes, villageNames, villageCodes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,8 @@ public class AttendanceActivity extends AppCompatActivity {
         bi.attendat.setOnCheckedChangeListener((radioGroup, i) -> {
             if (i == bi.attendat01.getId()) populateSpinner();
             else bi.facility.setAdapter(null);
+            if (i == bi.attendat02.getId()) populateSpinner();
+            else bi.village.setAdapter(null);
         });
     }
 
@@ -87,6 +90,46 @@ public class AttendanceActivity extends AppCompatActivity {
                 if (position != 0) {
                     MainApp.selectedFacilityName = (healthFacilityNames.get(bi.facility.getSelectedItemPosition()));
                     attendance.setFacility(MainApp.selectedFacilityName);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+
+        });
+
+        Collection<Villages> villages = db.getAllVillages();
+
+        villageNames = new ArrayList<>();
+        villageCodes = new ArrayList<>();
+        villageNames.add("...");
+        villageCodes.add("...");
+
+        for (Villages vg : villages) {
+            villageNames.add(vg.getVillageName());
+            villageCodes.add(vg.getVillageCode());
+        }
+
+        if (MainApp.user.getUserName().contains("test") || MainApp.user.getUserName().contains("dmu") || MainApp.user.getUserName().contains("user")) {
+            villageNames.add("Test Village 1");
+            villageNames.add("Test Village 2");
+            villageNames.add("Test Village 3");
+
+            villageCodes.add("001");
+            villageCodes.add("002");
+            villageCodes.add("003");
+        }
+        // Apply the adapter to the spinner
+        bi.village.setAdapter(new ArrayAdapter<>(AttendanceActivity.this, R.layout.custom_spinner, villageNames));
+
+        bi.village.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position != 0) {
+                    MainApp.selectedVillageName = (villageNames.get(bi.village.getSelectedItemPosition()));
+                    attendance.setVillage(MainApp.selectedVillageName);
                 }
             }
 
