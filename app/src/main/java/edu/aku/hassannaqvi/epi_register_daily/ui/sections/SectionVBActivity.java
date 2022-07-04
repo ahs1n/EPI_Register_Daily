@@ -46,7 +46,10 @@ public class SectionVBActivity extends AppCompatActivity {
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
         setGPS();
-        setupListeners();
+//        setupListeners();
+
+//        if (formVB.getVb01().equals(""))
+        formVB.setVb01(String.valueOf(MainApp.memberCount + 1));
 
         MainApp.formVB.setUuid(MainApp.formVA.getUid());
 
@@ -56,9 +59,25 @@ public class SectionVBActivity extends AppCompatActivity {
         if (b) formVB = new FormVB();
 
         group = getIntent().getBooleanExtra("group", true);
-        if (group) {
-            formVB.setVb03("2");
-        } else formVB.setVb03("1");
+        if (formVB.getVb03().equals("2")) {
+//            formVB.setVb03("2");
+            bi.fldGrpCVvb08c.setVisibility(View.VISIBLE);
+            bi.fldGrpCVtakePhoto.setVisibility(View.VISIBLE);
+        } else {
+            bi.fldGrpCVvb08w.setVisibility(View.VISIBLE);
+        }
+
+        bi.pName.setText(formVB.getVb04a());
+        bi.hName.setText(formVB.getVb04());
+        bi.cardNo.setText(formVB.getVb02());
+//        bi.vacStatus.setText(formVB.getVb08w());
+        if (formVB.getVb03().equals("1")) {
+            if (formVB.getVb08w().equals("1")) bi.vacStatus1.setText("TT1");
+            if (formVB.getVb08w().equals("2")) bi.vacStatus2.setText("TT2");
+            if (formVB.getVb08w().equals("3")) bi.vacStatus3.setText("TT3");
+            if (formVB.getVb08w().equals("4")) bi.vacStatus4.setText("TT4");
+            if (formVB.getVb08w().equals("5")) bi.vacStatus5.setText("TT5");
+        }
 
         bi.setForm(formVB);
 
@@ -68,23 +87,22 @@ public class SectionVBActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        //MainApp.formVB.setUuid(MainApp.formVA.getUid());
         if (MainApp.formVA.getUid().equals("")){
             try {
-                MainApp.formVA = db.getFormByuid();
+                MainApp.formVA = db.getFormByuid(MainApp.formVA.getId());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }*/
 
-    private void setupListeners() {
+/*    private void setupListeners() {
         bi.vb03.setOnCheckedChangeListener(((radioGroup, i) -> {
             if (bi.vb03a.isChecked()) {
                 bi.vb04Name.setText(R.string.vb0402);
             } else bi.vb04Name.setText(R.string.vb0401);
         }));
-    }
+    }*/
 
 
     //TODO: Won't insert if Opening Editable
@@ -236,7 +254,7 @@ public class SectionVBActivity extends AppCompatActivity {
         }
 
         // TT
-        if (bi.vb03a.isChecked()) {
+//        if (bi.vb03a.isChecked()) {
             caAntigen = bi.vb08waa.isChecked() ? "1"
                     : bi.vb08wab.isChecked() ? "2"
                     : bi.vb08wac.isChecked() ? "3"
@@ -244,13 +262,13 @@ public class SectionVBActivity extends AppCompatActivity {
                     : bi.vb08wae.isChecked() ? "5"
                     : "-1";
             insertVaccineRecord("TT", caAntigen, bi.vb08wdt.getText().toString());
-        }
+//        }
 
 
         if (updateDB()) {
             finish();
             Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, SectionVBActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         } else {
             Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
         }

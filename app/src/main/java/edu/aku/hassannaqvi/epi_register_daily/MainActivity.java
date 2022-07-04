@@ -15,6 +15,7 @@ import edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
+import edu.aku.hassannaqvi.epi_register_daily.ui.AttendanceActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(bi.toolbar);
         bi.toolbar.setSubtitle("Welcome, " + MainApp.user.getFullname() + (MainApp.admin ? " (Admin)" : "") + "!");
+        bi.location.setText("Current Location, " + MainApp.attendance.getFacility() + (MainApp.attendance.getVillage()));
         bi.setCallback(this);
         bi.adminView.setVisibility(MainApp.admin ? View.VISIBLE : View.VISIBLE);
         invalidateOptionsMenu();
@@ -88,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.onSync:
                 intent = new Intent(MainActivity.this, SyncActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.changeLoc:
+                intent = new Intent(MainActivity.this, AttendanceActivity.class);
                 startActivity(intent);
                 break;
             case R.id.changePassword:

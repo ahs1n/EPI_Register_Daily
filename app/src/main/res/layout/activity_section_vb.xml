@@ -41,7 +41,7 @@
                 android:orientation="vertical">
 
                 <!-- vb01  Input-Numeric   -->
-                <androidx.cardview.widget.CardView
+                <!--<androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb01"
                     style="@style/cardView">
 
@@ -63,27 +63,24 @@
                                 android:text="@string/Q_vb01" />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:text="@string/vb01" />
 
-                        </LinearLayout>
+                            <TextView
+                                android:id="@+id/vb01"
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:text="@={form.vb01}" />
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/vb01"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/vb01"
-                            android:inputType="number"
-                            android:maxLength="3"
-                            android:text="@={form.vb01}"
-                            app:maxValue="100"
-                            app:minValue="0"
-                            app:type="range" />
+                        </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb02  Input   -->
+                &lt;!&ndash; vb02  Input   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb02"
                     style="@style/cardView">
@@ -122,7 +119,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb03  Radio   -->
+                &lt;!&ndash; vb03  Radio   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb03"
                     style="@style/cardView">
@@ -180,7 +177,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb04a  Input   -->
+                &lt;!&ndash; vb04a  Input   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb04a"
                     style="@style/cardView">
@@ -219,7 +216,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb04  Input   -->
+                &lt;!&ndash; vb04  Input   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb04"
                     style="@style/cardView">
@@ -259,7 +256,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb04b  Date   -->
+                &lt;!&ndash; vb04b  Date   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb04b"
                     style="@style/cardView"
@@ -371,7 +368,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb05  Title   -->
+                &lt;!&ndash; vb05  Title   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb05"
                     style="@style/cardView">
@@ -497,7 +494,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb05a  Radio   -->
+                &lt;!&ndash; vb05a  Radio   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb05a"
                     style="@style/cardView"
@@ -554,7 +551,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb06  Input   -->
+                &lt;!&ndash; vb06  Input   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb06"
                     style="@style/cardView">
@@ -594,7 +591,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb07  Input   -->
+                &lt;!&ndash; vb07  Input   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb07"
                     style="@style/cardView">
@@ -632,14 +629,128 @@
                             android:maxLength="11"
                             android:text="@={form.vb07}" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>-->
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:stretchColumns="2">
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_column="1"
+                            android:background="@color/white"
+                            android:text="@string/vb02"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/cardNo"
+                            android:background="@color/white"
+                            android:text="xxx"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_column="1"
+                            android:background="@color/white"
+                            android:text="@string/vb04a"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/pName"
+                            android:background="@color/white"
+                            android:text="xxx"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_column="1"
+                            android:background="@color/white"
+                            android:text="@string/vb04"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/hName"
+                            android:background="@color/white"
+                            android:text="xxx"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_column="1"
+                            android:background="@color/white"
+                            android:text="ٹیکہ کی معلومات"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/vacStatus1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:text="NA"
+                                android:textAlignment="center"
+                                android:textColor="@color/gray" />
+
+                            <TextView
+                                android:id="@+id/vacStatus2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:text="NA"
+                                android:textAlignment="center"
+                                android:textColor="@color/gray" />
+
+                            <TextView
+                                android:id="@+id/vacStatus3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:text="NA"
+                                android:textAlignment="center"
+                                android:textColor="@color/gray" />
+
+                            <TextView
+                                android:id="@+id/vacStatus4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:text="NA"
+                                android:textAlignment="center"
+                                android:textColor="@color/gray" />
+
+                            <TextView
+                                android:id="@+id/vacStatus5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:text="NA"
+                                android:textAlignment="center"
+                                android:textColor="@color/gray" />
+                        </LinearLayout>
+                    </TableRow>
+                </TableLayout>
 
 
                 <!-- vb08c  Radio   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08c"
                     style="@style/cardView"
-                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1737,7 +1848,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08w"
                     style="@style/cardView"
-                    android:visibility="@{form.vb03.equals(`2`) ? View.GONE : View.VISIBLE}">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1926,7 +2037,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <!-- vb09  Radio   -->
-                <androidx.cardview.widget.CardView
+                <!--<androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb09"
                     style="@style/cardView"
                     android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
@@ -1990,13 +2101,13 @@
                                 android:text="@string/vb0998" />
                         </RadioGroup>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>-->
 
                 <!-- Take Photo   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVtakePhoto"
                     style="@style/cardView"
-                    android:visibility="@{form.vb03.equals(`2`) ? View.VISIBLE : View.GONE}">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"

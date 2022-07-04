@@ -1555,7 +1555,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    /*public FormVA getFormByuid() throws JSONException {
+    public FormVA getFormByuid(String id) throws JSONException {
 
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
@@ -1563,8 +1563,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Boolean distinct = false;
         String tableName = FormsVATable.TABLE_NAME;
         String[] columns = null;
-        String whereClause = FormsVATable.COLUMN_UID + "= ? AND ";
-        String[] whereArgs = {selectedHousehold.getHhid()};
+        String whereClause = FormsVATable.COLUMN_ID + "= ? ";
+        String[] whereArgs = {id};
         String groupBy = null;
         String having = null;
         String orderBy = FormsVATable.COLUMN_SYSDATE + " ASC";
@@ -1592,7 +1592,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return formVA;
 
-    }*/
+    }
 
 
     public Collection<UCs> getAllUCs() {

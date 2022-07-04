@@ -16,6 +16,10 @@
                 android:title="Sync Data"
                 app:showAsAction="collapseActionView" />
             <item
+                android:id="@+id/changeLoc"
+                android:title="Change Location"
+                app:showAsAction="collapseActionView" />
+            <item
                 android:id="@+id/changePassword"
                 android:title="Change Password" />
             <item

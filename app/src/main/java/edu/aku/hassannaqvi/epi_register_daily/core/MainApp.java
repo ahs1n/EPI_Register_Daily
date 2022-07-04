@@ -65,13 +65,14 @@ public class MainApp extends Application {
     public static int PAKISTAN = 1;
     public static int TAJIKISTAN = 3;
 
-
+    public static int memberCount = 0;
     public static File sdDir;
     public static String[] downloadData;
     public static FormCR cr;
     public static FormWR wr;
     public static FormVA formVA;
     public static FormVB formVB;
+    public static FormVB formVBfollowup;
     public static Attendance attendance;
     public static Vaccines vaccines;
     public static boolean superuser;

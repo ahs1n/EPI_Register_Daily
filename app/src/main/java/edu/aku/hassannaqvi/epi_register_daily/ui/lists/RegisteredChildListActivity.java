@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVBList;
 
@@ -25,7 +26,9 @@ import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityVaccinatedListChildBinding;
+import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
+import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
 
@@ -91,16 +94,31 @@ public class RegisteredChildListActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+/*    @Override
     protected void onResume() {
         super.onResume();
         Toast.makeText(this, "Activity Resumed!", Toast.LENGTH_SHORT).show();
 
+    }*/
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "Activity Resumed!", Toast.LENGTH_SHORT).show();
+        //MainApp.formVB.setUuid(MainApp.formVA.getUid());
+        formVA = new FormVA();
+        if (MainApp.formVA.getUid().equals("")) {
+            try {
+                MainApp.formVA = db.getFormByuid(MainApp.formVA.getUid());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void addMoreMember() {
         MainApp.formVB = new FormVB();
-        Intent intent = new Intent(this, SectionVBActivity.class);
+        Intent intent = new Intent(this, MemberInfoActivity.class);
         finish();
         MemberInfoLauncher.launch(intent);
     }

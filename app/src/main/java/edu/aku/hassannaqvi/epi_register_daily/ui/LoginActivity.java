@@ -371,15 +371,20 @@ public class LoginActivity extends AppCompatActivity {
                     Intent iLogin = null;
                     if (MainApp.admin) {
                         recordEntry("Successful Login (Admin)");
-                        alertDialouge();
-                        /*iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
-                        startActivity(iLogin);*/
+//                        alertDialouge();
+                        iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
+                        startActivity(iLogin);
                     } else if (MainApp.user.getEnabled().equals("1")) {
                         if (!MainApp.user.getNewUser().equals("1")) { // TODO: getEnabled().equals("1")
                             recordEntry("Successful Login");
-                            alertDialouge();
-                            /*iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
-                            startActivity(iLogin);*/
+//                            alertDialouge();
+                            /*if (attendance.getSysDate() == appInfo.getDtToday()) alertDialouge();
+                            else {
+                                iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
+                                startActivity(iLogin);
+                            }*/
+                            iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
+                            startActivity(iLogin);
                         } else if (MainApp.user.getNewUser().equals("1")) {
                             recordEntry("First Login");
                             iLogin = new Intent(LoginActivity.this, ChangePasswordActivity.class);

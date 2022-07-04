@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/_65sdp"
+                android:layout_margin="@dimen/_60sdp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -57,9 +57,9 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_200sdp"
                         android:layout_gravity="center"
-                        android:paddingTop="@dimen/_8sdp"
+                        android:paddingTop="@dimen/_2sdp"
                         android:src="@drawable/app_icon" />
 
                     <TextView
@@ -114,6 +114,7 @@
                                     android:orientation="vertical">
 
                                     <EditText
+                                        android:text="test0003"
                                         android:id="@+id/username"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -144,6 +145,7 @@
                                         android:orientation="horizontal">
 
                                         <EditText
+                                            android:text="Test0003"
                                             android:id="@+id/password"
                                             android:layout_width="0dp"
                                             android:layout_height="match_parent"
