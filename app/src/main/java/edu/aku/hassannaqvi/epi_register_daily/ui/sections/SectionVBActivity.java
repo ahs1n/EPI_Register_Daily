@@ -26,7 +26,6 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTa
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
-import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
@@ -46,17 +45,10 @@ public class SectionVBActivity extends AppCompatActivity {
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
         setGPS();
-//        setupListeners();
 
-//        if (formVB.getVb01().equals(""))
         formVB.setVb01(String.valueOf(MainApp.memberCount + 1));
 
         MainApp.formVB.setUuid(MainApp.formVA.getUid());
-
-        b = getIntent().getBooleanExtra("b", true);
-
-        //formVA = db.getFormVA(UID);
-        if (b) formVB = new FormVB();
 
         group = getIntent().getBooleanExtra("group", true);
         if (formVB.getVb03().equals("2")) {
@@ -96,17 +88,9 @@ public class SectionVBActivity extends AppCompatActivity {
         }
     }*/
 
-/*    private void setupListeners() {
-        bi.vb03.setOnCheckedChangeListener(((radioGroup, i) -> {
-            if (bi.vb03a.isChecked()) {
-                bi.vb04Name.setText(R.string.vb0402);
-            } else bi.vb04Name.setText(R.string.vb0401);
-        }));
-    }*/
-
 
     //TODO: Won't insert if Opening Editable
-    private boolean insertNewRecord() {
+    /*private boolean insertNewRecord() {
         if (!formVB.getUid().equals("") || MainApp.superuser) return true;
         formVB.populateMeta();
 
@@ -127,7 +111,7 @@ public class SectionVBActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
             return false;
         }
-    }
+    }*/
 
     private boolean insertVaccineRecord(String vaccCode, String antigen, String vaccDate) {
         //   if (!vaccines.getUid().equals("") || MainApp.superuser) return true;
@@ -159,7 +143,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
         int updcount = 0;
         try {
-            updcount = db.updatesFormVBColumn(FormsVBTable.COLUMN_VB, formVB.vBtoString());
+            updcount = db.updatesFormVBColumn(FormsVBTable.COLUMN_VAC, formVB.vACtoString());
         } catch (JSONException e) {
             e.printStackTrace();
             Log.d(TAG, R.string.upd_db + e.getMessage());
@@ -176,7 +160,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
     public void btnContinue(View view) {
         if (!formValidation()) return;
-        if (b) if (!insertNewRecord()) return;
+//        if (b) if (!insertNewRecord()) return;
         vaccines = new Vaccines();
         vaccines.populateMeta();
         String caAntigen = null;
@@ -255,13 +239,13 @@ public class SectionVBActivity extends AppCompatActivity {
 
         // TT
 //        if (bi.vb03a.isChecked()) {
-            caAntigen = bi.vb08waa.isChecked() ? "1"
-                    : bi.vb08wab.isChecked() ? "2"
-                    : bi.vb08wac.isChecked() ? "3"
-                    : bi.vb08wad.isChecked() ? "4"
-                    : bi.vb08wae.isChecked() ? "5"
-                    : "-1";
-            insertVaccineRecord("TT", caAntigen, bi.vb08wdt.getText().toString());
+        caAntigen = bi.vb08waa.isChecked() ? "1"
+                : bi.vb08wab.isChecked() ? "2"
+                : bi.vb08wac.isChecked() ? "3"
+                : bi.vb08wad.isChecked() ? "4"
+                : bi.vb08wae.isChecked() ? "5"
+                : "-1";
+        insertVaccineRecord("TT", caAntigen, bi.vb08wdt.getText().toString());
 //        }
 
 
@@ -333,8 +317,8 @@ public class SectionVBActivity extends AppCompatActivity {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
         if (group) {
-            startActivity(new Intent(this, RegisteredWomenListActivity.class));
-        } else startActivity(new Intent(this, RegisteredChildListActivity.class));
+            startActivity(new Intent(this, RegisteredChildListActivity.class));
+        } else startActivity(new Intent(this, RegisteredWomenListActivity.class));
 //        startActivity(new Intent(this, RegisteredChildListActivity.class));
     }
 

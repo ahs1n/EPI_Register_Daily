@@ -894,6 +894,7 @@ public class FormVB extends BaseObservable implements Observable {
         this.gpsAcc = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_GPSACC));
 
         vBHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VB)));
+        vACHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VAC)));
         return this;
     }
 
@@ -916,6 +917,16 @@ public class FormVB extends BaseObservable implements Observable {
             this.vb05a = json.getString("vb05a");
             this.vb06 = json.getString("vb06");
             this.vb07 = json.getString("vb07");
+            this.vb09 = json.getString("vb09");
+
+        }
+    }
+
+    public void vACHydrate(String string) throws JSONException {
+        Log.d(TAG, "vACHydrate: " + string);
+        if (string != null) {
+            JSONObject json = null;
+            json = new JSONObject(string);
             this.vb08ca = json.getString("vb08ca");
             this.vb08cadt = json.getString("vb08cadt");
             this.vb08cb = json.getString("vb08cb");
@@ -936,7 +947,6 @@ public class FormVB extends BaseObservable implements Observable {
             this.vb08cidt = json.getString("vb08cidt");
             this.vb08w = json.getString("vb08w");
             this.vb08wdt = json.getString("vb08wdt");
-            this.vb09 = json.getString("vb09");
             this.backfilename = json.getString("backfilename");
             this.frontfilename = json.getString("frontfilename");
             this.childfilename = json.getString("childfilename");
@@ -962,7 +972,14 @@ public class FormVB extends BaseObservable implements Observable {
                 .put("vb05a", vb05a)
                 .put("vb06", vb06)
                 .put("vb07", vb07)
-                .put("vb08ca", vb08ca)
+                .put("vb09", vb09);
+        return json.toString();
+    }
+
+    public String vACtoString() throws JSONException {
+        Log.d(TAG, "vACtoString: ");
+        JSONObject json = new JSONObject();
+        json.put("vb08ca", vb08ca)
                 .put("vb08cadt", vb08cadt)
                 .put("vb08cb", vb08cb)
                 .put("vb08cbdt", vb08cbdt)
@@ -982,7 +999,6 @@ public class FormVB extends BaseObservable implements Observable {
                 .put("vb08cidt", vb08cidt)
                 .put("vb08w", vb08w)
                 .put("vb08wdt", vb08wdt)
-                .put("vb09", vb09)
                 .put("backfilename", backfilename)
                 .put("frontfilename", frontfilename)
                 .put("childfilename", childfilename);
@@ -1014,6 +1030,7 @@ public class FormVB extends BaseObservable implements Observable {
         json.put(FormsVBTable.COLUMN_GPSDATE, this.gpsDT);
         json.put(FormsVBTable.COLUMN_GPSACC, this.gpsAcc);
         json.put(FormsVBTable.COLUMN_VB, new JSONObject(vBtoString()));
+        json.put(FormsVBTable.COLUMN_VAC, new JSONObject(vACtoString()));
         return json;
     }
 

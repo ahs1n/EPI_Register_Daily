@@ -148,6 +148,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsVBTable.COLUMN_USERNAME, formVB.getUserName());
         values.put(FormsVBTable.COLUMN_SYSDATE, formVB.getSysDate());
         values.put(FormsVBTable.COLUMN_VB, formVB.vBtoString());
+        values.put(FormsVBTable.COLUMN_VAC, formVB.vACtoString());
         values.put(FormsVBTable.COLUMN_ISTATUS, formVB.getiStatus());
         values.put(FormsVBTable.COLUMN_DEVICETAGID, formVB.getDeviceTag());
         values.put(FormsVBTable.COLUMN_CARD_NO, formVB.getCardNo());

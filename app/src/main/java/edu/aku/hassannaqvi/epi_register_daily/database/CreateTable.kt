@@ -52,7 +52,8 @@ object CreateTable {
             + FormsVATable.COLUMN_GPSLNG + " TEXT,"
             + FormsVATable.COLUMN_GPSDATE + " TEXT,"
             + FormsVATable.COLUMN_GPSACC + " TEXT,"
-            + FormsVBTable.COLUMN_VB + " TEXT"
+            + FormsVBTable.COLUMN_VB + " TEXT,"
+            + FormsVBTable.COLUMN_VAC + " TEXT"
             + " );"
             )
 
