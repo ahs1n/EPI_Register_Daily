@@ -5,7 +5,7 @@ plugins {
 
 android {
     compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    buildToolsVersion '31.0.0'
 
 
     buildFeatures {
@@ -91,6 +91,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug {
+            resValue("string", "DB_PASSWORD_epi_register.db", "(H+MbQeThWmZq4t7w!z%C*F-J@NcRfUjXn2r5u8x/A?D(G+KbPdSgVkYp3s6v9y\$")
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -100,10 +104,9 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -124,20 +127,22 @@ dependencies {
     implementation 'com.karumi:dexter:6.2.3'
 
     // WorkManager(Java only)
-    implementation "androidx.work:work-runtime:2.5.0"
+    implementation 'androidx.work:work-runtime:2.7.1'
 
     //Image Compressor
     implementation 'id.zelory:compressor:2.1.1'
 
     // Sqlcipher
     implementation "net.zetetic:android-database-sqlcipher:4.5.1"
-    implementation "androidx.sqlite:sqlite-ktx:2.2.0"
     implementation "androidx.sqlite:sqlite:2.2.0"
 
     //Rooted
     implementation 'com.scottyab:rootbeer-lib:0.1.0'
 
     //SDP
-    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
+// Debug Database
+    debugImplementation 'com.amitshekhar.android:debug-db-encrypt:1.0.6'
 
 }

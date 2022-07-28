@@ -18,6 +18,8 @@
     <string name="btnResetPassword">Reset Password</string>
     <string name="options" translatable="false">Options</string>
     <string name="actiondatabase" translatable="false">Database Manager</string>
+    <string name="action_mark_attendance" translatable="false">Mark Attendance</string>
+    <string name="action_create_location" translatable="false">Create New Location</string>
     <string name="newPassword" translatable="false">New Password</string>
     <string name="oldPassword" translatable="false">Old Password</string>
 
@@ -475,12 +477,16 @@
     <string name='Q_vb08w'>vb08w</string>
     <string name='Q_vb09'>vb09</string>
 
-    <string name='Q_istatus'>istatus</string>
-    <string name="btnDownload">Download Data</string>
-    <string name="folder_not_created">Folder Not Created</string>
-    <string name="network_conn_error">Network Connection Error</string>
-    <string name="invalid_password">Invalid Password</string>
-    <string name="username_required">Username Required</string>
-    <string name="incorrect_username_or_password">Incorrect Username Or Password</string>
-
+    <string name='Q_istatus' translatable="false">istatus</string>
+    <string name="btnDownload" translatable="false">Download Data</string>
+    <string name="network_conn_error" translatable="false">Network Connection Error</string>
+    <string name="folder_not_created" translatable="false"> Folder Not Created </string>
+    <string name="invalid_password" translatable="false"> Invalid Password </string>
+    <string name="username_required" translatable="false"> Username is required. </string>
+    <string name="username_password_same" translatable="false"> Username and Password cannot be same. </string>
+    <string name="incorrect_username_or_password" translatable="false">Incorrect Username or Password</string>
+    <string name="open_hh_form" translatable="false"> Open Household Form </string>
+    <string name="hh_not_found" translatable="false">Household not Found</string>
+    <string name="hh_exists_form" translatable="false"> JSONException(Form): \t </string>
+    <string name="child_info_missing" translatable="false">Please fill child sections before entering this information</string>
 </resources>

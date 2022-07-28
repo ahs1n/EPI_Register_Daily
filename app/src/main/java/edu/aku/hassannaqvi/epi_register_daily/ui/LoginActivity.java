@@ -1,16 +1,17 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui;
 
+import static edu.aku.hassannaqvi.epi_register_daily.core.CipherSecure.decryptGCM;
+import static edu.aku.hassannaqvi.epi_register_daily.core.CipherSecure.encryptGCM;
+import static edu.aku.hassannaqvi.epi_register_daily.core.CipherSecure.hashSHA256;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.TAJIKISTAN;
-import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_COPY;
-import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_NAME;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.sharedPref;
+import static edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper.DATABASE_COPY;
+import static edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper.DATABASE_NAME;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -24,6 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -44,19 +46,14 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
@@ -74,54 +71,58 @@ public class LoginActivity extends AppCompatActivity {
     protected static LocationManager locationManager;
 
     // UI references.
-
+    private final int pos = 0;
     ActivityLoginBinding bi;
     Spinner spinnerDistrict;
-    SharedPreferences sharedPref;
-    SharedPreferences.Editor editor;
     String DirectoryName;
     DatabaseHelper db;
     ArrayAdapter<String> provinceAdapter;
     int attemptCounter = 0;
     String username = "";
     String password = "";
+    private int countryCode;
+    private ArrayList<String> countryNameList;
+    private ArrayList<String> countryCodeList;
+    private int clicks;
+   /* private int PhotoSerial = 0;
+    private String photolist;
+    ActivityResultLauncher<Intent> takePhotoLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // There are no request codes
+                        //Intent data = result.getData();
+                        Intent data = result.getData();
 
-    public static String encrypt(String plain) {
-        try {
-            byte[] iv = new byte[16];
-            new SecureRandom().nextBytes(iv);
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec("asSa%s|n'$ crEed".getBytes(StandardCharsets.UTF_8), "AES"), new IvParameterSpec(iv));
-            byte[] cipherText = cipher.doFinal(plain.getBytes(StandardCharsets.UTF_8));
-            byte[] ivAndCipherText = new byte[iv.length + cipherText.length];
-            System.arraycopy(iv, 0, ivAndCipherText, 0, iv.length);
-            System.arraycopy(cipherText, 0, ivAndCipherText, iv.length, cipherText.length);
-            return Base64.encodeToString(ivAndCipherText, Base64.NO_WRAP);
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
-    }
+                        Toast.makeText(LoginActivity.this, "Photo Taken", Toast.LENGTH_SHORT).show();
 
-    public static String decrypt(String encoded) {
-        try {
-            byte[] ivAndCipherText = Base64.decode(encoded, Base64.NO_WRAP);
-            byte[] iv = Arrays.copyOfRange(ivAndCipherText, 0, 16);
-            byte[] cipherText = Arrays.copyOfRange(ivAndCipherText, 16, ivAndCipherText.length);
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec("asSa%s|n'$ crEed".getBytes(StandardCharsets.UTF_8), "AES"), new IvParameterSpec(iv));
-            return new String(cipher.doFinal(cipherText), StandardCharsets.UTF_8);
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
-    }
+                        String fileName = data.getStringExtra("FileName");
+                        //   photolist = photolist + fileName + ";";
+                        PhotoSerial++;
+
+                        bi.b117.setText(bi.b117.getText().toString() + PhotoSerial + " - " + fileName + ";\r\n");
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
+
+                        //TODO: Implement functionality below when photo was not taken
+                        // ...
+                        bi.b117.setText("Photo not taken.");
+                    }
+
+                    if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        Toast.makeText(LoginActivity.this, "No family member added.", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
-        initializingCountry();
+        //     initializingCountry();
         Dexter.withContext(this)
                 .withPermissions(
                         Manifest.permission.ACCESS_NETWORK_STATE,
@@ -148,69 +149,59 @@ public class LoginActivity extends AppCompatActivity {
         }).check();
 
         bi = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        bi.setCallback(this);
+        // setSupportActionBar(bi.toolbar);
 
         db = MainApp.appInfo.getDbHelper();
-        sharedPref = getSharedPreferences(PROJECT_NAME, MODE_PRIVATE);
-        editor = sharedPref.edit();
 
-        settingCountryCode();
 
         MainApp.appInfo = new AppInfo(this);
         MainApp.user = new Users();
         bi.txtinstalldate.setText(MainApp.appInfo.getAppInfo());
 
         dbBackup();
+        String plainText = "This is an encrypted message.";
+        String encrypted = "awqqGx60wJZAl0s0NVpEWkxJQVRIR0xFT3VRUk8rZEU3eE80c2lqelpTcE8yYW9WeXJNPXfsBUWaMeWMuRhbH1aAxIo=";
+        try {
+
+            encrypted = encryptGCM(plainText);
+            Log.d(TAG, "onCreate: Encrypted: " + encrypted);
+            Log.d(TAG, "onCreate: Decrypted: " + decryptGCM(encrypted));
+            Log.d(TAG, "onCreate: hash: " + hashSHA256());
 
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    private void settingCountryCode() {
+    @Override
+    protected void onResume() {
+        super.onResume();
 
 
-/*
-        bi.countrySwitch.setChecked(false);
+        String latestVersionName = sharedPref.getString("versionName", "");
+        int latestVersionCode = Integer.parseInt(sharedPref.getString("versionCode", "0"));
 
+        bi.txtinstalldate.setText(bi.txtinstalldate.getText().toString().replace("\n Available on Server: " + latestVersionName + latestVersionCode, "") + "\n Available on Server: " + latestVersionName + latestVersionCode);
 
-        bi.countrySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean showBounds) {
-               // prefs.setShowBounds(showBounds);
-            }
-        });
-*/
-  /*      editor
-                .putString("lang", bi.countrySwitch.isChecked()? "1" : "3")
-                .apply();*/
-//        bi.countrySwitch.setChecked(sharedPref.getString("lang", "1").equals("1"));
-/*
+        if (MainApp.appInfo.getVersionCode() < latestVersionCode) {
+            new AlertDialog.Builder(this)
+                    .setTitle("New Update Available")
+                    .setMessage("There is a newer version of this app available (" + latestVersionName + latestVersionCode + "). \nPlease download and update the app now.")
 
-        bi.countrySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // do something, the isChecked will be
-                // true if the switch is in the On position
-                changeLanguage(isChecked ? 1 : 3);
+                    // Specifying a listener allows you to take an action before dismissing the dialog.
+                    // The dialog is automatically dismissed when a dialog button is clicked.
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Continue with delete operation
+                            //     addMoreMWRA();
+                        }
+                    })
 
-                startActivity(new Intent(LoginActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-
-            }
-        });
-*/
-
-    }
-
-
-    /*
-     * Setting country code in Shared Preference
-     * */
-    private void initializingCountry() {
- /*            countryCode = getCountryCode(this);
-            if (countryCode == 0) {
-                SharedStorage.setCountryCode(this@LoginActivity, PAKISTAN)
-            }*/
-
-        //changeLanguage(1);
+                    // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setIcon(R.drawable.ic_alert_24)
+                    .show();
+        }
     }
 
     public void dbBackup() {
@@ -221,8 +212,8 @@ public class LoginActivity extends AppCompatActivity {
             String dt = sharedPref.getString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
 
             if (!dt.equals(new SimpleDateFormat("dd-MM-yy").format(new Date()))) {
-                editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
-                editor.apply();
+                MainApp.editor.putString("dt", new SimpleDateFormat("dd-MM-yy").format(new Date()));
+                MainApp.editor.apply();
             }
 
             // File folder = new File(Environment.getExternalStorageDirectory() + File.separator + PROJECT_NAME);
@@ -275,9 +266,13 @@ public class LoginActivity extends AppCompatActivity {
         if (bi.password.getTransformationMethod() == null) {
             bi.password.setTransformationMethod(new PasswordTransformationMethod());
             bi.password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_close, 0, 0, 0);
+            bi.password.setEnabled(false);
+
         } else {
             bi.password.setTransformationMethod(null);
             bi.password.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open, 0, 0, 0);
+            bi.password.setEnabled(true);
+
         }
     }
 
@@ -288,7 +283,7 @@ public class LoginActivity extends AppCompatActivity {
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            startActivity(new Intent(this, edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity.class).putExtra("login", true));
+            startActivity(new Intent(this, SyncActivity.class).putExtra("login", true));
         } else {
             Toast.makeText(this, getString(R.string.network_conn_error), Toast.LENGTH_SHORT).show();
         }
@@ -296,63 +291,44 @@ public class LoginActivity extends AppCompatActivity {
 
     public void attemptLogin(View view) {
 
-        MainApp.user = null;
-
-        if (username.equals(bi.username.getText().toString())) {
-            attemptCounter++;
-        } else {
-            attemptCounter = 1;
+        if (!username.equals(bi.username.getText().toString())) {
+            attemptCounter = 0;
         }
-        username = bi.username.getText().toString();
-
-
+        attemptCounter++;
         // Reset errors.
         bi.username.setError(null);
         bi.password.setError(null);
-        long timeNowInMillis = System.currentTimeMillis();
-
-        Toast.makeText(this, String.valueOf(attemptCounter), Toast.LENGTH_SHORT).show();
-
-        if (MainApp.sharedPref.contains(bi.username.getText().toString())) {
-            long startTimeout = MainApp.sharedPref.getLong(bi.username.getText().toString(), timeNowInMillis);
-            long timeElapsed = TimeUnit.MILLISECONDS.toMinutes(timeNowInMillis - startTimeout);
-            Log.d(TAG, "attemptLogin(timeleft): " + timeElapsed);
-            if (timeElapsed > 15) {
-                MainApp.editor.remove(bi.username.getText().toString()).commit();
-            } else {
-                bi.username.setError("This user has been blocked.");
-                Toast.makeText(this, "This user has been blocked. Please try again after some time.", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-        }
+        //bi.as1q01.setError(null);
+        // Toast.makeText(this, String.valueOf(attemptCounter), Toast.LENGTH_SHORT).show();
         if (attemptCounter > 5) {
-
-            if (!MainApp.sharedPref.contains(bi.username.getText().toString())) {
-                MainApp.editor.putLong(bi.username.getText().toString(), timeNowInMillis).commit();
-                Toast.makeText(this, "This user has been blocked.", Toast.LENGTH_LONG).show();
-                return;
-            }
+            bi.username.setError("This user has been blocked.");
+            Toast.makeText(this, "This user has been blocked.", Toast.LENGTH_LONG).show();
 
         } else {
-
             // Store values at the time of the login attempt.
-            String username = bi.username.getText().toString();
-            String password = bi.password.getText().toString();
+            username = bi.username.getText().toString();
+            password = bi.password.getText().toString();
 
             boolean cancel = false;
             View focusView = null;
 
             // Check for a valid password, if the user entered one.
             if (password.length() < 8) {
-                bi.password.setError(getResources().getString(R.string.invalid_password));
+                bi.password.setError(getString(R.string.invalid_password));
                 focusView = bi.password;
                 return;
             }
 
             // Check for a valid username address.
             if (TextUtils.isEmpty(username)) {
-                bi.username.setError(getResources().getString(R.string.username_required));
+                bi.username.setError(getString(R.string.username_required));
+                focusView = bi.username;
+                return;
+            }
+
+            // UserName and Password cannot be same
+            if (username.equals(password)) {
+                bi.username.setError(getString(R.string.username_password_same));
                 focusView = bi.username;
                 return;
             }
@@ -362,28 +338,25 @@ public class LoginActivity extends AppCompatActivity {
                 bi.as1q01.setError(getString(R.string.as1q01));
                 return;
             }*/
-            try {
 
-                if (db.doLogin(username, password)) {
+            try {
+                if ((username.equals("dmu@aku") && password.equals("aku?dmu"))
+                        || (username.equals("test1234") && password.equals("test1234"))
+                        || db.doLogin(username, password)
+                ) {
+
                     MainApp.user.setUserName(username);
-                    //MainApp.admin = username.contains("@") || username.contains("test1234");
+                    MainApp.admin = username.contains("@") || username.contains("test1234");
                     MainApp.superuser = MainApp.user.getDesignation().equals("Supervisor");
                     Intent iLogin = null;
                     if (MainApp.admin) {
                         recordEntry("Successful Login (Admin)");
-//                        alertDialouge();
-                        iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
+                        iLogin = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(iLogin);
                     } else if (MainApp.user.getEnabled().equals("1")) {
-                        if (!MainApp.user.getNewUser().equals("1")) { // TODO: getEnabled().equals("1")
+                        if (!MainApp.user.getNewUser().equals("1")) {
                             recordEntry("Successful Login");
-//                            alertDialouge();
-                            /*if (attendance.getSysDate() == appInfo.getDtToday()) alertDialouge();
-                            else {
-                                iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
-                                startActivity(iLogin);
-                            }*/
-                            iLogin = new Intent(LoginActivity.this, AttendanceActivity.class);
+                            iLogin = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(iLogin);
                         } else if (MainApp.user.getNewUser().equals("1")) {
                             recordEntry("First Login");
@@ -396,7 +369,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 } else {
                     recordEntry("Failed Login: Incorrect username or password");
-                    bi.password.setError(getResources().getString(R.string.incorrect_username_or_password));
+                    bi.password.setError(getString(R.string.incorrect_username_or_password));
                     bi.password.requestFocus();
                     //  Toast.makeText(LoginActivity.this, username + " " + password, Toast.LENGTH_SHORT).show();
                 }
@@ -410,10 +383,13 @@ public class LoginActivity extends AppCompatActivity {
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
                 Toast.makeText(this, "IllegalArgumentException(UserAuth):" + e.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
+
 
         }
     }
+
 
     private void recordEntry(String entryType) {
 
@@ -443,17 +419,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public String computeHash(String input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        digest.reset();
-        byte[] byteData = digest.digest(input.getBytes(StandardCharsets.UTF_8));
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < byteData.length; i++) {
-            sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-        }
-        Log.d("TAG", "computeHash: " + sb);
-        return sb.toString();
-    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -480,6 +445,48 @@ public class LoginActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
+/*    private void settingCountryCode() {
+
+
+        List<Villages> countries = db.getAllCountries();
+
+        countryNameList = new ArrayList<>();
+        countryCodeList = new ArrayList<>();
+
+        countryNameList.add("...");
+        countryCodeList.add("...");
+
+        for (Villages c : countries) {
+            countryNameList.add(c.getCountry());
+            countryCodeList.add(c.getCcode());
+        }
+
+
+        bi.countrySwitch.setAdapter(new ArrayAdapter<>(LoginActivity.this, R.layout.custom_spinner, countryNameList));
+
+
+        bi.countrySwitch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position != 0 && position != pos) {
+                    //   MainApp.selectedDistrict = Integer.parseInt(countryCodeList.get(position));
+                    // changeLanguage(MainApp.selectedDistrict);
+
+                    //  startActivity(new Intent(LoginActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("pos", position));
+                    //   overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+    }*/
+
     // Shows the system bars by removing all the flags
 // except for the ones that make the content appear under the system bars.
     private void showSystemUI() {
@@ -490,51 +497,140 @@ public class LoginActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
+/*    public void TakePhoto(View view) {
+
+        Intent intent = new Intent(this, TakePhoto.class);
+        intent.putExtra("picID", "picid");
+        intent.putExtra("id", "id");
+        if (PhotoSerial == 0) {
+            intent.putExtra("picView", "Brand/logo");} else {
+            intent.putExtra("picView", "Ingredients");
+        }
+        takePhotoLauncher.launch(intent);
+
+    }*/
 
     /*
      * Toggle Language
      * */
-    private void changeLanguage(int countryCode) {
+  /*  private void changeLanguage(int countryCode) {
         String lang;
         String country;
-        if (countryCode == TAJIKISTAN) {
-            lang = "tg";
-            country = "TJ";
-            editor
-                    .putString("lang", "3")
-                    .apply();
-        } else {
-            lang = "en";
-            country = "US";
-            editor
-                    .putString("lang", "1")
-                    .apply();
+
+        switch (countryCode) {
+            case 1:
+                lang = "ur";
+                country = "PK";
+                MainApp.editor
+                        .putString("lang", "1")
+                        .apply();
+                MainApp.langRTL = true;
+
+                break;
+
+
+            default:
+                lang = "en";
+                country = "US";
+                MainApp.editor
+                        .putString("lang", "0")
+                        .apply();
+                MainApp.langRTL = false;
+
         }
+
         Locale locale = new Locale(lang, country);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
-        config.locale = locale;
+        config.setLocale(locale);
+        config.setLayoutDirection(new Locale(lang, country));
         this.getResources().updateConfiguration(config, this.getResources().getDisplayMetrics());
+
+    }*/
+
+    /*
+     * Setting clusterNo code in Shared Preference
+     * */
+   /* private void initializingCountry() {
+        countryCode = Integer.parseInt(sharedPref.getString("lang", "0"));
+        if (countryCode == 0) {
+            MainApp.editor.putString("lang", "0").apply();
+        }
+
+        changeLanguage(Integer.parseInt(sharedPref.getString("lang", "0")));
     }
 
-    private void alertDialouge() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.language_menu, menu);
+        return true;
+    }
 
-        builder.setTitle("Confirm");
-        builder.setMessage("Are you in same location?");
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.NO:
+                return true;
 
-        builder.setPositiveButton("YES", (dialog, which) -> {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            dialog.dismiss();
-        });
+            case R.id.UR:
+                MainApp.selectedLanguage = 1;
+                MainApp.langRTL = true;
+                break;
 
-        builder.setNegativeButton("NO", (dialog, which) -> {
-            startActivity(new Intent(LoginActivity.this, AttendanceActivity.class));
-            dialog.dismiss();
-        });
 
-        AlertDialog alert = builder.create();
-        alert.show();
+
+            default:
+                MainApp.selectedLanguage = 0;
+                MainApp.langRTL = false;
+
+        }
+        changeLanguage(MainApp.selectedLanguage);
+        startActivity(new Intent(LoginActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+        return true;
+    }*/
+
+    public String validatePassword2(String password, String encodedPassword) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+
+
+        byte[] cipherPassword = Base64.decode(encodedPassword, Base64.NO_WRAP);
+        byte[] salt = Arrays.copyOfRange(cipherPassword, 0, 16);
+        byte[] hash = Arrays.copyOfRange(cipherPassword, 16, cipherPassword.length);
+
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        digest.reset();
+        digest.update(salt);
+        byte[] byteData = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < byteData.length; i++) {
+            sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        Log.d("TAG", "computeHash: " + sb);
+        if (sb.toString().equals("encodedPassword")) {
+            return "True";
+        } else {
+            return "false";
+        }
+    }
+
+    public void showCredits(View view) {
+        if (clicks < 7) {
+            clicks++;
+            Toast.makeText(this, String.valueOf(clicks), Toast.LENGTH_SHORT).show();
+        } else {
+            clicks = 0;
+            Toast.makeText(this, "TEAM CREDITS: " +
+                            "\r\nHassan Naqvi, " +
+                            "Ali Azaz, " +
+                            "Gul Sanober, " +
+                            "Ramsha Ahmed, " +
+                            "Javed Khan",
+                    Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 }
 

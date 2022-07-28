@@ -3,16 +3,12 @@
 
 
     <data>
-
         <import type="android.view.View" />
 
         <variable
-            name="form"
-            type="edu.aku.hassannaqvi.epi_register_daily.models.Attendance" />
+            name="workLoc"
+            type="edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation" />
 
-        <variable
-            name="callback"
-            type="edu.aku.hassannaqvi.epi_register_daily.ui.AttendanceActivity" />
 
     </data>
 
@@ -20,6 +16,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/app_bg_gray"
         android:orientation="vertical">
 
 
@@ -34,7 +31,7 @@
             android:theme="@style/CustomToolbarTheme"
             app:popupTheme="@style/CustomPopupTheme"
             app:subtitleTextAppearance="@style/Toolbar.SubtitleText"
-            app:title="Attendance Information"
+            app:title="Add A Work Location"
             app:titleTextAppearance="@style/Toolbar.TitleText" />
 
 
@@ -66,9 +63,8 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
                                 android:text="Date" />
 
                             <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
@@ -79,7 +75,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:hint="YYYY-MM-DD"
-                                android:text="@={form.attenddt}"
+                                android:text="@={workLoc.wlDate}"
                                 app:dateFormat="yyyy-MM-dd"
                                 app:maxDate="CR_DATE"
                                 app:minDate="CR_DATE"
@@ -117,33 +113,35 @@
                             android:id="@+id/attendat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:id="@+id/attendat01"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
-                                android:checked="@{form.attendat.equals(`1`)}"
-                                android:onClick="@{()->form.setAttendat(`1`)}"
+                                android:checked="@{workLoc.wlLocationType.equals(`1`)}"
+                                android:onClick="@{()->workLoc.setWlLocationType(`1`)}"
                                 android:text="Facility" />
 
                             <RadioButton
                                 android:id="@+id/attendat02"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
-                                android:checked="@{form.attendat.equals(`2`)}"
-                                android:onClick="@{()->form.setAttendat(`2`)}"
+                                android:checked="@{workLoc.wlLocationType.equals(`2`)}"
+                                android:onClick="@{()->workLoc.setWlLocationType(`2`)}"
                                 android:text="Out Reach" />
                         </RadioGroup>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- facility  Spinner   -->
+                <!-- wlFacilityName  Spinner   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVf1103"
                     style="@style/cardView"
-                    android:visibility="@{form.attendat.equals(`1`) ? View.VISIBLE : View.GONE}">
+                    android:visibility="@{attendat01.checked? View.VISIBLE : View.GONE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -164,19 +162,20 @@
                         </LinearLayout>
 
                         <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/facility"
+                            android:id="@+id/wlFacilityName"
                             android:layout_width="match_parent"
+                            android:minHeight="56dp"
                             android:layout_height="match_parent"
                             android:hint="Facility Name" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- village  Spinner   -->
+                <!-- wlVillageName  Spinner   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVf1105"
                     style="@style/cardView"
-                    android:visibility="@{form.attendat.equals(`2`) ? View.VISIBLE : View.GONE}">
+                    android:visibility="@{attendat02.checked? View.VISIBLE : View.GONE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -197,19 +196,20 @@
                         </LinearLayout>
 
                         <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/village"
+                            android:id="@+id/wlVillageName"
                             android:layout_width="match_parent"
+                            android:minHeight="56dp"
                             android:layout_height="match_parent"
                             android:hint="Village Name" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- village  Spinner   -->
+                <!-- wlVillageName  Spinner   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVf1104"
                     style="@style/cardView"
-                    android:visibility="@{form.attendat.equals(`2`) ? View.VISIBLE : View.GONE}">
+                    android:visibility="@{attendat02.checked? View.VISIBLE : View.GONE}">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -232,11 +232,12 @@
                         <EditText
                             android:id="@+id/attendatx"
                             android:layout_width="match_parent"
+                            android:minHeight="56dp"
                             android:layout_height="wrap_content"
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="Area Name"
-                            android:tag="attendat02"
-                            android:text="@={form.attendatx}" />
+                            android:text="@={workLoc.wlArea}"
+                            android:tag="attendat02" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -259,7 +260,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:backgroundTintMode="src_atop"
                         android:onClick="btnContinue"
-                        android:text="Mark Attendance"
+                        android:text="Create New Location"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold" />

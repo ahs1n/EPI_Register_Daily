@@ -24,7 +24,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.main"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.sections.MemberInfoActivity"
@@ -41,14 +41,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.AttendanceActivity"
+            android:name=".ui.CreateLocationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeEnglish1"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".database.AndroidManager"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/Theme.main" />
         <activity
             android:name=".ui.sections.SectionVAActivity"
             android:screenOrientation="portrait"
@@ -68,19 +68,19 @@
         <activity
             android:name=".ui.lists.RegisteredChildListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/Theme.main"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.lists.RegisteredWomenListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
+            android:theme="@style/Theme.main"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.SyncActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/Theme.main" />
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
@@ -95,7 +95,7 @@
         <activity
             android:name=".ui.ChangePasswordActivity"
             android:exported="true"
-            android:theme="@style/AppTheme"
+            android:theme="@style/Theme.main"
             android:windowSoftInputMode="adjustResize" />
     </application>
 

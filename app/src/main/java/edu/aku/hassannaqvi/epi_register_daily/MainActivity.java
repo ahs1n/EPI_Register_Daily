@@ -1,22 +1,50 @@
 package edu.aku.hassannaqvi.epi_register_daily;
 
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.attendance;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.sharedPref;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.format.DateFormat;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import org.json.JSONException;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager;
+import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
+import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
-import edu.aku.hassannaqvi.epi_register_daily.ui.AttendanceActivity;
+import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.CreateLocationActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
@@ -27,7 +55,7 @@ import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding bi;
-    SharedPreferences sp;
+    DatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,54 +63,145 @@ public class MainActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(bi.toolbar);
         bi.toolbar.setSubtitle("Welcome, " + MainApp.user.getFullname() + (MainApp.admin ? " (Admin)" : "") + "!");
-        bi.location.setText("Current Location, " + MainApp.attendance.getFacility() + (MainApp.attendance.getVillage()));
+
+        db = MainApp.appInfo.dbHelper;
         bi.setCallback(this);
         bi.adminView.setVisibility(MainApp.admin ? View.VISIBLE : View.VISIBLE);
         invalidateOptionsMenu();
     }
 
-    public void sectionPress(View view) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bi.location.setText("Your current location is not set. \nPlease create new work location.");
 
-        switch (view.getId()) {
 
-            case R.id.openFormVA:
-                MainApp.formVA = new FormVA();
-                startActivity(new Intent(this, SectionVAActivity.class));
-                break;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        String todayDate = sdf.format(new Date());
+        String workLocationDate = sharedPref.getString("workLocationDate", "          ").substring(0, 10);
+        String attendanceDate = sharedPref.getString("attendanceDate", "          ").substring(0, 10);
+        bi.toolbar.setSubtitle("Welcome, " + MainApp.user.getFullname() + (MainApp.admin ? " (Admin)" : "") + "! " + (!attendanceDate.equals("          ") ? "     -     M✓" : ""));
 
-            case R.id.openChildVacForm:
-                MainApp.formVB = new FormVB();
-                finish();
-                startActivity(new Intent(this, RegisteredChildListActivity.class));
-                break;
+        Date strWorkLoctionDate = null;
+        Date strAttendanceDate = null;
+        Date strToday = null;
+        try {
+            strWorkLoctionDate = sdf.parse(workLocationDate);
+            strToday = sdf.parse(todayDate);
 
-            case R.id.openWomenVacForm:
-                MainApp.formVB = new FormVB();
-                finish();
-                startActivity(new Intent(this, RegisteredWomenListActivity.class));
-                break;
+            if (!strWorkLoctionDate.equals(strToday)) {
+                MainApp.editor.putString("workLocationUID", "          ");
+                MainApp.editor.putString("workLocationDate", "          ");
+                MainApp.editor.apply();
+                MainApp.workLocation = new WorkLocation();
+                bi.location.setText("Your current location is not set. \nPlease create new work location.");
 
-            case R.id.secA:
-                MainApp.formVA = new FormVA();
-                startActivity(new Intent(this, SectionVAActivity.class));
-                break;
+            } else {
+                String workLocationUID = sharedPref.getString("workLocationUID", "");
 
-            case R.id.secB:
-                MainApp.formVA = new FormVA();
-                startActivity(new Intent(this, SectionVBActivity.class));
-                break;
+                try {
+                    MainApp.workLocation = db.getCurrentWorkLocation(workLocationUID);
+                    bi.location.setText("Current Work Location: " + MainApp.workLocation.getWlFacilityName() + (MainApp.workLocation.getWlVillageName() + " " + MainApp.workLocation.getWlArea()));
 
-            case R.id.dbm:
-                startActivity(new Intent(this, AndroidManager.class));
-                break;
+                } catch (JSONException e) {
+                    Toast.makeText(this, "JSONException(WorkLocation): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            bi.location.setText("Your current location is not set. \nPlease create new work location.");
 
         }
+        try {
+            strAttendanceDate = sdf.parse(attendanceDate);
+            strToday = sdf.parse(todayDate);
+
+
+            if (!strAttendanceDate.equals(strToday)) {
+
+                MainApp.editor.putString("attendanceUID", "");
+                MainApp.editor.putString("attendanceDate", "          ");
+                MainApp.editor.apply();
+                MainApp.attendance = null;
+                bi.markAttendance.setVisibility(View.VISIBLE);
+            } else {
+                String attendanceUID = sharedPref.getString("attendanceUID", "");
+                bi.markAttendance.setVisibility(View.INVISIBLE);
+                Snackbar.make(bi.toolbar, "Your attendance has been marked!", Snackbar.LENGTH_LONG).show();
+
+                try {
+                    attendance = db.getCurrentAttendance(attendanceUID);
+
+                } catch (JSONException e) {
+                    Toast.makeText(this, "JSONException(Attendance): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void sectionPress(View view) {
+        if (attendance != null && workLocation != null) {
+            switch (view.getId()) {
+
+                case R.id.openFormVA:
+                    MainApp.formVA = new FormVA();
+                    startActivity(new Intent(this, SectionVAActivity.class));
+                    break;
+
+                case R.id.openChildVacForm:
+                    MainApp.formVB = new FormVB();
+                    finish();
+                    startActivity(new Intent(this, RegisteredChildListActivity.class));
+                    break;
+
+                case R.id.openWomenVacForm:
+                    MainApp.formVB = new FormVB();
+                    finish();
+                    startActivity(new Intent(this, RegisteredWomenListActivity.class));
+                    break;
+
+                case R.id.secA:
+                    MainApp.formVA = new FormVA();
+                    startActivity(new Intent(this, SectionVAActivity.class));
+                    break;
+
+                case R.id.secB:
+                    MainApp.formVA = new FormVA();
+                    startActivity(new Intent(this, SectionVBActivity.class));
+                    break;
+
+                case R.id.dbm:
+                    startActivity(new Intent(this, AndroidManager.class));
+                    break;
+
+            }
+        } else {
+            Snackbar.make(bi.toolbar, "Please create a location.", Snackbar.LENGTH_LONG).show();
+            animMenu();
+        }
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = null;
         switch (item.getItemId()) {
+/*            case R.id.action_mark_attendance:
+                intent = new Intent(MainActivity.this, CreateLocationActivity.class);
+                startActivity(intent);
+                break;*/
+            case R.id.action_create_location:
+                if (attendance != null) {
+                    intent = new Intent(MainActivity.this, CreateLocationActivity.class);
+                    startActivity(intent);
+                } else {
+                    Snackbar.make(bi.toolbar, "Please mark your attendance first!", Snackbar.LENGTH_LONG).show();
+                    animBackground();
+                }
+                break;
             case R.id.action_database:
                 intent = new Intent(MainActivity.this, AndroidManager.class);
                 startActivity(intent);
@@ -93,10 +212,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
 
-            case R.id.changeLoc:
-                intent = new Intent(MainActivity.this, AttendanceActivity.class);
-                startActivity(intent);
-                break;
             case R.id.changePassword:
                 intent = new Intent(MainActivity.this, ChangePasswordActivity.class);
                 startActivity(intent);
@@ -114,5 +229,153 @@ public class MainActivity extends AppCompatActivity {
 
         action_database.setVisible(MainApp.admin);
         return true;
+    }
+
+
+    public void markAttendance(View view) {
+
+
+        View alertCustomdialog = LayoutInflater.from(MainActivity.this).inflate(R.layout.mark_attendance_dialog, null);
+
+        AlertDialog.Builder dateErrorAlert = new AlertDialog.Builder(this);
+        dateErrorAlert.setView(alertCustomdialog);
+        TextView txtDia = alertCustomdialog.findViewById(R.id.txtDia);
+        Button btnYes = alertCustomdialog.findViewById(R.id.btnYes);
+        Button btnNo = alertCustomdialog.findViewById(R.id.btnNo);
+        // txtDia.setText("Your device date & time is \n" + deviceTime + "\n\nServer date & time is \n" + serverTime);
+
+        AlertDialog markAttendanceDialog = dateErrorAlert.create();
+
+        markAttendanceDialog.show();
+        markAttendanceDialog.setCanceledOnTouchOutside(false);
+
+        btnYes.setOnClickListener(new View.OnClickListener(
+
+        ) {
+            @Override
+            public void onClick(View view) {
+                markAttendanceDialog.dismiss();
+
+                attendance = new Attendance();
+                setGPS();
+                if (insertNewRecord()) {
+                    //  finish();
+                    //  startActivity(new Intent(this, MainActivity.class));
+                    bi.markAttendance.setVisibility(View.GONE);
+                    Toast.makeText(MainActivity.this, "Attendance has been marked.", Toast.LENGTH_SHORT).show();
+
+
+                } else {
+                    Toast.makeText(MainActivity.this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
+                }
+
+                //finish();
+            }
+        });
+        btnNo.setOnClickListener(new View.OnClickListener(
+
+        ) {
+            @Override
+            public void onClick(View view) {
+                markAttendanceDialog.dismiss();
+
+            }
+        });
+    }
+
+    private boolean insertNewRecord() {
+        if (!attendance.getUid().equals("") || MainApp.superuser) return true;
+        attendance.populateMeta();
+
+        long rowId = 0;
+        try {
+            rowId = db.addAttendance(attendance);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        attendance.setId(String.valueOf(rowId));
+        if (rowId > 0) {
+            attendance.setUid(attendance.getDeviceId() + attendance.getId());
+            try {
+                db.addAttendance(attendance);
+                setCurrentAttendance();
+                finish();
+                startActivity(getIntent());
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "JSONException(Attendance): ", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            return true;
+        } else {
+            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
+    public void setGPS() {
+        SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+        String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+        attendance.setGpsLat(GPSPref.getString("Latitude", "0"));
+        attendance.setGpsLng(GPSPref.getString("Longitude", "0"));
+        attendance.setGpsAcc(GPSPref.getString("Accuracy", "0"));
+        attendance.setGpsDT(date); // Timestamp is converted to date above
+
+    }
+
+    private void setCurrentAttendance() {
+        MainApp.editor.putString("attendanceUID", attendance.getUid());
+        MainApp.editor.putString("attendanceDate", attendance.getSysDate());
+        MainApp.editor.apply();
+    }
+
+    private void animBackground() {
+        ImageButton ll = findViewById(R.id.markAttendance);
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(500);
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+
+        int vis = ll.getVisibility();
+        if (vis == 0) {
+            ll.startAnimation(anim);
+
+            // Stop blinking after 7 sec
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ll.clearAnimation();
+                }
+            }, 7000);
+        }
+    }
+
+
+    private void animMenu() {
+        Toolbar ll = findViewById(R.id.toolbar);
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(500);
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+
+        int vis = ll.getVisibility();
+        if (vis == 0) {
+            ll.startAnimation(anim);
+
+            // Stop blinking after 7 sec
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ll.clearAnimation();
+                }
+            }, 7000);
+        }
     }
 }

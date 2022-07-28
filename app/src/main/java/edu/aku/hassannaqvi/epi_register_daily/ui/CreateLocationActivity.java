@@ -1,13 +1,10 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui;
 
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.attendance;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.sharedPref;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,73 +20,85 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
-import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityAttendanceBinding;
-import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
+import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityCreateLocationBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.HealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
+import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 
-public class AttendanceActivity extends AppCompatActivity {
-    private static final String TAG = "AttendanceActivity";
-    ActivityAttendanceBinding bi;
+public class CreateLocationActivity extends AppCompatActivity {
+    private static final String TAG = "CreateLocationActivity";
+    ActivityCreateLocationBinding bi;
     private DatabaseHelper db;
-    private ArrayList<String> healthFacilityNames, healthFacilityCodes, villageNames, villageCodes;
+    private ArrayList<String> facilityNames, facilityCodes, villageNames, villageCodes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_attendance);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_create_location);
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
-        attendance = new Attendance();
-        bi.setForm(attendance);
+        workLocation = new WorkLocation();
+        bi.setWorkLoc(workLocation);
 
         bi.attendat.setOnCheckedChangeListener((radioGroup, i) -> {
-            if (i == bi.attendat01.getId()) populateSpinner();
-            else bi.facility.setAdapter(null);
-            if (i == bi.attendat02.getId()) populateSpinner();
-            else bi.village.setAdapter(null);
+            if (i == bi.attendat01.getId()) {
+                populateFacilitySpinner();
+                villageCodes = new ArrayList<>();
+                villageNames = new ArrayList<>();
+                bi.wlVillageName.setAdapter(null);
+            }
+
+            if (i == bi.attendat02.getId()) {
+                populateVillageSpinner();
+
+                facilityCodes = new ArrayList<>();
+                facilityNames = new ArrayList<>();
+                bi.wlFacilityName.setAdapter(null);
+            }
         });
     }
 
 
-    private void populateSpinner() {
+    private void populateFacilitySpinner() {
 
         Collection<HealthFacilities> healthFacility = db.getHealthFacilityByUC(MainApp.user.getDist_id());
 
-        healthFacilityNames = new ArrayList<>();
-        healthFacilityCodes = new ArrayList<>();
-        healthFacilityNames.add("...");
-        healthFacilityCodes.add("...");
+        facilityNames = new ArrayList<>();
+        facilityCodes = new ArrayList<>();
+        facilityNames.add("...");
+        facilityCodes.add("...");
 
         for (HealthFacilities hf : healthFacility) {
-            healthFacilityNames.add(hf.getHfName());
-            healthFacilityCodes.add(hf.getHfCode());
+            facilityNames.add(hf.getHfName());
+            facilityCodes.add(hf.getHfCode());
         }
 
         if (MainApp.user.getUserName().contains("test") || MainApp.user.getUserName().contains("dmu") || MainApp.user.getUserName().contains("test")) {
-            healthFacilityNames.add("Test Facility 1");
-            healthFacilityNames.add("Test Facility 2");
-            healthFacilityNames.add("Test Facility 3");
+            facilityNames.add("Test Facility 1");
+            facilityNames.add("Test Facility 2");
+            facilityNames.add("Test Facility 3");
 
-            healthFacilityCodes.add("001");
-            healthFacilityCodes.add("002");
-            healthFacilityCodes.add("003");
+            facilityCodes.add("001");
+            facilityCodes.add("002");
+            facilityCodes.add("003");
         }
         // Apply the adapter to the spinner
-        bi.facility.setAdapter(new ArrayAdapter<>(AttendanceActivity.this, R.layout.custom_spinner, healthFacilityNames));
+        //    bi.wlFacilityName.setAdapter(new ArrayAdapter<>(CreateLocationActivity.this, R.layout.custom_spinner, facilityNames));
+        bi.wlFacilityName.setAdapter(new ArrayAdapter<>(CreateLocationActivity.this, R.layout.custom_spinner, facilityNames));
 
-        bi.facility.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        bi.wlFacilityName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position != 0) {
-                    MainApp.selectedFacilityName = (healthFacilityNames.get(bi.facility.getSelectedItemPosition()));
-                    attendance.setFacility(MainApp.selectedFacilityName);
+                    workLocation.setWlFacilityCode(facilityCodes.get(bi.wlFacilityName.getSelectedItemPosition()));
+                    workLocation.setWlFacilityName(facilityNames.get(bi.wlFacilityName.getSelectedItemPosition()));
+
                 }
             }
 
@@ -99,7 +108,11 @@ public class AttendanceActivity extends AppCompatActivity {
 
         });
 
-        Collection<Villages> villages = db.getAllVillages();
+    }
+
+    private void populateVillageSpinner() {
+
+        Collection<Villages> villages = db.getAllVillages(MainApp.user.getDist_id());
 
         villageNames = new ArrayList<>();
         villageCodes = new ArrayList<>();
@@ -121,15 +134,16 @@ public class AttendanceActivity extends AppCompatActivity {
             villageCodes.add("003");
         }
         // Apply the adapter to the spinner
-        bi.village.setAdapter(new ArrayAdapter<>(AttendanceActivity.this, R.layout.custom_spinner, villageNames));
+        bi.wlVillageName.setAdapter(new ArrayAdapter<>(CreateLocationActivity.this, R.layout.custom_spinner, villageNames));
 
-        bi.village.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        bi.wlVillageName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position != 0) {
-                    MainApp.selectedVillageName = (villageNames.get(bi.village.getSelectedItemPosition()));
-                    attendance.setVillage(MainApp.selectedVillageName);
+
+                    workLocation.setWlVillageCode(villageCodes.get(bi.wlVillageName.getSelectedItemPosition()));
+                    workLocation.setWlVillageName(villageNames.get(bi.wlVillageName.getSelectedItemPosition()));
                 }
             }
 
@@ -142,21 +156,21 @@ public class AttendanceActivity extends AppCompatActivity {
 
 
     private boolean insertNewRecord() {
-        if (!attendance.getUid().equals("") || MainApp.superuser) return true;
-        attendance.populateMeta();
+        if (!workLocation.getUid().equals("") || MainApp.superuser) return true;
+        workLocation.populateMeta();
 
         long rowId = 0;
         try {
-            rowId = db.addAttandence(attendance);
+            rowId = db.addWorkLocation(workLocation);
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
             return false;
         }
-        attendance.setId(String.valueOf(rowId));
+        workLocation.setId(String.valueOf(rowId));
         if (rowId > 0) {
-            attendance.setUid(attendance.getDeviceId() + attendance.getId());
-            db.updatesAttendanceColumn(TableContracts.AttendanceTable.COLUMN_UID, attendance.getUid());
+            workLocation.setUid(workLocation.getDeviceId() + workLocation.getId());
+            db.updatesWorkLocationColumn(TableContracts.WorkLocationTable.COLUMN_UID, workLocation.getUid());
             return true;
         } else {
             Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
@@ -165,12 +179,12 @@ public class AttendanceActivity extends AppCompatActivity {
     }
 
 
-    private boolean updateDB() {
+/*    private boolean updateDB() {
         if (MainApp.superuser) return true;
 
         int updcount = 0;
         try {
-            updcount = db.updatesAttendanceColumn(TableContracts.AttendanceTable.COLUMN_ATT, attendance.aTTtoString());
+            updcount = db.updatesAttendanceColumn(TableContracts.WorkLocationTable.COLUMN_SWL, workLocation.aTTtoString());
         } catch (JSONException e) {
             e.printStackTrace();
             Log.d(TAG, R.string.upd_db + e.getMessage());
@@ -182,19 +196,28 @@ public class AttendanceActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
             return false;
         }
-    }
+    }*/
 
 
     public void btnContinue(View view) {
         if (!formValidation()) return;
-        if (!insertNewRecord()) return;
+
+
         setGPS();
-        if (updateDB()) {
+
+        if (insertNewRecord()) {
+            setCurrentWorkLocation();
             finish();
-            startActivity(new Intent(this, MainActivity.class));
+            //    startActivity(new Intent(this, MainActivity.class));
         } else {
             Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void setCurrentWorkLocation() {
+        MainApp.editor.putString("workLocationUID", workLocation.getUid());
+        MainApp.editor.putString("workLocationDate", workLocation.getSysDate());
+        MainApp.editor.apply();
     }
 
     private boolean formValidation() {
@@ -205,34 +228,16 @@ public class AttendanceActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
-        startActivity(new Intent(this, LoginActivity.class));
+        //   startActivity(new Intent(this, LoginActivity.class));
     }
 
     public void setGPS() {
-        SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
-        try {
-            String lat = GPSPref.getString("Latitude", "0");
-            String lang = GPSPref.getString("Longitude", "0");
-            String acc = GPSPref.getString("Accuracy", "0");
+        String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(sharedPref.getString("Time", "0"))).toString();
 
-            if (lat == "0" && lang == "0") {
-                Toast.makeText(this, "Could not obtained points", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
-            }
-
-            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
-
-            attendance.setGpsLat(lat);
-            attendance.setGpsLng(lang);
-            attendance.setGpsAcc(acc);
-            attendance.setGpsDT(date); // Timestamp is converted to date above
-
-//            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
-
-        } catch (Exception e) {
-            Log.e(TAG, "setGPS: " + e.getMessage());
-        }
+        workLocation.setGpsLat(sharedPref.getString("Latitude", "0"));
+        workLocation.setGpsLng(sharedPref.getString("Longitude", "0"));
+        workLocation.setGpsAcc(sharedPref.getString("Accuracy", "0"));
+        workLocation.setGpsDT(date); // Timestamp is converted to date above
 
     }
 }

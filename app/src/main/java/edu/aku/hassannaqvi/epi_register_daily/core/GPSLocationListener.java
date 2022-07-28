@@ -1,8 +1,9 @@
 package edu.aku.hassannaqvi.epi_register_daily.core;
 
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.editor;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.sharedPref;
+
 import android.Manifest;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -25,8 +26,6 @@ public class GPSLocationListener implements LocationListener {
 
     public void onLocationChanged(Location location) {
 
-        SharedPreferences sharedPref = mainApp.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
 
         String dt = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(sharedPref.getString("Time", "0"))).toString();
 

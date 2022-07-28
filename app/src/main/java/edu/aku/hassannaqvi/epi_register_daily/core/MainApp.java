@@ -38,6 +38,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
+import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 
 
 public class MainApp extends Application {
@@ -73,16 +74,11 @@ public class MainApp extends Application {
     public static FormVA formVA;
     public static FormVB formVB;
     public static FormVB formVBfollowup;
+    public static WorkLocation workLocation;
     public static Attendance attendance;
     public static Vaccines vaccines;
     public static boolean superuser;
-    public static String previousPage;
-    public static String selectedUCCode;
-    public static String selectedUCName;
-    public static String selectedFacilityCode;
-    public static String selectedFacilityName;
-    public static String selectedVillageCode;
-    public static String selectedVillageName;
+
 
     public static List<FormVB> formVBList;
 

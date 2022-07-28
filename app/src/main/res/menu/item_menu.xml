@@ -3,11 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menuOptions"
         android:icon="@drawable/ic_menu_hamburger"
         android:title="@string/options"
         app:showAsAction="always">
         <menu>
 
+            <!--            <item
+                            android:id="@+id/action_mark_attendance"
+                            android:title="@string/action_mark_attendance" />-->
+            <item
+                android:id="@+id/action_create_location"
+                android:title="@string/action_create_location" />
             <item
                 android:id="@+id/action_database"
                 android:title="@string/actiondatabase" />
@@ -15,10 +22,10 @@
                 android:id="@+id/onSync"
                 android:title="Sync Data"
                 app:showAsAction="collapseActionView" />
-            <item
-                android:id="@+id/changeLoc"
-                android:title="Change Location"
-                app:showAsAction="collapseActionView" />
+            <!--            <item-->
+            <!--                android:id="@+id/changeLoc"-->
+            <!--                android:title="Change Location"-->
+            <!--                app:showAsAction="collapseActionView" />-->
             <item
                 android:id="@+id/changePassword"
                 android:title="Change Password" />

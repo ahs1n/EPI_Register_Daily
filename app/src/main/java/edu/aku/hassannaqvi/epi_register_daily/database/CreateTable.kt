@@ -85,12 +85,32 @@ object CreateTable {
             + " );"
             )
 
+    const val SQL_CREATE_WORK_LOCATION = ("CREATE TABLE "
+            + WorkLocationTable.TABLE_NAME + "("
+            + WorkLocationTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + WorkLocationTable.COLUMN_PROJECT_NAME + " TEXT,"
+            + WorkLocationTable.COLUMN_UID + " TEXT,"
+            + WorkLocationTable.COLUMN_USERNAME + " TEXT,"
+            + WorkLocationTable.COLUMN_SYSDATE + " TEXT,"
+            + WorkLocationTable.COLUMN_ISTATUS + " TEXT,"
+            + WorkLocationTable.COLUMN_DEVICEID + " TEXT,"
+            + WorkLocationTable.COLUMN_DEVICETAGID + " TEXT,"
+            + WorkLocationTable.COLUMN_SYNCED + " TEXT,"
+            + WorkLocationTable.COLUMN_SYNC_DATE + " TEXT,"
+            + WorkLocationTable.COLUMN_APPVERSION + " TEXT,"
+            + WorkLocationTable.COLUMN_GPSLAT + " TEXT,"
+            + WorkLocationTable.COLUMN_GPSLNG + " TEXT,"
+            + WorkLocationTable.COLUMN_GPSDATE + " TEXT,"
+            + WorkLocationTable.COLUMN_GPSACC + " TEXT,"
+            + WorkLocationTable.COLUMN_SWL + " TEXT"
+            + " );"
+            )
+
     const val SQL_CREATE_ATTENDANCE = ("CREATE TABLE "
             + AttendanceTable.TABLE_NAME + "("
             + AttendanceTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + AttendanceTable.COLUMN_PROJECT_NAME + " TEXT,"
             + AttendanceTable.COLUMN_UID + " TEXT,"
-            + AttendanceTable.COLUMN_SNO + " TEXT,"
             + AttendanceTable.COLUMN_USERNAME + " TEXT,"
             + AttendanceTable.COLUMN_SYSDATE + " TEXT,"
             + AttendanceTable.COLUMN_ISTATUS + " TEXT,"
@@ -102,8 +122,7 @@ object CreateTable {
             + AttendanceTable.COLUMN_GPSLAT + " TEXT,"
             + AttendanceTable.COLUMN_GPSLNG + " TEXT,"
             + AttendanceTable.COLUMN_GPSDATE + " TEXT,"
-            + AttendanceTable.COLUMN_GPSACC + " TEXT,"
-            + AttendanceTable.COLUMN_ATT + " TEXT"
+            + AttendanceTable.COLUMN_GPSACC + " TEXT"
             + " );"
             )
 

@@ -4,6 +4,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp._EMPTY_;
 
 import android.database.Cursor;
+import android.util.Log;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -18,13 +19,14 @@ import java.util.Date;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.epi_register_daily.BR;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.WorkLocationTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
-public class Attendance extends BaseObservable implements Observable {
+public class WorkLocation extends BaseObservable implements Observable {
 
-    private final String TAG = "FormVA";
+    private final String TAG = "WorkLocation";
     private final transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
     // APP VARIABLES
     private String projectName = PROJECT_NAME;
@@ -33,18 +35,32 @@ public class Attendance extends BaseObservable implements Observable {
     private String uid = _EMPTY_;
     private String userName = _EMPTY_;
     private String sysDate = _EMPTY_;
+    private String sno = _EMPTY_;
     private String deviceId = _EMPTY_;
+    private String deviceTag = _EMPTY_;
     private String appver = _EMPTY_;
+    private String endTime = _EMPTY_;
+    private String iStatus = _EMPTY_;
+    private String iStatus96x = _EMPTY_;
     private String synced = _EMPTY_;
     private String syncDate = _EMPTY_;
+    private String entryType = _EMPTY_;
     private String gpsLat = _EMPTY_;
     private String gpsLng = _EMPTY_;
     private String gpsDT = _EMPTY_;
     private String gpsAcc = _EMPTY_;
 
 
+    private String wlDate = _EMPTY_;
+    private String wlLocationType = _EMPTY_;
+    private String wlFacilityName = _EMPTY_;
+    private String wlFacilityCode = _EMPTY_;
+    private String wlVillageName = _EMPTY_;
+    private String wlVillageCode = _EMPTY_;
+    private String wlArea = _EMPTY_;
 
-    public Attendance() {
+
+    public WorkLocation() {
 
 /*        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
@@ -90,6 +106,15 @@ public class Attendance extends BaseObservable implements Observable {
         this.uid = uid;
     }
 
+    @Bindable
+    public String getSno() {
+        return sno;
+    }
+
+    public void setSno(String sno) {
+        this.sno = sno;
+        notifyPropertyChanged(BR.sno);
+    }
 
     public String getUserName() {
         return userName;
@@ -115,6 +140,21 @@ public class Attendance extends BaseObservable implements Observable {
         this.deviceId = deviceId;
     }
 
+    public String getDeviceTag() {
+        return deviceTag;
+    }
+
+    public void setDeviceTag(String deviceTag) {
+        this.deviceTag = deviceTag;
+    }
+
+    public String getEntryType() {
+        return entryType;
+    }
+
+    public void setEntryType(String entryType) {
+        this.entryType = entryType;
+    }
 
     public String getAppver() {
         return appver;
@@ -124,6 +164,29 @@ public class Attendance extends BaseObservable implements Observable {
         this.appver = appver;
     }
 
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getiStatus() {
+        return iStatus;
+    }
+
+    public void setiStatus(String iStatus) {
+        this.iStatus = iStatus;
+    }
+
+    public String getiStatus96x() {
+        return iStatus96x;
+    }
+
+    public void setiStatus96x(String iStatus96x) {
+        this.iStatus96x = iStatus96x;
+    }
 
     public String getSynced() {
         return synced;
@@ -183,16 +246,88 @@ public class Attendance extends BaseObservable implements Observable {
     }
 
 
+    @Bindable
+    public String getWlDate() {
+        return wlDate;
+    }
+
+    public void setWlDate(String wlDate) {
+        this.wlDate = wlDate;
+        notifyPropertyChanged(BR.wlDate);
+    }
+
+    @Bindable
+    public String getWlArea() {
+        return wlArea;
+    }
+
+    public void setWlArea(String wlArea) {
+        this.wlArea = wlArea;
+        notifyPropertyChanged(BR.wlArea);
+    }
+
+    @Bindable
+    public String getWlLocationType() {
+        return wlLocationType;
+    }
+
+    public void setWlLocationType(String wlLocationType) {
+        this.wlLocationType = wlLocationType;
+        notifyPropertyChanged(BR.wlLocationType);
+    }
+
+    @Bindable
+    public String getWlFacilityName() {
+        return wlFacilityName;
+    }
+
+    public void setWlFacilityName(String wlFacilityName) {
+        this.wlFacilityName = wlFacilityName;
+        notifyPropertyChanged(BR.wlFacilityName);
+    }
+
+    @Bindable
+    public String getWlFacilityCode() {
+        return wlFacilityCode;
+    }
+
+    public void setWlFacilityCode(String wlFacilityCode) {
+        this.wlFacilityCode = wlFacilityCode;
+        notifyPropertyChanged(BR.wlFacilityCode);
+    }
+
+    @Bindable
+    public String getWlVillageName() {
+        return wlVillageName;
+    }
+
+    public void setWlVillageName(String wlVillageName) {
+        this.wlVillageName = wlVillageName;
+        notifyPropertyChanged(BR.wlVillageName);
+    }
+
+    @Bindable
+    public String getWlVillageCode() {
+        return wlVillageCode;
+    }
+
+    public void setWlVillageCode(String wlVillageCode) {
+        this.wlVillageCode = wlVillageCode;
+        notifyPropertyChanged(BR.wlVillageCode);
+    }
 
 
-    public Attendance Hydrate(Cursor cursor) throws JSONException {
+    public WorkLocation Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_UID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_PROJECT_NAME));
         this.userName = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_SYSDATE));
         this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_DEVICETAGID));
+        //   this.entryType = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_ENTRY_TYPE));
         this.appver = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_APPVERSION));
+        this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_ISTATUS));
         this.synced = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_SYNCED));
         this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_SYNC_DATE));
         this.gpsLat = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_GPSLAT));
@@ -200,9 +335,40 @@ public class Attendance extends BaseObservable implements Observable {
         this.gpsDT = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_GPSDATE));
         this.gpsAcc = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_GPSACC));
 
+        sWlHydrate(cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_SWL)));
         return this;
     }
 
+    public void sWlHydrate(String string) throws JSONException {
+        Log.d(TAG, "sWlHydrate: " + string);
+        if (string != null) {
+            JSONObject json = null;
+            json = new JSONObject(string);
+            this.wlDate = json.getString("wlDate");
+            this.wlLocationType = json.getString("wlLocationType");
+            this.wlFacilityName = json.getString("wlFacilityName");
+            this.wlFacilityCode = json.getString("wlFacilityCode");
+            this.wlVillageName = json.getString("wlVillageName");
+            this.wlVillageCode = json.getString("wlVillageCode");
+            this.wlArea = json.getString("wlArea");
+
+
+        }
+    }
+
+    public String sWltoString() throws JSONException {
+        Log.d(TAG, "sWltoString: ");
+        JSONObject json = new JSONObject();
+        json
+                .put("wlDate", wlDate)
+                .put("wlLocationType", wlLocationType)
+                .put("wlFacilityName", wlFacilityName)
+                .put("wlFacilityCode", wlFacilityCode)
+                .put("wlVillageName", wlVillageName)
+                .put("wlVillageCode", wlVillageCode)
+                .put("wlArea", wlArea);
+        return json.toString();
+    }
 
 
     public JSONObject toJSONObject() throws JSONException {
@@ -214,15 +380,17 @@ public class Attendance extends BaseObservable implements Observable {
         json.put(WorkLocationTable.COLUMN_USERNAME, this.userName);
         json.put(WorkLocationTable.COLUMN_SYSDATE, this.sysDate);
         json.put(WorkLocationTable.COLUMN_DEVICEID, this.deviceId);
-
+        json.put(WorkLocationTable.COLUMN_DEVICETAGID, this.deviceTag);
+        //    json.put(FormsTable.COLUMN_ENTRY_TYPE, this.entryType);
+        json.put(WorkLocationTable.COLUMN_ISTATUS, this.iStatus);
         json.put(WorkLocationTable.COLUMN_SYNCED, this.synced);
         json.put(WorkLocationTable.COLUMN_SYNC_DATE, this.syncDate);
         json.put(WorkLocationTable.COLUMN_APPVERSION, this.appver);
         json.put(WorkLocationTable.COLUMN_GPSLAT, this.gpsLat);
         json.put(WorkLocationTable.COLUMN_GPSLNG, this.gpsLng);
-        json.put(WorkLocationTable.COLUMN_GPSDATE, this.gpsDT);
+        json.put(TableContracts.WorkLocationTable.COLUMN_GPSDATE, this.gpsDT);
         json.put(WorkLocationTable.COLUMN_GPSACC, this.gpsAcc);
-
+        json.put(WorkLocationTable.COLUMN_SWL, new JSONObject(sWltoString()));
         return json;
     }
 }

@@ -16,14 +16,15 @@ import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CR
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VACCINE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VILLAGES;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_WORK_LOCATION;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
-import android.database.SQLException;
 import android.util.Log;
 
+import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteException;
 import net.sqlcipher.database.SQLiteOpenHelper;
@@ -39,6 +40,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.EntryLogTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
@@ -50,6 +52,7 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVillages;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.WorkLocationTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.EntryLog;
@@ -62,6 +65,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.UCs;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
+import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 
 
 
@@ -90,6 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FORMSVA);
         db.execSQL(SQL_CREATE_FORMSVB);
         db.execSQL(SQL_CREATE_VACCINE);
+        db.execSQL(SQL_CREATE_WORK_LOCATION);
         db.execSQL(SQL_CREATE_ATTENDANCE);
         db.execSQL(SQL_CREATE_HF);
         db.execSQL(SQL_CREATE_UC);
@@ -204,34 +209,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //ADDITION in DB
-    public Long addAttandence(Attendance attendance) throws JSONException {
+    public Long addWorkLocation(WorkLocation workLocation) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         ContentValues values = new ContentValues();
-        values.put(AttendanceTable.COLUMN_PROJECT_NAME, attendance.getProjectName());
-        values.put(AttendanceTable.COLUMN_UID, attendance.getUid());
-        values.put(AttendanceTable.COLUMN_SNO, attendance.getSno());
-        values.put(AttendanceTable.COLUMN_USERNAME, attendance.getUserName());
-        values.put(AttendanceTable.COLUMN_SYSDATE, attendance.getSysDate());
-        values.put(AttendanceTable.COLUMN_ATT, attendance.aTTtoString());
-        values.put(AttendanceTable.COLUMN_GPSLAT, attendance.getGpsLat());
-        values.put(AttendanceTable.COLUMN_GPSLNG, attendance.getGpsLng());
-        values.put(AttendanceTable.COLUMN_GPSDATE, attendance.getGpsDT());
-        values.put(AttendanceTable.COLUMN_GPSACC, attendance.getGpsAcc());
-        values.put(AttendanceTable.COLUMN_ISTATUS, attendance.getiStatus());
-        values.put(AttendanceTable.COLUMN_DEVICETAGID, attendance.getDeviceTag());
-        values.put(AttendanceTable.COLUMN_DEVICEID, attendance.getDeviceId());
-        values.put(AttendanceTable.COLUMN_APPVERSION, attendance.getAppver());
-        values.put(AttendanceTable.COLUMN_SYNCED, attendance.getSynced());
-        values.put(AttendanceTable.COLUMN_SYNC_DATE, attendance.getSyncDate());
+        values.put(TableContracts.WorkLocationTable.COLUMN_PROJECT_NAME, workLocation.getProjectName());
+        values.put(TableContracts.WorkLocationTable.COLUMN_UID, workLocation.getUid());
+        values.put(TableContracts.WorkLocationTable.COLUMN_USERNAME, workLocation.getUserName());
+        values.put(TableContracts.WorkLocationTable.COLUMN_SYSDATE, workLocation.getSysDate());
+        values.put(TableContracts.WorkLocationTable.COLUMN_GPSLAT, workLocation.getGpsLat());
+        values.put(WorkLocationTable.COLUMN_GPSLNG, workLocation.getGpsLng());
+        values.put(TableContracts.WorkLocationTable.COLUMN_GPSDATE, workLocation.getGpsDT());
+        values.put(WorkLocationTable.COLUMN_GPSACC, workLocation.getGpsAcc());
+        values.put(WorkLocationTable.COLUMN_ISTATUS, workLocation.getiStatus());
+        values.put(TableContracts.WorkLocationTable.COLUMN_DEVICETAGID, workLocation.getDeviceTag());
+        values.put(WorkLocationTable.COLUMN_DEVICEID, workLocation.getDeviceId());
+        values.put(WorkLocationTable.COLUMN_APPVERSION, workLocation.getAppver());
+        values.put(WorkLocationTable.COLUMN_SYNCED, workLocation.getSynced());
+        values.put(TableContracts.WorkLocationTable.COLUMN_SYNC_DATE, workLocation.getSyncDate());
+        values.put(WorkLocationTable.COLUMN_SWL, workLocation.sWltoString());
 
         long newRowId;
         newRowId = db.insert(
-                AttendanceTable.TABLE_NAME,
-                AttendanceTable.COLUMN_NAME_NULLABLE,
+                WorkLocationTable.TABLE_NAME,
+                TableContracts.WorkLocationTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
 
+
+    //ADDITION in DB
+    public Long addAttendance(Attendance attendance) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        ContentValues values = new ContentValues();
+        values.put(AttendanceTable.COLUMN_PROJECT_NAME, attendance.getProjectName());
+        values.put(AttendanceTable.COLUMN_UID, attendance.getUid());
+        values.put(AttendanceTable.COLUMN_USERNAME, attendance.getUserName());
+        values.put(AttendanceTable.COLUMN_SYSDATE, attendance.getSysDate());
+        values.put(AttendanceTable.COLUMN_GPSLAT, attendance.getGpsLat());
+        values.put(AttendanceTable.COLUMN_GPSLNG, attendance.getGpsLng());
+        values.put(AttendanceTable.COLUMN_GPSDATE, attendance.getGpsDT());
+        values.put(AttendanceTable.COLUMN_GPSACC, attendance.getGpsAcc());
+        values.put(AttendanceTable.COLUMN_DEVICEID, attendance.getDeviceId());
+        values.put(AttendanceTable.COLUMN_APPVERSION, attendance.getAppver());
+        values.put(AttendanceTable.COLUMN_SYNCED, attendance.getSynced());
+        values.put(TableContracts.AttendanceTable.COLUMN_SYNC_DATE, attendance.getSyncDate());
+
+        long newRowId;
+        newRowId = db.insert(
+                AttendanceTable.TABLE_NAME,
+                TableContracts.AttendanceTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
 
     public Long addEntryLog(EntryLog entryLog) throws SQLiteException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
@@ -366,16 +395,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
-    public int updatesAttendanceColumn(String column, String value) {
+    public int updatesWorkLocationColumn(String column, String value) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
 
         ContentValues values = new ContentValues();
         values.put(column, value);
 
-        String selection = AttendanceTable._ID + " =? ";
-        String[] selectionArgs = {String.valueOf(MainApp.attendance.getId())};
+        String selection = TableContracts.WorkLocationTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(MainApp.workLocation.getId())};
 
-        return db.update(AttendanceTable.TABLE_NAME,
+        return db.update(WorkLocationTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
@@ -886,20 +915,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] columns = null;
 
         String whereClause;
-        /*whereClause = AttendanceTable.COLUMN_SYNCED + " = '' AND " +
-                AttendanceTable.COLUMN_ISTATUS + "!= ''";*/
-        whereClause = AttendanceTable.COLUMN_SYNCED + " = '' ";
+        /*whereClause = WorkLocationTable.COLUMN_SYNCED + " = '' AND " +
+                WorkLocationTable.COLUMN_ISTATUS + "!= ''";*/
+        whereClause = TableContracts.WorkLocationTable.COLUMN_SYNCED + " = '' ";
 
         String[] whereArgs = null;
 
         String groupBy = null;
         String having = null;
 
-        String orderBy = AttendanceTable.COLUMN_ID + " ASC";
+        String orderBy = TableContracts.WorkLocationTable.COLUMN_ID + " ASC";
 
         JSONArray allAttendance = new JSONArray();
         c = db.query(
-                AttendanceTable.TABLE_NAME,  // The table to query
+                TableContracts.WorkLocationTable.TABLE_NAME,  // The table to query
                 columns,                   // The columns to return
                 whereClause,               // The columns for the WHERE clause
                 whereArgs,                 // The values for the WHERE clause
@@ -912,8 +941,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
              /*Form fc = new Form();
              allFC.add(fc.Hydrate(c));*/
             Log.d(TAG, "getUnsyncedAttendance: " + c.getCount());
-            Attendance attendance = new Attendance();
-            allAttendance.put(attendance.Hydrate(c).toJSONObject());
+            WorkLocation workLocation = new WorkLocation();
+            allAttendance.put(workLocation.Hydrate(c).toJSONObject());
 
 
         }
@@ -1158,15 +1187,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(AttendanceTable.COLUMN_SYNCED, true);
-        values.put(AttendanceTable.COLUMN_SYNC_DATE, new Date().toString());
+        values.put(TableContracts.WorkLocationTable.COLUMN_SYNCED, true);
+        values.put(TableContracts.WorkLocationTable.COLUMN_SYNC_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = AttendanceTable.COLUMN_ID + " = ?";
+        String where = TableContracts.WorkLocationTable.COLUMN_ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
-                AttendanceTable.TABLE_NAME,
+                WorkLocationTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
@@ -1658,29 +1687,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Collection<Villages> getAllVillages() {
+    public Collection<Villages> getAllVillages(String ucCode) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
-        String[] columns = {TableVillages.COLUMN_UC_CODE,
-                TableVillages.COLUMN_VILLAGE_CODE,
-                TableVillages.COLUMN_VILLAGE_NAME
-        };
+        String[] columns = null;
 
-        String orderBy = TableVillages.COLUMN_VILLAGE_NAME + " ASC";
+        String whereClause;
+        whereClause = TableVillages.COLUMN_UC_CODE + " = ? ";
 
-        Collection<Villages> allVillages = new ArrayList<>();
+        String[] whereArgs = {ucCode};
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = TableVillages.COLUMN_ID + " ASC";
+
+        List<Villages> allVillages = new ArrayList<>();
+
         c = db.query(
-                true,
                 TableVillages.TABLE_NAME,  // The table to query
-                columns,
-                null,
-                null,
-                null,
-                null,
-                orderBy,
-                "5000"
-
-                // The sort order
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
         );
         while (c.moveToNext()) {
             allVillages.add(new Villages().hydrate(c));
@@ -1689,4 +1720,69 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public WorkLocation getCurrentWorkLocation(String uid) throws JSONException {
+
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause;
+        whereClause = WorkLocationTable.COLUMN_UID + " = ? ";
+
+        String[] whereArgs = {uid};
+
+        String orderBy = null;
+
+        WorkLocation workLocation = null;
+        c = db.query(
+                WorkLocationTable.TABLE_NAME,  // The table to query
+                columns,
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,
+                null,
+                null,
+                orderBy
+
+                // The sort order
+        );
+
+        if (c != null) {
+            c.moveToFirst();
+            workLocation = new WorkLocation().Hydrate(c);
+        }
+        return workLocation;
+
+    }
+
+    public Attendance getCurrentAttendance(String uid) throws JSONException {
+
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause;
+        whereClause = AttendanceTable.COLUMN_UID + " = ? ";
+
+        String[] whereArgs = {uid};
+
+        String orderBy = null;
+
+        Attendance attendance = null;
+        c = db.query(
+                AttendanceTable.TABLE_NAME,  // The table to query
+                columns,
+                null,
+                null,
+                null,
+                null,
+                orderBy
+
+                // The sort order
+        );
+
+        if (c != null) {
+            c.moveToFirst();
+            attendance = new Attendance().Hydrate(c);
+        }
+        return attendance;
+
+    }
 }
