@@ -77,7 +77,7 @@ public class CreateLocationActivity extends AppCompatActivity {
             facilityCodes.add(hf.getHfCode());
         }
 
-        if (MainApp.user.getUserName().contains("test") || MainApp.user.getUserName().contains("dmu") || MainApp.user.getUserName().contains("test")) {
+        if (MainApp.user.getUserName().contains("test") || MainApp.user.getUserName().contains("dmu") || MainApp.user.getUserName().contains("user")) {
             facilityNames.add("Test Facility 1");
             facilityNames.add("Test Facility 2");
             facilityNames.add("Test Facility 3");
@@ -112,7 +112,7 @@ public class CreateLocationActivity extends AppCompatActivity {
 
     private void populateVillageSpinner() {
 
-        Collection<Villages> villages = db.getAllVillages(MainApp.user.getDist_id());
+        Collection<Villages> villages = db.getAllVillagesByUC(MainApp.user.getUserName());
 
         villageNames = new ArrayList<>();
         villageCodes = new ArrayList<>();
@@ -144,6 +144,8 @@ public class CreateLocationActivity extends AppCompatActivity {
 
                     workLocation.setWlVillageCode(villageCodes.get(bi.wlVillageName.getSelectedItemPosition()));
                     workLocation.setWlVillageName(villageNames.get(bi.wlVillageName.getSelectedItemPosition()));
+
+                    MainApp.selectedVillageCode = (villageCodes.get(bi.wlVillageName.getSelectedItemPosition()));
                 }
             }
 

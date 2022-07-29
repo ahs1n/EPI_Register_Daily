@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        bi.location.setText("Your current location is not set. \nPlease create new work location.");
+        bi.location.setText("Your Attendance is not marked. \nPlease mark attendance");
 
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);

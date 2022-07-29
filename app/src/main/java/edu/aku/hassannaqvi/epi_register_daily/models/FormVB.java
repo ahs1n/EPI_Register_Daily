@@ -57,6 +57,8 @@ public class FormVB extends BaseObservable implements Observable {
     private String gpsAcc = _EMPTY_;
     private String cardNo = _EMPTY_;
     private String vb04aName = _EMPTY_;
+    private String ucCode = _EMPTY_;
+    private String villageCode = _EMPTY_;
 
     // FIELD VARIABLES
     private String vb01 = _EMPTY_;
@@ -870,6 +872,27 @@ public class FormVB extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.vb08cidt);
     }
 
+    @Bindable
+    public String getUcCode() {
+        return ucCode;
+    }
+
+    public void setUcCode(String ucCode) {
+        this.ucCode = ucCode;
+        notifyPropertyChanged(BR.ucCode);
+    }
+
+    @Bindable
+    public String getVillageCode() {
+        return villageCode;
+    }
+
+    public void setVillageCode(String villageCode) {
+        this.villageCode = villageCode;
+//        setVillageCode(MainApp.selectedVillageCode);
+        notifyPropertyChanged(BR.villageCode);
+    }
+
 
     public FormVB Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
@@ -878,6 +901,8 @@ public class FormVB extends BaseObservable implements Observable {
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_PROJECT_NAME));
         this.sno = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SNO));
         this.userName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_USERNAME));
+        this.ucCode = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UC_CODE));
+        this.villageCode = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VILLAGE_CODE));
         this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYSDATE));
         this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICETAGID));
@@ -1015,6 +1040,8 @@ public class FormVB extends BaseObservable implements Observable {
         json.put(FormsVBTable.COLUMN_UUID, this.uuid);
         json.put(FormsVBTable.COLUMN_SNO, this.sno);
         json.put(FormsVBTable.COLUMN_USERNAME, this.userName);
+        json.put(FormsVBTable.COLUMN_UC_CODE, this.ucCode);
+        json.put(FormsVBTable.COLUMN_VILLAGE_CODE, this.villageCode);
         json.put(FormsVBTable.COLUMN_SYSDATE, this.sysDate);
         json.put(FormsVBTable.COLUMN_DEVICEID, this.deviceId);
         json.put(FormsVBTable.COLUMN_DEVICETAGID, this.deviceTag);

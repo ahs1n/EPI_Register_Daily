@@ -19,6 +19,7 @@ class Users {
     var enabled: String = _EMPTY_
     var pwdExpiry: String = _EMPTY_
     var dist_id: String = _EMPTY_
+    var uccode: String = _EMPTY_
 
     constructor() {
         // Default Constructor
@@ -39,6 +40,7 @@ class Users {
         pwdExpiry = jsonObject.getString(UsersTable.COLUMN_PWD_EXPIRY)
         enabled = jsonObject.getString(UsersTable.COLUMN_ENABLED)
         dist_id = jsonObject.getString(UsersTable.COLUMN_DIST_ID)
+        uccode = jsonObject.getString(UsersTable.COLUMN_UC_CODE)
         return this
     }
 
@@ -52,6 +54,7 @@ class Users {
         pwdExpiry = cursor.getString(cursor.getColumnIndexOrThrow(UsersTable.COLUMN_PWD_EXPIRY))
         newUser = cursor.getString(cursor.getColumnIndexOrThrow(UsersTable.COLUMN_ISNEW_USER))
         dist_id = cursor.getString(cursor.getColumnIndexOrThrow(UsersTable.COLUMN_DIST_ID))
+        uccode = cursor.getString(cursor.getColumnIndexOrThrow(UsersTable.COLUMN_UC_CODE))
         return this
     }
 

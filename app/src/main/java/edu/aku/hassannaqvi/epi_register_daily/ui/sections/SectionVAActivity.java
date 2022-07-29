@@ -59,7 +59,7 @@ public class SectionVAActivity extends AppCompatActivity {
 
     private void populateSpinner() {
 
-        Collection<UCs> unionCouncil = db.getAllUCs();
+        Collection<UCs> unionCouncil = db.getAllUCsByUCcode(MainApp.user.getUccode());
 
         ucNames = new ArrayList<>();
         ucCodes = new ArrayList<>();
@@ -92,7 +92,7 @@ public class SectionVAActivity extends AppCompatActivity {
                     formVA.setVa02(MainApp.selectedUCName);
                 }*/
                 if (position == 0) return;
-                Collection<HealthFacilities> healthFacilities = db.getHealthFacilityByUC(MainApp.user.getDist_id());
+                Collection<HealthFacilities> healthFacilities = db.getHealthFacilityByUC(MainApp.user.getUccode());
                 healthFacilityNames = new ArrayList<>();
                 healthFacilityCodes = new ArrayList<>();
                 healthFacilityNames.add("...");
