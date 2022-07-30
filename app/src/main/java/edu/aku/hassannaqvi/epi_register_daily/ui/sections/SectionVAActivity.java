@@ -91,7 +91,10 @@ public class SectionVAActivity extends AppCompatActivity {
                     MainApp.selectedUCName = (ucNames.get(bi.va02.getSelectedItemPosition()));
                     formVA.setVa02(MainApp.selectedUCName);
                 }*/
+
                 if (position == 0) return;
+                MainApp.selectedUCCode = bi.va02.getSelectedItem().toString();
+                formVA.setVa02(ucCodes.get(bi.va02.getSelectedItemPosition()));
                 Collection<HealthFacilities> healthFacilities = db.getHealthFacilityByUC(MainApp.user.getUccode());
                 healthFacilityNames = new ArrayList<>();
                 healthFacilityCodes = new ArrayList<>();
@@ -113,6 +116,8 @@ public class SectionVAActivity extends AppCompatActivity {
                 }
                 // Apply the adapter to the spinner
                 bi.va02a.setAdapter(new ArrayAdapter<>(SectionVAActivity.this, R.layout.custom_spinner, healthFacilityNames));
+
+
 
             }
 
@@ -246,5 +251,7 @@ public class SectionVAActivity extends AppCompatActivity {
         }
 
     }
+
+
 
 }
