@@ -1718,38 +1718,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    /*public Collection<Villages> getAllVillages(String ucCode) {
-        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
-        Cursor c = null;
-        String[] columns = null;
-
-        String whereClause;
-        whereClause = TableVillages.COLUMN_UC_CODE + " = ? ";
-
-        String[] whereArgs = {ucCode};
-
-        String groupBy = null;
-        String having = null;
-
-        String orderBy = TableVillages.COLUMN_ID + " ASC";
-
-        List<Villages> allVillages = new ArrayList<>();
-
-        c = db.query(
-                TableVillages.TABLE_NAME,  // The table to query
-                columns,                   // The columns to return
-                whereClause,               // The columns for the WHERE clause
-                whereArgs,                 // The values for the WHERE clause
-                groupBy,                   // don't group the rows
-                having,                    // don't filter by row groups
-                orderBy                    // The sort order
-        );
-        while (c.moveToNext()) {
-            allVillages.add(new Villages().hydrate(c));
-        }
-        return allVillages;
-    }*/
-
     public ArrayList<Villages> getAllVillagesByUC(String ucCode) {
 
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);

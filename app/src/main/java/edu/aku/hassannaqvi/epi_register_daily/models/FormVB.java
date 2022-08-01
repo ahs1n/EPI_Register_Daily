@@ -129,7 +129,7 @@ public class FormVB extends BaseObservable implements Observable {
         setUuid(MainApp.formVA.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
-//        setVillageCode(MainApp.selectedViltedlageCode);
+//        setVillageCode(MainApp.selectedVillageCode);
         setUcCode(MainApp.selectedUCCode);
         // setEntryType(String.valueOf(MainApp.entryType));
     }
@@ -891,7 +891,6 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVillageCode(String villageCode) {
         this.villageCode = villageCode;
-//        setVillageCode(MainApp.selectedVillageCode);
         notifyPropertyChanged(BR.villageCode);
     }
 

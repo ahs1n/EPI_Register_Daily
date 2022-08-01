@@ -112,7 +112,7 @@ public class CreateLocationActivity extends AppCompatActivity {
 
     private void populateVillageSpinner() {
 
-        Collection<Villages> villages = db.getAllVillagesByUC(MainApp.user.getUserName());
+        Collection<Villages> villages = db.getAllVillagesByUC(MainApp.user.getUccode());
 
         villageNames = new ArrayList<>();
         villageCodes = new ArrayList<>();

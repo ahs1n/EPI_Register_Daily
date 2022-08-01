@@ -65,8 +65,8 @@ public class MemberInfoActivity extends AppCompatActivity {
         bi.setForm(formVB);
 
 
-//        MainApp.selectedVillageCode = (MainApp.workLocation.getWlVillageCode());
         formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
+        formVB.setUcCode(MainApp.user.getUccode());
 
     }
 
