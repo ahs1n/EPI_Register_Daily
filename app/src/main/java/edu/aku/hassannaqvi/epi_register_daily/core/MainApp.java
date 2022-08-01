@@ -73,7 +73,6 @@ public class MainApp extends Application {
     public static FormWR wr;
     public static FormVA formVA;
     public static FormVB formVB;
-    public static FormVB formVBfollowup;
     public static WorkLocation workLocation;
     public static Attendance attendance;
     public static Vaccines vaccines;

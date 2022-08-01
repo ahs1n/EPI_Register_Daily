@@ -93,7 +93,7 @@ public class SectionVAActivity extends AppCompatActivity {
                 }*/
 
                 if (position == 0) return;
-                MainApp.selectedUCCode = bi.va02.getSelectedItem().toString();
+                MainApp.selectedUCCode = (ucCodes.get(bi.va02.getSelectedItemPosition()));
                 formVA.setVa02(ucCodes.get(bi.va02.getSelectedItemPosition()));
                 Collection<HealthFacilities> healthFacilities = db.getHealthFacilityByUC(MainApp.user.getUccode());
                 healthFacilityNames = new ArrayList<>();

@@ -64,20 +64,33 @@ public class MemberInfoActivity extends AppCompatActivity {
 
         bi.setForm(formVB);
 
+
+//        MainApp.selectedVillageCode = (MainApp.workLocation.getWlVillageCode());
+        formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
+
     }
 
-/*    @Override
+    @Override
     protected void onResume() {
         super.onResume();
 
-        if (MainApp.formVA.getUid().equals("")){
+/*        if (MainApp.formVA.getUid().equals("")){
             try {
                 MainApp.formVA = db.getFormByuid(MainApp.formVA.getId());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
-    }*/
+        }*/
+/*
+        String workLocationUID = sharedPref.getString("workLocationUID", "");
+        try {
+            MainApp.workLocation = db.getCurrentWorkLocation(workLocationUID);
+            MainApp.selectedVillageCode = (MainApp.workLocation.getWlVillageCode());
+
+        } catch (JSONException e) {
+            Toast.makeText(this, "JSONException(WorkLocation): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }*/
+    }
 
     private void setupListeners() {
         bi.vb03.setOnCheckedChangeListener(((radioGroup, i) -> {
@@ -190,8 +203,8 @@ public class MemberInfoActivity extends AppCompatActivity {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
         if (group) {
-            startActivity(new Intent(this, RegisteredWomenListActivity.class));
-        } else startActivity(new Intent(this, RegisteredChildListActivity.class));
+            startActivity(new Intent(this, RegisteredChildListActivity.class));
+        } else startActivity(new Intent(this, RegisteredWomenListActivity.class));
 //        startActivity(new Intent(this, RegisteredChildListActivity.class));
     }
 

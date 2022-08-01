@@ -145,7 +145,7 @@ public class CreateLocationActivity extends AppCompatActivity {
                     workLocation.setWlVillageCode(villageCodes.get(bi.wlVillageName.getSelectedItemPosition()));
                     workLocation.setWlVillageName(villageNames.get(bi.wlVillageName.getSelectedItemPosition()));
 
-                    MainApp.selectedVillageCode = (villageCodes.get(bi.wlVillageName.getSelectedItemPosition()));
+//                    MainApp.selectedVillageCode = (villageCodes.get(bi.wlVillageName.getSelectedItemPosition()));
                 }
             }
 

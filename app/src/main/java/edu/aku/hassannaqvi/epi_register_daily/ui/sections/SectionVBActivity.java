@@ -70,7 +70,6 @@ public class SectionVBActivity extends AppCompatActivity {
         }
 
         bi.setForm(formVB);
-
     }
 
 /*    @Override
@@ -312,12 +311,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
-        finish();
-        /*if (group) {
-            startActivity(new Intent(this, RegisteredWomenListActivity.class));
-        } else startActivity(new Intent(this, RegisteredChildListActivity.class));*/
-        startActivity(new Intent(this, MainActivity.class));
+         Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
     }
 
 
