@@ -185,6 +185,16 @@ public class SyncActivity extends AppCompatActivity {
                     Toast.makeText(this, "JSONException(WorkLocation): " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
+                // Vaccines
+                uploadTables.add(new SyncModel(TableContracts.VaccinesTable.TABLE_NAME));
+                try {
+                    MainApp.uploadData.add(db.getUnsyncedVaccines());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "ProcessStart: JSONException(Vaccines): " + e.getMessage());
+                    Toast.makeText(this, "JSONException(Vaccines): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
                 //Entry Log
                 uploadTables.add(new SyncModel(TableContracts.EntryLogTable.TABLE_NAME));
                 try {

@@ -957,6 +957,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allAttendance;
     }
 
+    public JSONArray getUnsyncedVaccines() throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause;
+        /*whereClause = WorkLocationTable.COLUMN_SYNCED + " = '' AND " +
+                WorkLocationTable.COLUMN_ISTATUS + "!= ''";*/
+        whereClause = TableContracts.VaccinesTable.COLUMN_SYNCED + " = '' ";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = TableContracts.VaccinesTable.COLUMN_ID + " ASC";
+
+        JSONArray vaccines = new JSONArray();
+        c = db.query(
+                TableContracts.VaccinesTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            Log.d(TAG, "getUnsyncedVaccines: " + c.getCount());
+            Vaccines vacc = new Vaccines();
+            vaccines.put(vacc.Hydrate(c).toJSONObject());
+
+
+        }
+
+        c.close();
+
+        Log.d(TAG, "getUnsyncedVaccines: " + vaccines.toString().length());
+        Log.d(TAG, "getUnsyncedVaccines: " + vaccines);
+        return vaccines;
+    }
+
 
     public JSONArray getUnsyncedEntryLog() throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
@@ -1199,6 +1241,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int count = db.update(
                 WorkLocationTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
+    public void updateSyncedWorkLocation(String id) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(TableContracts.WorkLocationTable.COLUMN_SYNCED, true);
+        values.put(TableContracts.WorkLocationTable.COLUMN_SYNC_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = TableContracts.WorkLocationTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                WorkLocationTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
+    public void updateSyncedVaccines(String id) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(TableContracts.VaccinesTable.COLUMN_SYNCED, true);
+        values.put(TableContracts.VaccinesTable.COLUMN_SYNC_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = TableContracts.VaccinesTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                VaccinesTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
