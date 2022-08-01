@@ -129,7 +129,7 @@ public class FormVB extends BaseObservable implements Observable {
         setUuid(MainApp.formVA.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
-//        setVillageCode(MainApp.selectedVillageCode);
+//        setVillageCode(MainApp.selectedViltedlageCode);
         setUcCode(MainApp.selectedUCCode);
         // setEntryType(String.valueOf(MainApp.entryType));
     }

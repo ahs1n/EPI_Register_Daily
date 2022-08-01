@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     Toast.makeText(this, "JSONException(WorkLocation): " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
+
             }
 
         } catch (ParseException e) {
