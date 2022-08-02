@@ -44,8 +44,6 @@ public class SectionVBActivity extends AppCompatActivity {
         db = MainApp.appInfo.dbHelper;
         setGPS();
 
-        formVB.setVb01(String.valueOf(MainApp.memberCount + 1));
-
         MainApp.formVB.setUuid(MainApp.formVA.getUid());
 
         group = getIntent().getBooleanExtra("group", true);

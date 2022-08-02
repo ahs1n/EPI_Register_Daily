@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVBList;
 
 import android.app.Activity;
@@ -26,7 +27,6 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityVaccinatedListChildBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
-import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
@@ -70,17 +70,17 @@ public class RegisteredChildListActivity extends AppCompatActivity {
 
 
         vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
-//            try {
-//                formVB = db.getSelectedMembers(member.getUid());
-            Toast.makeText(RegisteredChildListActivity.this,
-                    "Selected Member\n Line No: "
-                            + member.getVb02() + "\nName: "
-                            + member.getVb04a(),
-                    Toast.LENGTH_LONG).show();
-            RegisteredChildListActivity.this.startActivity(new Intent(RegisteredChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
-            /*} catch (JSONException e) {
+            try {
+                formVB = db.getSelectedMembers(member.getUid());
+                Toast.makeText(RegisteredChildListActivity.this,
+                        "Selected Member\n Line No: "
+                                + member.getVb02() + "\nName: "
+                                + member.getVb04a(),
+                        Toast.LENGTH_LONG).show();
+                RegisteredChildListActivity.this.startActivity(new Intent(RegisteredChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
+            } catch (JSONException e) {
                 e.printStackTrace();
-            }*/
+            }
         });
         bi.rvMember.setAdapter(vaccinatedMembersAdapter);
 
@@ -88,7 +88,7 @@ public class RegisteredChildListActivity extends AppCompatActivity {
         bi.rvMember.setLayoutManager(new LinearLayoutManager(this));
 
         bi.fab.setOnClickListener(view -> {
-            MainApp.formVB = new FormVB();
+//            MainApp.formVB = new FormVB();
             addMoreMember();
         });
     }
@@ -116,7 +116,7 @@ public class RegisteredChildListActivity extends AppCompatActivity {
     }
 
     private void addMoreMember() {
-        MainApp.formVB = new FormVB();
+//        MainApp.formVB = new FormVB();
         Intent intent = new Intent(this, MemberInfoActivity.class);
         finish();
         MemberInfoLauncher.launch(intent);
@@ -130,17 +130,17 @@ public class RegisteredChildListActivity extends AppCompatActivity {
             formVBList = db.getAllChildsByName(bi.memberId.getText().toString());
             vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
 
-//                try {
-//                    formVB = db.getSelectedMembers(member.getUid());
-                Toast.makeText(RegisteredChildListActivity.this,
-                        "Selected Member\n Line No: "
-                                + member.getVb02() + "\nName: "
-                                + member.getVb04a(),
-                        Toast.LENGTH_LONG).show();
-                RegisteredChildListActivity.this.startActivity(new Intent(RegisteredChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
-                /*} catch (JSONException e) {
+                try {
+                    formVB = db.getSelectedMembers(member.getUid());
+                    Toast.makeText(RegisteredChildListActivity.this,
+                            "Selected Member\n Line No: "
+                                    + member.getVb02() + "\nName: "
+                                    + member.getVb04a(),
+                            Toast.LENGTH_LONG).show();
+                    RegisteredChildListActivity.this.startActivity(new Intent(RegisteredChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                } catch (JSONException e) {
                     e.printStackTrace();
-                }*/
+                }
             });
             vaccinatedMembersAdapter.notifyDataSetChanged();
             bi.rvMember.setAdapter(vaccinatedMembersAdapter);
@@ -150,17 +150,17 @@ public class RegisteredChildListActivity extends AppCompatActivity {
             formVBList = db.getAllChildsByCardNo(bi.memberId.getText().toString());
             vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
 
-//                try {
-//                    formVB = db.getSelectedMembers(member.getUid());
-                Toast.makeText(RegisteredChildListActivity.this,
-                        "Selected Member\n Line No: "
-                                + member.getVb02() + "\nName: "
-                                + member.getVb04a(),
-                        Toast.LENGTH_LONG).show();
-                RegisteredChildListActivity.this.startActivity(new Intent(RegisteredChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
-                /*} catch (JSONException e) {
+                try {
+                    formVB = db.getSelectedMembers(member.getUid());
+                    Toast.makeText(RegisteredChildListActivity.this,
+                            "Selected Member\n Line No: "
+                                    + member.getVb02() + "\nName: "
+                                    + member.getVb04a(),
+                            Toast.LENGTH_LONG).show();
+                    RegisteredChildListActivity.this.startActivity(new Intent(RegisteredChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                } catch (JSONException e) {
                     e.printStackTrace();
-                }*/
+                }
             });
             vaccinatedMembersAdapter.notifyDataSetChanged();
             bi.rvMember.setAdapter(vaccinatedMembersAdapter);

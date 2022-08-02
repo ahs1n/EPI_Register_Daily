@@ -26,7 +26,6 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityVaccinatedListWomenBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
-import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
@@ -88,7 +87,6 @@ public class RegisteredWomenListActivity extends AppCompatActivity {
         bi.rvMember.setLayoutManager(new LinearLayoutManager(this));
 
         bi.fab.setOnClickListener(view -> {
-            MainApp.formVB = new FormVB();
             addMoreMember();
         });
     }
@@ -116,7 +114,6 @@ public class RegisteredWomenListActivity extends AppCompatActivity {
     }
 
     private void addMoreMember() {
-        MainApp.formVB = new FormVB();
         Intent intent = new Intent(this, MemberInfoActivity.class).putExtra("group", false);
         finish();
         MemberInfoLauncher.launch(intent);
