@@ -65,7 +65,7 @@ public class CreateLocationActivity extends AppCompatActivity {
 
     private void populateFacilitySpinner() {
 
-        Collection<HealthFacilities> healthFacility = db.getHealthFacilityByUC(MainApp.user.getDist_id());
+        Collection<HealthFacilities> healthFacility = db.getHealthFacilityByUC(MainApp.user.getUccode());
 
         facilityNames = new ArrayList<>();
         facilityCodes = new ArrayList<>();

@@ -225,12 +225,14 @@ public class SyncActivity extends AppCompatActivity {
                 if (sync_flag) {
                     downloadTables.add(new SyncModel(UsersTable.TABLE_NAME));
                     downloadTables.add(new SyncModel(TableUCs.TABLE_NAME));
-                    downloadTables.add(new SyncModel(TableHealthFacilities.TABLE_NAME));
                     downloadTables.add(new SyncModel(VersionTable.TABLE_NAME));
                 } else {
                     select = " * ";
                     filter = " (colflag is null or colflag=0) AND uc_code = '" + MainApp.user.getUccode() + "' ";
                     downloadTables.add(new SyncModel(TableVillages.TABLE_NAME, select, filter));
+                    select = " * ";
+                    filter = " (colflag is null or colflag=0) AND uccode = '" + MainApp.user.getUccode() + "' ";
+                    downloadTables.add(new SyncModel(TableHealthFacilities.TABLE_NAME, select, filter));
                 }
 
                 MainApp.downloadData = new String[downloadTables.size()];

@@ -2281,6 +2281,7 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:visibility="gone"
                         android:id="@+id/btn_End"
                         android:layout_width="130dp"
                         android:layout_height="50dp"

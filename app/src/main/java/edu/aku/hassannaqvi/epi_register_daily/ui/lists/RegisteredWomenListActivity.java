@@ -51,7 +51,7 @@ public class RegisteredWomenListActivity extends AppCompatActivity {
                     }
 
                     if (result.getResultCode() == Activity.RESULT_CANCELED) {
-                        Toast.makeText(RegisteredWomenListActivity.this, "No family member added.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisteredWomenListActivity.this, "No member added.", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
