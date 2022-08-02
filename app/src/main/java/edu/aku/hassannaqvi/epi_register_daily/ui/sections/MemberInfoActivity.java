@@ -53,7 +53,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
         //formVA = db.getFormVA(UID);
         if (b) formVB = new FormVB();
-        formVB.setVb01(String.valueOf(MainApp.memberCount++));
+        formVB.setVb01(String.valueOf(++MainApp.memberCount));
 
         group = getIntent().getBooleanExtra("group", true);
         if (group) {
@@ -188,6 +188,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         finish();
+        MainApp.memberCount --;
         startActivity(new Intent(this, MainActivity.class));
     }
 
@@ -200,6 +201,7 @@ public class MemberInfoActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
+        MainApp.memberCount --;
         if (group) {
             startActivity(new Intent(this, RegisteredChildListActivity.class));
         } else startActivity(new Intent(this, RegisteredWomenListActivity.class));

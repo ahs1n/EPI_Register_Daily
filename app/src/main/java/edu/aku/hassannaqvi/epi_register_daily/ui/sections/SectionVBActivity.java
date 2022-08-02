@@ -256,6 +256,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         finish();
+        MainApp.memberCount --;
         startActivity(new Intent(this, MainActivity.class));
     }
 
@@ -309,6 +310,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        MainApp.memberCount --;
          Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
     }
 
