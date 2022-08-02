@@ -47,15 +47,13 @@ public class MemberInfoActivity extends AppCompatActivity {
         setGPS();
         setupListeners();
 
-//        if (formVB.getVb01().equals(""))
-        formVB.setVb01(String.valueOf(++MainApp.memberCount));
-
         MainApp.formVB.setUuid(MainApp.formVA.getUid());
 
         b = getIntent().getBooleanExtra("b", true);
 
         //formVA = db.getFormVA(UID);
         if (b) formVB = new FormVB();
+        formVB.setVb01(String.valueOf(MainApp.memberCount++));
 
         group = getIntent().getBooleanExtra("group", true);
         if (group) {
