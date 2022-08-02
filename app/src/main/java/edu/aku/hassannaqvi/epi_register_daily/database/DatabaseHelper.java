@@ -1710,6 +1710,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+
+
 /*    public Collection<UCs> getAllUCs() {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
