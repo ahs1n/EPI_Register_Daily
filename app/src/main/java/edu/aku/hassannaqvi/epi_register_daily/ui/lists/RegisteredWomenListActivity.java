@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVBList;
 
 import android.app.Activity;
@@ -71,17 +70,17 @@ public class RegisteredWomenListActivity extends AppCompatActivity {
 
 
         vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
-            try {
-                formVB = db.getSelectedMembers(member.getUid());
-                Toast.makeText(RegisteredWomenListActivity.this,
-                        "Selected Member\n Line No: "
-                                + member.getVb02() + "\nName: "
-                                + member.getVb04a(),
-                        Toast.LENGTH_LONG).show();
-                RegisteredWomenListActivity.this.startActivity(new Intent(RegisteredWomenListActivity.this, SectionVBActivity.class).putExtra("b", false));
-            } catch (JSONException e) {
+//            try {
+//                formVB = db.getSelectedMembers(member.getUid());
+            Toast.makeText(RegisteredWomenListActivity.this,
+                    "Selected Member\n Line No: "
+                            + member.getVb02() + "\nName: "
+                            + member.getVb04a(),
+                    Toast.LENGTH_LONG).show();
+            RegisteredWomenListActivity.this.startActivity(new Intent(RegisteredWomenListActivity.this, SectionVBActivity.class).putExtra("b", false));
+            /*} catch (JSONException e) {
                 e.printStackTrace();
-            }
+            }*/
         });
         bi.rvMember.setAdapter(vaccinatedMembersAdapter);
 
@@ -131,17 +130,17 @@ public class RegisteredWomenListActivity extends AppCompatActivity {
             formVBList = db.getAllWomensByName(bi.memberId.getText().toString());
             vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
 
-                try {
-                    formVB = db.getSelectedMembers(member.getUid());
-                    Toast.makeText(RegisteredWomenListActivity.this,
-                            "Selected Member\n Line No: "
-                                    + member.getVb02() + "\nName: "
-                                    + member.getVb04a(),
-                            Toast.LENGTH_LONG).show();
-                    RegisteredWomenListActivity.this.startActivity(new Intent(RegisteredWomenListActivity.this, SectionVBActivity.class).putExtra("b", false));
-                } catch (JSONException e) {
+//                try {
+//                    formVB = db.getSelectedMembers(member.getUid());
+                Toast.makeText(RegisteredWomenListActivity.this,
+                        "Selected Member\n Line No: "
+                                + member.getVb02() + "\nName: "
+                                + member.getVb04a(),
+                        Toast.LENGTH_LONG).show();
+                RegisteredWomenListActivity.this.startActivity(new Intent(RegisteredWomenListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                /*} catch (JSONException e) {
                     e.printStackTrace();
-                }
+                }*/
             });
             vaccinatedMembersAdapter.notifyDataSetChanged();
             bi.rvMember.setAdapter(vaccinatedMembersAdapter);
@@ -151,17 +150,17 @@ public class RegisteredWomenListActivity extends AppCompatActivity {
             formVBList = db.getAllWomensByCardNo(bi.memberId.getText().toString());
             vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
 
-                try {
-                    formVB = db.getSelectedMembers(member.getUid());
-                    Toast.makeText(RegisteredWomenListActivity.this,
-                            "Selected Member\n Line No: "
-                                    + member.getVb02() + "\nName: "
-                                    + member.getVb04a(),
-                            Toast.LENGTH_LONG).show();
-                    RegisteredWomenListActivity.this.startActivity(new Intent(RegisteredWomenListActivity.this, SectionVBActivity.class).putExtra("b", false));
-                } catch (JSONException e) {
+//                try {
+//                    formVB = db.getSelectedMembers(member.getUid());
+                Toast.makeText(RegisteredWomenListActivity.this,
+                        "Selected Member\n Line No: "
+                                + member.getVb02() + "\nName: "
+                                + member.getVb04a(),
+                        Toast.LENGTH_LONG).show();
+                RegisteredWomenListActivity.this.startActivity(new Intent(RegisteredWomenListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                /*} catch (JSONException e) {
                     e.printStackTrace();
-                }
+                }*/
             });
             vaccinatedMembersAdapter.notifyDataSetChanged();
             bi.rvMember.setAdapter(vaccinatedMembersAdapter);
