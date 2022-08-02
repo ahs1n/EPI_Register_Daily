@@ -48,7 +48,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         setupListeners();
 
 //        if (formVB.getVb01().equals(""))
-        formVB.setVb01(String.valueOf(MainApp.memberCount + 1));
+        formVB.setVb01(String.valueOf(++MainApp.memberCount));
 
         MainApp.formVB.setUuid(MainApp.formVA.getUid());
 
