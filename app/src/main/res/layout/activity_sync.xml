@@ -277,7 +277,7 @@
                         android:onClick="btnContinue"
                         android:text="go back"
                         android:textColor="@color/white"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -308,7 +308,7 @@
                     android:orientation="horizontal">
 
                     <View
-                        android:layout_width="@dimen/_8sdp"
+                        android:layout_width="@dimen/_4sdp"
                         android:layout_height="match_parent" />
 
                     <Button
@@ -320,7 +320,7 @@
                         android:onClick="ProcessStart"
                         android:text="@string/btnDownloadData"
                         android:textColor="@color/white"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
 
                     <View
@@ -337,7 +337,7 @@
                         android:onClick="ProcessStart"
                         android:text="@string/btnUpload"
                         android:textColor="@color/white"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
 
                     <View
@@ -346,20 +346,18 @@
 
                     <Button
                         android:id="@+id/btnUploadPhotos"
-
                         style="@style/button"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/capsule"
                         android:onClick="UploadPhotos"
                         android:text="Upload Photos"
                         android:textColor="@color/white"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
 
                     <View
-                        android:layout_width="24dp"
+                        android:layout_width="@dimen/_6sdp"
                         android:layout_height="match_parent" />
                 </LinearLayout>
 
