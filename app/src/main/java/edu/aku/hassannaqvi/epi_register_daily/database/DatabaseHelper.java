@@ -1710,44 +1710,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public FormVB getFormVBByuid(String id) throws JSONException {
-
-        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
-        Cursor c = null;
-
-        Boolean distinct = false;
-        String tableName = FormsVBTable.TABLE_NAME;
-        String[] columns = null;
-        String whereClause = FormsVBTable.COLUMN_UID + "= ? ";
-        String[] whereArgs = {id};
-        String groupBy = null;
-        String having = null;
-        String orderBy = FormsVBTable.COLUMN_SYSDATE + " ASC";
-        String limitRows = "1";
-
-        c = db.query(
-                distinct,       // Distinct values
-                tableName,      // The table to query
-                columns,        // The columns to return
-                whereClause,    // The columns for the WHERE clause
-                whereArgs,      // The values for the WHERE clause
-                groupBy,        // don't group the rows
-                having,         // don't filter by row groups
-                orderBy,
-                limitRows
-        );
-
-        FormVB formVB = new FormVB();
-        while (c.moveToNext()) {
-            formVB = (new FormVB().Hydrate(c));
-        }
-
-        if (c != null && !c.isClosed()) {
-            c.close();
-        }
-        return formVB;
-
-    }
 
 
 /*    public Collection<UCs> getAllUCs() {
