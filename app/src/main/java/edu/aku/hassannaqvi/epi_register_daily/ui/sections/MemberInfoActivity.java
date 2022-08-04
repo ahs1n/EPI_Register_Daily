@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +48,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         db = MainApp.appInfo.dbHelper;
         setGPS();
         setupListeners();
+        setRange();
 
         MainApp.formVB.setUuid(MainApp.formVA.getUid());
 
@@ -64,8 +67,31 @@ public class MemberInfoActivity extends AppCompatActivity {
 
 
         formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
-        formVB.setUcCode(MainApp.user.getUccode());
 
+    }
+
+    private void setRange() {
+        bi.ageY.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (bi.ageY.getText().toString().isEmpty()) return;
+
+                if (formVB.getVb03().equals("1")) {
+                    bi.ageY.setMaxvalue(49);
+                    bi.ageY.setMinvalue(14);
+                } else bi.ageY.setMaxvalue(2);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     @Override
@@ -188,7 +214,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         finish();
-        MainApp.memberCount --;
+        MainApp.memberCount--;
         startActivity(new Intent(this, MainActivity.class));
     }
 
@@ -201,7 +227,7 @@ public class MemberInfoActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
-        MainApp.memberCount --;
+        MainApp.memberCount--;
         if (group) {
             startActivity(new Intent(this, RegisteredChildListActivity.class));
         } else startActivity(new Intent(this, RegisteredWomenListActivity.class));
