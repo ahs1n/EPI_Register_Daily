@@ -69,6 +69,7 @@ public class FormVB extends BaseObservable implements Observable {
     private String vb04bd = _EMPTY_;
     private String vb04bm = _EMPTY_;
     private String vb04by = _EMPTY_;
+    private String vb04dk = _EMPTY_;
     private String vb05y = _EMPTY_;
     private String vb05m = _EMPTY_;
     private String vb05d = _EMPTY_;
@@ -476,6 +477,20 @@ public class FormVB extends BaseObservable implements Observable {
         this.vb04by = vb04by;
         CaluculateAge();
         notifyPropertyChanged(BR.vb04by);
+    }
+
+
+    @Bindable
+    public String getVb04dk() {
+        return vb04dk;
+    }
+
+    public void setVb04dk(String vb04dkdk) {
+        this.vb04dk = vb04dkdk;
+        setVb04bd(vb04dkdk.equals("98") ? "" : this.vb04bd);
+        setVb04bm(vb04dkdk.equals("98") ? "" : this.vb04bm);
+        setVb04by(vb04dkdk.equals("9998") ? "" : this.vb04by);
+        notifyPropertyChanged(BR.vb04dk);
     }
 
     @Bindable

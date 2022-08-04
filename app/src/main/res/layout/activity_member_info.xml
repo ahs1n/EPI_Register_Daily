@@ -325,11 +325,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="center"
+                                android:enabled="@{!form.vb04dk.equals(`98`)}"
                                 android:hint="####"
                                 android:inputType="number"
                                 android:maxLength="4"
                                 android:text="@={form.vb04by}"
-                                app:defaultValue="9998"
                                 app:maxValue="2022"
                                 app:minValue="2015"
                                 app:type="range" />
@@ -343,8 +343,8 @@
                                 android:hint="##"
                                 android:inputType="number"
                                 android:maxLength="2"
+                                android:enabled="@{!form.vb04dk.equals(`98`)}"
                                 android:text="@={form.vb04bm}"
-                                app:defaultValue="98"
                                 app:maxValue="12"
                                 app:minValue="1"
                                 app:type="range" />
@@ -354,17 +354,30 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:enabled="@{!form.vb04dk.equals(`98`)}"
                                 android:gravity="center"
                                 android:hint="##"
                                 android:inputType="number"
                                 android:maxLength="2"
                                 android:text="@={form.vb04bd}"
-                                app:defaultValue="98"
                                 app:maxValue="30"
                                 app:minValue="1"
                                 app:type="range" />
 
                         </LinearLayout>
+
+                        <CheckBox
+                            android:id="@+id/vb04dk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:backgroundTint="@color/redOverlay"
+                            android:checked="@{form.vb04dk.equals(`98`)}"
+                            android:onClick="@{()->form.setVb04dk(form.vb04dk.equals(`98`)?``:`98`)}"
+                            android:paddingStart="0dp"
+                            android:tag="-1"
+                            android:text="@string/vb04dk"
+                            android:textColor="@color/redDark" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -427,6 +440,7 @@
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
                                     android:hint="@string/vb05y"
+                                    android:enabled="@{form.vb03.equals(`1`) &amp;&amp; !vb04dk.checked || form.vb03.equals(`2`) &amp;&amp; vb04dk.checked}"
                                     android:inputType="number"
                                     android:maxLength="2"
                                     android:text="@={form.vb05y}"
@@ -451,7 +465,7 @@
                                     android:id="@+id/vb05m"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:enabled="@{!form.vb03.equals(`1`)}"
+                                    android:enabled="@{!form.vb03.equals(`1`) &amp;&amp; vb04dk.checked}"
                                     android:gravity="center"
                                     android:hint="@string/vb05m"
                                     android:inputType="number"
@@ -479,7 +493,7 @@
                                     android:id="@+id/vb05d"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:enabled="@{!form.vb03.equals(`1`)}"
+                                    android:enabled="@{!form.vb03.equals(`1`) &amp;&amp; vb04dk.checked}"
                                     android:gravity="center"
                                     android:hint="@string/vb05d"
                                     android:inputType="number"

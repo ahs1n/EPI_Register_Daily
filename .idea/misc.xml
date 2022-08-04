@@ -52,20 +52,19 @@
         <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_main.xml" value="0.58125" />
         <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_cr.xml" value="0.56015625" />
         <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_wr.xml" value="0.56015625" />
-        <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_member_info.xml" value="0.25" />
-        <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_vb.xml" value="0.1" />
-        <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_vaccinated_list_child.xml" value="0.16770833333333332" />
-        <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_vaccinated_list_women.xml" value="0.1" />
-        <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/vaccinated_member_row.xml" value="0.1" />
+        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/ic_upload.xml" value="0.152" />
+        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/tick.xml" value="0.17401315789473684" />
+        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/tickMark.xml" value="0.17401315789473684" />
+        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/drawable/tickmark.xml" value="0.17401315789473684" />
         <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_attendance.xml" value="0.259375" />
         <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_change_password.xml" value="0.259375" />
         <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_create_location.xml" value="0.259375" />
-        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_login.xml" value="0.259375" />
+        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_member_info.xml" value="0.259375" />
-        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_section_va.xml" value="0.4" />
+        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_section_va.xml" value="0.16381578947368422" />
         <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_section_vb.xml" value="0.259375" />
-        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_sync.xml" value="0.16381578947368422" />
+        <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_sync.xml" value="0.2" />
         <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/activity_vaccinated_list_child.xml" value="0.259375" />
         <entry key="..\:/Users/hussain.siddiqui/Desktop/Android Office Work/EPI_Register_Daily/app/src/main/res/layout/vaccinated_member_row.xml" value="0.259375" />
       </map>
