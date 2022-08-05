@@ -1,5 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -750,7 +751,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08c"
                     style="@style/cardView"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -899,6 +901,15 @@
                                                 android:enabled="@{vb08ca98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08ca(`1`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08caatick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1007,6 +1018,15 @@
                                                 android:enabled="@{vb08cb98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cb(`1`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08cbatick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1025,6 +1045,15 @@
                                                 android:enabled="@{vb08cb98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cb(`2`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08cbbtick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1042,6 +1071,15 @@
                                                 android:enabled="@{vb08cb98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cb(`3`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08cbctick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1057,6 +1095,15 @@
                                                 android:checked="@{form.vb08cb.equals(`4`)}"
                                                 android:enabled="@{vb08cb98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cb(`4`)}" />
+
+                                            <ImageView
+                                                android:id="@+id/vb08cbdtick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
 
                                         </RadioGroup>
 
@@ -1124,6 +1171,15 @@
                                                 android:checked="@{form.vb08cc.equals(`1`)}"
                                                 android:enabled="@{vb08cc98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cc(`1`)}" />
+
+                                            <ImageView
+                                                android:id="@+id/vb08ccatick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
 
                                             <View
                                                 android:layout_width="0dp"
@@ -1244,6 +1300,15 @@
                                                 android:enabled="@{vb08cd98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cd(`1`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08cdatick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1260,6 +1325,15 @@
                                                 android:enabled="@{vb08cd98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cd(`2`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08cdbtick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1275,6 +1349,15 @@
                                                 android:checked="@{form.vb08cd.equals(`3`)}"
                                                 android:enabled="@{vb08cd98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cd(`3`)}" />
+
+                                            <ImageView
+                                                android:id="@+id/vb08cdctick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
 
                                         </RadioGroup>
 
@@ -1356,6 +1439,15 @@
                                                 android:enabled="@{vb08ce98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08ce(`1`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08ceatick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1372,6 +1464,15 @@
                                                 android:enabled="@{vb08ce98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08ce(`2`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08cebtick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1387,6 +1488,15 @@
                                                 android:checked="@{form.vb08ce.equals(`3`)}"
                                                 android:enabled="@{vb08ce98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08ce(`3`)}" />
+
+                                            <ImageView
+                                                android:id="@+id/vb08cectick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
 
                                         </RadioGroup>
 
@@ -1468,6 +1578,15 @@
                                                 android:enabled="@{vb08cf98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cf(`1`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08cfatick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1483,6 +1602,15 @@
                                                 android:checked="@{form.vb08cf.equals(`2`)}"
                                                 android:enabled="@{vb08cf98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cf(`2`)}" />
+
+                                            <ImageView
+                                                android:id="@+id/vb08cfbtick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
 
                                             <View
                                                 android:layout_width="0dp"
@@ -1577,6 +1705,15 @@
                                                 android:enabled="@{vb08cg98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cg(`1`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08cgatick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1592,6 +1729,15 @@
                                                 android:checked="@{form.vb08cg.equals(`2`)}"
                                                 android:enabled="@{vb08cg98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08cg(`2`)}" />
+
+                                            <ImageView
+                                                android:id="@+id/vb08cgbtick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
 
                                             <View
                                                 android:layout_width="0dp"
@@ -1686,6 +1832,15 @@
                                                 android:enabled="@{vb08ch98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08ch(`1`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08chatick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1701,6 +1856,15 @@
                                                 android:checked="@{form.vb08ch.equals(`2`)}"
                                                 android:enabled="@{vb08ch98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08ch(`2`)}" />
+
+                                            <ImageView
+                                                android:id="@+id/vb08chbtick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
 
                                             <View
                                                 android:layout_width="0dp"
@@ -1795,6 +1959,15 @@
                                                 android:enabled="@{vb08ci98.checked ? true : false}"
                                                 android:onClick="@{()->form.setVb08ci(`1`)}" />
 
+                                            <ImageView
+                                                android:id="@+id/vb08ciatick"
+                                                android:layout_width="0.5dp"
+                                                android:layout_height="20dp"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@drawable/tick_mark"
+                                                android:visibility="gone" />
+
                                             <View
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
@@ -1848,7 +2021,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08w"
                     style="@style/cardView"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1959,6 +2133,15 @@
                                 android:checked="@{form.vb08w.equals(`1`)}"
                                 android:onClick="@{()->form.setVb08w(`1`)}" />
 
+                            <ImageView
+                                android:id="@+id/vb08waatick"
+                                android:layout_width="0.5dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="2"
+                                android:background="@drawable/tick_mark"
+                                android:visibility="gone" />
+
                             <View
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -1973,6 +2156,15 @@
                                 android:background="@null"
                                 android:checked="@{form.vb08w.equals(`2`)}"
                                 android:onClick="@{()->form.setVb08w(`2`)}" />
+
+                            <ImageView
+                                android:id="@+id/vb08wabtick"
+                                android:layout_width="0.5dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="2"
+                                android:background="@drawable/tick_mark"
+                                android:visibility="gone" />
 
                             <View
                                 android:layout_width="0dp"
@@ -1989,6 +2181,15 @@
                                 android:checked="@{form.vb08w.equals(`3`)}"
                                 android:onClick="@{()->form.setVb08w(`3`)}" />
 
+                            <ImageView
+                                android:id="@+id/vb08wactick"
+                                android:layout_width="0.5dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="2"
+                                android:background="@drawable/tick_mark"
+                                android:visibility="gone" />
+
                             <View
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -2004,6 +2205,15 @@
                                 android:checked="@{form.vb08w.equals(`4`)}"
                                 android:onClick="@{()->form.setVb08w(`4`)}" />
 
+                            <ImageView
+                                android:id="@+id/vb08wadtick"
+                                android:layout_width="0.5dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="2"
+                                android:background="@drawable/tick_mark"
+                                android:visibility="gone" />
+
                             <View
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -2018,6 +2228,15 @@
                                 android:background="@null"
                                 android:checked="@{form.vb08w.equals(`5`)}"
                                 android:onClick="@{()->form.setVb08w(`5`)}" />
+
+                            <ImageView
+                                android:id="@+id/vb08waetick"
+                                android:layout_width="0.5dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="2"
+                                android:background="@drawable/tick_mark"
+                                android:visibility="gone" />
 
                         </RadioGroup>
 
@@ -2107,7 +2326,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVtakePhoto"
                     style="@style/cardView"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -2281,7 +2501,6 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:visibility="gone"
                         android:id="@+id/btn_End"
                         android:layout_width="130dp"
                         android:layout_height="50dp"
@@ -2290,7 +2509,8 @@
                         android:elevation="20dp"
                         android:onClick="btnEnd"
                         android:text="@string/cancel"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/btn_Continue"

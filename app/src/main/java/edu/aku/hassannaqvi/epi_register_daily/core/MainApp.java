@@ -76,9 +76,11 @@ public class MainApp extends Application {
     public static WorkLocation workLocation;
     public static Attendance attendance;
     public static Vaccines vaccines;
+    public static List<Vaccines> vaccinesList;
     public static boolean superuser;
     public static String selectedVillageCode;
     public static String selectedUCCode;
+    public static int vaccineCount = 0;
 
 
     public static List<FormVB> formVBList;

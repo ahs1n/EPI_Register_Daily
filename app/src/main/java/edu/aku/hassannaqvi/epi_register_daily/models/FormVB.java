@@ -126,12 +126,11 @@ public class FormVB extends BaseObservable implements Observable {
 
         setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
+        setUcCode(MainApp.user.getUccode());
         setDeviceId(MainApp.deviceid);
         setUuid(MainApp.formVA.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
-//        setVillageCode(MainApp.selectedVillageCode);
-        setUcCode(MainApp.selectedUCCode);
         // setEntryType(String.valueOf(MainApp.entryType));
     }
 
@@ -490,6 +489,10 @@ public class FormVB extends BaseObservable implements Observable {
         setVb04bd(vb04dkdk.equals("98") ? "" : this.vb04bd);
         setVb04bm(vb04dkdk.equals("98") ? "" : this.vb04bm);
         setVb04by(vb04dkdk.equals("9998") ? "" : this.vb04by);
+
+        setVb05d(vb04dk.equals("98") ? this.vb05d : "");
+        setVb05m(vb04dk.equals("98") ? this.vb05m : "");
+        setVb05y(vb04dk.equals("98") ? this.vb05y : "");
         notifyPropertyChanged(BR.vb04dk);
     }
 
@@ -896,7 +899,6 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setUcCode(String ucCode) {
         this.ucCode = ucCode;
-        notifyPropertyChanged(BR.ucCode);
     }
 
     @Bindable

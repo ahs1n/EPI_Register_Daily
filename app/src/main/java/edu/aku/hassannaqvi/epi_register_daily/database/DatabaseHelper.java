@@ -193,6 +193,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(VaccinesTable.COLUMN_VB08C_CODE, vaccines.getVb08CCode());
         values.put(VaccinesTable.COLUMN_VB08C_ANTIGEN, vaccines.getVb08CAntigen());
         values.put(VaccinesTable.COLUMN_VB08C_DATE, vaccines.getVb08CDate());
+        values.put(VaccinesTable.COLUMN_FRONT_FILE_NAME, vaccines.getFrontfilename());
+        values.put(VaccinesTable.COLUMN_BACK_FILE_NAME, vaccines.getBackfilename());
+        values.put(VaccinesTable.COLUMN_CHILD_FILE_NAME, vaccines.getChildfilename());
         values.put(VaccinesTable.COLUMN_VB08W_CODE, vaccines.getVb08WCode());
         values.put(VaccinesTable.COLUMN_VB08W_ANTIGEN, vaccines.getVb08WAntigen());
         values.put(VaccinesTable.COLUMN_VB08W_DATE, vaccines.getVb08WDate());
@@ -1670,6 +1673,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while (c.moveToNext()) vb = new FormVB().Hydrate(c);
         c.close();
         return vb;
+    }
+
+
+    public List<Vaccines> getVaccinatedMembersBYUID() throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = VaccinesTable.COLUMN_UUID + "=? ";
+        String[] whereArgs = {formVB.getUid()};
+        String groupBy = null;
+        String having = null;
+        String orderBy = VaccinesTable.COLUMN_ID + " ASC";
+
+        List<Vaccines> vaccinesByUID = new ArrayList<>();
+        c = db.query(
+                VaccinesTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            vaccinesByUID.add(new Vaccines().Hydrate(c));
+        }
+
+        if (c != null && !c.isClosed()) {
+            c.close();
+        }
+        c.close();
+        return vaccinesByUID;
     }
 
 

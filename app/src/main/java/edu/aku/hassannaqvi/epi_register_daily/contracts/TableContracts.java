@@ -72,6 +72,9 @@ public class TableContracts {
         public static final String COLUMN_VB08C_CODE = "vb08cCode";
         public static final String COLUMN_VB08C_ANTIGEN = "vb08cAnt";
         public static final String COLUMN_VB08C_DATE = "vb08cDT";
+        public static final String COLUMN_FRONT_FILE_NAME = "cardFrontImage";
+        public static final String COLUMN_BACK_FILE_NAME = "cardBackImage";
+        public static final String COLUMN_CHILD_FILE_NAME = "childImage";
         public static final String COLUMN_VB08W_CODE = "vb08wCode";
         public static final String COLUMN_VB08W_ANTIGEN = "vb08wAnt";
         public static final String COLUMN_VB08W_DATE = "vb08wDT";

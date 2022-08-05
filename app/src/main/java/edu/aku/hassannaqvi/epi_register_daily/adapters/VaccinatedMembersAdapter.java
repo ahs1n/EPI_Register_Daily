@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.R;
+import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 
 
@@ -83,6 +84,7 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
 
     @Override
     public int getItemCount() {
+        MainApp.memberCount = member.size();
         return member.size();
     }
 

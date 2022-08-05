@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,13 +22,11 @@ import org.json.JSONException;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMemberInfoBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
-import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
 
@@ -149,30 +146,6 @@ public class MemberInfoActivity extends AppCompatActivity {
         }
     }
 
-    private boolean insertVaccineRecord(String vaccCode, String antigen, String vaccDate) {
-        //   if (!vaccines.getUid().equals("") || MainApp.superuser) return true;
-        //    vaccines.populateMeta();
-
-        vaccines.updateAntigen(vaccCode, antigen, vaccDate);
-        long rowId = 0;
-        try {
-            rowId = db.addVaccine(vaccines);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        vaccines.setId(String.valueOf(rowId));
-        if (rowId > 0) {
-            vaccines.setUid(vaccines.getDeviceId() + vaccines.getId());
-            db.updatesVaccineColumn(TableContracts.VaccinesTable.COLUMN_UID, vaccines.getUid());
-            return true;
-        } else {
-            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    }
-
 
     private boolean updateDB() {
         if (MainApp.superuser) return true;
@@ -197,10 +170,6 @@ public class MemberInfoActivity extends AppCompatActivity {
     public void btnContinue(View view) {
         if (!formValidation()) return;
         if (b) if (!insertNewRecord()) return;
-        vaccines = new Vaccines();
-        vaccines.populateMeta();
-        String caAntigen = null;
-
 
         if (updateDB()) {
             finish();
@@ -231,7 +200,6 @@ public class MemberInfoActivity extends AppCompatActivity {
         if (group) {
             startActivity(new Intent(this, RegisteredChildListActivity.class));
         } else startActivity(new Intent(this, RegisteredWomenListActivity.class));
-//        startActivity(new Intent(this, RegisteredChildListActivity.class));
     }
 
     public void setGPS() {

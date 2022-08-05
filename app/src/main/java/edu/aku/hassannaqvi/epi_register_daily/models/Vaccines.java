@@ -52,6 +52,9 @@ public class Vaccines extends BaseObservable implements Observable {
     private String vb08CCode = _EMPTY_;
     private String vb08CAntigen = _EMPTY_;
     private String vb08CDate = _EMPTY_;
+    private String backfilename = _EMPTY_;
+    private String frontfilename = _EMPTY_;
+    private String childfilename = _EMPTY_;
     private String vb08WCode = _EMPTY_;
     private String vb08WAntigen = _EMPTY_;
     private String vb08WDate = _EMPTY_;
@@ -267,6 +270,43 @@ public class Vaccines extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.vb08CDate);
     }
 
+
+    @Bindable
+    public String getBackfilename() {
+        return backfilename;
+    }
+
+    public void setBackfilename(String backfilename) {
+        if (this.backfilename.equals(backfilename)) return;
+        this.backfilename = backfilename;
+
+        notifyPropertyChanged(BR.backfilename);
+    }
+
+    @Bindable
+    public String getFrontfilename() {
+        return frontfilename;
+    }
+
+    public void setFrontfilename(String frontfilename) {
+        if (this.frontfilename.equals(frontfilename)) return;
+        this.frontfilename = frontfilename;
+
+        notifyPropertyChanged(BR.frontfilename);
+    }
+
+    @Bindable
+    public String getChildfilename() {
+        return childfilename;
+    }
+
+    public void setChildfilename(String childfilename) {
+        if (this.childfilename.equals(childfilename)) return;
+        this.childfilename = childfilename;
+
+        notifyPropertyChanged(BR.childfilename);
+    }
+
     @Bindable
     public String getVb08WCode() {
         return vb08WCode;
@@ -319,6 +359,9 @@ public class Vaccines extends BaseObservable implements Observable {
         this.vb08CCode = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08C_CODE));
         this.vb08CAntigen = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08C_ANTIGEN));
         this.vb08CDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08C_DATE));
+        this.frontfilename = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_FRONT_FILE_NAME));
+        this.backfilename = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_BACK_FILE_NAME));
+        this.childfilename = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_CHILD_FILE_NAME));
         this.vb08WCode = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08W_CODE));
         this.vb08WAntigen = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08W_ANTIGEN));
         this.vb08WDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08W_DATE));
@@ -372,6 +415,9 @@ public class Vaccines extends BaseObservable implements Observable {
         json.put(VaccinesTable.COLUMN_VB08C_CODE, this.vb08CCode);
         json.put(VaccinesTable.COLUMN_VB08C_ANTIGEN, this.vb08CAntigen);
         json.put(VaccinesTable.COLUMN_VB08C_DATE, this.vb08CDate);
+        json.put(VaccinesTable.COLUMN_FRONT_FILE_NAME, this.frontfilename);
+        json.put(VaccinesTable.COLUMN_BACK_FILE_NAME, this.backfilename);
+        json.put(VaccinesTable.COLUMN_CHILD_FILE_NAME, this.childfilename);
         json.put(VaccinesTable.COLUMN_VB08W_CODE, this.vb08WCode);
         json.put(VaccinesTable.COLUMN_VB08W_ANTIGEN, this.vb08WAntigen);
         json.put(VaccinesTable.COLUMN_VB08W_DATE, this.vb08WDate);
@@ -381,12 +427,14 @@ public class Vaccines extends BaseObservable implements Observable {
     }
 
     public void updateAntigen(String vaccCode, String antigen, String vaccDate) {
-        setVb08CCode(vaccCode);
-        setVb08CAntigen(antigen);
-        setVb08CDate(vaccDate);
-        setVb08WCode(vaccCode);
-        setVb08WAntigen(antigen);
-        setVb08WDate(vaccDate);
-
+        if (MainApp.formVB.getVb03().equals("2")) {
+            setVb08CCode(vaccCode);
+            setVb08CAntigen(antigen);
+            setVb08CDate(vaccDate);
+        } else {
+            setVb08WCode(vaccCode);
+            setVb08WAntigen(antigen);
+            setVb08WDate(vaccDate);
+        }
     }
 }
