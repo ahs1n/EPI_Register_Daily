@@ -19,6 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -39,8 +40,11 @@ public class SectionVBActivity extends AppCompatActivity {
     private static final String TAG = "SectionVBActivity";
     ActivitySectionVbBinding bi;
     private DatabaseHelper db;
-    boolean b, group;
+    boolean btn, group, b;
 
+    public static char getChar(int i) {
+        return i < 0 || i > 25 ? '?' : (char) ('a' + i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,28 +54,29 @@ public class SectionVBActivity extends AppCompatActivity {
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
         setGPS();
+        setupListeners();
 
         formVB.setUuid(MainApp.formVA.getUid());
+
+        btn = getIntent().getBooleanExtra("btn", true);
+        if (btn) bi.btnEnd.setVisibility(View.VISIBLE);
 
         group = getIntent().getBooleanExtra("group", true);
         if (formVB.getVb03().equals("2")) {
             bi.fldGrpCVvb08c.setVisibility(View.VISIBLE);
             bi.fldGrpCVtakePhoto.setVisibility(View.VISIBLE);
         } else {
+            bi.wraVACINFO.setVisibility(View.VISIBLE);
             bi.fldGrpCVvb08w.setVisibility(View.VISIBLE);
         }
 
         bi.pName.setText(formVB.getVb04a());
         bi.hName.setText(formVB.getVb04());
         bi.cardNo.setText(formVB.getVb02());
-//        bi.vacStatus.setText(formVB.getVb08w());
         if (formVB.getVb03().equals("1")) {
-            if (formVB.getVb08w().equals("1")) bi.vacStatus1.setText("TT1");
-            if (formVB.getVb08w().equals("2")) bi.vacStatus2.setText("TT2");
-            if (formVB.getVb08w().equals("3")) bi.vacStatus3.setText("TT3");
-            if (formVB.getVb08w().equals("4")) bi.vacStatus4.setText("TT4");
-            if (formVB.getVb08w().equals("5")) bi.vacStatus5.setText("TT5");
+            bi.vacStatus.setText("TT" + formVB.getVb08w());
         }
+        bi.vacDate.setText(formVB.getVb08wdt());
 
         vaccinesList = new ArrayList<>();
         vaccineCount = 0;
@@ -81,7 +86,7 @@ public class SectionVBActivity extends AppCompatActivity {
         try {
             vaccinesList = db.getVaccinatedMembersBYUID();
             for (Vaccines vaccines : vaccinesList) {
-                antigenName.add(vaccines.getVb08CCode() + vaccines.getVb08CAntigen());
+                antigenName.add(vaccines.getVb08CCode() + vaccines.getVb08CAntigen() + vaccines.getVb08WCode() + vaccines.getVb08WAntigen());
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -174,13 +179,8 @@ public class SectionVBActivity extends AppCompatActivity {
         bi.setForm(formVB);
     }
 
-    private void verifyCrossTicks(ArrayList<Boolean> results, String baseId) {
-        int firstTrue = results.indexOf(true);
-        if (firstTrue > 0) {
-            for (int j=0; j<firstTrue; j++) {
-                markAsCrossed(baseId, j);
-            }
-        }
+    private void setupListeners() {
+        bi.vb08w.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08wdt));
     }
 
     private View getViewDynamically(String viewId) {
@@ -204,8 +204,13 @@ public class SectionVBActivity extends AppCompatActivity {
         }
     }
 
-    public static char getChar(int i) {
-        return i<0 || i>25 ? '?' : (char)('a' + i);
+    private void verifyCrossTicks(ArrayList<Boolean> results, String baseId) {
+        int firstTrue = results.indexOf(true);
+        if (firstTrue > 0) {
+            for (int j = 0; j < firstTrue; j++) {
+                markAsCrossed(baseId, j);
+            }
+        }
     }
 
     private boolean showHideDoneCheck(

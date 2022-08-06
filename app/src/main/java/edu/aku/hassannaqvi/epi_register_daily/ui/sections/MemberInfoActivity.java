@@ -174,7 +174,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         if (updateDB()) {
             finish();
             Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, SectionVBActivity.class));
+            startActivity(new Intent(this, SectionVBActivity.class).putExtra("btn", false));
         } else {
             Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
         }

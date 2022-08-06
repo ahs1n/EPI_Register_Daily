@@ -684,12 +684,15 @@
                             android:textColor="@color/gray" />
                     </TableRow>
 
-                    <TableRow>
+                    <TableRow
+                        android:id="@+id/wraVACINFO"
+                        android:visibility="gone"
+                        tools:visibility="vissible">
 
                         <TextView
                             android:layout_column="1"
                             android:background="@color/white"
-                            android:text="ٹیکہ کی معلومات"
+                            android:text="پچھلے ٹیکہ کی معلومات"
                             android:textColor="@color/black" />
 
                         <LinearLayout
@@ -699,51 +702,35 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/vacStatus1"
+                                android:id="@+id/vacStatus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:background="@color/white"
                                 android:text="NA"
                                 android:textAlignment="center"
                                 android:textColor="@color/gray" />
 
                             <TextView
-                                android:id="@+id/vacStatus2"
+                                android:id="@+id/vacDate"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:background="@color/white"
-                                android:text="NA"
-                                android:textAlignment="center"
-                                android:textColor="@color/gray" />
-
-                            <TextView
-                                android:id="@+id/vacStatus3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:background="@color/white"
-                                android:text="NA"
-                                android:textAlignment="center"
-                                android:textColor="@color/gray" />
-
-                            <TextView
-                                android:id="@+id/vacStatus4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:background="@color/white"
-                                android:text="NA"
-                                android:textAlignment="center"
-                                android:textColor="@color/gray" />
-
-                            <TextView
-                                android:id="@+id/vacStatus5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:background="@color/white"
-                                android:text="NA"
+                                android:text="dd/mm/yyyy"
                                 android:textAlignment="center"
                                 android:textColor="@color/gray" />
                         </LinearLayout>
                     </TableRow>
+
+                    <!--<TableRow>
+
+                        <TextView
+                            android:layout_column="1"
+                            android:background="@color/white"
+                            android:text="پچھلے ٹیکہ کی تاریخ"
+                            android:textColor="@color/black" />
+                    </TableRow>-->
                 </TableLayout>
 
 
