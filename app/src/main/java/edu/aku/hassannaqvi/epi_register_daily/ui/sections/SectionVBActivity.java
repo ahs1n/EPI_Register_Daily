@@ -88,59 +88,127 @@ public class SectionVBActivity extends AppCompatActivity {
             Toast.makeText(this, "JSONException(FormVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
+
+        int firstTrue = -1;
+        String baseId = "";
+        ArrayList<Boolean> results = new ArrayList<Boolean>();
+
         for (int i = 0; i < antigenName.size(); i++) {
             String antigen = (String) antigenName.get(i);
 
             //BCG
+            baseId = "vb08ca";
+            results.clear();
             showHideDoneCheck(antigen.equals("ca1"), bi.vb08caa, bi.vb08caatick);
 
             // OPV
-            showHideDoneCheck(antigen.equals("cb1"), bi.vb08cba, bi.vb08cbatick);
-            showHideDoneCheck(antigen.equals("cb2"), bi.vb08cbb, bi.vb08cbbtick);
-            showHideDoneCheck(antigen.equals("cb3"), bi.vb08cbc, bi.vb08cbctick);
-            showHideDoneCheck(antigen.equals("cb4"), bi.vb08cbd, bi.vb08cbdtick);
+            baseId = "vb08cb";
+            results.clear();
+            results.add(showHideDoneCheck(antigen.equals("cb1"), bi.vb08cba, bi.vb08cbatick));
+            results.add(showHideDoneCheck(antigen.equals("cb2"), bi.vb08cbb, bi.vb08cbbtick));
+            results.add(showHideDoneCheck(antigen.equals("cb3"), bi.vb08cbc, bi.vb08cbctick));
+            results.add(showHideDoneCheck(antigen.equals("cb4"), bi.vb08cbd, bi.vb08cbdtick));
+            verifyCrossTicks(results, baseId);
+
 
             //Hep B
-            showHideDoneCheck(antigen.equals("cc1"), bi.vb08cca, bi.vb08ccatick);
+            baseId = "vb08cc";
+            results.clear();
+            results.add(showHideDoneCheck(antigen.equals("cc1"), bi.vb08cca, bi.vb08ccatick));
+            verifyCrossTicks(results, baseId);
 
             // Penta
-            showHideDoneCheck(antigen.equals("cd1"), bi.vb08cda, bi.vb08cdatick);
-            showHideDoneCheck(antigen.equals("cd2"), bi.vb08cdb, bi.vb08cdbtick);
-            showHideDoneCheck(antigen.equals("cd3"), bi.vb08cdc, bi.vb08cdctick);
+            baseId = "vb08cd";
+            results.clear();
+            results.add(showHideDoneCheck(antigen.equals("cd1"), bi.vb08cda, bi.vb08cdatick));
+            results.add(showHideDoneCheck(antigen.equals("cd2"), bi.vb08cdb, bi.vb08cdbtick));
+            results.add(showHideDoneCheck(antigen.equals("cd3"), bi.vb08cdc, bi.vb08cdctick));
+            verifyCrossTicks(results, baseId);
 
             // PCV
-            showHideDoneCheck(antigen.equals("ce1"), bi.vb08cea, bi.vb08ceatick);
-            showHideDoneCheck(antigen.equals("ce2"), bi.vb08ceb, bi.vb08cebtick);
-            showHideDoneCheck(antigen.equals("ce3"), bi.vb08cec, bi.vb08cectick);
+            baseId = "vb08ce";
+            results.clear();
+            results.add(showHideDoneCheck(antigen.equals("ce1"), bi.vb08cea, bi.vb08ceatick));
+            results.add(showHideDoneCheck(antigen.equals("ce2"), bi.vb08ceb, bi.vb08cebtick));
+            results.add(showHideDoneCheck(antigen.equals("ce3"), bi.vb08cec, bi.vb08cectick));
+            verifyCrossTicks(results, baseId);
 
             // Rota
-            showHideDoneCheck(antigen.equals("cf1"), bi.vb08cfa, bi.vb08cfatick);
-            showHideDoneCheck(antigen.equals("cf2"), bi.vb08cfb, bi.vb08cfbtick);
+            baseId = "vb08cf";
+            results.clear();
+            results.add(showHideDoneCheck(antigen.equals("cf1"), bi.vb08cfa, bi.vb08cfatick));
+            results.add(showHideDoneCheck(antigen.equals("cf2"), bi.vb08cfb, bi.vb08cfbtick));
+            verifyCrossTicks(results, baseId);
 
             // IPV
-            showHideDoneCheck(antigen.equals("cg1"), bi.vb08cga, bi.vb08cgatick);
-            showHideDoneCheck(antigen.equals("cg2"), bi.vb08cgb, bi.vb08cgbtick);
+            baseId = "vb08cg";
+            results.clear();
+            results.add(showHideDoneCheck(antigen.equals("cg1"), bi.vb08cga, bi.vb08cgatick));
+            results.add(showHideDoneCheck(antigen.equals("cg2"), bi.vb08cgb, bi.vb08cgbtick));
+            verifyCrossTicks(results, baseId);
 
             // Measles
-            showHideDoneCheck(antigen.equals("ch1"), bi.vb08cha, bi.vb08chatick);
-            showHideDoneCheck(antigen.equals("ch2"), bi.vb08chb, bi.vb08chbtick);
+            baseId = "vb08ch";
+            results.clear();
+            results.add(showHideDoneCheck(antigen.equals("ch1"), bi.vb08cha, bi.vb08chatick));
+            results.add(showHideDoneCheck(antigen.equals("ch2"), bi.vb08chb, bi.vb08chbtick));
+            verifyCrossTicks(results, baseId);
 
             // Typhoid
-            showHideDoneCheck(antigen.equals("ci1"), bi.vb08cia, bi.vb08ciatick);
+            baseId = "vb08ci";
+            results.clear();
+            results.add(showHideDoneCheck(antigen.equals("ci1"), bi.vb08cia, bi.vb08ciatick));
+            verifyCrossTicks(results, baseId);
 
             // TT
-            showHideDoneCheck(antigen.equals("TT1"), bi.vb08waa, bi.vb08waatick);
-            showHideDoneCheck(antigen.equals("TT2"), bi.vb08wab, bi.vb08wabtick);
-            showHideDoneCheck(antigen.equals("TT3"), bi.vb08wac, bi.vb08wactick);
-            showHideDoneCheck(antigen.equals("TT4"), bi.vb08wad, bi.vb08wadtick);
-            showHideDoneCheck(antigen.equals("TT5"), bi.vb08wae, bi.vb08waetick);
-
+            baseId = "vb08wa";
+            results.clear();
+            results.add(showHideDoneCheck(antigen.equals("TT1"), bi.vb08waa, bi.vb08waatick));
+            results.add(showHideDoneCheck(antigen.equals("TT2"), bi.vb08wab, bi.vb08wabtick));
+            results.add(showHideDoneCheck(antigen.equals("TT3"), bi.vb08wac, bi.vb08wactick));
+            results.add(showHideDoneCheck(antigen.equals("TT4"), bi.vb08wad, bi.vb08wadtick));
+            results.add(showHideDoneCheck(antigen.equals("TT5"), bi.vb08wae, bi.vb08waetick));
+            verifyCrossTicks(results, baseId);
         }
 
         bi.setForm(formVB);
     }
 
-    private void showHideDoneCheck(
+    private void verifyCrossTicks(ArrayList<Boolean> results, String baseId) {
+        int firstTrue = results.indexOf(true);
+        if (firstTrue > 0) {
+            for (int j=0; j<firstTrue; j++) {
+                markAsCrossed(baseId, j);
+            }
+        }
+    }
+
+    private View getViewDynamically(String viewId) {
+        return findViewById(getResources()
+                .getIdentifier(viewId, "id", getPackageName()));
+    }
+
+    private void markAsCrossed(String baseId, int index) {
+        String letter = String.valueOf(getChar(index));
+        if (letter.equals("?"))
+            return;
+
+        RadioButton radioButton = (RadioButton) getViewDynamically(baseId + letter);
+        ImageView imgCross = (ImageView) getViewDynamically(baseId + letter + "tick");
+        if (radioButton != null && imgCross != null) {
+            if (imgCross.getVisibility() == View.GONE) {
+                radioButton.setVisibility(View.GONE);
+                imgCross.setVisibility(View.VISIBLE);
+                imgCross.setBackground(getResources().getDrawable(R.drawable.ic_baseline_close_24));
+            }
+        }
+    }
+
+    public static char getChar(int i) {
+        return i<0 || i>25 ? '?' : (char)('a' + i);
+    }
+
+    private boolean showHideDoneCheck(
             boolean condition,
             RadioButton radioButton,
             ImageView imgDone
@@ -148,7 +216,9 @@ public class SectionVBActivity extends AppCompatActivity {
         if (condition) {
             radioButton.setVisibility(View.GONE);
             imgDone.setVisibility(View.VISIBLE);
+            return true;
         }// else radioButton.setVisibility(View.VISIBLE);
+        return false;
     }
 
 /*    @Override
