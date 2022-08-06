@@ -176,6 +176,23 @@ public class SectionVBActivity extends AppCompatActivity {
             verifyCrossTicks(results, baseId);
         }
 
+        if (antigenName.size() == 19) {
+            bi.vb08ca98.setEnabled(false);
+            bi.vb08cb98.setEnabled(false);
+            bi.vb08cc98.setEnabled(false);
+            bi.vb08cd98.setEnabled(false);
+            bi.vb08ce98.setEnabled(false);
+            bi.vb08cf98.setEnabled(false);
+            bi.vb08cg98.setEnabled(false);
+            bi.vb08ch98.setEnabled(false);
+            bi.vb08ci98.setEnabled(false);
+            bi.btnContinue.setVisibility(View.GONE);
+        } else {
+            formVB.setFrontfilename("");
+            formVB.setBackfilename("");
+            formVB.setChildfilename("");
+        }
+
         bi.setForm(formVB);
     }
 
