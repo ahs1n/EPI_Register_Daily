@@ -32,11 +32,13 @@ public class TableContracts {
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
+        public static final String COLUMN_WID = "_wid";
         public static final String COLUMN_UUID = "_uuid";
         public static final String COLUMN_SNO = "sno";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_UC_CODE = "ucCode";
         public static final String COLUMN_VILLAGE_CODE = "villageCode";
+        public static final String COLUMN_FACILITY_CODE = "facilityCode";
         public static final String COLUMN_SYSDATE = "sysdate";
         public static final String COLUMN_VB = "vB";
         public static final String COLUMN_VAC = "vAC";
@@ -94,6 +96,7 @@ public class TableContracts {
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_USERNAME = "username";
+        public static final String COLUMN_UC_CODE = "ucCode";
         public static final String COLUMN_SYSDATE = "sysdate";
         public static final String COLUMN_SWL = "sWL";
         public static final String COLUMN_GPSLAT = "gpslat";

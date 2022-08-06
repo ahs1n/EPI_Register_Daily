@@ -104,65 +104,65 @@ public class SectionVBActivity extends AppCompatActivity {
             //BCG
             baseId = "vb08ca";
             results.clear();
-            showHideDoneCheck(antigen.equals("ca1"), bi.vb08caa, bi.vb08caatick);
+            showHideDoneCheck(antigen.equals("BCG1"), bi.vb08caa, bi.vb08caatick);
 
             // OPV
             baseId = "vb08cb";
             results.clear();
-            results.add(showHideDoneCheck(antigen.equals("cb1"), bi.vb08cba, bi.vb08cbatick));
-            results.add(showHideDoneCheck(antigen.equals("cb2"), bi.vb08cbb, bi.vb08cbbtick));
-            results.add(showHideDoneCheck(antigen.equals("cb3"), bi.vb08cbc, bi.vb08cbctick));
-            results.add(showHideDoneCheck(antigen.equals("cb4"), bi.vb08cbd, bi.vb08cbdtick));
+            results.add(showHideDoneCheck(antigen.equals("OPV1"), bi.vb08cba, bi.vb08cbatick));
+            results.add(showHideDoneCheck(antigen.equals("OPV2"), bi.vb08cbb, bi.vb08cbbtick));
+            results.add(showHideDoneCheck(antigen.equals("OPV3"), bi.vb08cbc, bi.vb08cbctick));
+            results.add(showHideDoneCheck(antigen.equals("OPV4"), bi.vb08cbd, bi.vb08cbdtick));
             verifyCrossTicks(results, baseId);
 
 
             //Hep B
             baseId = "vb08cc";
             results.clear();
-            results.add(showHideDoneCheck(antigen.equals("cc1"), bi.vb08cca, bi.vb08ccatick));
+            results.add(showHideDoneCheck(antigen.equals("HepB1"), bi.vb08cca, bi.vb08ccatick));
             verifyCrossTicks(results, baseId);
 
             // Penta
             baseId = "vb08cd";
             results.clear();
-            results.add(showHideDoneCheck(antigen.equals("cd1"), bi.vb08cda, bi.vb08cdatick));
-            results.add(showHideDoneCheck(antigen.equals("cd2"), bi.vb08cdb, bi.vb08cdbtick));
-            results.add(showHideDoneCheck(antigen.equals("cd3"), bi.vb08cdc, bi.vb08cdctick));
+            results.add(showHideDoneCheck(antigen.equals("Penta1"), bi.vb08cda, bi.vb08cdatick));
+            results.add(showHideDoneCheck(antigen.equals("Penta2"), bi.vb08cdb, bi.vb08cdbtick));
+            results.add(showHideDoneCheck(antigen.equals("Penta3"), bi.vb08cdc, bi.vb08cdctick));
             verifyCrossTicks(results, baseId);
 
             // PCV
             baseId = "vb08ce";
             results.clear();
-            results.add(showHideDoneCheck(antigen.equals("ce1"), bi.vb08cea, bi.vb08ceatick));
-            results.add(showHideDoneCheck(antigen.equals("ce2"), bi.vb08ceb, bi.vb08cebtick));
-            results.add(showHideDoneCheck(antigen.equals("ce3"), bi.vb08cec, bi.vb08cectick));
+            results.add(showHideDoneCheck(antigen.equals("PCV1"), bi.vb08cea, bi.vb08ceatick));
+            results.add(showHideDoneCheck(antigen.equals("PCV2"), bi.vb08ceb, bi.vb08cebtick));
+            results.add(showHideDoneCheck(antigen.equals("PCV3"), bi.vb08cec, bi.vb08cectick));
             verifyCrossTicks(results, baseId);
 
             // Rota
             baseId = "vb08cf";
             results.clear();
-            results.add(showHideDoneCheck(antigen.equals("cf1"), bi.vb08cfa, bi.vb08cfatick));
-            results.add(showHideDoneCheck(antigen.equals("cf2"), bi.vb08cfb, bi.vb08cfbtick));
+            results.add(showHideDoneCheck(antigen.equals("Rota1"), bi.vb08cfa, bi.vb08cfatick));
+            results.add(showHideDoneCheck(antigen.equals("Rota2"), bi.vb08cfb, bi.vb08cfbtick));
             verifyCrossTicks(results, baseId);
 
             // IPV
             baseId = "vb08cg";
             results.clear();
-            results.add(showHideDoneCheck(antigen.equals("cg1"), bi.vb08cga, bi.vb08cgatick));
-            results.add(showHideDoneCheck(antigen.equals("cg2"), bi.vb08cgb, bi.vb08cgbtick));
+            results.add(showHideDoneCheck(antigen.equals("IPV1"), bi.vb08cga, bi.vb08cgatick));
+            results.add(showHideDoneCheck(antigen.equals("IPV2"), bi.vb08cgb, bi.vb08cgbtick));
             verifyCrossTicks(results, baseId);
 
             // Measles
             baseId = "vb08ch";
             results.clear();
-            results.add(showHideDoneCheck(antigen.equals("ch1"), bi.vb08cha, bi.vb08chatick));
-            results.add(showHideDoneCheck(antigen.equals("ch2"), bi.vb08chb, bi.vb08chbtick));
+            results.add(showHideDoneCheck(antigen.equals("Measles1"), bi.vb08cha, bi.vb08chatick));
+            results.add(showHideDoneCheck(antigen.equals("Measles2"), bi.vb08chb, bi.vb08chbtick));
             verifyCrossTicks(results, baseId);
 
             // Typhoid
             baseId = "vb08ci";
             results.clear();
-            results.add(showHideDoneCheck(antigen.equals("ci1"), bi.vb08cia, bi.vb08ciatick));
+            results.add(showHideDoneCheck(antigen.equals("Typhoid1"), bi.vb08cia, bi.vb08ciatick));
             verifyCrossTicks(results, baseId);
 
             // TT
@@ -342,7 +342,7 @@ public class SectionVBActivity extends AppCompatActivity {
         // BCG
         if (bi.vb08ca98.isChecked()) {
             caAntigen = bi.vb08caa.isChecked() ? "1" : "-1";
-            insertVaccineRecord("ca", caAntigen, bi.vb08cadt.getText().toString());
+            insertVaccineRecord("BCG", caAntigen, bi.vb08cadt.getText().toString());
         }
 
         // OPV
@@ -352,14 +352,14 @@ public class SectionVBActivity extends AppCompatActivity {
                     : bi.vb08cbc.isChecked() ? "3"
                     : bi.vb08cbd.isChecked() ? "4"
                     : "-1";
-            insertVaccineRecord("cb", caAntigen, bi.vb08cbdt.getText().toString());
+            insertVaccineRecord("OPV", caAntigen, bi.vb08cbdt.getText().toString());
         }
 
         // Hep B
         if (bi.vb08cc98.isChecked()) {
             caAntigen = bi.vb08cca.isChecked() ? "1"
                     : "-1";
-            insertVaccineRecord("cc", caAntigen, bi.vb08ccdt.getText().toString());
+            insertVaccineRecord("HepB", caAntigen, bi.vb08ccdt.getText().toString());
         }
 
         // Penta
@@ -368,7 +368,7 @@ public class SectionVBActivity extends AppCompatActivity {
                     : bi.vb08cdb.isChecked() ? "2"
                     : bi.vb08cdc.isChecked() ? "3"
                     : "-1";
-            insertVaccineRecord("cd", caAntigen, bi.vb08cddt.getText().toString());
+            insertVaccineRecord("Penta", caAntigen, bi.vb08cddt.getText().toString());
         }
 
         // PCV
@@ -377,7 +377,7 @@ public class SectionVBActivity extends AppCompatActivity {
                     : bi.vb08ceb.isChecked() ? "2"
                     : bi.vb08cec.isChecked() ? "3"
                     : "-1";
-            insertVaccineRecord("ce", caAntigen, bi.vb08cedt.getText().toString());
+            insertVaccineRecord("PCV", caAntigen, bi.vb08cedt.getText().toString());
         }
 
         // Rota
@@ -385,7 +385,7 @@ public class SectionVBActivity extends AppCompatActivity {
             caAntigen = bi.vb08cfa.isChecked() ? "1"
                     : bi.vb08cfb.isChecked() ? "2"
                     : "-1";
-            insertVaccineRecord("cf", caAntigen, bi.vb08cfdt.getText().toString());
+            insertVaccineRecord("Rota", caAntigen, bi.vb08cfdt.getText().toString());
         }
 
         // IPV
@@ -393,7 +393,7 @@ public class SectionVBActivity extends AppCompatActivity {
             caAntigen = bi.vb08cga.isChecked() ? "1"
                     : bi.vb08cgb.isChecked() ? "2"
                     : "-1";
-            insertVaccineRecord("cg", caAntigen, bi.vb08cgdt.getText().toString());
+            insertVaccineRecord("IPV", caAntigen, bi.vb08cgdt.getText().toString());
         }
 
         // Measles
@@ -401,14 +401,14 @@ public class SectionVBActivity extends AppCompatActivity {
             caAntigen = bi.vb08cha.isChecked() ? "1"
                     : bi.vb08chb.isChecked() ? "2"
                     : "-1";
-            insertVaccineRecord("ch", caAntigen, bi.vb08chdt.getText().toString());
+            insertVaccineRecord("Measles", caAntigen, bi.vb08chdt.getText().toString());
         }
 
         // Typhoid
         if (bi.vb08ci98.isChecked()) {
             caAntigen = bi.vb08cia.isChecked() ? "1"
                     : "-1";
-            insertVaccineRecord("ci", caAntigen, bi.vb08cidt.getText().toString());
+            insertVaccineRecord("Typhoid", caAntigen, bi.vb08cidt.getText().toString());
         }
 
         // TT
@@ -452,6 +452,12 @@ public class SectionVBActivity extends AppCompatActivity {
         // Check back photo taken
         if (formVB.getVb03().equals("2") && formVB.getBackfilename().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.backFileName, "Please take back photo of Vaccination Card.");
+
+        }
+
+        // Check back photo taken
+        if (formVB.getVb03().equals("2") && formVB.getChildfilename().equals("")) {
+            return Validator.emptyCustomTextBox(this, bi.childFileName, "Please take photo of Child.");
 
         }
 
@@ -596,7 +602,7 @@ public class SectionVBActivity extends AppCompatActivity {
 //            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
-            Log.e(TAG, "setGPS: " + e.getMessage());
+            Log.e(TAG, "setPoints: " + e.getMessage());
         }
 
     }

@@ -2,13 +2,10 @@ package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -43,7 +40,6 @@ public class MemberInfoActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_member_info);
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
-        setGPS();
         setupListeners();
         setRange();
 
@@ -64,6 +60,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
 
         formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
+        formVB.setFacilityCode(MainApp.workLocation.getWlFacilityCode());
 
     }
 
@@ -202,7 +199,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         } else startActivity(new Intent(this, RegisteredWomenListActivity.class));
     }
 
-    public void setGPS() {
+/*    public void setGPS() {
         SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
         try {
             String lat = GPSPref.getString("Latitude", "0");
@@ -228,5 +225,5 @@ public class MemberInfoActivity extends AppCompatActivity {
             Log.e(TAG, "setGPS: " + e.getMessage());
         }
 
-    }
+    }*/
 }

@@ -1,10 +1,12 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui;
 
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.sharedPref;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -234,12 +236,30 @@ public class CreateLocationActivity extends AppCompatActivity {
     }
 
     public void setGPS() {
-        String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(sharedPref.getString("Time", "0"))).toString();
+        SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
 
-        workLocation.setGpsLat(sharedPref.getString("Latitude", "0"));
-        workLocation.setGpsLng(sharedPref.getString("Longitude", "0"));
-        workLocation.setGpsAcc(sharedPref.getString("Accuracy", "0"));
-        workLocation.setGpsDT(date); // Timestamp is converted to date above
+            if (lat == "0" && lang == "0") {
+                Toast.makeText(this, "Could not obtained points", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
+            }
+
+            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+            workLocation.setGpsLat(lat);
+            workLocation.setGpsLng(lang);
+            workLocation.setGpsAcc(acc);
+            workLocation.setGpsDT(date); // Timestamp is converted to date above
+
+//            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            Log.e(TAG, "setPoints: " + e.getMessage());
+        }
 
     }
 }

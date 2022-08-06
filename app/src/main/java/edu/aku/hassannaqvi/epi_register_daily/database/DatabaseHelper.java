@@ -151,11 +151,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FormsVBTable.COLUMN_PROJECT_NAME, formVB.getProjectName());
         values.put(FormsVBTable.COLUMN_UID, formVB.getUid());
+        values.put(FormsVBTable.COLUMN_WID, formVB.getWid());
         values.put(FormsVBTable.COLUMN_UUID, formVB.getUuid());
         values.put(FormsVBTable.COLUMN_SNO, formVB.getSno());
         values.put(FormsVBTable.COLUMN_USERNAME, formVB.getUserName());
         values.put(FormsVBTable.COLUMN_UC_CODE, formVB.getUcCode());
         values.put(FormsVBTable.COLUMN_VILLAGE_CODE, formVB.getVillageCode());
+        values.put(FormsVBTable.COLUMN_FACILITY_CODE, formVB.getFacilityCode());
+        values.put(FormsVBTable.COLUMN_GPSLAT, formVB.getGpsLat());
+        values.put(FormsVBTable.COLUMN_GPSLNG, formVB.getGpsLng());
+        values.put(FormsVBTable.COLUMN_GPSDATE, formVB.getGpsDT());
+        values.put(FormsVBTable.COLUMN_GPSACC, formVB.getGpsAcc());
         values.put(FormsVBTable.COLUMN_SYSDATE, formVB.getSysDate());
         values.put(FormsVBTable.COLUMN_VB, formVB.vBtoString());
         values.put(FormsVBTable.COLUMN_VAC, formVB.vACtoString());
@@ -220,20 +226,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Long addWorkLocation(WorkLocation workLocation) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         ContentValues values = new ContentValues();
-        values.put(TableContracts.WorkLocationTable.COLUMN_PROJECT_NAME, workLocation.getProjectName());
-        values.put(TableContracts.WorkLocationTable.COLUMN_UID, workLocation.getUid());
-        values.put(TableContracts.WorkLocationTable.COLUMN_USERNAME, workLocation.getUserName());
-        values.put(TableContracts.WorkLocationTable.COLUMN_SYSDATE, workLocation.getSysDate());
-        values.put(TableContracts.WorkLocationTable.COLUMN_GPSLAT, workLocation.getGpsLat());
+        values.put(WorkLocationTable.COLUMN_PROJECT_NAME, workLocation.getProjectName());
+        values.put(WorkLocationTable.COLUMN_UID, workLocation.getUid());
+        values.put(WorkLocationTable.COLUMN_USERNAME, workLocation.getUserName());
+        values.put(WorkLocationTable.COLUMN_UC_CODE, workLocation.getUcCode());
+        values.put(WorkLocationTable.COLUMN_SYSDATE, workLocation.getSysDate());
+        values.put(WorkLocationTable.COLUMN_GPSLAT, workLocation.getGpsLat());
         values.put(WorkLocationTable.COLUMN_GPSLNG, workLocation.getGpsLng());
-        values.put(TableContracts.WorkLocationTable.COLUMN_GPSDATE, workLocation.getGpsDT());
+        values.put(WorkLocationTable.COLUMN_GPSDATE, workLocation.getGpsDT());
         values.put(WorkLocationTable.COLUMN_GPSACC, workLocation.getGpsAcc());
         values.put(WorkLocationTable.COLUMN_ISTATUS, workLocation.getiStatus());
-        values.put(TableContracts.WorkLocationTable.COLUMN_DEVICETAGID, workLocation.getDeviceTag());
+        values.put(WorkLocationTable.COLUMN_DEVICETAGID, workLocation.getDeviceTag());
         values.put(WorkLocationTable.COLUMN_DEVICEID, workLocation.getDeviceId());
         values.put(WorkLocationTable.COLUMN_APPVERSION, workLocation.getAppver());
         values.put(WorkLocationTable.COLUMN_SYNCED, workLocation.getSynced());
-        values.put(TableContracts.WorkLocationTable.COLUMN_SYNC_DATE, workLocation.getSyncDate());
+        values.put(WorkLocationTable.COLUMN_SYNC_DATE, workLocation.getSyncDate());
         values.put(WorkLocationTable.COLUMN_SWL, workLocation.sWltoString());
 
         long newRowId;

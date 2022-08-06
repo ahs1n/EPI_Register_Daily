@@ -34,6 +34,7 @@ public class WorkLocation extends BaseObservable implements Observable {
     private String id = _EMPTY_;
     private String uid = _EMPTY_;
     private String userName = _EMPTY_;
+    private String ucCode = _EMPTY_;
     private String sysDate = _EMPTY_;
     private String sno = _EMPTY_;
     private String deviceId = _EMPTY_;
@@ -75,6 +76,7 @@ public class WorkLocation extends BaseObservable implements Observable {
 
         setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
+        setUcCode(MainApp.user.getUccode());
         setDeviceId(MainApp.deviceid);
         //   setUuid(MainApp.form.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
@@ -122,6 +124,14 @@ public class WorkLocation extends BaseObservable implements Observable {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getUcCode() {
+        return ucCode;
+    }
+
+    public void setUcCode(String ucCode) {
+        this.ucCode = ucCode;
     }
 
     public String getSysDate() {
@@ -322,6 +332,7 @@ public class WorkLocation extends BaseObservable implements Observable {
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_UID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_PROJECT_NAME));
         this.userName = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_USERNAME));
+        this.ucCode = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_UC_CODE));
         this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_SYSDATE));
         this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_DEVICETAGID));
@@ -378,6 +389,7 @@ public class WorkLocation extends BaseObservable implements Observable {
         json.put(WorkLocationTable.COLUMN_UID, this.uid);
         json.put(WorkLocationTable.COLUMN_PROJECT_NAME, this.projectName);
         json.put(WorkLocationTable.COLUMN_USERNAME, this.userName);
+        json.put(WorkLocationTable.COLUMN_UC_CODE, this.ucCode);
         json.put(WorkLocationTable.COLUMN_SYSDATE, this.sysDate);
         json.put(WorkLocationTable.COLUMN_DEVICEID, this.deviceId);
         json.put(WorkLocationTable.COLUMN_DEVICETAGID, this.deviceTag);
