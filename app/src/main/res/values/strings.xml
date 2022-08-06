@@ -453,7 +453,7 @@
 
     <string name="batch">Vaccine Batch Management</string>
     <string name="vac_child">Vaccinate a Child</string>
-    <string name="vac_women">Vaccinate a Women</string>
+    <string name="vac_woman">Vaccinate a Woman</string>
 
     <string name='Q_maintitle'>maintitle</string>
     <string name='Q_va'>va</string>

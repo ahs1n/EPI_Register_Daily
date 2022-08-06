@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         db = MainApp.appInfo.dbHelper;
         bi.setCallback(this);
-        bi.adminView.setVisibility(MainApp.admin ? View.VISIBLE : View.VISIBLE);
+        bi.adminView.setVisibility(MainApp.admin ? View.VISIBLE : View.GONE);
         invalidateOptionsMenu();
     }
 

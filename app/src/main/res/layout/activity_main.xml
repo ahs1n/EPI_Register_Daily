@@ -295,7 +295,7 @@
                                         android:drawablePadding="@dimen/_6sdp"
                                         android:gravity="center_vertical"
                                         android:minWidth="@dimen/_230sdp"
-                                        android:text="@string/vac_women"
+                                        android:text="@string/vac_woman"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="@dimen/_8sdp" />
 
@@ -303,7 +303,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:gravity="center_horizontal|center_vertical"
-                                        android:text="Open to enter women vaccination form"
+                                        android:text="Open to enter woman vaccination form"
                                         android:textColor="@color/gray"
                                         android:textSize="@dimen/_7sdp" />
                                 </LinearLayout>
