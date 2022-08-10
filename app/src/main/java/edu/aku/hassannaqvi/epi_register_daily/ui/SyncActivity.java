@@ -178,11 +178,21 @@ public class SyncActivity extends AppCompatActivity {
                 // WorkLocation
                 uploadTables.add(new SyncModel(TableContracts.WorkLocationTable.TABLE_NAME));
                 try {
-                    MainApp.uploadData.add(db.getUnsyncedAttendance());
+                    MainApp.uploadData.add(db.getUnsyncedWorkLocation());
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.d(TAG, "ProcessStart: JSONException(WorkLocation): " + e.getMessage());
                     Toast.makeText(this, "JSONException(WorkLocation): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                // Attendance
+                uploadTables.add(new SyncModel(TableContracts.AttendanceTable.TABLE_NAME));
+                try {
+                    MainApp.uploadData.add(db.getUnsyncedAttendance());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "ProcessStart: JSONException(Attendance): " + e.getMessage());
+                    Toast.makeText(this, "JSONException(Attendance): " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
                 // Vaccines

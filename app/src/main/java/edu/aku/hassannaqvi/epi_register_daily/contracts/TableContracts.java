@@ -118,6 +118,7 @@ public class TableContracts {
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_USERNAME = "username";
+        public static final String COLUMN_UC_CODE = "ucCode";
         public static final String COLUMN_SYSDATE = "sysdate";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";

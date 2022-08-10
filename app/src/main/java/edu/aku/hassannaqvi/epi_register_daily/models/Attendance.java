@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.epi_register_daily.BR;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.WorkLocationTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
@@ -41,6 +41,7 @@ public class Attendance extends BaseObservable implements Observable {
     private String gpsLng = _EMPTY_;
     private String gpsDT = _EMPTY_;
     private String gpsAcc = _EMPTY_;
+    private String ucCode = _EMPTY_;
 
 
 
@@ -59,6 +60,7 @@ public class Attendance extends BaseObservable implements Observable {
 
         setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
+        setUcCode(MainApp.user.getUccode());
         setDeviceId(MainApp.deviceid);
         //   setUuid(MainApp.form.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
@@ -183,22 +185,31 @@ public class Attendance extends BaseObservable implements Observable {
     }
 
 
+    @Bindable
+    public String getUcCode() {
+        return ucCode;
+    }
+
+    public void setUcCode(String ucCode) {
+        this.ucCode = ucCode;
+    }
 
 
     public Attendance Hydrate(Cursor cursor) throws JSONException {
-        this.id = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_UID));
-        this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_PROJECT_NAME));
-        this.userName = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_SYSDATE));
-        this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_DEVICEID));
-        this.appver = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_APPVERSION));
-        this.synced = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_SYNC_DATE));
-        this.gpsLat = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_GPSLAT));
-        this.gpsLng = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_GPSLNG));
-        this.gpsDT = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_GPSDATE));
-        this.gpsAcc = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_GPSACC));
+        this.id = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_UID));
+        this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_PROJECT_NAME));
+        this.userName = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_USERNAME));
+        this.ucCode = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_UC_CODE));
+        this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_SYSDATE));
+        this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_DEVICEID));
+        this.appver = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_APPVERSION));
+        this.synced = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_SYNC_DATE));
+        this.gpsLat = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_GPSLAT));
+        this.gpsLng = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_GPSLNG));
+        this.gpsDT = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_GPSDATE));
+        this.gpsAcc = cursor.getString(cursor.getColumnIndexOrThrow(AttendanceTable.COLUMN_GPSACC));
 
         return this;
     }
@@ -208,20 +219,21 @@ public class Attendance extends BaseObservable implements Observable {
     public JSONObject toJSONObject() throws JSONException {
         JSONObject json = new JSONObject();
 
-        json.put(WorkLocationTable.COLUMN_ID, this.id);
-        json.put(WorkLocationTable.COLUMN_UID, this.uid);
-        json.put(WorkLocationTable.COLUMN_PROJECT_NAME, this.projectName);
-        json.put(WorkLocationTable.COLUMN_USERNAME, this.userName);
-        json.put(WorkLocationTable.COLUMN_SYSDATE, this.sysDate);
-        json.put(WorkLocationTable.COLUMN_DEVICEID, this.deviceId);
+        json.put(AttendanceTable.COLUMN_ID, this.id);
+        json.put(AttendanceTable.COLUMN_UID, this.uid);
+        json.put(AttendanceTable.COLUMN_PROJECT_NAME, this.projectName);
+        json.put(AttendanceTable.COLUMN_USERNAME, this.userName);
+        json.put(AttendanceTable.COLUMN_UC_CODE, this.ucCode);
+        json.put(AttendanceTable.COLUMN_SYSDATE, this.sysDate);
+        json.put(AttendanceTable.COLUMN_DEVICEID, this.deviceId);
 
-        json.put(WorkLocationTable.COLUMN_SYNCED, this.synced);
-        json.put(WorkLocationTable.COLUMN_SYNC_DATE, this.syncDate);
-        json.put(WorkLocationTable.COLUMN_APPVERSION, this.appver);
-        json.put(WorkLocationTable.COLUMN_GPSLAT, this.gpsLat);
-        json.put(WorkLocationTable.COLUMN_GPSLNG, this.gpsLng);
-        json.put(WorkLocationTable.COLUMN_GPSDATE, this.gpsDT);
-        json.put(WorkLocationTable.COLUMN_GPSACC, this.gpsAcc);
+        json.put(AttendanceTable.COLUMN_SYNCED, this.synced);
+        json.put(AttendanceTable.COLUMN_SYNC_DATE, this.syncDate);
+        json.put(AttendanceTable.COLUMN_APPVERSION, this.appver);
+        json.put(AttendanceTable.COLUMN_GPSLAT, this.gpsLat);
+        json.put(AttendanceTable.COLUMN_GPSLNG, this.gpsLng);
+        json.put(AttendanceTable.COLUMN_GPSDATE, this.gpsDT);
+        json.put(AttendanceTable.COLUMN_GPSACC, this.gpsAcc);
 
         return json;
     }

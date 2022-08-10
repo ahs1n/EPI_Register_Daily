@@ -259,6 +259,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(AttendanceTable.COLUMN_PROJECT_NAME, attendance.getProjectName());
         values.put(AttendanceTable.COLUMN_UID, attendance.getUid());
         values.put(AttendanceTable.COLUMN_USERNAME, attendance.getUserName());
+        values.put(AttendanceTable.COLUMN_UC_CODE, attendance.getUcCode());
         values.put(AttendanceTable.COLUMN_SYSDATE, attendance.getSysDate());
         values.put(AttendanceTable.COLUMN_GPSLAT, attendance.getGpsLat());
         values.put(AttendanceTable.COLUMN_GPSLNG, attendance.getGpsLng());
@@ -925,15 +926,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allVaccines;
     }
 
-    public JSONArray getUnsyncedAttendance() throws JSONException {
+    public JSONArray getUnsyncedWorkLocation() throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
 
-        String whereClause;
-        /*whereClause = WorkLocationTable.COLUMN_SYNCED + " = '' AND " +
-                WorkLocationTable.COLUMN_ISTATUS + "!= ''";*/
-        whereClause = TableContracts.WorkLocationTable.COLUMN_SYNCED + " = '' ";
+        String whereClause = TableContracts.WorkLocationTable.COLUMN_SYNCED + " = '' ";
 
         String[] whereArgs = null;
 
@@ -942,9 +940,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String orderBy = TableContracts.WorkLocationTable.COLUMN_ID + " ASC";
 
-        JSONArray allAttendance = new JSONArray();
+        JSONArray allWorkLocation = new JSONArray();
         c = db.query(
                 TableContracts.WorkLocationTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            Log.d(TAG, "getUnsyncedWorkLocation: " + c.getCount());
+            WorkLocation workLocation = new WorkLocation();
+            allWorkLocation.put(workLocation.Hydrate(c).toJSONObject());
+        }
+
+        c.close();
+
+        Log.d(TAG, "getUnsyncedWorkLocation: " + allWorkLocation.toString().length());
+        Log.d(TAG, "getUnsyncedWorkLocation: " + allWorkLocation);
+        return allWorkLocation;
+    }
+
+    public JSONArray getUnsyncedAttendance() throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+
+        String whereClause = TableContracts.AttendanceTable.COLUMN_SYNCED + " = '' ";
+
+        String[] whereArgs = null;
+
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = TableContracts.AttendanceTable.COLUMN_ID + " ASC";
+
+        JSONArray allAttendance = new JSONArray();
+        c = db.query(
+                TableContracts.AttendanceTable.TABLE_NAME,  // The table to query
                 columns,                   // The columns to return
                 whereClause,               // The columns for the WHERE clause
                 whereArgs,                 // The values for the WHERE clause
@@ -957,10 +992,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
              /*Form fc = new Form();
              allFC.add(fc.Hydrate(c));*/
             Log.d(TAG, "getUnsyncedAttendance: " + c.getCount());
-            WorkLocation workLocation = new WorkLocation();
-            allAttendance.put(workLocation.Hydrate(c).toJSONObject());
-
-
+            Attendance attendance = new Attendance();
+            allAttendance.put(attendance.Hydrate(c).toJSONObject());
         }
 
         c.close();

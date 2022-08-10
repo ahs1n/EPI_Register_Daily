@@ -120,6 +120,7 @@ object CreateTable {
             + AttendanceTable.COLUMN_PROJECT_NAME + " TEXT,"
             + AttendanceTable.COLUMN_UID + " TEXT,"
             + AttendanceTable.COLUMN_USERNAME + " TEXT,"
+            + AttendanceTable.COLUMN_UC_CODE + " TEXT,"
             + AttendanceTable.COLUMN_SYSDATE + " TEXT,"
             + AttendanceTable.COLUMN_ISTATUS + " TEXT,"
             + AttendanceTable.COLUMN_DEVICEID + " TEXT,"

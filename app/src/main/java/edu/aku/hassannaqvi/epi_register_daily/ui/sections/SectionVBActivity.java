@@ -53,7 +53,6 @@ public class SectionVBActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_vb);
         setSupportActionBar(bi.toolbar);
         db = MainApp.appInfo.dbHelper;
-        setGPS();
         setupListeners();
 
         formVB.setUuid(MainApp.formVA.getUid());
@@ -331,6 +330,8 @@ public class SectionVBActivity extends AppCompatActivity {
 
     public void btnContinue(View view) {
         if (!formValidation()) return;
+
+        setGPS();
 //        if (b) if (!insertNewRecord()) return;
 
 
@@ -599,7 +600,7 @@ public class SectionVBActivity extends AppCompatActivity {
             formVB.setGpsAcc(acc);
             formVB.setGpsDT(date); // Timestamp is converted to date above
 
-//            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             Log.e(TAG, "setPoints: " + e.getMessage());
