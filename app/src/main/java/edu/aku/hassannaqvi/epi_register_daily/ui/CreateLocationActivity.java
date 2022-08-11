@@ -45,6 +45,7 @@ public class CreateLocationActivity extends AppCompatActivity {
         db = MainApp.appInfo.dbHelper;
         workLocation = new WorkLocation();
         bi.setWorkLoc(workLocation);
+        setGPS();
 
         bi.attendat.setOnCheckedChangeListener((radioGroup, i) -> {
             if (i == bi.attendat01.getId()) {
@@ -206,8 +207,6 @@ public class CreateLocationActivity extends AppCompatActivity {
     public void btnContinue(View view) {
         if (!formValidation()) return;
 
-
-        setGPS();
 
         if (insertNewRecord()) {
             setCurrentWorkLocation();
