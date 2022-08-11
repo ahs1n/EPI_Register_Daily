@@ -36,6 +36,7 @@ public class FormVB extends BaseObservable implements Observable {
     private String id = _EMPTY_;
     private String uid = _EMPTY_;
     private String wid = _EMPTY_;
+    private String aid = _EMPTY_;
     private String uuid = _EMPTY_;
     private String userName = _EMPTY_;
     private String sysDate = _EMPTY_;
@@ -131,7 +132,8 @@ public class FormVB extends BaseObservable implements Observable {
         setUcCode(MainApp.user.getUccode());
         setDeviceId(MainApp.deviceid);
         setUuid(MainApp.formVA.getUid());  // not applicable in Form table
-        setWid(MainApp.workLocation.getUid());  // not applicable in Form table
+        setWid(MainApp.workLocation.getUid());
+        setAid(MainApp.attendance.getUid());
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
         // setEntryType(String.valueOf(MainApp.entryType));
@@ -168,6 +170,14 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setWid(String wid) {
         this.wid = wid;
+    }
+
+    public String getAid() {
+        return aid;
+    }
+
+    public void setAid(String aid) {
+        this.aid = aid;
     }
 
     public String getUuid() {
@@ -937,6 +947,7 @@ public class FormVB extends BaseObservable implements Observable {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UID));
         this.wid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_WID));
+        this.aid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_AID));
         this.uuid = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UUID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_PROJECT_NAME));
         this.sno = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SNO));
@@ -1078,6 +1089,7 @@ public class FormVB extends BaseObservable implements Observable {
         json.put(FormsVBTable.COLUMN_ID, this.id);
         json.put(FormsVBTable.COLUMN_UID, this.uid);
         json.put(FormsVBTable.COLUMN_WID, this.wid);
+        json.put(FormsVBTable.COLUMN_AID, this.aid);
         json.put(FormsVBTable.COLUMN_PROJECT_NAME, this.projectName);
         json.put(FormsVBTable.COLUMN_UUID, this.uuid);
         json.put(FormsVBTable.COLUMN_SNO, this.sno);

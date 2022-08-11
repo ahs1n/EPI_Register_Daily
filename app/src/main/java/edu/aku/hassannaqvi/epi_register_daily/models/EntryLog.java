@@ -35,7 +35,6 @@ public class EntryLog extends BaseObservable implements Observable {
     private String userName = _EMPTY_;
     private String sysDate = _EMPTY_;
     private String entryDate = _EMPTY_;         //
-    private String psuCode = _EMPTY_;
     private String hhid = _EMPTY_;
     private String appver = _EMPTY_;            //
     private String iStatus = _EMPTY_;
@@ -106,17 +105,6 @@ public class EntryLog extends BaseObservable implements Observable {
 
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
-    }
-
-
-    @Bindable
-    public String getPsuCode() {
-        return psuCode;
-    }
-
-    public void setPsuCode(String psuCode) {
-        this.psuCode = psuCode;
-        notifyPropertyChanged(BR.psuCode);
     }
 
     @Bindable
@@ -217,7 +205,6 @@ public class EntryLog extends BaseObservable implements Observable {
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(EntryLogTable.COLUMN_UID));
         this.uuid = cursor.getString(cursor.getColumnIndexOrThrow(EntryLogTable.COLUMN_UUID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(EntryLogTable.COLUMN_PROJECT_NAME));
-        this.psuCode = cursor.getString(cursor.getColumnIndexOrThrow(EntryLogTable.COLUMN_PSU_CODE));
         this.hhid = cursor.getString(cursor.getColumnIndexOrThrow(EntryLogTable.COLUMN_HHID));
         this.userName = cursor.getString(cursor.getColumnIndexOrThrow(EntryLogTable.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(EntryLogTable.COLUMN_SYSDATE));
@@ -241,7 +228,6 @@ public class EntryLog extends BaseObservable implements Observable {
         json.put(EntryLogTable.COLUMN_UID, this.uid);
         json.put(EntryLogTable.COLUMN_UUID, this.uuid);
         json.put(EntryLogTable.COLUMN_PROJECT_NAME, this.projectName);
-        json.put(EntryLogTable.COLUMN_PSU_CODE, this.psuCode);
         json.put(EntryLogTable.COLUMN_HHID, this.hhid);
         json.put(EntryLogTable.COLUMN_USERNAME, this.userName);
         json.put(EntryLogTable.COLUMN_SYSDATE, this.sysDate);

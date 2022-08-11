@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import edu.aku.hassannaqvi.epi_register_daily.BR;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
@@ -32,6 +33,7 @@ public class Vaccines extends BaseObservable implements Observable {
     private String id = _EMPTY_;
     private String uid = _EMPTY_;
     private String uuid = _EMPTY_;
+    private String aid = _EMPTY_;
     private String userName = _EMPTY_;
     private String sysDate = _EMPTY_;
     private String sno = _EMPTY_;
@@ -58,6 +60,10 @@ public class Vaccines extends BaseObservable implements Observable {
     private String vb08WCode = _EMPTY_;
     private String vb08WAntigen = _EMPTY_;
     private String vb08WDate = _EMPTY_;
+    private String gpsLat = _EMPTY_;
+    private String gpsLng = _EMPTY_;
+    private String gpsDT = _EMPTY_;
+    private String gpsAcc = _EMPTY_;
 
 
     public void populateMeta() {
@@ -65,15 +71,14 @@ public class Vaccines extends BaseObservable implements Observable {
         setSysDate(MainApp.formVB.getSysDate());
         setUserName(MainApp.formVB.getUserName());
         setDeviceId(MainApp.formVB.getDeviceId());
-        setAppver(MainApp.formVB.getAppver());
+        setUuid(MainApp.formVB.getUid());
+        setAid(MainApp.attendance.getUid());
+//        setAppver(MainApp.formVB.getAppver());
         setVb02(MainApp.formVB.getVb02());
         setVb04a(MainApp.formVB.getVb04a());
         setVb04(MainApp.formVB.getVb04());
 
         setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
-//        setUserName(MainApp.user.getUserName());
-//        setDeviceId(MainApp.deviceid);
-//        setUuid(MainApp.formVA.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
         // setEntryType(String.valueOf(MainApp.entryType));
@@ -210,6 +215,14 @@ public class Vaccines extends BaseObservable implements Observable {
         this.uuid = uuid;
     }
 
+    public String getAid() {
+        return aid;
+    }
+
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
+
     @Bindable
     public String getVb02() {
         return vb02;
@@ -338,10 +351,52 @@ public class Vaccines extends BaseObservable implements Observable {
     }
 
 
+    @Bindable
+    public String getGpsLat() {
+        return gpsLat;
+    }
+
+    public void setGpsLat(String gpsLat) {
+        this.gpsLat = gpsLat;
+        notifyPropertyChanged(BR.gpsLat);
+    }
+
+    @Bindable
+    public String getGpsLng() {
+        return gpsLng;
+    }
+
+    public void setGpsLng(String gpsLng) {
+        this.gpsLng = gpsLng;
+        notifyPropertyChanged(BR.gpsLng);
+    }
+
+    @Bindable
+    public String getGpsDT() {
+        return gpsDT;
+    }
+
+    public void setGpsDT(String gpsDT) {
+        this.gpsDT = gpsDT;
+        notifyPropertyChanged(BR.gpsDT);
+    }
+
+    @Bindable
+    public String getGpsAcc() {
+        return gpsAcc;
+    }
+
+    public void setGpsAcc(String gpsAcc) {
+        this.gpsAcc = gpsAcc;
+        notifyPropertyChanged(BR.gpsAcc);
+    }
+
+
     public Vaccines Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_UID));
         this.uuid = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_UUID));
+        this.aid = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_AID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_PROJECT_NAME));
         this.sno = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_SNO));
         this.userName = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_USERNAME));
@@ -365,6 +420,10 @@ public class Vaccines extends BaseObservable implements Observable {
         this.vb08WCode = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08W_CODE));
         this.vb08WAntigen = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08W_ANTIGEN));
         this.vb08WDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08W_DATE));
+        this.gpsLat = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_GPSLAT));
+        this.gpsLng = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_GPSLNG));
+        this.gpsDT = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_GPSDATE));
+        this.gpsAcc = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_GPSACC));
 
 //        sVACHydrate(cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VACCINE)));
         return this;
@@ -398,6 +457,7 @@ public class Vaccines extends BaseObservable implements Observable {
         json.put(VaccinesTable.COLUMN_ID, this.id);
         json.put(VaccinesTable.COLUMN_UID, this.uid);
         json.put(VaccinesTable.COLUMN_UUID, this.uuid);
+        json.put(VaccinesTable.COLUMN_AID, this.aid);
         json.put(VaccinesTable.COLUMN_PROJECT_NAME, this.projectName);
         json.put(VaccinesTable.COLUMN_SNO, this.sno);
         json.put(VaccinesTable.COLUMN_USERNAME, this.userName);
@@ -421,6 +481,10 @@ public class Vaccines extends BaseObservable implements Observable {
         json.put(VaccinesTable.COLUMN_VB08W_CODE, this.vb08WCode);
         json.put(VaccinesTable.COLUMN_VB08W_ANTIGEN, this.vb08WAntigen);
         json.put(VaccinesTable.COLUMN_VB08W_DATE, this.vb08WDate);
+        json.put(TableContracts.VaccinesTable.COLUMN_GPSLAT, this.gpsLat);
+        json.put(TableContracts.VaccinesTable.COLUMN_GPSLNG, this.gpsLng);
+        json.put(TableContracts.VaccinesTable.COLUMN_GPSDATE, this.gpsDT);
+        json.put(TableContracts.VaccinesTable.COLUMN_GPSACC, this.gpsAcc);
 
 //        json.put(VaccinesTable.COLUMN_VACCINE, new JSONObject(sVACtoString()));
         return json;

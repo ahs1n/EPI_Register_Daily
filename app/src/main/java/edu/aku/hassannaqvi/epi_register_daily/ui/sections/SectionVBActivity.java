@@ -5,8 +5,11 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccineCount;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesList;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -280,10 +283,15 @@ public class SectionVBActivity extends AppCompatActivity {
     private boolean insertVaccineRecord(String vaccCode, String antigen, String vaccDate) {
         //   if (!vaccines.getUid().equals("") || MainApp.superuser) return true;
         //    vaccines.populateMeta();
-        vaccines.setUuid(formVB.getUid());
+//        vaccines.setUuid(formVB.getUid());
         vaccines.setFrontfilename(formVB.getFrontfilename());
         vaccines.setBackfilename(formVB.getBackfilename());
         vaccines.setChildfilename(formVB.getChildfilename());
+        vaccines.setGpsLat(formVB.getGpsLat());
+        vaccines.setGpsLng(formVB.getGpsLng());
+        vaccines.setGpsAcc(formVB.getGpsAcc());
+        vaccines.setGpsDT(formVB.getGpsDT());
+
         vaccines.updateAntigen(vaccCode, antigen, vaccDate);
         long rowId = 0;
         try {
@@ -308,20 +316,54 @@ public class SectionVBActivity extends AppCompatActivity {
     private boolean updateDB() {
         if (MainApp.superuser) return true;
 
+        setGPS();
+
         int updcount = 0;
         try {
-            updcount = db.updatesFormVBColumn(FormsVBTable.COLUMN_VAC, formVB.vACtoString());
+            updcount = db.updatesFormVBColumn(FormsVBTable.COLUMN_VAC, formVB.vACtoString())
+                    + db.updatesFormVBColumn(FormsVBTable.COLUMN_GPSLAT, formVB.getGpsLat())
+                    + db.updatesFormVBColumn(FormsVBTable.COLUMN_GPSLNG, formVB.getGpsLng())
+                    + db.updatesFormVBColumn(FormsVBTable.COLUMN_GPSACC, formVB.getGpsAcc())
+                    + db.updatesFormVBColumn(FormsVBTable.COLUMN_GPSDATE, formVB.getGpsDT());
         } catch (JSONException e) {
             e.printStackTrace();
             Log.d(TAG, R.string.upd_db + e.getMessage());
             Toast.makeText(this, R.string.upd_db + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-        if (updcount == 1) {
+        if (updcount == 5) {
             return true;
         } else {
             Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
             return false;
         }
+    }
+
+    public void setGPS() {
+        SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
+
+            if (lat == "0" && lang == "0") {
+                Toast.makeText(this, "Could not obtained points", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
+            }
+
+            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+            formVB.setGpsLat(lat);
+            formVB.setGpsLng(lang);
+            formVB.setGpsAcc(acc);
+            formVB.setGpsDT(date); // Timestamp is converted to date above
+
+            Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            Log.e(TAG, "setPoints: " + e.getMessage());
+        }
+
     }
 
 

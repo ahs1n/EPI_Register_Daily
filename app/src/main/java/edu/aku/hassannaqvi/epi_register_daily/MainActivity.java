@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.AndroidManager;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
@@ -53,6 +55,7 @@ import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     ActivityMainBinding bi;
     DatabaseHelper db;
@@ -145,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sectionPress(View view) {
-        if (attendance != null && workLocation != null) {
+        if (attendance != null && workLocation != null && !workLocation.getId().isEmpty()) {
             switch (view.getId()) {
 
                 case R.id.openFormVA:
@@ -251,28 +254,23 @@ public class MainActivity extends AppCompatActivity {
         markAttendanceDialog.show();
         markAttendanceDialog.setCanceledOnTouchOutside(false);
 
-        btnYes.setOnClickListener(new View.OnClickListener(
+        btnYes.setOnClickListener(view1 -> {
+            markAttendanceDialog.dismiss();
 
-        ) {
-            @Override
-            public void onClick(View view) {
-                markAttendanceDialog.dismiss();
-
-                attendance = new Attendance();
-                setGPS();
-                if (insertNewRecord()) {
-                    //  finish();
-                    //  startActivity(new Intent(this, MainActivity.class));
-                    bi.markAttendance.setVisibility(View.GONE);
-                    Toast.makeText(MainActivity.this, "Attendance has been marked.", Toast.LENGTH_SHORT).show();
+            attendance = new Attendance();
+            setGPS();
+            if (insertNewRecord()) {
+                //  finish();
+                //  startActivity(new Intent(this, MainActivity.class));
+                bi.markAttendance.setVisibility(View.GONE);
+                Toast.makeText(MainActivity.this, "Attendance has been marked.", Toast.LENGTH_SHORT).show();
 
 
-                } else {
-                    Toast.makeText(MainActivity.this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
-                }
-
-                //finish();
+            } else {
+                Toast.makeText(MainActivity.this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
             }
+
+            //finish();
         });
         btnNo.setOnClickListener(new View.OnClickListener(
 
@@ -300,16 +298,10 @@ public class MainActivity extends AppCompatActivity {
         attendance.setId(String.valueOf(rowId));
         if (rowId > 0) {
             attendance.setUid(attendance.getDeviceId() + attendance.getId());
-            try {
-                db.addAttendance(attendance);
-                setCurrentAttendance();
-                finish();
-                startActivity(getIntent());
-            } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(this, "JSONException(Attendance): ", Toast.LENGTH_SHORT).show();
-                return false;
-            }
+            db.updatesAttenColumn(TableContracts.AttendanceTable.COLUMN_UID, attendance.getUid());
+            setCurrentAttendance();
+            finish();
+            startActivity(getIntent());
             return true;
         } else {
             Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
@@ -319,12 +311,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void setGPS() {
         SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
-        String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
-
-        attendance.setGpsLat(GPSPref.getString("Latitude", "0"));
-        attendance.setGpsLng(GPSPref.getString("Longitude", "0"));
-        attendance.setGpsAcc(GPSPref.getString("Accuracy", "0"));
-        attendance.setGpsDT(date); // Timestamp is converted to date above
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
+            if (!lat.equals("0") && !lang.equals("0")) {
+                String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+                attendance.setGpsLat(lat);
+                attendance.setGpsLng(lang);
+                attendance.setGpsAcc(acc);
+                attendance.setGpsDT(date); // Timestamp is converted to date above
+                Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Could not obtained points", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "setPoints: " + e.getMessage());
+        }
 
     }
 

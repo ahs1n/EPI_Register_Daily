@@ -33,6 +33,7 @@ public class TableContracts {
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_WID = "_wid";
+        public static final String COLUMN_AID = "_aid";
         public static final String COLUMN_UUID = "_uuid";
         public static final String COLUMN_SNO = "sno";
         public static final String COLUMN_USERNAME = "username";
@@ -63,11 +64,14 @@ public class TableContracts {
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
+        public static final String COLUMN_AID = "_aid";
         public static final String COLUMN_SNO = "sno";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";
-        public static final String COLUMN_VACCINE = "vAC";
-
+        public static final String COLUMN_GPSLAT = "gpslat";
+        public static final String COLUMN_GPSLNG = "gpslng";
+        public static final String COLUMN_GPSDATE = "gpsdate";
+        public static final String COLUMN_GPSACC = "gpsacc";
         public static final String COLUMN_VB02 = "vb02";
         public static final String COLUMN_VB04A = "vb04a";
         public static final String COLUMN_VB04 = "vb04";
@@ -80,7 +84,6 @@ public class TableContracts {
         public static final String COLUMN_VB08W_CODE = "vb08wCode";
         public static final String COLUMN_VB08W_ANTIGEN = "vb08wAnt";
         public static final String COLUMN_VB08W_DATE = "vb08wDT";
-
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_SYNCED = "synced";
@@ -95,6 +98,7 @@ public class TableContracts {
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
+        public static final String COLUMN_AID = "_aid";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_UC_CODE = "ucCode";
         public static final String COLUMN_SYSDATE = "sysdate";
@@ -209,7 +213,6 @@ public class TableContracts {
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
-        public static final String COLUMN_PSU_CODE = "psuCode";
         public static final String COLUMN_HHID = "hhid";
         public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_SYSDATE = "sysdate";

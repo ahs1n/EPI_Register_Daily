@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.epi_register_daily.database;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.IBAHC;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.attendance;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
@@ -152,6 +153,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsVBTable.COLUMN_PROJECT_NAME, formVB.getProjectName());
         values.put(FormsVBTable.COLUMN_UID, formVB.getUid());
         values.put(FormsVBTable.COLUMN_WID, formVB.getWid());
+        values.put(FormsVBTable.COLUMN_AID, formVB.getAid());
         values.put(FormsVBTable.COLUMN_UUID, formVB.getUuid());
         values.put(FormsVBTable.COLUMN_SNO, formVB.getSno());
         values.put(FormsVBTable.COLUMN_USERNAME, formVB.getUserName());
@@ -189,9 +191,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(VaccinesTable.COLUMN_PROJECT_NAME, vaccines.getProjectName());
         values.put(VaccinesTable.COLUMN_UID, vaccines.getUid());
         values.put(VaccinesTable.COLUMN_UUID, vaccines.getUuid());
+        values.put(VaccinesTable.COLUMN_AID, vaccines.getAid());
         values.put(VaccinesTable.COLUMN_SNO, vaccines.getSno());
         values.put(VaccinesTable.COLUMN_USERNAME, vaccines.getUserName());
         values.put(VaccinesTable.COLUMN_SYSDATE, vaccines.getSysDate());
+
+        values.put(VaccinesTable.COLUMN_GPSLNG, vaccines.getGpsLng());
+        values.put(VaccinesTable.COLUMN_GPSLAT, vaccines.getGpsLat());
+        values.put(VaccinesTable.COLUMN_GPSACC, vaccines.getGpsAcc());
+        values.put(VaccinesTable.COLUMN_GPSDATE, vaccines.getGpsDT());
 
         values.put(VaccinesTable.COLUMN_VB02, vaccines.getVb02());
         values.put(VaccinesTable.COLUMN_VB04A, vaccines.getVb04a());
@@ -228,6 +236,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(WorkLocationTable.COLUMN_PROJECT_NAME, workLocation.getProjectName());
         values.put(WorkLocationTable.COLUMN_UID, workLocation.getUid());
+        values.put(WorkLocationTable.COLUMN_AID, workLocation.getAid());
         values.put(WorkLocationTable.COLUMN_USERNAME, workLocation.getUserName());
         values.put(WorkLocationTable.COLUMN_UC_CODE, workLocation.getUcCode());
         values.put(WorkLocationTable.COLUMN_SYSDATE, workLocation.getSysDate());
@@ -283,7 +292,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(EntryLogTable.COLUMN_PROJECT_NAME, entryLog.getProjectName());
         values.put(EntryLogTable.COLUMN_UUID, entryLog.getUuid());
-        values.put(EntryLogTable.COLUMN_PSU_CODE, entryLog.getPsuCode());
         values.put(EntryLogTable.COLUMN_HHID, entryLog.getHhid());
         values.put(EntryLogTable.COLUMN_USERNAME, entryLog.getUserName());
         values.put(EntryLogTable.COLUMN_SYSDATE, entryLog.getSysDate());
@@ -406,6 +414,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(vaccines.getId())};
 
         return db.update(VaccinesTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
+
+    public int updatesAttenColumn(String column, String value) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = AttendanceTable._ID + " =? ";
+        String[] selectionArgs = {String.valueOf(attendance.getId())};
+
+        return db.update(AttendanceTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

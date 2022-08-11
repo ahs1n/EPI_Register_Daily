@@ -33,6 +33,7 @@ public class WorkLocation extends BaseObservable implements Observable {
     // APP VARIABLES
     private String id = _EMPTY_;
     private String uid = _EMPTY_;
+    private String aid = _EMPTY_;
     private String userName = _EMPTY_;
     private String ucCode = _EMPTY_;
     private String sysDate = _EMPTY_;
@@ -78,6 +79,7 @@ public class WorkLocation extends BaseObservable implements Observable {
         setUserName(MainApp.user.getUserName());
         setUcCode(MainApp.user.getUccode());
         setDeviceId(MainApp.deviceid);
+        setAid(MainApp.attendance.getUid());
         //   setUuid(MainApp.form.getUid());  // not applicable in Form table
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
@@ -106,6 +108,14 @@ public class WorkLocation extends BaseObservable implements Observable {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getAid() {
+        return aid;
+    }
+
+    public void setAid(String aid) {
+        this.aid = aid;
     }
 
     @Bindable
@@ -330,6 +340,7 @@ public class WorkLocation extends BaseObservable implements Observable {
     public WorkLocation Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_UID));
+        this.aid = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_AID));
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_PROJECT_NAME));
         this.userName = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_USERNAME));
         this.ucCode = cursor.getString(cursor.getColumnIndexOrThrow(WorkLocationTable.COLUMN_UC_CODE));
@@ -387,6 +398,7 @@ public class WorkLocation extends BaseObservable implements Observable {
 
         json.put(WorkLocationTable.COLUMN_ID, this.id);
         json.put(WorkLocationTable.COLUMN_UID, this.uid);
+        json.put(WorkLocationTable.COLUMN_AID, this.aid);
         json.put(WorkLocationTable.COLUMN_PROJECT_NAME, this.projectName);
         json.put(WorkLocationTable.COLUMN_USERNAME, this.userName);
         json.put(WorkLocationTable.COLUMN_UC_CODE, this.ucCode);
