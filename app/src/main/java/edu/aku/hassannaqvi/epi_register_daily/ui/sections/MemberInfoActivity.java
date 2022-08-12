@@ -61,6 +61,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
         formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
         formVB.setFacilityCode(MainApp.workLocation.getWlFacilityCode());
+        formVB.setWlArea(MainApp.workLocation.getWlArea());
 
     }
 

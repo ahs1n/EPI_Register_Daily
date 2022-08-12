@@ -40,6 +40,7 @@ public class TableContracts {
         public static final String COLUMN_UC_CODE = "ucCode";
         public static final String COLUMN_VILLAGE_CODE = "villageCode";
         public static final String COLUMN_FACILITY_CODE = "facilityCode";
+        public static final String COLUMN_AREA_NAME = "wl_area";
         public static final String COLUMN_SYSDATE = "sysdate";
         public static final String COLUMN_VB = "vB";
         public static final String COLUMN_VAC = "vAC";
@@ -67,6 +68,10 @@ public class TableContracts {
         public static final String COLUMN_AID = "_aid";
         public static final String COLUMN_SNO = "sno";
         public static final String COLUMN_USERNAME = "username";
+        public static final String COLUMN_UC_CODE = "ucCode";
+        public static final String COLUMN_VILLAGE_CODE = "villageCode";
+        public static final String COLUMN_FACILITY_CODE = "facilityCode";
+        public static final String COLUMN_AREA_NAME = "wl_area";
         public static final String COLUMN_SYSDATE = "sysdate";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";

@@ -46,6 +46,10 @@ public class Vaccines extends BaseObservable implements Observable {
     private String synced = _EMPTY_;
     private String syncDate = _EMPTY_;
     private String entryType = _EMPTY_;
+    private String ucCode = _EMPTY_;
+    private String facilityCode = _EMPTY_;
+    private String villageCode = _EMPTY_;
+    private String wlArea = _EMPTY_;
 
     // FIELD VARIABLES
     private String vb02 = _EMPTY_;
@@ -67,21 +71,20 @@ public class Vaccines extends BaseObservable implements Observable {
 
 
     public void populateMeta() {
-
-        setSysDate(MainApp.formVB.getSysDate());
         setUserName(MainApp.formVB.getUserName());
+        setUcCode(MainApp.user.getUccode());
         setDeviceId(MainApp.formVB.getDeviceId());
         setUuid(MainApp.formVB.getUid());
         setAid(MainApp.attendance.getUid());
-//        setAppver(MainApp.formVB.getAppver());
         setVb02(MainApp.formVB.getVb02());
         setVb04a(MainApp.formVB.getVb04a());
         setVb04(MainApp.formVB.getVb04());
-
+        setVillageCode(MainApp.workLocation.getWlVillageCode());
+        setFacilityCode(MainApp.workLocation.getWlFacilityCode());
+        setWlArea(MainApp.workLocation.getWlArea());
         setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setAppver(MainApp.appInfo.getAppVersion());
         setProjectName(PROJECT_NAME);
-        // setEntryType(String.valueOf(MainApp.entryType));
     }
 
 
@@ -391,6 +394,45 @@ public class Vaccines extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.gpsAcc);
     }
 
+    @Bindable
+    public String getUcCode() {
+        return ucCode;
+    }
+
+    public void setUcCode(String ucCode) {
+        this.ucCode = ucCode;
+    }
+
+    @Bindable
+    public String getVillageCode() {
+        return villageCode;
+    }
+
+    public void setVillageCode(String villageCode) {
+        this.villageCode = villageCode;
+        notifyPropertyChanged(BR.villageCode);
+    }
+
+    @Bindable
+    public String getFacilityCode() {
+        return facilityCode;
+    }
+
+    public void setFacilityCode(String facilityCode) {
+        this.facilityCode = facilityCode;
+        notifyPropertyChanged(BR.facilityCode);
+    }
+
+    @Bindable
+    public String getWlArea() {
+        return wlArea;
+    }
+
+    public void setWlArea(String wlArea) {
+        this.wlArea = wlArea;
+        notifyPropertyChanged(BR.wlArea);
+    }
+
 
     public Vaccines Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_ID));
@@ -400,6 +442,10 @@ public class Vaccines extends BaseObservable implements Observable {
         this.projectName = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_PROJECT_NAME));
         this.sno = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_SNO));
         this.userName = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_USERNAME));
+        this.ucCode = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_UC_CODE));
+        this.villageCode = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_VILLAGE_CODE));
+        this.facilityCode = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_FACILITY_CODE));
+        this.wlArea = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_AREA_NAME));
         this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_SYSDATE));
         this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesTable.COLUMN_DEVICETAGID));
@@ -461,6 +507,10 @@ public class Vaccines extends BaseObservable implements Observable {
         json.put(VaccinesTable.COLUMN_PROJECT_NAME, this.projectName);
         json.put(VaccinesTable.COLUMN_SNO, this.sno);
         json.put(VaccinesTable.COLUMN_USERNAME, this.userName);
+        json.put(VaccinesTable.COLUMN_UC_CODE, this.ucCode);
+        json.put(VaccinesTable.COLUMN_VILLAGE_CODE, this.villageCode);
+        json.put(VaccinesTable.COLUMN_FACILITY_CODE, this.facilityCode);
+        json.put(VaccinesTable.COLUMN_AREA_NAME, this.wlArea);
         json.put(VaccinesTable.COLUMN_SYSDATE, this.sysDate);
         json.put(VaccinesTable.COLUMN_DEVICEID, this.deviceId);
         json.put(VaccinesTable.COLUMN_DEVICETAGID, this.deviceTag);

@@ -62,6 +62,7 @@ public class FormVB extends BaseObservable implements Observable {
     private String ucCode = _EMPTY_;
     private String facilityCode = _EMPTY_;
     private String villageCode = _EMPTY_;
+    private String wlArea = _EMPTY_;
 
     // FIELD VARIABLES
     private String vb01 = _EMPTY_;
@@ -942,6 +943,16 @@ public class FormVB extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.facilityCode);
     }
 
+    @Bindable
+    public String getWlArea() {
+        return wlArea;
+    }
+
+    public void setWlArea(String wlArea) {
+        this.wlArea = wlArea;
+        notifyPropertyChanged(BR.wlArea);
+    }
+
 
     public FormVB Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
@@ -955,6 +966,7 @@ public class FormVB extends BaseObservable implements Observable {
         this.ucCode = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_UC_CODE));
         this.villageCode = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_VILLAGE_CODE));
         this.facilityCode = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_FACILITY_CODE));
+        this.wlArea = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_AREA_NAME));
         this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_SYSDATE));
         this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICEID));
         this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_DEVICETAGID));
@@ -1097,6 +1109,7 @@ public class FormVB extends BaseObservable implements Observable {
         json.put(FormsVBTable.COLUMN_UC_CODE, this.ucCode);
         json.put(FormsVBTable.COLUMN_VILLAGE_CODE, this.villageCode);
         json.put(FormsVBTable.COLUMN_FACILITY_CODE, this.facilityCode);
+        json.put(FormsVBTable.COLUMN_AREA_NAME, this.wlArea);
         json.put(FormsVBTable.COLUMN_SYSDATE, this.sysDate);
         json.put(FormsVBTable.COLUMN_DEVICEID, this.deviceId);
         json.put(FormsVBTable.COLUMN_DEVICETAGID, this.deviceTag);

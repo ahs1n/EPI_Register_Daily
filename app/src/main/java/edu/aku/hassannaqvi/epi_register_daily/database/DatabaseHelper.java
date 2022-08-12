@@ -160,6 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsVBTable.COLUMN_UC_CODE, formVB.getUcCode());
         values.put(FormsVBTable.COLUMN_VILLAGE_CODE, formVB.getVillageCode());
         values.put(FormsVBTable.COLUMN_FACILITY_CODE, formVB.getFacilityCode());
+        values.put(FormsVBTable.COLUMN_AREA_NAME, formVB.getWlArea());
         values.put(FormsVBTable.COLUMN_GPSLAT, formVB.getGpsLat());
         values.put(FormsVBTable.COLUMN_GPSLNG, formVB.getGpsLng());
         values.put(FormsVBTable.COLUMN_GPSDATE, formVB.getGpsDT());
@@ -194,6 +195,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(VaccinesTable.COLUMN_AID, vaccines.getAid());
         values.put(VaccinesTable.COLUMN_SNO, vaccines.getSno());
         values.put(VaccinesTable.COLUMN_USERNAME, vaccines.getUserName());
+        values.put(VaccinesTable.COLUMN_UC_CODE, vaccines.getUcCode());
+        values.put(VaccinesTable.COLUMN_VILLAGE_CODE, vaccines.getVillageCode());
+        values.put(VaccinesTable.COLUMN_FACILITY_CODE, vaccines.getFacilityCode());
+        values.put(VaccinesTable.COLUMN_AREA_NAME, vaccines.getWlArea());
         values.put(VaccinesTable.COLUMN_SYSDATE, vaccines.getSysDate());
 
         values.put(VaccinesTable.COLUMN_GPSLNG, vaccines.getGpsLng());
