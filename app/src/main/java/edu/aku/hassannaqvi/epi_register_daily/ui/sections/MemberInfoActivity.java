@@ -17,6 +17,8 @@ import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 
+import java.util.Calendar;
+
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
@@ -117,6 +119,26 @@ public class MemberInfoActivity extends AppCompatActivity {
                 bi.vb04Name.setText(R.string.vb0402);
             } else bi.vb04Name.setText(R.string.vb0401);
         }));
+
+
+        bi.vb04by.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (bi.vb04by.getText().toString().isEmpty()) return;
+                bi.vb04bd.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR) ?
+                        Calendar.getInstance().get(Calendar.DAY_OF_MONTH) : 31f);
+                bi.vb04bm.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR) ?
+                        Calendar.getInstance().get(Calendar.MONTH) + 1 : 12f);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
     }
 
 
