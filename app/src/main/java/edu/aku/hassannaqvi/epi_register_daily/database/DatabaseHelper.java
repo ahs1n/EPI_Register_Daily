@@ -1987,7 +1987,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         c = db.query(
                 AttendanceTable.TABLE_NAME,  // The table to query
                 columns,
-                null,
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,
                 null,
                 null,
                 null,
