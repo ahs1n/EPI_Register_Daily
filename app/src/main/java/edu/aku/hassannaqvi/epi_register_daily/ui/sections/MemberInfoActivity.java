@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +20,9 @@ import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
@@ -26,6 +31,8 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMemberInfoBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
+import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
+import edu.aku.hassannaqvi.epi_register_daily.ui.CreateLocationActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
 
@@ -34,6 +41,7 @@ public class MemberInfoActivity extends AppCompatActivity {
     ActivityMemberInfoBinding bi;
     boolean b, group;
     private DatabaseHelper db;
+    private ArrayList<String> villageNames, villageCodes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +69,57 @@ public class MemberInfoActivity extends AppCompatActivity {
         bi.setForm(formVB);
 
 
+
         formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
         formVB.setFacilityCode(MainApp.workLocation.getWlFacilityCode());
         formVB.setWlArea(MainApp.workLocation.getWlArea());
 
+    }
+
+    private void populateVillageSpinner() {
+
+        Collection<Villages> villages = db.getAllVillagesByUC(MainApp.user.getUccode());
+
+        villageNames = new ArrayList<>();
+        villageCodes = new ArrayList<>();
+        villageNames.add("...");
+        villageCodes.add("...");
+
+        for (Villages vg : villages) {
+            villageNames.add(vg.getVillageName());
+            villageCodes.add(vg.getVillageCode());
+        }
+
+        if (MainApp.user.getUserName().contains("test") || MainApp.user.getUserName().contains("dmu") || MainApp.user.getUserName().contains("user")) {
+            villageNames.add("Test Village 1");
+            villageNames.add("Test Village 2");
+            villageNames.add("Test Village 3");
+
+            villageCodes.add("001");
+            villageCodes.add("002");
+            villageCodes.add("003");
+        }
+        // Apply the adapter to the spinner
+        bi.villageName.setAdapter(new ArrayAdapter<>(MemberInfoActivity.this, R.layout.custom_spinner, villageNames));
+
+        bi.villageName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position != 0) {
+
+                    formVB.setVillageCode(villageCodes.get(bi.villageName.getSelectedItemPosition()));
+                    //workLocation.setWlVillageName(villageNames.get(bi.villageName.getSelectedItemPosition()));
+
+//                    MainApp.selectedVillageCode = (villageCodes.get(bi.wlVillageName.getSelectedItemPosition()));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+
+        });
     }
 
     private void setRange() {
