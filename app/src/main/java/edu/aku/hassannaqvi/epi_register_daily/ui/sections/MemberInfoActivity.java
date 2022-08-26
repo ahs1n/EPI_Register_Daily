@@ -32,7 +32,6 @@ import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMemberInfoBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
-import edu.aku.hassannaqvi.epi_register_daily.ui.CreateLocationActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
 
@@ -52,6 +51,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         db = MainApp.appInfo.dbHelper;
         setupListeners();
         setRange();
+        populateVillageSpinner();
 
         MainApp.formVB.setUuid(MainApp.formVA.getUid());
 
@@ -69,10 +69,13 @@ public class MemberInfoActivity extends AppCompatActivity {
         bi.setForm(formVB);
 
 
-
         formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
         formVB.setFacilityCode(MainApp.workLocation.getWlFacilityCode());
         formVB.setWlArea(MainApp.workLocation.getWlArea());
+
+        if (workLocation.getWlLocationType().equals("1")) {
+            bi.fldGrpCVvb04c.setVisibility(View.VISIBLE);
+        }
 
     }
 

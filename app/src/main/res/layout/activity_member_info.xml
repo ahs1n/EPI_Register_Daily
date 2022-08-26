@@ -178,39 +178,6 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- wlVillageName  Spinner   -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVf1105"
-                    style="@style/cardView">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bottom"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="@string/villageName" />
-
-                        </LinearLayout>
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/villageName"
-                            android:layout_width="match_parent"
-                            android:minHeight="56dp"
-                            android:layout_height="match_parent"
-                            android:hint="Village Name" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-
                 <!-- vb04a  Input   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb04a"
@@ -287,6 +254,46 @@
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                             android:hint="@string/vb04"
                             android:text="@={form.vb04}" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- wlVillageName  Spinner   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVvb04c"
+                    style="@style/cardView"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_vb04c" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/villageName" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/villageName"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Village Name"
+                            android:minHeight="56dp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
