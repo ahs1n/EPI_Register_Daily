@@ -242,6 +242,26 @@ object CreateTable {
             + TableUCs.COLUMN_UC_NAME + " TEXT"
             + " );")
 
+    const val SQL_CREATE_VACCINESDATA = ("CREATE TABLE " + TableVaccinesData.TABLE_NAME + "("
+            + TableVaccinesData.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + TableVaccinesData.COLUMN_UC_CODE + " TEXT,"
+            + TableVaccinesData.COLUMN_AID + " TEXT,"
+            + TableVaccinesData.COLUMN_UID + " TEXT,"
+            + TableVaccinesData.COLUMN_UUID + " TEXT,"
+            + TableVaccinesData.COLUMN_VILLAGE_CODE + " TEXT,"
+            + TableVaccinesData.COLUMN_FACILITY_CODE + " TEXT,"
+            + TableVaccinesData.COLUMN_VILLAGE_NAME + " TEXT,"
+            + TableVaccinesData.COLUMN_VB02 + " TEXT,"
+            + TableVaccinesData.COLUMN_VB04 + " TEXT,"
+            + TableVaccinesData.COLUMN_VB04A + " TEXT,"
+            + TableVaccinesData.COLUMN_VB08C_CODE + " TEXT,"
+            + TableVaccinesData.COLUMN_VB08C_ANT + " TEXT,"
+            + TableVaccinesData.COLUMN_VB08C_DT + " TEXT,"
+            + TableVaccinesData.COLUMN_VB08W_CODE + " TEXT,"
+            + TableVaccinesData.COLUMN_VB08W_ANT + " TEXT,"
+            + TableVaccinesData.COLUMN_VB08W_DT + " TEXT"
+            + " );")
+
     const val SQL_CREATE_VILLAGES = ("CREATE TABLE " + TableVillages.TABLE_NAME + "("
             + TableVillages.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + TableVillages.COLUMN_UC_CODE + " TEXT,"

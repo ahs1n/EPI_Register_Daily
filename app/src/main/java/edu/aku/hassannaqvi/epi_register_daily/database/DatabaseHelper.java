@@ -15,6 +15,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CR
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_UC;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VACCINE;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VACCINESDATA;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VILLAGES;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_WORK_LOCATION;
@@ -50,6 +51,7 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATa
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVillages;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesTable;
@@ -65,6 +67,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.HealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.models.UCs;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 
@@ -102,6 +105,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ATTENDANCE);
         db.execSQL(SQL_CREATE_HF);
         db.execSQL(SQL_CREATE_UC);
+        db.execSQL(SQL_CREATE_VACCINESDATA);
         db.execSQL(SQL_CREATE_VILLAGES);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ENTRYLOGS);
@@ -1255,6 +1259,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableHealthFacilities.COLUMN_UC_CODE, facilities.getUc_code());
 
             long rowID = db.insert(TableHealthFacilities.TABLE_NAME, null, values);
+            if (rowID != -1) insertCount++;
+        }
+
+        return insertCount;
+    }
+
+
+    // Sync VACCINESDATA
+    public int syncvaccines(JSONArray vaccinesdata) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        db.delete(TableVaccinesData.TABLE_NAME, null, null);
+        int insertCount = 0;
+
+        for (int i = 0; i < vaccinesdata.length(); i++) {
+            JSONObject json = vaccinesdata.getJSONObject(i);
+            VaccinesData vaccinesData = new VaccinesData();
+            vaccinesData.sync(json);
+            ContentValues values = new ContentValues();
+
+            values.put(TableVaccinesData.COLUMN_UC_CODE, vaccinesData.getUcCode());
+            values.put(TableVaccinesData.COLUMN_AID, vaccinesData.getAID());
+            values.put(TableVaccinesData.COLUMN_UID, vaccinesData.getUID());
+            values.put(TableVaccinesData.COLUMN_UUID, vaccinesData.getUUID());
+            values.put(TableVaccinesData.COLUMN_VILLAGE_CODE, vaccinesData.getVillageCode());
+            values.put(TableVaccinesData.COLUMN_FACILITY_CODE, vaccinesData.getFacilityCode());
+            values.put(TableVaccinesData.COLUMN_VILLAGE_NAME, vaccinesData.getVillageName());
+            values.put(TableVaccinesData.COLUMN_VB02, vaccinesData.getVBO2());
+            values.put(TableVaccinesData.COLUMN_VB04, vaccinesData.getVB04());
+            values.put(TableVaccinesData.COLUMN_VB04A, vaccinesData.getVB04A());
+            values.put(TableVaccinesData.COLUMN_VB08C_CODE, vaccinesData.getVB08CC0DE());
+            values.put(TableVaccinesData.COLUMN_VB08C_ANT, vaccinesData.getVB08CANT());
+            values.put(TableVaccinesData.COLUMN_VB08C_DT, vaccinesData.getVB08CDT());
+            values.put(TableVaccinesData.COLUMN_VB08W_CODE, vaccinesData.getVB08WC0DE());
+            values.put(TableVaccinesData.COLUMN_VB08W_ANT, vaccinesData.getVB08WANT());
+            values.put(TableVaccinesData.COLUMN_VB08W_DT, vaccinesData.getVB08WDT());
+
+            long rowID = db.insert(TableVaccinesData.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
 

@@ -59,6 +59,7 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATa
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVillages;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VersionTable;
@@ -243,6 +244,9 @@ public class SyncActivity extends AppCompatActivity {
                     select = " * ";
                     filter = " (colflag is null or colflag=0) AND uccode = '" + MainApp.user.getUccode() + "' ";
                     downloadTables.add(new SyncModel(TableHealthFacilities.TABLE_NAME, select, filter));
+                    select = " * ";
+                    filter = " uccode = '" + MainApp.user.getUccode() + "' ";
+                    downloadTables.add(new SyncModel(TableVaccinesData.TABLE_NAME, select, filter));
                 }
 
                 MainApp.downloadData = new String[downloadTables.size()];
