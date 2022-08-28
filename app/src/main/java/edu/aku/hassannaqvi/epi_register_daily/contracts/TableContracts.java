@@ -243,14 +243,15 @@ public class TableContracts {
 
     public static abstract class TableVaccinesData implements BaseColumns {
         public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
-        public static final String TABLE_NAME = "vaccinesData";
+        public static final String TABLE_NAME = "VaccinesData";
+        public static final String TABLE_NAME_API = "Vaccines";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UC_CODE = "uccode";
         public static final String COLUMN_AID = "_aid";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
-        public static final String COLUMN_VILLAGE_CODE = "villageCode";
-        public static final String COLUMN_FACILITY_CODE = "facilityCode";
+        public static final String COLUMN_VILLAGE_CODE = "villagecode";
+        public static final String COLUMN_FACILITY_CODE = "facilitycode";
         public static final String COLUMN_VILLAGE_NAME = "villageName";
         public static final String COLUMN_VB02 = "vb02";
         public static final String COLUMN_VB04 = "vb04";
@@ -283,3 +284,4 @@ public class TableContracts {
         public static final String COLUMN_HF_NAME = "hf_name";
     }
 }
+

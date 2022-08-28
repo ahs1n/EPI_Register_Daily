@@ -38,6 +38,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 
 
@@ -77,6 +78,8 @@ public class MainApp extends Application {
     public static Attendance attendance;
     public static Vaccines vaccines;
     public static List<Vaccines> vaccinesList;
+    public static List<VaccinesData> vaccinesDataList;
+    public static VaccinesData vaccinesData;
     public static boolean superuser;
     public static String selectedVillageCode;
     public static String selectedUCCode;
@@ -84,6 +87,8 @@ public class MainApp extends Application {
 
 
     public static List<FormVB> formVBList;
+
+    //public static List<VaccinesData> vaccinesDataList;
 
     public static String DeviceURL = "devices.php";
     public static AppInfo appInfo;

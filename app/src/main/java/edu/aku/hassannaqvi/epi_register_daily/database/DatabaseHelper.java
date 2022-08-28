@@ -1267,7 +1267,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     // Sync VACCINESDATA
-    public int syncvaccines(JSONArray vaccinesdata) throws JSONException {
+    public int syncVaccines(JSONArray vaccinesdata) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(TableVaccinesData.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1284,7 +1284,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableVaccinesData.COLUMN_UUID, vaccinesData.getUUID());
             values.put(TableVaccinesData.COLUMN_VILLAGE_CODE, vaccinesData.getVillageCode());
             values.put(TableVaccinesData.COLUMN_FACILITY_CODE, vaccinesData.getFacilityCode());
-            values.put(TableVaccinesData.COLUMN_VILLAGE_NAME, vaccinesData.getVillageName());
+            //values.put(TableVaccinesData.COLUMN_VILLAGE_NAME, vaccinesData.getVillageName());
             values.put(TableVaccinesData.COLUMN_VB02, vaccinesData.getVBO2());
             values.put(TableVaccinesData.COLUMN_VB04, vaccinesData.getVB04());
             values.put(TableVaccinesData.COLUMN_VB04A, vaccinesData.getVB04A());
@@ -1646,6 +1646,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allForm;
     }
 
+    /*public List<VaccinesData> getAllChildsByCardNo2(String cardNo) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+
+        String whereClause = TableVaccinesData.COLUMN_VB02 + " = ? ";
+        String[] whereArgs = new String[]{cardNo};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                TableVaccinesData.COLUMN_ID + " ASC";
+
+        List<VaccinesData> allForm = new ArrayList<>();
+
+        c = db.query(
+                TableVaccinesData.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            try {
+                VaccinesData vd = new VaccinesData().hydrate(c);
+                if (vd.get().equals("2"))
+                    allForm.add(formVB);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        c.close();
+        return allForm;
+    }*/
+
 
     public List<FormVB> getAllWomensByCardNo(String cardNo) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
@@ -1786,6 +1823,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public VaccinesData getSelectedMembers2(String uid) throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+        String whereClause = TableVaccinesData.COLUMN_UID + " = ? ";
+        String[] whereArgs = new String[]{uid};
+        String groupBy = null;
+        String having = null;
+        String orderBy = TableVaccinesData.COLUMN_ID + " ASC";
+        VaccinesData vb = new VaccinesData();
+        c = db.query(
+                TableVaccinesData.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) vb = new VaccinesData().hydrate(c);
+        c.close();
+        return vb;
+    }
+
+
     public List<Vaccines> getVaccinatedMembersBYUID() throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
@@ -1808,6 +1870,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
         while (c.moveToNext()) {
             vaccinesByUID.add(new Vaccines().Hydrate(c));
+        }
+
+        if (c != null && !c.isClosed()) {
+            c.close();
+        }
+        c.close();
+        return vaccinesByUID;
+    }
+
+
+    public List<VaccinesData> getSyncedVaccinatedMembersBYUID() throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = TableVaccinesData.COLUMN_UUID + "=? ";
+        String[] whereArgs = {formVB.getUid()};
+        String groupBy = null;
+        String having = null;
+        String orderBy = TableVaccinesData.COLUMN_ID + " ASC";
+
+        List<VaccinesData> vaccinesByUID = new ArrayList<>();
+        c = db.query(
+                TableVaccinesData.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            vaccinesByUID.add(new VaccinesData().hydrate(c));
         }
 
         if (c != null && !c.isClosed()) {

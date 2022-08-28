@@ -3,6 +3,8 @@ package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccineCount;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesList;
 
 import android.content.Context;
@@ -34,6 +36,7 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 
 public class SectionVBActivity extends AppCompatActivity {
@@ -77,15 +80,19 @@ public class SectionVBActivity extends AppCompatActivity {
         }
         bi.vacDate.setText(formVB.getVb08wdt());
 
-        vaccinesList = new ArrayList<>();
+        //vaccinesList = new ArrayList<>();
+        MainApp.vaccinesDataList = new ArrayList<>();
+
         vaccineCount = 0;
         ArrayList antigenName = new ArrayList<String>();
 
-        Log.d(TAG, "onCreate(vaccineList): " + vaccinesList.size());
+        Log.d(TAG, "onCreate(vaccineList): " + vaccinesDataList.size());
         try {
-            vaccinesList = db.getVaccinatedMembersBYUID();
-            for (Vaccines vaccines : vaccinesList) {
-                antigenName.add(vaccines.getVb08CCode() + vaccines.getVb08CAntigen() + vaccines.getVb08WCode() + vaccines.getVb08WAntigen());
+            //vaccinesList = db.getVaccinatedMembersBYUID();
+            vaccinesDataList = db.getSyncedVaccinatedMembersBYUID();
+
+            for (VaccinesData vaccines : vaccinesDataList) {
+                antigenName.add(vaccines.getVB08CC0DE() + vaccines.getVB08CANT() + vaccines.getVB08CC0DE() + vaccines.getVB08WANT());
             }
         } catch (JSONException e) {
             e.printStackTrace();

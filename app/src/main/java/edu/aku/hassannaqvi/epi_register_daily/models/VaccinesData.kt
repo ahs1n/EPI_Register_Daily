@@ -33,7 +33,7 @@ class VaccinesData {
         uID = jsonObject.getString(TableVaccinesData.COLUMN_UID)
         uUID = jsonObject.getString(TableVaccinesData.COLUMN_UUID)
         villageCode = jsonObject.getString(TableVaccinesData.COLUMN_VILLAGE_CODE)
-        villageName = jsonObject.getString(TableVaccinesData.COLUMN_VILLAGE_NAME)
+        //villageName = jsonObject.getString(TableVaccinesData.COLUMN_VILLAGE_NAME)
         facilityCode = jsonObject.getString(TableVaccinesData.COLUMN_FACILITY_CODE)
         vBO2 = jsonObject.getString(TableVaccinesData.COLUMN_VB02)
         vB04 = jsonObject.getString(TableVaccinesData.COLUMN_VB04)
@@ -83,6 +83,9 @@ class VaccinesData {
 
         return this
     }
+
+
+
 
 
 }
