@@ -18,8 +18,13 @@ class VaccinesData {
     var villageName: String = _EMPTY_
     var facilityCode: String = _EMPTY_
     var vBO2: String = _EMPTY_
+    var vBO3: String = _EMPTY_
     var vB04: String = _EMPTY_
     var vB04A: String = _EMPTY_
+    var vBO5A: String = _EMPTY_
+    var vBO5D: String = _EMPTY_
+    var vBO5M: String = _EMPTY_
+    var vBO5Y: String = _EMPTY_
     var vB08CC0DE: String = _EMPTY_
     var vB08CANT: String = _EMPTY_
     var vB08CDT: String = _EMPTY_
@@ -36,8 +41,13 @@ class VaccinesData {
         //villageName = jsonObject.getString(TableVaccinesData.COLUMN_VILLAGE_NAME)
         facilityCode = jsonObject.getString(TableVaccinesData.COLUMN_FACILITY_CODE)
         vBO2 = jsonObject.getString(TableVaccinesData.COLUMN_VB02)
+        vBO3 = jsonObject.getString(TableVaccinesData.COLUMN_VB03)
         vB04 = jsonObject.getString(TableVaccinesData.COLUMN_VB04)
         vB04A = jsonObject.getString(TableVaccinesData.COLUMN_VB04A)
+        vBO5A = jsonObject.getString(TableVaccinesData.COLUMN_VB05A)
+        vBO5D = jsonObject.getString(TableVaccinesData.COLUMN_VB05D)
+        vBO5M = jsonObject.getString(TableVaccinesData.COLUMN_VB05M)
+        vBO5Y = jsonObject.getString(TableVaccinesData.COLUMN_VB05Y)
         vB08CC0DE = jsonObject.getString(TableVaccinesData.COLUMN_VB08C_CODE)
         vB08CANT = jsonObject.getString(TableVaccinesData.COLUMN_VB08C_ANT)
         vB08CDT = jsonObject.getString(TableVaccinesData.COLUMN_VB08C_DT)
@@ -60,14 +70,30 @@ class VaccinesData {
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VILLAGE_CODE))
         facilityCode =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_FACILITY_CODE))
-        villageName =
-            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VILLAGE_NAME))
+        /*villageName =
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VILLAGE_NAME))*/
         vBO2 =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB02))
+
+        vBO3 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB03))
+
         vB04 =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB04))
         vB04A =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB04A))
+
+        vBO5A =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05A))
+
+        vBO5D =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05D))
+
+        vBO5M =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05M))
+
+        vBO5Y =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05Y))
         vB08CC0DE =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB08C_CODE))
         vB08CANT =

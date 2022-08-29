@@ -9,7 +9,7 @@
 
         <variable
             name="callback"
-            type="edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedChildListActivity" />
+            type="edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity" />
     </data>
 
     <LinearLayout
@@ -151,7 +151,7 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:minHeight="56dp"
                     android:radius="10dp"
-                    android:text="Vaccinated Childs List"
+                    android:text="Vaccinated Womens List"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp" />

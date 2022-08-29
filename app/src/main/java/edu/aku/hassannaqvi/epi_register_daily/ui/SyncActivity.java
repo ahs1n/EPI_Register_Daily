@@ -246,7 +246,7 @@ public class SyncActivity extends AppCompatActivity {
                     downloadTables.add(new SyncModel(TableHealthFacilities.TABLE_NAME, select, filter));
                     select = " * ";
                     filter = " uccode = '" + MainApp.user.getUccode() + "' ";
-                    downloadTables.add(new SyncModel(TableVaccinesData.TABLE_NAME_API, select, filter));
+                    downloadTables.add(new SyncModel(TableVaccinesData.TABLE_NAME, select, filter));
                 }
 
                 MainApp.downloadData = new String[downloadTables.size()];

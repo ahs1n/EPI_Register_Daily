@@ -15,10 +15,9 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
-import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 
-public class VaccinatedMembers2Adapter extends RecyclerView.Adapter<VaccinatedMembers2Adapter.ViewHolder> {
+public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<VaccinatedMembersFollowupsAdapter.ViewHolder> {
     private static final String TAG = "VaccinatedMembers2Adapter";
     private final Context mContext;
     //private final List<FormVB> member;
@@ -38,7 +37,7 @@ public class VaccinatedMembers2Adapter extends RecyclerView.Adapter<VaccinatedMe
         completeCount = 0;
 
     }*/
-    public VaccinatedMembers2Adapter(Context mContext, List<VaccinesData> members, OnItemClickListener onItemClickListener) {
+    public VaccinatedMembersFollowupsAdapter(Context mContext, List<VaccinesData> members, OnItemClickListener onItemClickListener) {
         this.member = members;
         this.mContext = mContext;
         completeCount = 0;

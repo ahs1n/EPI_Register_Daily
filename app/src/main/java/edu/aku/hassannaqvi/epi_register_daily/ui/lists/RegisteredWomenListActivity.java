@@ -25,6 +25,7 @@ import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
+import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityRegisteredListWomenBinding;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityVaccinatedListWomenBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
@@ -35,7 +36,7 @@ public class RegisteredWomenListActivity extends AppCompatActivity {
 
 
     private static final String TAG = "VaccinationActivity";
-    ActivityVaccinatedListWomenBinding bi;
+    ActivityRegisteredListWomenBinding bi;
     DatabaseHelper db;
     ActivityResultLauncher<Intent> MemberInfoLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -63,7 +64,7 @@ public class RegisteredWomenListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //setContentView(R.layout.activity_mwra);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_vaccinated_list_women);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_registered_list_women);
         bi.setCallback(this);
         db = MainApp.appInfo.dbHelper;
         formVBList = db.getAllWomens();

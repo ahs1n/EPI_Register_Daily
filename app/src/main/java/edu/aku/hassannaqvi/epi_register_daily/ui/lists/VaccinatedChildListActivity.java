@@ -1,4 +1,4 @@
-/*
+
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
@@ -25,7 +25,7 @@ import org.json.JSONException;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
-import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembers2Adapter;
+import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersFollowupsAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
@@ -35,7 +35,7 @@ import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
 
-public class RegisteredChildList2Activity extends AppCompatActivity {
+public class VaccinatedChildListActivity extends AppCompatActivity {
 
 
     private static final String TAG = "VaccinationActivity";
@@ -56,11 +56,11 @@ public class RegisteredChildList2Activity extends AppCompatActivity {
                     }
 
                     if (result.getResultCode() == Activity.RESULT_CANCELED) {
-                        Toast.makeText(RegisteredChildList2Activity.this, "No family member added.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VaccinatedChildListActivity.this, "No family member added.", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-    private VaccinatedMembers2Adapter vaccinatedMembersAdapter;
+    private VaccinatedMembersFollowupsAdapter vaccinatedMembersAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,18 +70,18 @@ public class RegisteredChildList2Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_vaccinated_list_child);
         bi.setCallback(this);
         db = MainApp.appInfo.dbHelper;
-        vaccinesDataList = db.getAllChilds();
+        vaccinesDataList = db.getAllFollowupChilds();
 
 
-        vaccinatedMembersAdapter = new VaccinatedMembers2Adapter(this, vaccinesDataList, member -> {
+        vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
             try {
-                formVB = db.getSelectedMembers(member.getUID());
-                Toast.makeText(RegisteredChildList2Activity.this,
+                vaccinesData = db.getFollowupSelectedMembers(member.getUID());
+                Toast.makeText(VaccinatedChildListActivity.this,
                         "Selected Member\n Line No: "
                                 + member.getVBO2() + "\nName: "
                                 + member.getVB04A(),
                         Toast.LENGTH_LONG).show();
-                RegisteredChildList2Activity.this.startActivity(new Intent(RegisteredChildList2Activity.this, SectionVBActivity.class).putExtra("b", false));
+                VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -97,13 +97,7 @@ public class RegisteredChildList2Activity extends AppCompatActivity {
         });
     }
 
-*/
-/*    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "Activity Resumed!", Toast.LENGTH_SHORT).show();
 
-    }*//*
 
 
     @Override
@@ -133,17 +127,17 @@ public class RegisteredChildList2Activity extends AppCompatActivity {
         if (bi.searchByName.isChecked()) {
             Toast.makeText(this, "Searched", Toast.LENGTH_SHORT).show();
 
-            vaccinesDataList = db.getAllChildsByName(bi.memberId.getText().toString());
-            vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, vaccinesDataList, member -> {
+            vaccinesDataList = db.getFollowupChildsByName(bi.memberId.getText().toString());
+            vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
 
                 try {
-                    vaccinesData = db.getSelectedMembers2(member.getUid());
-                    Toast.makeText(RegisteredChildList2Activity.this,
+                    vaccinesData = db.getFollowupSelectedMembers(member.getUID());
+                    Toast.makeText(VaccinatedChildListActivity.this,
                             "Selected Member\n Line No: "
-                                    + member.getVb02() + "\nName: "
-                                    + member.getVb04a(),
+                                    + member.getVBO2() + "\nName: "
+                                    + member.getVB04A(),
                             Toast.LENGTH_LONG).show();
-                    RegisteredChildList2Activity.this.startActivity(new Intent(RegisteredChildList2Activity.this, SectionVBActivity.class).putExtra("b", false));
+                    VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -153,17 +147,17 @@ public class RegisteredChildList2Activity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Searched", Toast.LENGTH_SHORT).show();
 
-            vaccinesDataList = db.getAllChildsByCardNo(bi.memberId.getText().toString());
-            vaccinatedMembersAdapter = new VaccinatedMembersAdapter(this, formVBList, member -> {
+            vaccinesDataList = db.getFollowupChildsByCardNo(bi.memberId.getText().toString());
+            vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
 
                 try {
-                    formVB = db.getSelectedMembers(member.getUid());
-                    Toast.makeText(RegisteredChildList2Activity.this,
+                    formVB = db.getSelectedMembers(member.getUID());
+                    Toast.makeText(VaccinatedChildListActivity.this,
                             "Selected Member\n Line No: "
-                                    + member.getVb02() + "\nName: "
-                                    + member.getVb04a(),
+                                    + member.getVBO2() + "\nName: "
+                                    + member.getVB04A(),
                             Toast.LENGTH_LONG).show();
-                    RegisteredChildList2Activity.this.startActivity(new Intent(RegisteredChildList2Activity.this, SectionVBActivity.class).putExtra("b", false));
+                    VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -185,4 +179,4 @@ public class RegisteredChildList2Activity extends AppCompatActivity {
         finish();
         startActivity(new Intent(this, MainActivity.class));
     }
-}*/
+}
