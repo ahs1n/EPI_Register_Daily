@@ -2067,12 +2067,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<VaccinesData> getSyncedVaccinatedMembersBYUID() throws JSONException {
+    public List<VaccinesData> getSyncedVaccinatedMembersBYUID(String uid) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause = TableVaccinesData.COLUMN_UUID + "=? ";
-        String[] whereArgs = {formVB.getUid()};
+        String whereClause = TableVaccinesData.COLUMN_UID + "=? ";
+        String[] whereArgs = {uid};
         String groupBy = null;
         String having = null;
         String orderBy = TableVaccinesData.COLUMN_ID + " ASC";
