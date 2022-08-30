@@ -59,14 +59,14 @@ public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<Vacc
         TextView cardNo = viewHolder.cardNo;
         ImageView mainIcon = viewHolder.mainIcon;
 
-        fName.setText(members.getVB04());
-
-       //fAgeY.setText(members.getVb05y() + " Y " + members.getVb05m() + " M ");
-        fatherName.setText(members.getVB04A());
+        fName.setText(members.getVB04A());
+        if (members.getVBO3().equals("1")) {
+            fAgeY.setText(members.getVBO5Y() + " Y ");
+        } else fAgeY.setText(members.getVBO5Y() + " Y " + members.getVBO5M() + " M ");
+        fatherName.setText(members.getVB04());
         cardNo.setText(members.getVBO2());
 
-
-        //mainIcon.setImageResource(members.getVb03().equals("2") ? (members.getVb05a().equals("1") ? R.drawable.malebabyicon : R.drawable.femalebabyicon) : R.drawable.mwraicon);
+        mainIcon.setImageResource(members.getVBO3().equals("2") ? (members.getVBO5A().equals("1") ? R.drawable.malebabyicon : R.drawable.femalebabyicon) : R.drawable.mwraicon);
 
 
         viewHolder.itemView.setOnClickListener(view -> onItemClickListener.onItemClick(member.get(position)));

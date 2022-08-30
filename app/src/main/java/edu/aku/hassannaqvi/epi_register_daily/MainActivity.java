@@ -44,6 +44,7 @@ import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.CreateLocationActivity;
@@ -160,12 +161,14 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.openChildVacForm:
                     MainApp.formVB = new FormVB();
+                    MainApp.vaccinesData = new VaccinesData();
                     finish();
                     startActivity(new Intent(this, VaccinatedChildListActivity.class));
                     break;
 
                 case R.id.openWomenVacForm:
                     MainApp.formVB = new FormVB();
+                    MainApp.vaccinesData = new VaccinesData();
                     finish();
                     startActivity(new Intent(this, VaccinatedWomenListActivity.class));
                     break;

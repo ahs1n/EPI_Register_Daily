@@ -56,6 +56,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         populateVillageSpinner();
 
         MainApp.formVB.setUuid(MainApp.formVA.getUid());
+        MainApp.flag = true;
 
         b = getIntent().getBooleanExtra("b", true);
 

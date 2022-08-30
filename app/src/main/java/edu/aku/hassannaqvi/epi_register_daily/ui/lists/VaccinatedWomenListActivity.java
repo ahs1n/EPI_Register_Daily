@@ -1,11 +1,8 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVBList;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesList;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -25,7 +22,6 @@ import org.json.JSONException;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
-import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersFollowupsAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
@@ -81,7 +77,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                                 + member.getVBO2() + "\nName: "
                                 + member.getVB04A(),
                         Toast.LENGTH_LONG).show();
-                VaccinatedWomenListActivity.this.startActivity(new Intent(VaccinatedWomenListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                VaccinatedWomenListActivity.this.startActivity(new Intent(VaccinatedWomenListActivity.this, SectionVBActivity.class).putExtra("group", false));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -139,7 +135,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                                     + member.getVBO2() + "\nName: "
                                     + member.getVB04A(),
                             Toast.LENGTH_LONG).show();
-                    VaccinatedWomenListActivity.this.startActivity(new Intent(VaccinatedWomenListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                    VaccinatedWomenListActivity.this.startActivity(new Intent(VaccinatedWomenListActivity.this, SectionVBActivity.class).putExtra("group", false));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -159,7 +155,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                                     + member.getVBO2() + "\nName: "
                                     + member.getVB04A(),
                             Toast.LENGTH_LONG).show();
-                    VaccinatedWomenListActivity.this.startActivity(new Intent(VaccinatedWomenListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                    VaccinatedWomenListActivity.this.startActivity(new Intent(VaccinatedWomenListActivity.this, SectionVBActivity.class).putExtra("group", false));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

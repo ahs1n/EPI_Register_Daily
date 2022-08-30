@@ -3,7 +3,6 @@ package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVBList;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
 
@@ -26,7 +25,6 @@ import org.json.JSONException;
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersFollowupsAdapter;
-import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityVaccinatedListChildBinding;
@@ -81,7 +79,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
                                 + member.getVBO2() + "\nName: "
                                 + member.getVB04A(),
                         Toast.LENGTH_LONG).show();
-                VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("group", false));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -95,7 +93,11 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
 //            MainApp.formVB = new FormVB();
             addMoreMember();
         });
+
+
+
     }
+
 
 
 
@@ -137,7 +139,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
                                     + member.getVBO2() + "\nName: "
                                     + member.getVB04A(),
                             Toast.LENGTH_LONG).show();
-                    VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                    VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("group", false));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -151,13 +153,13 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
             vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
 
                 try {
-                    formVB = db.getSelectedMembers(member.getUID());
+                    vaccinesData = db.getFollowupSelectedMembers(member.getUID());
                     Toast.makeText(VaccinatedChildListActivity.this,
                             "Selected Member\n Line No: "
                                     + member.getVBO2() + "\nName: "
                                     + member.getVB04A(),
                             Toast.LENGTH_LONG).show();
-                    VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("b", false));
+                    VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("group", false));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -64,7 +64,7 @@ public class SectionVBActivity extends AppCompatActivity {
         if (btn) bi.btnEnd.setVisibility(View.VISIBLE);
 
         group = getIntent().getBooleanExtra("group", true);
-        if (formVB.getVb03().equals("2")) {
+        if (formVB.getVb03().equals("2") || vaccinesData.getVBO3().equals("2")) {
             bi.fldGrpCVvb08c.setVisibility(View.VISIBLE);
             bi.fldGrpCVtakePhoto.setVisibility(View.VISIBLE);
         } else {
@@ -72,13 +72,22 @@ public class SectionVBActivity extends AppCompatActivity {
             bi.fldGrpCVvb08w.setVisibility(View.VISIBLE);
         }
 
-        bi.pName.setText(formVB.getVb04a());
-        bi.hName.setText(formVB.getVb04());
-        bi.cardNo.setText(formVB.getVb02());
-        if (formVB.getVb03().equals("1")) {
-            bi.vacStatus.setText("TT" + formVB.getVb08w());
+        if(MainApp.flag)
+        {
+            bi.pName.setText(formVB.getVb04());
+            bi.hName.setText(formVB.getVb04());
+            bi.cardNo.setText(formVB.getVb02());
+            if (formVB.getVb03().equals("1")) {
+                bi.vacStatus.setText("TT" + formVB.getVb08w());
+            }
+            bi.vacDate.setText(formVB.getVb08wdt());
+        }else{
+            bi.pName.setText(vaccinesData.getVB04A());
+            bi.hName.setText(vaccinesData.getVB04());
+            bi.cardNo.setText(vaccinesData.getVBO2());
+
         }
-        bi.vacDate.setText(formVB.getVb08wdt());
+
 
         //vaccinesList = new ArrayList<>();
         MainApp.vaccinesDataList = new ArrayList<>();
@@ -92,7 +101,28 @@ public class SectionVBActivity extends AppCompatActivity {
             vaccinesDataList = db.getSyncedVaccinatedMembersBYUID();
 
             for (VaccinesData vaccines : vaccinesDataList) {
-                antigenName.add(vaccines.getVB08CC0DE() + vaccines.getVB08CANT() + vaccines.getVB08CC0DE() + vaccines.getVB08WANT());
+                antigenName.add(vaccines.getBcg()
+                        + vaccines.getOpv0()
+                        + vaccines.getOpv1()
+                        + vaccines.getOpv2()
+                        + vaccines.getOpv3()
+                        + vaccines.getPenta1()
+                        + vaccines.getPenta2()
+                        + vaccines.getPenta3()
+                        + vaccines.getPcv1()
+                        + vaccines.getPcv2()
+                        + vaccines.getPcv3()
+                        + vaccines.getIpv1()
+                        + vaccines.getIpv2()
+                        + vaccines.getRota1()
+                        + vaccines.getRota2()
+                        + vaccines.getMeasles1()
+                        + vaccines.getMeasles2()
+                        + vaccines.getTyphoid()
+                        + vaccines.getTt1()
+                        + vaccines.getTt2()
+                        + vaccines.getTt3()
+                );
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -381,6 +411,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
         vaccines = new Vaccines();
         vaccines.populateMeta();
+        MainApp.flag = false;
         String caAntigen = null;
         String waAntigen = null;
 

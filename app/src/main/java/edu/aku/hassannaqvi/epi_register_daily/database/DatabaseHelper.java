@@ -5,7 +5,6 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.attendance;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.DATABASE_VERSION;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ATTENDANCE;
@@ -1282,9 +1281,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableVaccinesData.COLUMN_UC_CODE, vaccinesData.getUcCode());
             values.put(TableVaccinesData.COLUMN_AID, vaccinesData.getAID());
             values.put(TableVaccinesData.COLUMN_UID, vaccinesData.getUID());
-            values.put(TableVaccinesData.COLUMN_UUID, vaccinesData.getUUID());
+            //values.put(TableVaccinesData.COLUMN_UUID, vaccinesData.getUID());
             values.put(TableVaccinesData.COLUMN_VILLAGE_CODE, vaccinesData.getVillageCode());
-            values.put(TableVaccinesData.COLUMN_FACILITY_CODE, vaccinesData.getFacilityCode());
+            //values.put(TableVaccinesData.COLUMN_FACILITY_CODE, vaccinesData.getFacilityCode());
             //values.put(TableVaccinesData.COLUMN_VILLAGE_NAME, vaccinesData.getVillageName());
             values.put(TableVaccinesData.COLUMN_VB02, vaccinesData.getVBO2());
             values.put(TableVaccinesData.COLUMN_VB03, vaccinesData.getVBO3());
@@ -1294,13 +1293,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableVaccinesData.COLUMN_VB05D, vaccinesData.getVBO5D());
             values.put(TableVaccinesData.COLUMN_VB05M, vaccinesData.getVBO5M());
             values.put(TableVaccinesData.COLUMN_VB05Y, vaccinesData.getVBO5Y());
-            values.put(TableVaccinesData.COLUMN_VB08C_CODE, vaccinesData.getVB08CC0DE());
+            values.put(TableVaccinesData.COLUMN_BCG, vaccinesData.getBcg());
+            values.put(TableVaccinesData.COLUMN_OPV0, vaccinesData.getOpv0());
+            values.put(TableVaccinesData.COLUMN_OPV1, vaccinesData.getOpv1());
+            values.put(TableVaccinesData.COLUMN_OPV2, vaccinesData.getOpv2());
+            values.put(TableVaccinesData.COLUMN_OPV3, vaccinesData.getOpv3());
+            values.put(TableVaccinesData.COLUMN_PENTA1, vaccinesData.getPenta1());
+            values.put(TableVaccinesData.COLUMN_PENTA2, vaccinesData.getPenta2());
+            values.put(TableVaccinesData.COLUMN_PENTA3, vaccinesData.getPenta3());
+            values.put(TableVaccinesData.COLUMN_PCV1, vaccinesData.getPcv1());
+            values.put(TableVaccinesData.COLUMN_PCV2, vaccinesData.getPcv2());
+            values.put(TableVaccinesData.COLUMN_PCV3, vaccinesData.getPcv3());
+            values.put(TableVaccinesData.COLUMN_IPV1, vaccinesData.getIpv1());
+            values.put(TableVaccinesData.COLUMN_IPV2, vaccinesData.getIpv2());
+            values.put(TableVaccinesData.COLUMN_ROTA1, vaccinesData.getRota1());
+            values.put(TableVaccinesData.COLUMN_ROTA2, vaccinesData.getRota2());
+            values.put(TableVaccinesData.COLUMN_MEASLES1, vaccinesData.getMeasles1());
+            values.put(TableVaccinesData.COLUMN_MEASLES2, vaccinesData.getMeasles2());
+            values.put(TableVaccinesData.COLUMN_TYPHOID, vaccinesData.getTyphoid());
+            values.put(TableVaccinesData.COLUMN_TT1, vaccinesData.getTt1());
+            values.put(TableVaccinesData.COLUMN_TT2, vaccinesData.getTt2());
+            values.put(TableVaccinesData.COLUMN_TT3, vaccinesData.getTt3());
+
+            /*values.put(TableVaccinesData.COLUMN_VB08C_CODE, vaccinesData.getVB08CC0DE());
             values.put(TableVaccinesData.COLUMN_VB08C_ANT, vaccinesData.getVB08CANT());
             values.put(TableVaccinesData.COLUMN_VB08C_DT, vaccinesData.getVB08CDT());
             values.put(TableVaccinesData.COLUMN_VB08W_CODE, vaccinesData.getVB08WC0DE());
             values.put(TableVaccinesData.COLUMN_VB08W_ANT, vaccinesData.getVB08WANT());
             values.put(TableVaccinesData.COLUMN_VB08W_DT, vaccinesData.getVB08WDT());
-
+*/
             long rowID = db.insert(TableVaccinesData.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }

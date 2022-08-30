@@ -244,6 +244,7 @@ public class TableContracts {
     public static abstract class TableVaccinesData implements BaseColumns {
         public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
         public static final String TABLE_NAME = "vaccinesFollowUp";
+        public static final String TABLE_NAME_API = "Vaccines";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UC_CODE = "uccode";
         public static final String COLUMN_AID = "_aid";
@@ -260,12 +261,34 @@ public class TableContracts {
         public static final String COLUMN_VB05D = "vb05d";
         public static final String COLUMN_VB05M = "vb05m";
         public static final String COLUMN_VB05Y = "vb05y";
-        public static final String COLUMN_VB08C_CODE = "vb08cCode";
+        public static final String COLUMN_BCG = "bcg";
+        public static final String COLUMN_OPV0 = "opv0";
+        public static final String COLUMN_OPV1 = "opv1";
+        public static final String COLUMN_OPV2 = "opv2";
+        public static final String COLUMN_OPV3 = "opv3";
+        public static final String COLUMN_PENTA1 = "penta1";
+        public static final String COLUMN_PENTA2 = "penta2";
+        public static final String COLUMN_PENTA3 = "penta3";
+        public static final String COLUMN_PCV1 = "pcv1";
+        public static final String COLUMN_PCV2 = "pcv2";
+        public static final String COLUMN_PCV3 = "pcv3";
+        public static final String COLUMN_IPV1 = "ipv1";
+        public static final String COLUMN_IPV2 = "ipv2";
+        public static final String COLUMN_ROTA1 = "rota1";
+        public static final String COLUMN_ROTA2 = "rota2";
+        public static final String COLUMN_MEASLES1 = "Measles1";
+        public static final String COLUMN_MEASLES2 = "Measles2";
+        public static final String COLUMN_TYPHOID = "Typhoid";
+        public static final String COLUMN_TT1 = "tt1";
+        public static final String COLUMN_TT2 = "tt2";
+        public static final String COLUMN_TT3 = "tt3";
+
+        /*public static final String COLUMN_VB08C_CODE = "vb08cCode";
         public static final String COLUMN_VB08C_ANT = "vb08cAnt";
         public static final String COLUMN_VB08C_DT = "vb08cDT";
         public static final String COLUMN_VB08W_CODE = "vb08wCode";
         public static final String COLUMN_VB08W_ANT = "vb08wAnt";
-        public static final String COLUMN_VB08W_DT = "vb08wDT";
+        public static final String COLUMN_VB08W_DT = "vb08wDT";*/
     }
 
 

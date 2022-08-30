@@ -12,11 +12,11 @@ import org.json.JSONObject
 class VaccinesData {
     var ucCode: String = _EMPTY_
     var aID: String = _EMPTY_
+    //var uID: String = _EMPTY_
     var uID: String = _EMPTY_
-    var uUID: String = _EMPTY_
     var villageCode: String = _EMPTY_
     var villageName: String = _EMPTY_
-    var facilityCode: String = _EMPTY_
+    //var facilityCode: String = _EMPTY_
     var vBO2: String = _EMPTY_
     var vBO3: String = _EMPTY_
     var vB04: String = _EMPTY_
@@ -25,21 +25,42 @@ class VaccinesData {
     var vBO5D: String = _EMPTY_
     var vBO5M: String = _EMPTY_
     var vBO5Y: String = _EMPTY_
-    var vB08CC0DE: String = _EMPTY_
+    var bcg: String = _EMPTY_
+    var opv0: String = _EMPTY_
+    var opv1: String = _EMPTY_
+    var opv2: String = _EMPTY_
+    var opv3: String = _EMPTY_
+    var penta1: String = _EMPTY_
+    var penta2: String = _EMPTY_
+    var penta3: String = _EMPTY_
+    var pcv1: String = _EMPTY_
+    var pcv2: String = _EMPTY_
+    var pcv3: String = _EMPTY_
+    var ipv1: String = _EMPTY_
+    var ipv2: String = _EMPTY_
+    var rota1: String = _EMPTY_
+    var rota2: String = _EMPTY_
+    var Measles1: String = _EMPTY_
+    var Measles2: String = _EMPTY_
+    var Typhoid: String = _EMPTY_
+    var tt1: String = _EMPTY_
+    var tt2: String = _EMPTY_
+    var tt3: String = _EMPTY_
+    /*var vB08CC0DE: String = _EMPTY_
     var vB08CANT: String = _EMPTY_
     var vB08CDT: String = _EMPTY_
     var vB08WC0DE: String = _EMPTY_
     var vB08WANT: String = _EMPTY_
     var vB08WDT: String = _EMPTY_
-
+*/
     fun sync(jsonObject: JSONObject): VaccinesData {
         ucCode = jsonObject.getString(TableVaccinesData.COLUMN_UC_CODE)
         aID = jsonObject.getString(TableVaccinesData.COLUMN_AID)
+        //uID = jsonObject.getString(TableVaccinesData.COLUMN_UID)
         uID = jsonObject.getString(TableVaccinesData.COLUMN_UID)
-        uUID = jsonObject.getString(TableVaccinesData.COLUMN_UUID)
         villageCode = jsonObject.getString(TableVaccinesData.COLUMN_VILLAGE_CODE)
         //villageName = jsonObject.getString(TableVaccinesData.COLUMN_VILLAGE_NAME)
-        facilityCode = jsonObject.getString(TableVaccinesData.COLUMN_FACILITY_CODE)
+        //facilityCode = jsonObject.getString(TableVaccinesData.COLUMN_FACILITY_CODE)
         vBO2 = jsonObject.getString(TableVaccinesData.COLUMN_VB02)
         vBO3 = jsonObject.getString(TableVaccinesData.COLUMN_VB03)
         vB04 = jsonObject.getString(TableVaccinesData.COLUMN_VB04)
@@ -48,12 +69,35 @@ class VaccinesData {
         vBO5D = jsonObject.getString(TableVaccinesData.COLUMN_VB05D)
         vBO5M = jsonObject.getString(TableVaccinesData.COLUMN_VB05M)
         vBO5Y = jsonObject.getString(TableVaccinesData.COLUMN_VB05Y)
-        vB08CC0DE = jsonObject.getString(TableVaccinesData.COLUMN_VB08C_CODE)
+        bcg = jsonObject.getString(TableVaccinesData.COLUMN_BCG)
+        opv0 = jsonObject.getString(TableVaccinesData.COLUMN_OPV0)
+        opv1 = jsonObject.getString(TableVaccinesData.COLUMN_OPV1)
+        opv2 = jsonObject.getString(TableVaccinesData.COLUMN_OPV2)
+        opv3 = jsonObject.getString(TableVaccinesData.COLUMN_OPV3)
+        penta1 = jsonObject.getString(TableVaccinesData.COLUMN_PENTA1)
+        penta2 = jsonObject.getString(TableVaccinesData.COLUMN_PENTA2)
+        penta3 = jsonObject.getString(TableVaccinesData.COLUMN_PENTA3)
+        pcv1 = jsonObject.getString(TableVaccinesData.COLUMN_PCV1)
+        pcv2 = jsonObject.getString(TableVaccinesData.COLUMN_PCV2)
+        pcv3 = jsonObject.getString(TableVaccinesData.COLUMN_PCV3)
+        ipv1 = jsonObject.getString(TableVaccinesData.COLUMN_IPV1)
+        ipv2 = jsonObject.getString(TableVaccinesData.COLUMN_IPV2)
+        rota1 = jsonObject.getString(TableVaccinesData.COLUMN_ROTA1)
+        rota2 = jsonObject.getString(TableVaccinesData.COLUMN_ROTA2)
+        Measles1 = jsonObject.getString(TableVaccinesData.COLUMN_MEASLES1)
+        Measles2 = jsonObject.getString(TableVaccinesData.COLUMN_MEASLES2)
+        Typhoid = jsonObject.getString(TableVaccinesData.COLUMN_TYPHOID)
+        tt1 = jsonObject.getString(TableVaccinesData.COLUMN_TT1)
+        tt2 = jsonObject.getString(TableVaccinesData.COLUMN_TT2)
+        tt3 = jsonObject.getString(TableVaccinesData.COLUMN_TT3)
+
+
+        /*vB08CC0DE = jsonObject.getString(TableVaccinesData.COLUMN_VB08C_CODE)
         vB08CANT = jsonObject.getString(TableVaccinesData.COLUMN_VB08C_ANT)
         vB08CDT = jsonObject.getString(TableVaccinesData.COLUMN_VB08C_DT)
         vB08WC0DE = jsonObject.getString(TableVaccinesData.COLUMN_VB08W_CODE)
         vB08WANT = jsonObject.getString(TableVaccinesData.COLUMN_VB08W_ANT)
-        vB08WDT = jsonObject.getString(TableVaccinesData.COLUMN_VB08W_DT)
+        vB08WDT = jsonObject.getString(TableVaccinesData.COLUMN_VB08W_DT)*/
         return this
     }
 
@@ -62,14 +106,14 @@ class VaccinesData {
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_UC_CODE))
         aID =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_AID))
+        /*uID =
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_UID))*/
         uID =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_UID))
-        uUID =
-            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_UUID))
         villageCode =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VILLAGE_CODE))
-        facilityCode =
-            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_FACILITY_CODE))
+        /*facilityCode =
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_FACILITY_CODE))*/
         /*villageName =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VILLAGE_NAME))*/
         vBO2 =
@@ -91,10 +135,52 @@ class VaccinesData {
 
         vBO5M =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05M))
-
         vBO5Y =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05Y))
-        vB08CC0DE =
+        bcg =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_BCG))
+        opv0 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_OPV0))
+        opv1 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_OPV1))
+        opv2 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_OPV2))
+        opv3 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_OPV3))
+        penta1 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_PENTA1))
+        penta2 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_PENTA2))
+        penta3 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_PENTA3))
+        pcv1 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_PCV1))
+        pcv2 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_PCV2))
+        pcv3 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_PCV3))
+        ipv1 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_IPV1))
+        ipv2 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_IPV2))
+        rota1 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_ROTA1))
+        rota2 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_ROTA2))
+        Measles1 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_MEASLES1))
+        Measles2 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_MEASLES2))
+        Typhoid =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TYPHOID))
+        tt1 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TT1))
+        tt2 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TT2))
+        tt3 =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TT3))
+
+        /*vB08CC0DE =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB08C_CODE))
         vB08CANT =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB08C_ANT))
@@ -106,7 +192,7 @@ class VaccinesData {
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB08W_ANT))
         vB08WDT =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB08W_DT))
-
+*/
         return this
     }
 
