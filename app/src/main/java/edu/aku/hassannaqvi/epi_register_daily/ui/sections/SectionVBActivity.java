@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.flag;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccineCount;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
@@ -335,48 +336,12 @@ public class SectionVBActivity extends AppCompatActivity {
         return false;
     }
 
-/*    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (MainApp.formVA.getUid().equals("")){
-            try {
-                MainApp.formVA = db.getFormByuid(MainApp.formVA.getId());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
-
-
-    //TODO: Won't insert if Opening Editable
-    /*private boolean insertNewRecord() {
-        if (!formVB.getUid().equals("") || MainApp.superuser) return true;
-        formVB.populateMeta();
-
-        long rowId = 0;
-        try {
-            rowId = db.addFormVB(formVB);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        formVB.setId(String.valueOf(rowId));
-        if (rowId > 0) {
-            formVB.setUid(formVB.getDeviceId() + formVB.getId());
-            db.updatesFormVBColumn(FormsVBTable.COLUMN_UID, formVB.getUid());
-            return true;
-        } else {
-            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    }*/
 
     private boolean insertVaccineRecord(String vaccCode, String antigen, String vaccDate) {
         //   if (!vaccines.getUid().equals("") || MainApp.superuser) return true;
         //    vaccines.populateMeta();
 //        vaccines.setUuid(formVB.getUid());
+
         vaccines.setFrontfilename(formVB.getFrontfilename());
         vaccines.setBackfilename(formVB.getBackfilename());
         vaccines.setChildfilename(formVB.getChildfilename());
