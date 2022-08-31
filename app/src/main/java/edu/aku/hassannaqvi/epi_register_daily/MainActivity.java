@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.attendance;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.sharedPref;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
 
@@ -84,10 +85,12 @@ public class MainActivity extends AppCompatActivity {
         String todayDate = sdf.format(new Date());
         String workLocationDate = sharedPref.getString("workLocationDate", "          ").substring(0, 10);
         String attendanceDate = sharedPref.getString("attendanceDate", "          ").substring(0, 10);
+        String batchManagementDate = sharedPref.getString("batchManagementDate", "          ").substring(0,10);
         bi.toolbar.setSubtitle("Welcome, " + MainApp.user.getFullname() + (MainApp.admin ? " (Admin)" : "") + "! " + (!attendanceDate.equals("          ") ? "     -     M✓" : ""));
 
         Date strWorkLoctionDate = null;
         Date strAttendanceDate = null;
+        Date strBatchManagementDate = null;
         Date strToday = null;
         try {
             strWorkLoctionDate = sdf.parse(workLocationDate);
@@ -146,6 +149,35 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+
+        try {
+            strBatchManagementDate = sdf.parse(batchManagementDate);
+            strToday = sdf.parse(todayDate);
+
+
+            if (!strBatchManagementDate.equals(strToday)) {
+
+                MainApp.editor.putString("batchManagementUID", "");
+                MainApp.editor.putString("batchManagementDate", "          ");
+                MainApp.editor.apply();
+                MainApp.formVA = null;
+                //bi.markAttendance.setVisibility(View.VISIBLE);
+            } else {
+                String batchManagementUID = sharedPref.getString("batchManagementDate", "");
+                //bi.markAttendance.setVisibility(View.INVISIBLE);
+                //Snackbar.make(bi.toolbar, "Your attendance has been marked!", Snackbar.LENGTH_LONG).show();
+
+                try {
+                    formVA = db.getCurrentFormVA(batchManagementUID);
+
+                } catch (JSONException e) {
+                    Toast.makeText(this, "JSONException(Attendance): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sectionPress(View view) {
@@ -160,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.openChildVacForm:
                     MainApp.formVB = new FormVB();
                     MainApp.vaccinesData = new VaccinesData();
-                    if (MainApp.flagVA) {
+                    if (formVA != null && !formVA.getId().isEmpty()) {
                         bi.openChildVacForm.setClickable(true);
                         finish();
                         startActivity(new Intent(this, VaccinatedChildListActivity.class));
@@ -172,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.openWomenVacForm:
                     MainApp.formVB = new FormVB();
                     MainApp.vaccinesData = new VaccinesData();
-                    if (MainApp.flagVA) {
+                    if (formVA != null && !formVA.getId().isEmpty()) {
                         bi.openWomenVacForm.setClickable(true);
                         finish();
                         startActivity(new Intent(this, VaccinatedWomenListActivity.class));

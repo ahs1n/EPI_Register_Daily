@@ -2320,4 +2320,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return attendance;
 
     }
+
+    public FormVA getCurrentFormVA(String uid) throws JSONException {
+
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = FormsVATable.COLUMN_UID + " = ? ";
+
+        String[] whereArgs = {uid};
+
+        String orderBy = null;
+
+        FormVA formVA = null;
+        c = db.query(
+                FormsVATable.TABLE_NAME,  // The table to query
+                columns,
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,
+                null,
+                null,
+                orderBy
+
+                // The sort order
+        );
+
+        if (c != null) {
+            c.moveToFirst();
+            formVA = new FormVA().Hydrate(c);
+        }
+        return formVA;
+
+    }
 }

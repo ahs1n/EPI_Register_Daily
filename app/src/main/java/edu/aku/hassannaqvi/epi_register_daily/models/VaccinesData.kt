@@ -30,7 +30,7 @@ class VaccinesData {
     var opv1: String = _EMPTY_
     var opv2: String = _EMPTY_
     var opv3: String = _EMPTY_
-    var hepB: String = _EMPTY_
+    var HepB: String = _EMPTY_
     var penta1: String = _EMPTY_
     var penta2: String = _EMPTY_
     var penta3: String = _EMPTY_
@@ -69,7 +69,7 @@ class VaccinesData {
         opv1 = jsonObject.getString(TableVaccinesData.COLUMN_OPV1)
         opv2 = jsonObject.getString(TableVaccinesData.COLUMN_OPV2)
         opv3 = jsonObject.getString(TableVaccinesData.COLUMN_OPV3)
-        hepB = jsonObject.getString(TableVaccinesData.COLUMN_HEP_B)
+        HepB = jsonObject.getString(TableVaccinesData.COLUMN_HEP_B)
         penta1 = jsonObject.getString(TableVaccinesData.COLUMN_PENTA1)
         penta2 = jsonObject.getString(TableVaccinesData.COLUMN_PENTA2)
         penta3 = jsonObject.getString(TableVaccinesData.COLUMN_PENTA3)
@@ -103,21 +103,16 @@ class VaccinesData {
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VILLAGE_CODE))
         vBO2 =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB02))
-
         vBO3 =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB03))
-
         vB04 =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB04))
         vB04A =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB04A))
-
         vBO5A =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05A))
-
         vBO5D =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05D))
-
         vBO5M =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05M))
         vBO5Y =
@@ -132,6 +127,8 @@ class VaccinesData {
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_OPV2))
         opv3 =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_OPV3))
+        HepB =
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_HEP_B))
         penta1 =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_PENTA1))
         penta2 =

@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -63,6 +64,8 @@ public class SectionVAActivity extends AppCompatActivity {
 
         ucNames = new ArrayList<>();
         ucCodes = new ArrayList<>();
+        ucNames.clear();
+        ucCodes.clear();
         ucNames.add("...");
         ucCodes.add("...");
 
@@ -170,6 +173,7 @@ public class SectionVAActivity extends AppCompatActivity {
         int updcount = 0;
         try {
             updcount = db.updatesFormVAColumn(TableContracts.FormsVATable.COLUMN_VA, formVA.vAtoString());
+
         } catch (JSONException e) {
             Toast.makeText(this, R.string.upd_db + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -183,9 +187,10 @@ public class SectionVAActivity extends AppCompatActivity {
 
 
     public void btnContinue(View view) {
-        MainApp.flagVA = true;
+        //MainApp.flagVA = true;
         if (!formValidation()) return;
         if (!insertNewRecord()) return;
+        setCurrentDate();
         if (updateDB()) {
             finish();
             startActivity(new Intent(this, MainActivity.class));
@@ -217,6 +222,12 @@ public class SectionVAActivity extends AppCompatActivity {
         return true;*/
     }
 
+    private void setCurrentDate() {
+        MainApp.editor.putString("batchManagementUID", formVA.getUid());
+        MainApp.editor.putString("batchManagementDate", formVA.getSysDate());
+        MainApp.editor.apply();
+
+    }
 
     @Override
     public void onBackPressed() {
