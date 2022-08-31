@@ -75,6 +75,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.main"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.lists.VaccinatedChildListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.main"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.lists.VaccinatedWomenListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.main"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.SyncActivity"
             android:exported="false"

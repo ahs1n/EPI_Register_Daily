@@ -1,8 +1,11 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.flag;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccineCount;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesList;
 
 import android.content.Context;
@@ -34,6 +37,7 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 
 public class SectionVBActivity extends AppCompatActivity {
@@ -61,7 +65,7 @@ public class SectionVBActivity extends AppCompatActivity {
         if (btn) bi.btnEnd.setVisibility(View.VISIBLE);
 
         group = getIntent().getBooleanExtra("group", true);
-        if (formVB.getVb03().equals("2")) {
+        if (formVB.getVb03().equals("2") || vaccinesData.getVBO3().equals("2")) {
             bi.fldGrpCVvb08c.setVisibility(View.VISIBLE);
             bi.fldGrpCVtakePhoto.setVisibility(View.VISIBLE);
         } else {
@@ -69,23 +73,114 @@ public class SectionVBActivity extends AppCompatActivity {
             bi.fldGrpCVvb08w.setVisibility(View.VISIBLE);
         }
 
-        bi.pName.setText(formVB.getVb04a());
-        bi.hName.setText(formVB.getVb04());
-        bi.cardNo.setText(formVB.getVb02());
-        if (formVB.getVb03().equals("1")) {
-            bi.vacStatus.setText("TT" + formVB.getVb08w());
-        }
-        bi.vacDate.setText(formVB.getVb08wdt());
+        if(MainApp.flag)
+        {
+            bi.pName.setText(formVB.getVb04());
+            bi.hName.setText(formVB.getVb04());
+            bi.cardNo.setText(formVB.getVb02());
+            if (formVB.getVb03().equals("1")) {
+                bi.vacStatus.setText("TT" + formVB.getVb08w());
+            }
+            bi.vacDate.setText(formVB.getVb08wdt());
+        }else{
+            bi.pName.setText(vaccinesData.getVB04A());
+            bi.hName.setText(vaccinesData.getVB04());
+            bi.cardNo.setText(vaccinesData.getVBO2());
 
-        vaccinesList = new ArrayList<>();
+        }
+
+
+        //vaccinesList = new ArrayList<>();
+        MainApp.vaccinesDataList = new ArrayList<>();
+
         vaccineCount = 0;
         ArrayList antigenName = new ArrayList<String>();
 
-        Log.d(TAG, "onCreate(vaccineList): " + vaccinesList.size());
+        String baseId = "";
+        ArrayList<Boolean> results = new ArrayList<Boolean>();
+
+        Log.d(TAG, "onCreate(vaccineList): " + vaccinesDataList.size());
         try {
-            vaccinesList = db.getVaccinatedMembersBYUID();
-            for (Vaccines vaccines : vaccinesList) {
-                antigenName.add(vaccines.getVb08CCode() + vaccines.getVb08CAntigen() + vaccines.getVb08WCode() + vaccines.getVb08WAntigen());
+            //vaccinesList = db.getVaccinatedMembersBYUID();
+            vaccinesDataList = db.getSyncedVaccinatedMembersBYUID(vaccinesData.getUID());
+
+            for (VaccinesData vaccines : vaccinesDataList) {
+
+                //BCG
+                baseId = "vb08ca";
+                results.clear();
+                showHideDoneCheck(!vaccines.getBcg().equals(""), bi.vb08caa, bi.vb08caatick);
+
+                // OPV
+                baseId = "vb08cb";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getOpv0().equals(""), bi.vb08cba, bi.vb08cbatick));
+                results.add(showHideDoneCheck(!vaccines.getOpv1().equals(""), bi.vb08cbb, bi.vb08cbbtick));
+                results.add(showHideDoneCheck(!vaccines.getOpv2().equals(""), bi.vb08cbc, bi.vb08cbctick));
+                results.add(showHideDoneCheck(!vaccines.getOpv3().equals(""), bi.vb08cbd, bi.vb08cbdtick));
+                verifyCrossTicks(results, baseId);
+
+
+                //Hep B
+                baseId = "vb08cc";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getHepB().equals(""), bi.vb08cca, bi.vb08ccatick));
+                verifyCrossTicks(results, baseId);
+
+                // Penta
+                baseId = "vb08cd";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getPenta1().equals(""), bi.vb08cda, bi.vb08cdatick));
+                results.add(showHideDoneCheck(!vaccines.getPenta2().equals(""), bi.vb08cdb, bi.vb08cdbtick));
+                results.add(showHideDoneCheck(!vaccines.getPenta3().equals(""), bi.vb08cdc, bi.vb08cdctick));
+                verifyCrossTicks(results, baseId);
+
+                // PCV
+                baseId = "vb08ce";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getPcv1().equals(""), bi.vb08cea, bi.vb08ceatick));
+                results.add(showHideDoneCheck(!vaccines.getPcv2().equals(""), bi.vb08ceb, bi.vb08cebtick));
+                results.add(showHideDoneCheck(!vaccines.getPcv3().equals(""), bi.vb08cec, bi.vb08cectick));
+                verifyCrossTicks(results, baseId);
+
+                // Rota
+                baseId = "vb08cf";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getRota1().equals(""), bi.vb08cfa, bi.vb08cfatick));
+                results.add(showHideDoneCheck(!vaccines.getRota2().equals(""), bi.vb08cfb, bi.vb08cfbtick));
+                verifyCrossTicks(results, baseId);
+
+                // IPV
+                baseId = "vb08cg";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getIpv1().equals(""), bi.vb08cga, bi.vb08cgatick));
+                results.add(showHideDoneCheck(!vaccines.getIpv2().equals(""), bi.vb08cgb, bi.vb08cgbtick));
+                verifyCrossTicks(results, baseId);
+
+                // Measles
+                baseId = "vb08ch";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getMeasles1().equals(""), bi.vb08cha, bi.vb08chatick));
+                results.add(showHideDoneCheck(!vaccines.getMeasles2().equals(""), bi.vb08chb, bi.vb08chbtick));
+                verifyCrossTicks(results, baseId);
+
+                // Typhoid
+                baseId = "vb08ci";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getTyphoid().equals(""), bi.vb08cia, bi.vb08ciatick));
+                verifyCrossTicks(results, baseId);
+
+                // TT
+                //TODO: Add TT4 and TT5
+                baseId = "vb08wa";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getTt1().equals(""), bi.vb08waa, bi.vb08waatick));
+                results.add(showHideDoneCheck(!vaccines.getTt2().equals(""), bi.vb08wab, bi.vb08wabtick));
+                results.add(showHideDoneCheck(!vaccines.getTt3().equals(""), bi.vb08wac, bi.vb08wactick));
+                results.add(showHideDoneCheck(!vaccines.getTt4().equals(""), bi.vb08wad, bi.vb08wadtick));
+                results.add(showHideDoneCheck(!vaccines.getTt5().equals(""), bi.vb08wae, bi.vb08waetick));
+                verifyCrossTicks(results, baseId);
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -94,16 +189,15 @@ public class SectionVBActivity extends AppCompatActivity {
 
 
         int firstTrue = -1;
-        String baseId = "";
-        ArrayList<Boolean> results = new ArrayList<Boolean>();
 
+        /*
         for (int i = 0; i < antigenName.size(); i++) {
             String antigen = (String) antigenName.get(i);
 
             //BCG
             baseId = "vb08ca";
             results.clear();
-            showHideDoneCheck(antigen.equals("BCG1"), bi.vb08caa, bi.vb08caatick);
+            showHideDoneCheck(!antigen.equals("BCG1"), bi.vb08caa, bi.vb08caatick);
 
             // OPV
             baseId = "vb08cb";
@@ -173,9 +267,9 @@ public class SectionVBActivity extends AppCompatActivity {
             results.add(showHideDoneCheck(antigen.equals("TT4"), bi.vb08wad, bi.vb08wadtick));
             results.add(showHideDoneCheck(antigen.equals("TT5"), bi.vb08wae, bi.vb08waetick));
             verifyCrossTicks(results, baseId);
-        }
+        }*/
 
-        if (antigenName.size() == 19) {
+        if (vaccinesDataList.size() == 19) {
             bi.vb08ca98.setEnabled(false);
             bi.vb08cb98.setEnabled(false);
             bi.vb08cc98.setEnabled(false);
@@ -242,48 +336,12 @@ public class SectionVBActivity extends AppCompatActivity {
         return false;
     }
 
-/*    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (MainApp.formVA.getUid().equals("")){
-            try {
-                MainApp.formVA = db.getFormByuid(MainApp.formVA.getId());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
-
-
-    //TODO: Won't insert if Opening Editable
-    /*private boolean insertNewRecord() {
-        if (!formVB.getUid().equals("") || MainApp.superuser) return true;
-        formVB.populateMeta();
-
-        long rowId = 0;
-        try {
-            rowId = db.addFormVB(formVB);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, R.string.db_excp_error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        formVB.setId(String.valueOf(rowId));
-        if (rowId > 0) {
-            formVB.setUid(formVB.getDeviceId() + formVB.getId());
-            db.updatesFormVBColumn(FormsVBTable.COLUMN_UID, formVB.getUid());
-            return true;
-        } else {
-            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    }*/
 
     private boolean insertVaccineRecord(String vaccCode, String antigen, String vaccDate) {
         //   if (!vaccines.getUid().equals("") || MainApp.superuser) return true;
         //    vaccines.populateMeta();
 //        vaccines.setUuid(formVB.getUid());
+
         vaccines.setFrontfilename(formVB.getFrontfilename());
         vaccines.setBackfilename(formVB.getBackfilename());
         vaccines.setChildfilename(formVB.getChildfilename());
@@ -374,6 +432,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
         vaccines = new Vaccines();
         vaccines.populateMeta();
+        MainApp.flag = false;
         String caAntigen = null;
         String waAntigen = null;
 

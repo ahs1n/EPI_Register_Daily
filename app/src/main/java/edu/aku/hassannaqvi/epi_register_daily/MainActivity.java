@@ -44,12 +44,15 @@ import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.CreateLocationActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedChildListActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedWomenListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
@@ -158,14 +161,16 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.openChildVacForm:
                     MainApp.formVB = new FormVB();
+                    MainApp.vaccinesData = new VaccinesData();
                     finish();
-                    startActivity(new Intent(this, RegisteredChildListActivity.class));
+                    startActivity(new Intent(this, VaccinatedChildListActivity.class));
                     break;
 
                 case R.id.openWomenVacForm:
                     MainApp.formVB = new FormVB();
+                    MainApp.vaccinesData = new VaccinesData();
                     finish();
-                    startActivity(new Intent(this, RegisteredWomenListActivity.class));
+                    startActivity(new Intent(this, VaccinatedWomenListActivity.class));
                     break;
 
                 case R.id.secA:

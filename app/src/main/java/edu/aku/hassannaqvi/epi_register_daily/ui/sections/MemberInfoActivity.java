@@ -34,6 +34,8 @@ import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedChildListActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedWomenListActivity;
 
 public class MemberInfoActivity extends AppCompatActivity {
     private static final String TAG = "MemberInfoActivity";
@@ -54,6 +56,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         populateVillageSpinner();
 
         MainApp.formVB.setUuid(MainApp.formVA.getUid());
+        MainApp.flag = true;
 
         b = getIntent().getBooleanExtra("b", true);
 
@@ -277,8 +280,8 @@ public class MemberInfoActivity extends AppCompatActivity {
         finish();
         MainApp.memberCount--;
         if (group) {
-            startActivity(new Intent(this, RegisteredChildListActivity.class));
-        } else startActivity(new Intent(this, RegisteredWomenListActivity.class));
+            startActivity(new Intent(this, VaccinatedChildListActivity.class));
+        } else startActivity(new Intent(this, VaccinatedWomenListActivity.class));
     }
 
     public void setGPS() {

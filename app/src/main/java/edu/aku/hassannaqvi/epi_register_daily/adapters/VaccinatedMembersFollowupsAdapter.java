@@ -11,18 +11,19 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
-import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 
-
-public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMembersAdapter.ViewHolder> {
-    private static final String TAG = "VaccinatedMembersAdapter";
+public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<VaccinatedMembersFollowupsAdapter.ViewHolder> {
+    private static final String TAG = "VaccinatedMembers2Adapter";
     private final Context mContext;
     //private final List<FormVB> member;
-    private final List<FormVB> member;
+    private final List<VaccinesData> member;
+    private final List<VaccinesData> backupItems = new ArrayList<>();
     private final int completeCount;
     private final boolean motherPresent = false;
     private final OnItemClickListener onItemClickListener;
@@ -38,12 +39,33 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
         completeCount = 0;
 
     }*/
-    public VaccinatedMembersAdapter(Context mContext, List<FormVB> members, OnItemClickListener onItemClickListener) {
+    public VaccinatedMembersFollowupsAdapter(Context mContext, List<VaccinesData> members, OnItemClickListener onItemClickListener) {
         this.member = members;
+        backupItems.clear();
+        backupItems.addAll(members);
         this.mContext = mContext;
         completeCount = 0;
         this.onItemClickListener = onItemClickListener;
 
+    }
+
+    // Add filter
+    @SuppressLint("NotifyDataSetChanged")
+    public void filter(String query) {
+        if (query.equals("")) {
+            // Show original list
+            member.clear();
+            member.addAll(backupItems);
+            notifyDataSetChanged();
+        } else {
+            member.clear();
+            for (VaccinesData vaccinesData : backupItems) {
+                if (vaccinesData.getVBO2().toLowerCase().contains(query) || vaccinesData.getVB04A().toLowerCase().contains(query)) {
+                    member.add(vaccinesData);
+                }
+            }
+            notifyDataSetChanged();
+        }
     }
 
 
@@ -51,7 +73,7 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         Log.d(TAG, "Element " + position + " set.");
-        FormVB members = this.member.get(position);        // Get element from your dataset at this position and replace the contents of the view
+        VaccinesData members = this.member.get(position);        // Get element from your dataset at this position and replace the contents of the view
         // with that element
 
         TextView fName = viewHolder.mName;
@@ -60,15 +82,14 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
         TextView cardNo = viewHolder.cardNo;
         ImageView mainIcon = viewHolder.mainIcon;
 
-        fName.setText(members.getVb04a());
-        if (members.getVb03().equals("1")) {
-            fAgeY.setText(members.getVb05y() + " Y ");
-        } else fAgeY.setText(members.getVb05y() + " Y " + members.getVb05m() + " M ");
-        fatherName.setText(members.getVb04());
-        cardNo.setText(members.getVb02());
+        fName.setText(members.getVB04A());
+        if (members.getVBO3().equals("1")) {
+            fAgeY.setText(members.getVBO5Y() + " Y ");
+        } else fAgeY.setText(members.getVBO5Y() + " Y " + members.getVBO5M() + " M ");
+        fatherName.setText(members.getVB04());
+        cardNo.setText(members.getVBO2());
 
-
-        mainIcon.setImageResource(members.getVb03().equals("2") ? (members.getVb05a().equals("1") ? R.drawable.malebabyicon : R.drawable.femalebabyicon) : R.drawable.mwraicon);
+        mainIcon.setImageResource(members.getVBO3().equals("2") ? (members.getVBO5A().equals("1") ? R.drawable.malebabyicon : R.drawable.femalebabyicon) : R.drawable.mwraicon);
 
 
         viewHolder.itemView.setOnClickListener(view -> onItemClickListener.onItemClick(member.get(position)));
@@ -90,7 +111,7 @@ public class VaccinatedMembersAdapter extends RecyclerView.Adapter<VaccinatedMem
     }
 
     public interface OnItemClickListener {
-        void onItemClick(FormVB member);
+        void onItemClick(VaccinesData member);
     }
 
     /**
