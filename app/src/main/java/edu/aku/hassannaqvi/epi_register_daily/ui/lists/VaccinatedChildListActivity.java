@@ -9,7 +9,12 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataLi
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -34,6 +39,8 @@ import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
 
 public class VaccinatedChildListActivity extends AppCompatActivity {
+
+    private VaccinatedMembersFollowupsAdapter adapterLable;
 
 
     private static final String TAG = "VaccinationActivity";
@@ -70,6 +77,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         db = MainApp.appInfo.dbHelper;
         vaccinesDataList = db.getAllFollowupChilds();
 
+        initSearchFilter();
 
         vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
             try {
@@ -95,12 +103,19 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         });
 
 
+        bi.searchBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(bi.searchByName.isChecked())
+                {
+                    bi.memberId.setHint("Name");
+                }else{
+                    bi.memberId.setHint("Card No.");
+                }
+            }
+        });
 
     }
-
-
-
-
 
     @Override
     protected void onResume() {
@@ -180,5 +195,34 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         // Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
         finish();
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+
+    // Search Filter
+    private void initSearchFilter() {
+        bi.memberId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                vaccinatedMembersAdapter.filter(s.toString());
+            }
+        });
+
+        bi.memberId.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                vaccinatedMembersAdapter.filter(v.getText().toString());
+                return true;
+            }
+        });
     }
 }

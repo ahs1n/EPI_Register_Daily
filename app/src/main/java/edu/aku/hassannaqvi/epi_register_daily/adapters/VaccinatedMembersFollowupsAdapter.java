@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.R;
@@ -22,6 +23,7 @@ public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<Vacc
     private final Context mContext;
     //private final List<FormVB> member;
     private final List<VaccinesData> member;
+    private final List<VaccinesData> backupItems = new ArrayList<>();
     private final int completeCount;
     private final boolean motherPresent = false;
     private final OnItemClickListener onItemClickListener;
@@ -39,10 +41,31 @@ public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<Vacc
     }*/
     public VaccinatedMembersFollowupsAdapter(Context mContext, List<VaccinesData> members, OnItemClickListener onItemClickListener) {
         this.member = members;
+        backupItems.clear();
+        backupItems.addAll(members);
         this.mContext = mContext;
         completeCount = 0;
         this.onItemClickListener = onItemClickListener;
 
+    }
+
+    // Add filter
+    @SuppressLint("NotifyDataSetChanged")
+    public void filter(String query) {
+        if (query.equals("")) {
+            // Show original list
+            member.clear();
+            member.addAll(backupItems);
+            notifyDataSetChanged();
+        } else {
+            member.clear();
+            for (VaccinesData vaccinesData : backupItems) {
+                if (vaccinesData.getVBO2().toLowerCase().contains(query) || vaccinesData.getVB04A().toLowerCase().contains(query)) {
+                    member.add(vaccinesData);
+                }
+            }
+            notifyDataSetChanged();
+        }
     }
 
 

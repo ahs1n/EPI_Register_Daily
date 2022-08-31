@@ -266,6 +266,7 @@ public class TableContracts {
         public static final String COLUMN_OPV1 = "opv1";
         public static final String COLUMN_OPV2 = "opv2";
         public static final String COLUMN_OPV3 = "opv3";
+        public static final String COLUMN_HEP_B = "HepB";
         public static final String COLUMN_PENTA1 = "penta1";
         public static final String COLUMN_PENTA2 = "penta2";
         public static final String COLUMN_PENTA3 = "penta3";
@@ -282,13 +283,10 @@ public class TableContracts {
         public static final String COLUMN_TT1 = "tt1";
         public static final String COLUMN_TT2 = "tt2";
         public static final String COLUMN_TT3 = "tt3";
+        public static final String COLUMN_TT4 = "tt4";
+        public static final String COLUMN_TT5 = "tt5";
 
-        /*public static final String COLUMN_VB08C_CODE = "vb08cCode";
-        public static final String COLUMN_VB08C_ANT = "vb08cAnt";
-        public static final String COLUMN_VB08C_DT = "vb08cDT";
-        public static final String COLUMN_VB08W_CODE = "vb08wCode";
-        public static final String COLUMN_VB08W_ANT = "vb08wAnt";
-        public static final String COLUMN_VB08W_DT = "vb08wDT";*/
+
     }
 
 

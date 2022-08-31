@@ -104,29 +104,6 @@ public class SectionVBActivity extends AppCompatActivity {
             vaccinesDataList = db.getSyncedVaccinatedMembersBYUID(vaccinesData.getUID());
 
             for (VaccinesData vaccines : vaccinesDataList) {
-                /*
-                antigenName.add(vaccines.getBcg()
-                        + vaccines.getOpv0()
-                        + vaccines.getOpv1()
-                        + vaccines.getOpv2()
-                        + vaccines.getOpv3()
-                        + vaccines.getPenta1()
-                        + vaccines.getPenta2()
-                        + vaccines.getPenta3()
-                        + vaccines.getPcv1()
-                        + vaccines.getPcv2()
-                        + vaccines.getPcv3()
-                        + vaccines.getIpv1()
-                        + vaccines.getIpv2()
-                        + vaccines.getRota1()
-                        + vaccines.getRota2()
-                        + vaccines.getMeasles1()
-                        + vaccines.getMeasles2()
-                        + vaccines.getTyphoid()
-                        + vaccines.getTt1()
-                        + vaccines.getTt2()
-                        + vaccines.getTt3()
-                );*/
 
                 //BCG
                 baseId = "vb08ca";
@@ -144,11 +121,10 @@ public class SectionVBActivity extends AppCompatActivity {
 
 
                 //Hep B
-                //TODO: Add Hepatitis on backend API
-//                baseId = "vb08cc";
-//                results.clear();
-//                results.add(showHideDoneCheck(antigen.equals("HepB1"), bi.vb08cca, bi.vb08ccatick));
-//                verifyCrossTicks(results, baseId);
+                baseId = "vb08cc";
+                results.clear();
+                results.add(showHideDoneCheck(!vaccines.getHepB().equals(""), bi.vb08cca, bi.vb08ccatick));
+                verifyCrossTicks(results, baseId);
 
                 // Penta
                 baseId = "vb08cd";
@@ -200,8 +176,8 @@ public class SectionVBActivity extends AppCompatActivity {
                 results.add(showHideDoneCheck(!vaccines.getTt1().equals(""), bi.vb08waa, bi.vb08waatick));
                 results.add(showHideDoneCheck(!vaccines.getTt2().equals(""), bi.vb08wab, bi.vb08wabtick));
                 results.add(showHideDoneCheck(!vaccines.getTt3().equals(""), bi.vb08wac, bi.vb08wactick));
-//                results.add(showHideDoneCheck(!vaccines.getTt4().equals(""), bi.vb08wad, bi.vb08wadtick));
-//                results.add(showHideDoneCheck(!vaccines.getTt5().equals(""), bi.vb08wae, bi.vb08waetick));
+                results.add(showHideDoneCheck(!vaccines.getTt4().equals(""), bi.vb08wad, bi.vb08wadtick));
+                results.add(showHideDoneCheck(!vaccines.getTt5().equals(""), bi.vb08wae, bi.vb08waetick));
                 verifyCrossTicks(results, baseId);
 
             }

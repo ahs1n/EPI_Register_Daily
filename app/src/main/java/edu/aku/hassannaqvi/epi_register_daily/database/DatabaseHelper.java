@@ -1298,6 +1298,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableVaccinesData.COLUMN_OPV1, vaccinesData.getOpv1());
             values.put(TableVaccinesData.COLUMN_OPV2, vaccinesData.getOpv2());
             values.put(TableVaccinesData.COLUMN_OPV3, vaccinesData.getOpv3());
+            values.put(TableVaccinesData.COLUMN_HEP_B, vaccinesData.getHepB());
             values.put(TableVaccinesData.COLUMN_PENTA1, vaccinesData.getPenta1());
             values.put(TableVaccinesData.COLUMN_PENTA2, vaccinesData.getPenta2());
             values.put(TableVaccinesData.COLUMN_PENTA3, vaccinesData.getPenta3());
@@ -1314,14 +1315,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableVaccinesData.COLUMN_TT1, vaccinesData.getTt1());
             values.put(TableVaccinesData.COLUMN_TT2, vaccinesData.getTt2());
             values.put(TableVaccinesData.COLUMN_TT3, vaccinesData.getTt3());
+            values.put(TableVaccinesData.COLUMN_TT4, vaccinesData.getTt4());
+            values.put(TableVaccinesData.COLUMN_TT5, vaccinesData.getTt5());
 
-            /*values.put(TableVaccinesData.COLUMN_VB08C_CODE, vaccinesData.getVB08CC0DE());
-            values.put(TableVaccinesData.COLUMN_VB08C_ANT, vaccinesData.getVB08CANT());
-            values.put(TableVaccinesData.COLUMN_VB08C_DT, vaccinesData.getVB08CDT());
-            values.put(TableVaccinesData.COLUMN_VB08W_CODE, vaccinesData.getVB08WC0DE());
-            values.put(TableVaccinesData.COLUMN_VB08W_ANT, vaccinesData.getVB08WANT());
-            values.put(TableVaccinesData.COLUMN_VB08W_DT, vaccinesData.getVB08WDT());
-*/
             long rowID = db.insert(TableVaccinesData.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
