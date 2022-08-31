@@ -85,6 +85,7 @@ public class MainApp extends Application {
     public static String selectedUCCode;
     public static int vaccineCount = 0;
     public static boolean flag = false;
+    public static boolean flagVA = false;
 
 
     public static List<FormVB> formVBList;

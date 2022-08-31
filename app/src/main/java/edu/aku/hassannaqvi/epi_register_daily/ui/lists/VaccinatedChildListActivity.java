@@ -2,10 +2,10 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -67,6 +67,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
             });
     private VaccinatedMembersFollowupsAdapter vaccinatedMembersAdapter;
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,8 +107,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         bi.searchBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(bi.searchByName.isChecked())
-                {
+                if(bi.searchByName.isChecked()) {
                     bi.memberId.setHint("Name");
                 }else{
                     bi.memberId.setHint("Card No.");
@@ -139,6 +139,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         MemberInfoLauncher.launch(intent);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void filterForms(View view) {
 
         if (bi.searchByName.isChecked()) {

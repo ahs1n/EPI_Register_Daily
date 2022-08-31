@@ -6,7 +6,6 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccineCount;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesList;
 
 import android.content.Context;
 import android.content.Intent;
@@ -73,8 +72,7 @@ public class SectionVBActivity extends AppCompatActivity {
             bi.fldGrpCVvb08w.setVisibility(View.VISIBLE);
         }
 
-        if(MainApp.flag)
-        {
+        if (MainApp.flag) {
             bi.pName.setText(formVB.getVb04());
             bi.hName.setText(formVB.getVb04());
             bi.cardNo.setText(formVB.getVb02());
@@ -82,7 +80,7 @@ public class SectionVBActivity extends AppCompatActivity {
                 bi.vacStatus.setText("TT" + formVB.getVb08w());
             }
             bi.vacDate.setText(formVB.getVb08wdt());
-        }else{
+        } else {
             bi.pName.setText(vaccinesData.getVB04A());
             bi.hName.setText(vaccinesData.getVB04());
             bi.cardNo.setText(vaccinesData.getVBO2());
@@ -102,6 +100,7 @@ public class SectionVBActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate(vaccineList): " + vaccinesDataList.size());
         try {
             //vaccinesList = db.getVaccinatedMembersBYUID();
+            vaccinesDataList.clear();
             vaccinesDataList = db.getSyncedVaccinatedMembersBYUID(vaccinesData.getUID());
 
             for (VaccinesData vaccines : vaccinesDataList) {
@@ -342,6 +341,10 @@ public class SectionVBActivity extends AppCompatActivity {
         //    vaccines.populateMeta();
 //        vaccines.setUuid(formVB.getUid());
 
+        if (!flag) {
+            setGPS();
+        }
+
         vaccines.setFrontfilename(formVB.getFrontfilename());
         vaccines.setBackfilename(formVB.getBackfilename());
         vaccines.setChildfilename(formVB.getChildfilename());
@@ -411,10 +414,17 @@ public class SectionVBActivity extends AppCompatActivity {
 
             String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
 
-            formVB.setGpsLat(lat);
-            formVB.setGpsLng(lang);
-            formVB.setGpsAcc(acc);
-            formVB.setGpsDT(date); // Timestamp is converted to date above
+            if (flag) {
+                formVB.setGpsLat(lat);
+                formVB.setGpsLng(lang);
+                formVB.setGpsAcc(acc);
+                formVB.setGpsDT(date); // Timestamp is converted to date above
+            } else {
+                vaccines.setGpsLat(lat);
+                vaccines.setGpsLng(lang);
+                vaccines.setGpsAcc(acc);
+                vaccines.setGpsDT(date); // Timestamp is converted to date above
+            }
 
             Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
 
@@ -431,7 +441,11 @@ public class SectionVBActivity extends AppCompatActivity {
 
 
         vaccines = new Vaccines();
-        vaccines.populateMeta();
+        if (flag) {
+            vaccines.populateMeta();
+        } else {
+            vaccines.populateMetaFollowUp();
+        }
         MainApp.flag = false;
         String caAntigen = null;
         String waAntigen = null;
@@ -519,13 +533,18 @@ public class SectionVBActivity extends AppCompatActivity {
             insertVaccineRecord("TT", waAntigen, bi.vb08wdt.getText().toString());
         }
 
-
-        if (updateDB()) {
+        if (flag) {
+            if (updateDB()) {
+                finish();
+                Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, MainActivity.class));
+            } else {
+                Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
+            }
+        } else {
             finish();
             Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, MainActivity.class));
-        } else {
-            Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
         }
     }
 

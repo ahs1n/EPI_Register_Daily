@@ -49,8 +49,6 @@ import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.CreateLocationActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.SyncActivity;
-import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
-import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedChildListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedWomenListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVAActivity;
@@ -162,15 +160,24 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.openChildVacForm:
                     MainApp.formVB = new FormVB();
                     MainApp.vaccinesData = new VaccinesData();
-                    finish();
-                    startActivity(new Intent(this, VaccinatedChildListActivity.class));
+                    if (MainApp.flagVA) {
+                        bi.openChildVacForm.setClickable(true);
+                        finish();
+                        startActivity(new Intent(this, VaccinatedChildListActivity.class));
+                    } else
+                        Snackbar.make(bi.toolbar, "Please Enter Batch Management Form", Snackbar.LENGTH_LONG).show();
+
                     break;
 
                 case R.id.openWomenVacForm:
                     MainApp.formVB = new FormVB();
                     MainApp.vaccinesData = new VaccinesData();
-                    finish();
-                    startActivity(new Intent(this, VaccinatedWomenListActivity.class));
+                    if (MainApp.flagVA) {
+                        bi.openWomenVacForm.setClickable(true);
+                        finish();
+                        startActivity(new Intent(this, VaccinatedWomenListActivity.class));
+                    } else
+                        Snackbar.make(bi.toolbar, "Please Enter Batch Management Form", Snackbar.LENGTH_LONG).show();
                     break;
 
                 case R.id.secA:

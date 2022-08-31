@@ -207,7 +207,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorAccentLightOverlay"
-                                android:clickable="true"
+                                android:clickable="false"
                                 android:onClick="sectionPress"
                                 android:orientation="horizontal">
 
@@ -271,7 +271,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorAccentLightOverlay"
-                                android:clickable="true"
+                                android:clickable="false"
                                 android:onClick="sectionPress"
                                 android:orientation="horizontal">
 

@@ -183,6 +183,7 @@ public class SectionVAActivity extends AppCompatActivity {
 
 
     public void btnContinue(View view) {
+        MainApp.flagVA = true;
         if (!formValidation()) return;
         if (!insertNewRecord()) return;
         if (updateDB()) {

@@ -88,6 +88,24 @@ public class Vaccines extends BaseObservable implements Observable {
     }
 
 
+    public void populateMetaFollowUp() {
+        setUserName(MainApp.user.getUserName());
+        setUcCode(MainApp.user.getUccode());
+        setDeviceId(MainApp.attendance.getDeviceId());
+        setUuid(MainApp.vaccinesData.getUID());
+        setAid(MainApp.attendance.getUid());
+        setVb02(MainApp.vaccinesData.getVBO2());
+        setVb04a(MainApp.vaccinesData.getVB04A());
+        setVb04(MainApp.vaccinesData.getVB04());
+        setVillageCode(MainApp.workLocation.getWlVillageCode());
+        setFacilityCode(MainApp.workLocation.getWlFacilityCode());
+        setWlArea(MainApp.workLocation.getWlArea());
+        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
+        setAppver(MainApp.appInfo.getAppVersion());
+        setProjectName(PROJECT_NAME);
+    }
+
+
     public String getProjectName() {
         return projectName;
     }
@@ -541,7 +559,7 @@ public class Vaccines extends BaseObservable implements Observable {
     }
 
     public void updateAntigen(String vaccCode, String antigen, String vaccDate) {
-        if (MainApp.formVB.getVb03().equals("2")) {
+        if (MainApp.formVB.getVb03().equals("2") || MainApp.vaccinesData.getVBO3().equals("2")) {
             setVb08CCode(vaccCode);
             setVb08CAntigen(antigen);
             setVb08CDate(vaccDate);
