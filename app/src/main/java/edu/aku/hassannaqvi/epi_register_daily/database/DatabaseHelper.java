@@ -2017,8 +2017,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause;
-        whereClause = AttendanceTable.COLUMN_UID + " = ? ";
+        String whereClause = AttendanceTable.COLUMN_UID + " = ? ";
 
         String[] whereArgs = {uid};
 
@@ -2030,7 +2029,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 columns,
                 whereClause,               // The columns for the WHERE clause
                 whereArgs,
-                null,
                 null,
                 null,
                 orderBy

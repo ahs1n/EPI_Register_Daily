@@ -69,13 +69,13 @@ public class MemberInfoActivity extends AppCompatActivity {
         bi.setForm(formVB);
 
 
-        formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
+
         formVB.setFacilityCode(MainApp.workLocation.getWlFacilityCode());
         formVB.setWlArea(MainApp.workLocation.getWlArea());
 
         if (workLocation.getWlLocationType().equals("1")) {
             bi.fldGrpCVvb04c.setVisibility(View.VISIBLE);
-        }
+        } else formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
 
     }
 
