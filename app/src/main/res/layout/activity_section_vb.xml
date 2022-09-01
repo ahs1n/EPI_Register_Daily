@@ -687,7 +687,7 @@
                     <TableRow
                         android:id="@+id/wraVACINFO"
                         android:visibility="gone"
-                        tools:visibility="vissible">
+                        tools:visibility="visible">
 
                         <TextView
                             android:layout_column="1"
@@ -805,7 +805,7 @@
                                         style="@style/sub_labels"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
-                                        android:layout_weight="1.7"
+                                        android:layout_weight="1.5"
                                         android:gravity="center_vertical|center_horizontal"
                                         android:text="I"
                                         android:visibility="invisible" />
@@ -869,7 +869,8 @@
                                             android:id="@+id/vb08ca"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:orientation="horizontal">
+                                            android:orientation="horizontal"
+                                            android:paddingBottom="0dp">
 
                                             <View
                                                 android:layout_width="0dp"
@@ -938,6 +939,94 @@
                                                 android:visibility="invisible" />
 
                                         </RadioGroup>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="0dp"
+
+                                            android:padding="0dp"
+                                            android:paddingTop="0dp">
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08caatxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="visible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:background="@color/lightPink"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="2"
+                                                android:layout_height="wrap_content"
+                                                android:textSize="@dimen/_7sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:gravity="center"
+                                                android:text="abc"
+                                                android:textColor="@color/redLight"
+                                                android:visibility="invisible"
+                                                />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:background="@color/lightPink"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="2"
+                                                android:layout_height="wrap_content"
+                                                android:textSize="@dimen/_7sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:gravity="center"
+                                                android:text="abc"
+                                                android:textColor="@color/redLight"
+                                                android:visibility="invisible"
+                                                />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:background="@color/lightPink"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="2"
+                                                android:layout_height="wrap_content"
+                                                android:textSize="@dimen/_7sdp"
+                                                android:layout_gravity="center_vertical"
+                                                android:gravity="center"
+                                                android:text="abc"
+                                                android:textColor="@color/redLight"
+                                                android:visibility="invisible"
+                                                />
+
+
+                                        </LinearLayout>
 
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                             android:id="@+id/vb08cadt"
@@ -1094,6 +1183,93 @@
 
                                         </RadioGroup>
 
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="0dp"
+                                            android:padding="0dp"
+                                            android:paddingTop="0dp">
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cbatxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cbbtxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cbctxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cbdtxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+
+                                        </LinearLayout>
+
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                             android:id="@+id/vb08cbdt"
                                             android:layout_width="match_parent"
@@ -1208,6 +1384,94 @@
                                                 android:visibility="invisible" />
 
                                         </RadioGroup>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="0dp"
+                                            android:padding="0dp"
+                                            android:paddingTop="0dp">
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08ccatxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textColor="@color/colorPrimaryDark"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textColor="@color/redLight"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+
+                                        </LinearLayout>
+
 
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                             android:id="@+id/vb08ccdt"
@@ -1348,6 +1612,93 @@
 
                                         </RadioGroup>
 
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="0dp"
+                                            android:padding="0dp"
+                                            android:paddingTop="0dp">
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textColor="@color/redLight"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cdatxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cdbtxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cdctxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+
+                                        </LinearLayout>
+
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                             android:id="@+id/vb08cddt"
                                             android:layout_width="match_parent"
@@ -1487,6 +1838,93 @@
 
                                         </RadioGroup>
 
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="0dp"
+                                            android:padding="0dp"
+                                            android:paddingTop="0dp">
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textColor="@color/redLight"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08ceatxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cebtxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cectxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+
+                                        </LinearLayout>
+
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                             android:id="@+id/vb08cedt"
                                             android:layout_width="match_parent"
@@ -1613,6 +2051,92 @@
                                                 android:visibility="invisible" />
 
                                         </RadioGroup>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="0dp"
+                                            android:padding="0dp"
+                                            android:paddingTop="0dp">
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textColor="@color/redLight"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cfatxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cfbtxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+
+                                        </LinearLayout>
 
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                             android:id="@+id/vb08cfdt"
@@ -1741,6 +2265,91 @@
 
                                         </RadioGroup>
 
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="0dp"
+                                            android:padding="0dp"
+                                            android:paddingTop="0dp">
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cgatxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08cgbtxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+
+                                        </LinearLayout>
+
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                             android:id="@+id/vb08cgdt"
                                             android:layout_width="match_parent"
@@ -1868,6 +2477,92 @@
 
                                         </RadioGroup>
 
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="0dp"
+                                            android:padding="0dp"
+                                            android:paddingTop="0dp">
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textColor="@color/redLight"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08chatxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08chbtxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+
+                                        </LinearLayout>
+
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                             android:id="@+id/vb08chdt"
                                             android:layout_width="match_parent"
@@ -1983,6 +2678,93 @@
 
                                         </RadioGroup>
 
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="20dp"
+                                            android:orientation="horizontal"
+                                            android:layout_marginTop="0dp"
+                                            android:padding="0dp"
+                                            android:paddingTop="0dp">
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textColor="@color/redLight"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                android:id="@+id/vb08ciatxt"
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textColor="@color/redLight"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textColor="@color/redLight"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+                                            <View
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center_horizontal|center_vertical"
+                                                android:layout_weight="0.2" />
+
+                                            <TextView
+                                                style="@style/badges"
+                                                android:layout_width="0dp"
+                                                android:layout_height="18dp"
+                                                android:layout_weight="2"
+                                                android:fontFamily="@font/roboto"
+                                                android:includeFontPadding="false"
+                                                android:lineSpacingExtra="0dp"
+                                                android:text="2022-08-20"
+                                                android:textSize="@dimen/_6sdp"
+                                                android:visibility="invisible" />
+
+
+                                        </LinearLayout>
+
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                                             android:id="@+id/vb08cidt"
                                             android:layout_width="match_parent"
@@ -2044,7 +2826,7 @@
                                 style="@style/sub_labels"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_weight="1"
+                                android:layout_weight="1.5"
                                 android:gravity="center_vertical|center_horizontal"
                                 android:text="------"
                                 android:visibility="invisible" />
@@ -2091,18 +2873,37 @@
                                 android:text="V" />
                         </LinearLayout>
 
+
+                        <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="@dimen/_65sdp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="0dp"
+                                        android:background="@color/colorAccent"
+                                        android:gravity="center_vertical|center_horizontal"
+                                        android:textColor="@color/black"
+                                        android:text="@string/vb08wa" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
                         <RadioGroup
                             android:id="@+id/vb08w"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <TextView
+                            <!--<TextView
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="3"
                                 android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/vb08wa" />
+                                android:text="@string/vb08wa" />-->
 
                             <View
                                 android:layout_width="0dp"
@@ -2237,6 +3038,120 @@
 
                         </RadioGroup>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="0dp"
+                            android:padding="0dp"
+                            android:paddingTop="0dp">
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="0.1" />
+
+                            <TextView
+                                android:id="@+id/vb08waatxt"
+                                style="@style/badges"
+                                android:layout_width="0dp"
+                                android:layout_height="18dp"
+                                android:layout_weight="1.5"
+                                android:fontFamily="@font/roboto"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="0dp"
+                                android:text="2022-08-20"
+                                android:textColor="@color/redLight"
+                                android:textSize="@dimen/_6sdp"
+                                android:visibility="visible" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="0.1" />
+
+                            <TextView
+                                android:id="@+id/vb08wabtxt"
+                                style="@style/badges"
+                                android:layout_width="0dp"
+                                android:layout_height="18dp"
+                                android:layout_weight="1.5"
+                                android:fontFamily="@font/roboto"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="0dp"
+                                android:text="2022-08-20"
+                                android:textColor="@color/redLight"
+                                android:textSize="@dimen/_6sdp"
+                                android:visibility="visible" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="0.1" />
+
+                            <TextView
+                                android:id="@+id/vb08wactxt"
+                                style="@style/badges"
+                                android:layout_width="0dp"
+                                android:layout_height="18dp"
+                                android:layout_weight="1.5"
+                                android:fontFamily="@font/roboto"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="0dp"
+                                android:text="2022-08-20"
+                                android:textColor="@color/redLight"
+                                android:textSize="@dimen/_6sdp"
+                                android:visibility="visible" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="0.1" />
+
+                            <TextView
+                                android:id="@+id/vb08wadtxt"
+                                style="@style/badges"
+                                android:layout_width="0dp"
+                                android:layout_height="18dp"
+                                android:layout_weight="1.5"
+                                android:fontFamily="@font/roboto"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="0dp"
+                                android:text="2022-08-20"
+                                android:textColor="@color/redLight"
+                                android:textSize="@dimen/_6sdp"
+                                android:visibility="visible" />
+
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_weight="0.1" />
+
+                            <TextView
+                                android:id="@+id/vb08waetxt"
+                                style="@style/badges"
+                                android:layout_width="0dp"
+                                android:layout_height="18dp"
+                                android:layout_weight="1.5"
+                                android:fontFamily="@font/roboto"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="0dp"
+                                android:text="2022-08-20"
+                                android:textColor="@color/redLight"
+                                android:textSize="@dimen/_6sdp"
+                                android:visibility="visible" />
+
+
+
+
+                        </LinearLayout>
+
                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
                             android:id="@+id/vb08wdt"
                             android:layout_width="match_parent"
@@ -2249,6 +3164,8 @@
                             app:dateFormat="yyyy-MM-dd"
                             app:maxDate="CR_DATE"
                             app:theme="@style/DatePickerEditTextDialogTheme" />
+                    </LinearLayout>
+                        </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

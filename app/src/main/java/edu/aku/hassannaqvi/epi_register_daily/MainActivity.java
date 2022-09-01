@@ -85,13 +85,15 @@ public class MainActivity extends AppCompatActivity {
         String todayDate = sdf.format(new Date());
         String workLocationDate = sharedPref.getString("workLocationDate", "          ").substring(0, 10);
         String attendanceDate = sharedPref.getString("attendanceDate", "          ").substring(0, 10);
-        String batchManagementDate = sharedPref.getString("batchManagementDate", "          ").substring(0,10);
+        String batchManagementDate = sharedPref.getString("batchManagementDate", "          ").substring(0, 10);
         bi.toolbar.setSubtitle("Welcome, " + MainApp.user.getFullname() + (MainApp.admin ? " (Admin)" : "") + "! " + (!attendanceDate.equals("          ") ? "     -     M✓" : ""));
 
         Date strWorkLoctionDate = null;
         Date strAttendanceDate = null;
         Date strBatchManagementDate = null;
         Date strToday = null;
+
+        /*WorkLocation*/
         try {
             strWorkLoctionDate = sdf.parse(workLocationDate);
             strToday = sdf.parse(todayDate);
@@ -120,8 +122,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
             bi.location.setText("Your current location is not set. \nPlease create new work location.");
-
         }
+
+        /*Attendance*/
         try {
             strAttendanceDate = sdf.parse(attendanceDate);
             strToday = sdf.parse(todayDate);
@@ -150,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        /*BatchManagement*/
         try {
             strBatchManagementDate = sdf.parse(batchManagementDate);
             strToday = sdf.parse(todayDate);
@@ -164,15 +167,15 @@ public class MainActivity extends AppCompatActivity {
                 MainApp.formVA = null;
                 //bi.markAttendance.setVisibility(View.VISIBLE);
             } else {
-                String batchManagementUID = sharedPref.getString("batchManagementDate", "");
+                String batchManagementUID = sharedPref.getString("batchManagementUID", "");
                 //bi.markAttendance.setVisibility(View.INVISIBLE);
                 //Snackbar.make(bi.toolbar, "Your attendance has been marked!", Snackbar.LENGTH_LONG).show();
 
                 try {
-                    formVA = db.getCurrentFormVA(batchManagementUID);
+                    MainApp.formVA = db.getCurrentFormVA(batchManagementUID);
 
                 } catch (JSONException e) {
-                    Toast.makeText(this, "JSONException(Attendance): " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "JSONException(BatchManagement): " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         } catch (ParseException e) {
@@ -218,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.secB:
-                    MainApp.formVA = new FormVA();
+                    MainApp.formVB = new FormVB();
                     startActivity(new Intent(this, SectionVBActivity.class));
                     break;
 

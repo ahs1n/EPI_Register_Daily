@@ -190,6 +190,8 @@ public class SectionVAActivity extends AppCompatActivity {
         //MainApp.flagVA = true;
         if (!formValidation()) return;
         if (!insertNewRecord()) return;
+
+        if(insertNewRecord()) setCurrentDate();
         setCurrentDate();
         if (updateDB()) {
             finish();

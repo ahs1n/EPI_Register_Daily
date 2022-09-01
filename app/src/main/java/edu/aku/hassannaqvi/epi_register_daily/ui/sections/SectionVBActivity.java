@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -109,6 +110,12 @@ public class SectionVBActivity extends AppCompatActivity {
                 baseId = "vb08ca";
                 results.clear();
                 showHideDoneCheck(!vaccines.getBcg().equals(""), bi.vb08caa, bi.vb08caatick);
+                if (!vaccines.getBcg().equals("")) {
+                    bi.vb08caatxt.setVisibility(View.VISIBLE);
+                    bi.vb08caatxt.setText(vaccines.getBcg());
+                }else {
+                    bi.vb08caatxt.setVisibility(View.INVISIBLE);
+                }
 
                 // OPV
                 baseId = "vb08cb";
@@ -118,6 +125,14 @@ public class SectionVBActivity extends AppCompatActivity {
                 results.add(showHideDoneCheck(!vaccines.getOpv2().equals(""), bi.vb08cbc, bi.vb08cbctick));
                 results.add(showHideDoneCheck(!vaccines.getOpv3().equals(""), bi.vb08cbd, bi.vb08cbdtick));
                 verifyCrossTicks(results, baseId);
+
+                if (!vaccines.getOpv0().equals("")) {
+                    bi.vb08caatxt.setVisibility(View.VISIBLE);
+                    bi.vb08caatxt.setText(vaccines.getBcg());
+                }else {
+                    bi.vb08caatxt.setVisibility(View.INVISIBLE);
+                }
+
 
 
                 //Hep B
@@ -170,7 +185,6 @@ public class SectionVBActivity extends AppCompatActivity {
                 verifyCrossTicks(results, baseId);
 
                 // TT
-                //TODO: Add TT4 and TT5
                 baseId = "vb08wa";
                 results.clear();
                 results.add(showHideDoneCheck(!vaccines.getTt1().equals(""), bi.vb08waa, bi.vb08waatick));
@@ -304,6 +318,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
         RadioButton radioButton = (RadioButton) getViewDynamically(baseId + letter);
         ImageView imgCross = (ImageView) getViewDynamically(baseId + letter + "tick");
+
         if (radioButton != null && imgCross != null) {
             if (imgCross.getVisibility() == View.GONE) {
                 radioButton.setVisibility(View.GONE);
@@ -326,10 +341,12 @@ public class SectionVBActivity extends AppCompatActivity {
             boolean condition,
             RadioButton radioButton,
             ImageView imgDone
+
     ) {
         if (condition) {
             radioButton.setVisibility(View.GONE);
             imgDone.setVisibility(View.VISIBLE);
+
             return true;
         }// else radioButton.setVisibility(View.VISIBLE);
         return false;
@@ -341,17 +358,22 @@ public class SectionVBActivity extends AppCompatActivity {
         //    vaccines.populateMeta();
 //        vaccines.setUuid(formVB.getUid());
 
-        if (!flag) {
-            setGPS();
-        }
+        setGPS();
 
         vaccines.setFrontfilename(formVB.getFrontfilename());
         vaccines.setBackfilename(formVB.getBackfilename());
         vaccines.setChildfilename(formVB.getChildfilename());
-        vaccines.setGpsLat(formVB.getGpsLat());
-        vaccines.setGpsLng(formVB.getGpsLng());
-        vaccines.setGpsAcc(formVB.getGpsAcc());
-        vaccines.setGpsDT(formVB.getGpsDT());
+        if(flag) {
+            vaccines.setGpsLat(formVB.getGpsLat());
+            vaccines.setGpsLng(formVB.getGpsLng());
+            vaccines.setGpsAcc(formVB.getGpsAcc());
+            vaccines.setGpsDT(formVB.getGpsDT());
+        }else{
+            vaccines.setGpsLat(vaccines.getGpsLat());
+            vaccines.setGpsLng(vaccines.getGpsLng());
+            vaccines.setGpsAcc(vaccines.getGpsAcc());
+            vaccines.setGpsDT(vaccines.getGpsDT());
+        }
 
         vaccines.updateAntigen(vaccCode, antigen, vaccDate);
         long rowId = 0;
@@ -392,6 +414,24 @@ public class SectionVBActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.upd_db + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
         if (updcount == 5) {
+            return true;
+        } else {
+            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
+    private boolean updateDBVaccineFUP() {
+        if (MainApp.superuser) return true;
+
+        setGPS();
+
+        int updcount = 0;
+        updcount = db.updatesVaccineColumn(TableContracts.VaccinesTable.COLUMN_GPSLAT, vaccines.getGpsLat())
+                + db.updatesVaccineColumn(TableContracts.VaccinesTable.COLUMN_GPSLNG, vaccines.getGpsLng())
+                + db.updatesVaccineColumn(TableContracts.VaccinesTable.COLUMN_GPSACC, vaccines.getGpsAcc())
+                + db.updatesVaccineColumn(TableContracts.VaccinesTable.COLUMN_GPSDATE, vaccines.getGpsDT());
+        if (updcount == 4) {
             return true;
         } else {
             Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
@@ -446,7 +486,7 @@ public class SectionVBActivity extends AppCompatActivity {
         } else {
             vaccines.populateMetaFollowUp();
         }
-        MainApp.flag = false;
+
         String caAntigen = null;
         String waAntigen = null;
 
@@ -535,6 +575,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
         if (flag) {
             if (updateDB()) {
+                MainApp.flag = false;
                 finish();
                 Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, MainActivity.class));
@@ -542,9 +583,14 @@ public class SectionVBActivity extends AppCompatActivity {
                 Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
             }
         } else {
-            finish();
-            Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, MainActivity.class));
+            if (updateDBVaccineFUP()) {
+                finish();
+                Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, MainActivity.class));
+            } else {
+                Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

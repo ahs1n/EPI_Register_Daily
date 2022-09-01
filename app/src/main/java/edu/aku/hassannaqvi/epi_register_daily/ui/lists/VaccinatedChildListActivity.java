@@ -122,7 +122,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         super.onResume();
         Toast.makeText(this, "Activity Resumed!", Toast.LENGTH_SHORT).show();
         //MainApp.formVB.setUuid(MainApp.formVA.getUid());
-        formVA = new FormVA();
+//        formVA = new FormVA();
         if (MainApp.formVA.getUid().equals("")) {
             try {
                 MainApp.formVA = db.getFormByuid(MainApp.formVA.getUid());
