@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -109,89 +110,82 @@ public class SectionVBActivity extends AppCompatActivity {
                 //BCG
                 baseId = "vb08ca";
                 results.clear();
-                showHideDoneCheck(!vaccines.getBcg().equals(""), bi.vb08caa, bi.vb08caatick);
-                if (!vaccines.getBcg().equals("")) {
-                    bi.vb08caatxt.setVisibility(View.VISIBLE);
-                    bi.vb08caatxt.setText(vaccines.getBcg());
-                }else {
-                    bi.vb08caatxt.setVisibility(View.INVISIBLE);
-                }
+//                showHideDoneCheck(!vaccines.getBcg().equals(""), bi.vb08caa, bi.vb08caatick);
+//                if (!vaccines.getBcg().equals("")) {
+//                    bi.vb08caatxt.setVisibility(View.VISIBLE);
+//                    bi.vb08caatxt.setText(vaccines.getBcg());
+//                }else {
+//                    bi.vb08caatxt.setVisibility(View.INVISIBLE);
+//                }
+                showHideDoneCheckWithText(vaccines.getBcg(), baseId, "a");
 
                 // OPV
                 baseId = "vb08cb";
                 results.clear();
-                results.add(showHideDoneCheck(!vaccines.getOpv0().equals(""), bi.vb08cba, bi.vb08cbatick));
-                results.add(showHideDoneCheck(!vaccines.getOpv1().equals(""), bi.vb08cbb, bi.vb08cbbtick));
-                results.add(showHideDoneCheck(!vaccines.getOpv2().equals(""), bi.vb08cbc, bi.vb08cbctick));
-                results.add(showHideDoneCheck(!vaccines.getOpv3().equals(""), bi.vb08cbd, bi.vb08cbdtick));
+                results.add(showHideDoneCheckWithText(vaccines.getOpv0(), baseId, "a"));
+                results.add(showHideDoneCheckWithText(vaccines.getOpv1(), baseId, "b"));
+                results.add(showHideDoneCheckWithText(vaccines.getOpv2(), baseId, "c"));
+                results.add(showHideDoneCheckWithText(vaccines.getOpv3(), baseId, "d"));
                 verifyCrossTicks(results, baseId);
-
-                if (!vaccines.getOpv0().equals("")) {
-                    bi.vb08caatxt.setVisibility(View.VISIBLE);
-                    bi.vb08caatxt.setText(vaccines.getBcg());
-                }else {
-                    bi.vb08caatxt.setVisibility(View.INVISIBLE);
-                }
-
 
 
                 //Hep B
                 baseId = "vb08cc";
                 results.clear();
-                results.add(showHideDoneCheck(!vaccines.getHepB().equals(""), bi.vb08cca, bi.vb08ccatick));
+                results.add(showHideDoneCheckWithText(vaccines.getHepB(), baseId, "a"));
                 verifyCrossTicks(results, baseId);
 
                 // Penta
                 baseId = "vb08cd";
                 results.clear();
-                results.add(showHideDoneCheck(!vaccines.getPenta1().equals(""), bi.vb08cda, bi.vb08cdatick));
-                results.add(showHideDoneCheck(!vaccines.getPenta2().equals(""), bi.vb08cdb, bi.vb08cdbtick));
-                results.add(showHideDoneCheck(!vaccines.getPenta3().equals(""), bi.vb08cdc, bi.vb08cdctick));
+                results.add(showHideDoneCheckWithText(vaccines.getPenta1(), baseId, "a"));
+                results.add(showHideDoneCheckWithText(vaccines.getPenta2(),baseId, "b"));
+                results.add(showHideDoneCheckWithText(vaccines.getPenta3(), baseId, "c"));
                 verifyCrossTicks(results, baseId);
 
                 // PCV
                 baseId = "vb08ce";
                 results.clear();
-                results.add(showHideDoneCheck(!vaccines.getPcv1().equals(""), bi.vb08cea, bi.vb08ceatick));
-                results.add(showHideDoneCheck(!vaccines.getPcv2().equals(""), bi.vb08ceb, bi.vb08cebtick));
-                results.add(showHideDoneCheck(!vaccines.getPcv3().equals(""), bi.vb08cec, bi.vb08cectick));
+                results.add(showHideDoneCheckWithText(vaccines.getPcv1(), baseId, "a"));
+                results.add(showHideDoneCheckWithText(vaccines.getPcv2(), baseId, "b"));
+                results.add(showHideDoneCheckWithText(vaccines.getPcv3(), baseId, "c"));
                 verifyCrossTicks(results, baseId);
 
                 // Rota
                 baseId = "vb08cf";
                 results.clear();
-                results.add(showHideDoneCheck(!vaccines.getRota1().equals(""), bi.vb08cfa, bi.vb08cfatick));
-                results.add(showHideDoneCheck(!vaccines.getRota2().equals(""), bi.vb08cfb, bi.vb08cfbtick));
+                results.add(showHideDoneCheckWithText(vaccines.getRota1(), baseId, "a"));
+                results.add(showHideDoneCheckWithText(vaccines.getRota2(), baseId, "b"));
                 verifyCrossTicks(results, baseId);
 
                 // IPV
                 baseId = "vb08cg";
                 results.clear();
-                results.add(showHideDoneCheck(!vaccines.getIpv1().equals(""), bi.vb08cga, bi.vb08cgatick));
-                results.add(showHideDoneCheck(!vaccines.getIpv2().equals(""), bi.vb08cgb, bi.vb08cgbtick));
+                results.add(showHideDoneCheckWithText(vaccines.getIpv1(), baseId, "a"));
+                results.add(showHideDoneCheckWithText(vaccines.getIpv2(), baseId, "b"));
                 verifyCrossTicks(results, baseId);
 
                 // Measles
                 baseId = "vb08ch";
                 results.clear();
-                results.add(showHideDoneCheck(!vaccines.getMeasles1().equals(""), bi.vb08cha, bi.vb08chatick));
-                results.add(showHideDoneCheck(!vaccines.getMeasles2().equals(""), bi.vb08chb, bi.vb08chbtick));
+                results.add(showHideDoneCheckWithText(vaccines.getMeasles1(), baseId, "a"));
+                results.add(showHideDoneCheckWithText(vaccines.getMeasles2(), baseId, "b"));
                 verifyCrossTicks(results, baseId);
 
                 // Typhoid
                 baseId = "vb08ci";
                 results.clear();
-                results.add(showHideDoneCheck(!vaccines.getTyphoid().equals(""), bi.vb08cia, bi.vb08ciatick));
+                results.add(showHideDoneCheckWithText(vaccines.getTyphoid(), baseId, "a"));
                 verifyCrossTicks(results, baseId);
 
                 // TT
                 baseId = "vb08wa";
                 results.clear();
-                results.add(showHideDoneCheck(!vaccines.getTt1().equals(""), bi.vb08waa, bi.vb08waatick));
-                results.add(showHideDoneCheck(!vaccines.getTt2().equals(""), bi.vb08wab, bi.vb08wabtick));
-                results.add(showHideDoneCheck(!vaccines.getTt3().equals(""), bi.vb08wac, bi.vb08wactick));
-                results.add(showHideDoneCheck(!vaccines.getTt4().equals(""), bi.vb08wad, bi.vb08wadtick));
-                results.add(showHideDoneCheck(!vaccines.getTt5().equals(""), bi.vb08wae, bi.vb08waetick));
+                results.add(showHideDoneCheckWithText(vaccines.getTt1(), baseId, "a"));
+                results.add(showHideDoneCheckWithText(vaccines.getTt2(), baseId, "b"));
+                results.add(showHideDoneCheckWithText(vaccines.getTt3(), baseId, "d"));
+                results.add(showHideDoneCheckWithText(vaccines.getTt4(), baseId, "e"));
+                results.add(showHideDoneCheckWithText(vaccines.getTt5(), baseId, "f"));
                 verifyCrossTicks(results, baseId);
 
             }
@@ -346,6 +340,49 @@ public class SectionVBActivity extends AppCompatActivity {
         if (condition) {
             radioButton.setVisibility(View.GONE);
             imgDone.setVisibility(View.VISIBLE);
+
+            return true;
+        }// else radioButton.setVisibility(View.VISIBLE);
+        return false;
+    }
+
+    private boolean showHideDoneCheckWithText(
+            String conditionText,
+            String baseId,
+            String letter
+    ) {
+        // OPV
+//        baseId = "vb08cb";
+//        results.clear();
+//        results.add(showHideDoneCheck(!vaccines.getOpv0().equals(""), bi.vb08cba, bi.vb08cbatick));
+//        results.add(showHideDoneCheck(!vaccines.getOpv1().equals(""), bi.vb08cbb, bi.vb08cbbtick));
+//        results.add(showHideDoneCheck(!vaccines.getOpv2().equals(""), bi.vb08cbc, bi.vb08cbctick));
+//        results.add(showHideDoneCheck(!vaccines.getOpv3().equals(""), bi.vb08cbd, bi.vb08cbdtick));
+//        verifyCrossTicks(results, baseId);
+//
+//
+//        if (!vaccines.getBcg().equals("")) {
+//            bi.vb08caatxt.setVisibility(View.VISIBLE);
+//            bi.vb08caatxt.setText(vaccines.getBcg());
+//        }else {
+//            bi.vb08caatxt.setVisibility(View.INVISIBLE);
+//        }
+
+        RadioButton radioButton = (RadioButton) getViewDynamically(baseId + letter);
+        ImageView imgDone = (ImageView) getViewDynamically(baseId + letter + "tick");
+        TextView txtVaccine = (TextView) getViewDynamically(baseId + letter + "txt");
+
+        if (!conditionText.equals("")) {
+            if (txtVaccine != null) {
+                txtVaccine.setVisibility(View.VISIBLE);
+                txtVaccine.setText(conditionText);
+            }
+
+            if (radioButton != null)
+                radioButton.setVisibility(View.GONE);
+
+            if (imgDone != null)
+                imgDone.setVisibility(View.VISIBLE);
 
             return true;
         }// else radioButton.setVisibility(View.VISIBLE);

@@ -966,7 +966,7 @@
                                                 android:lineSpacingExtra="0dp"
                                                 android:text="2022-08-20"
                                                 android:textSize="@dimen/_6sdp"
-                                                android:visibility="visible" />
+                                                android:visibility="invisible" />
 
                                             <View
                                                 android:layout_width="0dp"
@@ -3064,7 +3064,7 @@
                                 android:text="2022-08-20"
                                 android:textColor="@color/redLight"
                                 android:textSize="@dimen/_6sdp"
-                                android:visibility="visible" />
+                                android:visibility="invisible" />
 
                             <View
                                 android:layout_width="0dp"
@@ -3084,7 +3084,7 @@
                                 android:text="2022-08-20"
                                 android:textColor="@color/redLight"
                                 android:textSize="@dimen/_6sdp"
-                                android:visibility="visible" />
+                                android:visibility="invisible" />
 
                             <View
                                 android:layout_width="0dp"
@@ -3104,7 +3104,7 @@
                                 android:text="2022-08-20"
                                 android:textColor="@color/redLight"
                                 android:textSize="@dimen/_6sdp"
-                                android:visibility="visible" />
+                                android:visibility="invisible" />
 
                             <View
                                 android:layout_width="0dp"
@@ -3124,7 +3124,7 @@
                                 android:text="2022-08-20"
                                 android:textColor="@color/redLight"
                                 android:textSize="@dimen/_6sdp"
-                                android:visibility="visible" />
+                                android:visibility="invisible" />
 
 
                             <View
@@ -3145,10 +3145,7 @@
                                 android:text="2022-08-20"
                                 android:textColor="@color/redLight"
                                 android:textSize="@dimen/_6sdp"
-                                android:visibility="visible" />
-
-
-
+                                android:visibility="invisible" />
 
                         </LinearLayout>
 
