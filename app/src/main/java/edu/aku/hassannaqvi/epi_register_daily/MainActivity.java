@@ -364,7 +364,7 @@ public class MainActivity extends AppCompatActivity {
             String acc = GPSPref.getString("Accuracy", "0");
 
             if (lat == "0" && lang == "0") {
-                Toast.makeText(this, "Could not obtained points", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Could not obtained points", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Points set", Toast.LENGTH_SHORT).show();
             }

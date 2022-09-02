@@ -110,13 +110,6 @@ public class SectionVBActivity extends AppCompatActivity {
                 //BCG
                 baseId = "vb08ca";
                 results.clear();
-//                showHideDoneCheck(!vaccines.getBcg().equals(""), bi.vb08caa, bi.vb08caatick);
-//                if (!vaccines.getBcg().equals("")) {
-//                    bi.vb08caatxt.setVisibility(View.VISIBLE);
-//                    bi.vb08caatxt.setText(vaccines.getBcg());
-//                }else {
-//                    bi.vb08caatxt.setVisibility(View.INVISIBLE);
-//                }
                 showHideDoneCheckWithText(vaccines.getBcg(), baseId, "a");
 
                 // OPV
@@ -351,22 +344,6 @@ public class SectionVBActivity extends AppCompatActivity {
             String baseId,
             String letter
     ) {
-        // OPV
-//        baseId = "vb08cb";
-//        results.clear();
-//        results.add(showHideDoneCheck(!vaccines.getOpv0().equals(""), bi.vb08cba, bi.vb08cbatick));
-//        results.add(showHideDoneCheck(!vaccines.getOpv1().equals(""), bi.vb08cbb, bi.vb08cbbtick));
-//        results.add(showHideDoneCheck(!vaccines.getOpv2().equals(""), bi.vb08cbc, bi.vb08cbctick));
-//        results.add(showHideDoneCheck(!vaccines.getOpv3().equals(""), bi.vb08cbd, bi.vb08cbdtick));
-//        verifyCrossTicks(results, baseId);
-//
-//
-//        if (!vaccines.getBcg().equals("")) {
-//            bi.vb08caatxt.setVisibility(View.VISIBLE);
-//            bi.vb08caatxt.setText(vaccines.getBcg());
-//        }else {
-//            bi.vb08caatxt.setVisibility(View.INVISIBLE);
-//        }
 
         RadioButton radioButton = (RadioButton) getViewDynamically(baseId + letter);
         ImageView imgDone = (ImageView) getViewDynamically(baseId + letter + "tick");
@@ -391,9 +368,6 @@ public class SectionVBActivity extends AppCompatActivity {
 
 
     private boolean insertVaccineRecord(String vaccCode, String antigen, String vaccDate) {
-        //   if (!vaccines.getUid().equals("") || MainApp.superuser) return true;
-        //    vaccines.populateMeta();
-//        vaccines.setUuid(formVB.getUid());
 
         setGPS();
 
@@ -732,7 +706,7 @@ public class SectionVBActivity extends AppCompatActivity {
             // Results received with requestCode 1 = Front
 
             if (requestCode == 1 && resultCode == RESULT_OK) {
-                Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
 
                 bi.frontFileName.setText(fileName);
                 bi.frontPhoto.setEnabled(false);
@@ -748,7 +722,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
             // Results received with requestCode 2 = Back
             if (requestCode == 2 && resultCode == RESULT_OK) {
-                Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
                 bi.backFileName.setText(fileName);
                 bi.backPhoto.setEnabled(false);
             } else if (requestCode == 2 && resultCode != RESULT_CANCELED) {
@@ -763,7 +737,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
             // Results received with requestCode 2 = child
             if (requestCode == 3 && resultCode == RESULT_OK) {
-                Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
                 bi.childFileName.setText(fileName);
                 bi.childPhoto.setEnabled(false);
             } else if (requestCode == 3 && resultCode != RESULT_CANCELED) {
