@@ -107,79 +107,83 @@ public class SectionVBActivity extends AppCompatActivity {
 
             for (VaccinesData vaccines : vaccinesDataList) {
 
-                //BCG
-                baseId = "vb08ca";
-                results.clear();
-                showHideDoneCheckWithText(vaccines.getBcg(), baseId, "a");
+                if(vaccinesData.getVBO3().equals("2")) {
 
-                // OPV
-                baseId = "vb08cb";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getOpv0(), baseId, "a"));
-                results.add(showHideDoneCheckWithText(vaccines.getOpv1(), baseId, "b"));
-                results.add(showHideDoneCheckWithText(vaccines.getOpv2(), baseId, "c"));
-                results.add(showHideDoneCheckWithText(vaccines.getOpv3(), baseId, "d"));
-                verifyCrossTicks(results, baseId);
+                    //BCG
+                    baseId = "vb08ca";
+                    results.clear();
+                    showHideDoneCheckWithText(vaccines.getBcg(), baseId, "a");
+
+                    // OPV
+                    baseId = "vb08cb";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getOpv0(), baseId, "a"));
+                    results.add(showHideDoneCheckWithText(vaccines.getOpv1(), baseId, "b"));
+                    results.add(showHideDoneCheckWithText(vaccines.getOpv2(), baseId, "c"));
+                    results.add(showHideDoneCheckWithText(vaccines.getOpv3(), baseId, "d"));
+                    verifyCrossTicks(results, baseId);
 
 
-                //Hep B
-                baseId = "vb08cc";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getHepB(), baseId, "a"));
-                verifyCrossTicks(results, baseId);
+                    //Hep B
+                    baseId = "vb08cc";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getHepB(), baseId, "a"));
+                    verifyCrossTicks(results, baseId);
 
-                // Penta
-                baseId = "vb08cd";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getPenta1(), baseId, "a"));
-                results.add(showHideDoneCheckWithText(vaccines.getPenta2(),baseId, "b"));
-                results.add(showHideDoneCheckWithText(vaccines.getPenta3(), baseId, "c"));
-                verifyCrossTicks(results, baseId);
+                    // Penta
+                    baseId = "vb08cd";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getPenta1(), baseId, "a"));
+                    results.add(showHideDoneCheckWithText(vaccines.getPenta2(), baseId, "b"));
+                    results.add(showHideDoneCheckWithText(vaccines.getPenta3(), baseId, "c"));
+                    verifyCrossTicks(results, baseId);
 
-                // PCV
-                baseId = "vb08ce";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getPcv1(), baseId, "a"));
-                results.add(showHideDoneCheckWithText(vaccines.getPcv2(), baseId, "b"));
-                results.add(showHideDoneCheckWithText(vaccines.getPcv3(), baseId, "c"));
-                verifyCrossTicks(results, baseId);
+                    // PCV
+                    baseId = "vb08ce";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getPcv1(), baseId, "a"));
+                    results.add(showHideDoneCheckWithText(vaccines.getPcv2(), baseId, "b"));
+                    results.add(showHideDoneCheckWithText(vaccines.getPcv3(), baseId, "c"));
+                    verifyCrossTicks(results, baseId);
 
-                // Rota
-                baseId = "vb08cf";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getRota1(), baseId, "a"));
-                results.add(showHideDoneCheckWithText(vaccines.getRota2(), baseId, "b"));
-                verifyCrossTicks(results, baseId);
+                    // Rota
+                    baseId = "vb08cf";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getRota1(), baseId, "a"));
+                    results.add(showHideDoneCheckWithText(vaccines.getRota2(), baseId, "b"));
+                    verifyCrossTicks(results, baseId);
 
-                // IPV
-                baseId = "vb08cg";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getIpv1(), baseId, "a"));
-                results.add(showHideDoneCheckWithText(vaccines.getIpv2(), baseId, "b"));
-                verifyCrossTicks(results, baseId);
+                    // IPV
+                    baseId = "vb08cg";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getIpv1(), baseId, "a"));
+                    results.add(showHideDoneCheckWithText(vaccines.getIpv2(), baseId, "b"));
+                    verifyCrossTicks(results, baseId);
 
-                // Measles
-                baseId = "vb08ch";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getMeasles1(), baseId, "a"));
-                results.add(showHideDoneCheckWithText(vaccines.getMeasles2(), baseId, "b"));
-                verifyCrossTicks(results, baseId);
+                    // Measles
+                    baseId = "vb08ch";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getMeasles1(), baseId, "a"));
+                    results.add(showHideDoneCheckWithText(vaccines.getMeasles2(), baseId, "b"));
+                    verifyCrossTicks(results, baseId);
 
-                // Typhoid
-                baseId = "vb08ci";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getTyphoid(), baseId, "a"));
-                verifyCrossTicks(results, baseId);
+                    // Typhoid
+                    baseId = "vb08ci";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getTyphoid(), baseId, "a"));
+                    verifyCrossTicks(results, baseId);
+                }else {
 
-                // TT
-                baseId = "vb08wa";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getTt1(), baseId, "a"));
-                results.add(showHideDoneCheckWithText(vaccines.getTt2(), baseId, "b"));
-                results.add(showHideDoneCheckWithText(vaccines.getTt3(), baseId, "d"));
-                results.add(showHideDoneCheckWithText(vaccines.getTt4(), baseId, "e"));
-                results.add(showHideDoneCheckWithText(vaccines.getTt5(), baseId, "f"));
-                verifyCrossTicks(results, baseId);
+                    // TT
+                    baseId = "vb08wa";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getTt1(), baseId, "a"));
+                    results.add(showHideDoneCheckWithText(vaccines.getTt2(), baseId, "b"));
+                    results.add(showHideDoneCheckWithText(vaccines.getTt3(), baseId, "c"));
+                    results.add(showHideDoneCheckWithText(vaccines.getTt4(), baseId, "d"));
+                    results.add(showHideDoneCheckWithText(vaccines.getTt5(), baseId, "e"));
+                    verifyCrossTicks(results, baseId);
+                }
 
             }
         } catch (JSONException e) {
@@ -316,7 +320,7 @@ public class SectionVBActivity extends AppCompatActivity {
     }
 
     private void verifyCrossTicks(ArrayList<Boolean> results, String baseId) {
-        int firstTrue = results.indexOf(true);
+        int firstTrue = results.lastIndexOf(true);
         if (firstTrue > 0) {
             for (int j = 0; j < firstTrue; j++) {
                 markAsCrossed(baseId, j);
