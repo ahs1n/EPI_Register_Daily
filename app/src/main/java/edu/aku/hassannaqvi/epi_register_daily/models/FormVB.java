@@ -510,7 +510,7 @@ public class FormVB extends BaseObservable implements Observable {
         this.vb04dk = vb04dkdk;
         setVb04bd(vb04dkdk.equals("98") ? "" : this.vb04bd);
         setVb04bm(vb04dkdk.equals("98") ? "" : this.vb04bm);
-        setVb04by(vb04dkdk.equals("9998") ? "" : this.vb04by);
+        setVb04by(vb04dkdk.equals("98") ? "" : this.vb04by);
 
         setVb05d(vb04dk.equals("98") ? this.vb05d : "");
         setVb05m(vb04dk.equals("98") ? this.vb05m : "");

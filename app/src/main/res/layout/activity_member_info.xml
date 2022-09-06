@@ -402,7 +402,7 @@
                                 android:maxLength="2"
                                 android:text="@={form.vb04bd}"
                                 app:maxValue="30"
-                                app:minValue="0"
+                                app:minValue="1"
                                 app:type="range" />
 
                         </LinearLayout>
