@@ -108,6 +108,8 @@
                     <Button
                         android:layout_width="56dp"
                         android:layout_height="match_parent"
+                        android:background="@drawable/all_round_corners"
+                        android:backgroundTint="@color/grayLight"
                         android:drawableStart="@drawable/search"
                         android:onClick="filterForms" />
                 </LinearLayout>

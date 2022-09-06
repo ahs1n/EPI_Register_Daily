@@ -402,7 +402,7 @@
                                 android:maxLength="2"
                                 android:text="@={form.vb04bd}"
                                 app:maxValue="30"
-                                app:minValue="1"
+                                app:minValue="0"
                                 app:type="range" />
 
                         </LinearLayout>
@@ -512,7 +512,7 @@
                                     android:inputType="number"
                                     android:maxLength="2"
                                     android:text="@={form.vb05m}"
-                                    app:maxValue="59"
+                                    app:maxValue="11"
                                     app:minValue="0"
                                     app:type="range" />
                             </LinearLayout>
@@ -766,7 +766,8 @@
                         android:layout_width="130dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="12dp"
-                        android:background="@color/redOverlay"
+                        android:backgroundTint="@color/redOverlay"
+                        android:background="@drawable/all_round_corners"
                         android:elevation="20dp"
                         android:onClick="btnEnd"
                         android:text="@string/cancel"
@@ -777,7 +778,8 @@
                         android:layout_width="130dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="12dp"
-                        android:background="@color/greenOverlay"
+                        android:background="@drawable/all_round_corners"
+                        android:backgroundTint="@color/greenOverlay"
                         android:elevation="20dp"
                         android:onClick="btnContinue"
                         android:text="@string/btnSave"

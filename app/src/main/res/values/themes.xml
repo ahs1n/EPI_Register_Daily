@@ -319,7 +319,6 @@
 
     <style name="quesNum">
         <item name="android:backgroundTint">@color/colorAccent</item>
-        <item name="android:background">@drawable/all_round_corners</item>
         <item name="android:textColor">@color/colorTextOnAccent</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:padding">4dp</item>
