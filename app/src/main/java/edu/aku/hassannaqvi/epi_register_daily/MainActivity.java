@@ -45,6 +45,7 @@ import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
+import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
@@ -193,8 +194,10 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.openChildVacForm:
+                    MainApp.flag = false;
                     MainApp.formVB = new FormVB();
                     MainApp.vaccinesData = new VaccinesData();
+                    MainApp.vaccines = new Vaccines();
                     if (formVA != null && !formVA.getId().isEmpty()) {
                         bi.openChildVacForm.setClickable(true);
                         finish();
@@ -205,8 +208,10 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.openWomenVacForm:
+                    MainApp.flag = false;
                     MainApp.formVB = new FormVB();
                     MainApp.vaccinesData = new VaccinesData();
+                    MainApp.vaccines = new Vaccines();
                     if (formVA != null && !formVA.getId().isEmpty()) {
                         bi.openWomenVacForm.setClickable(true);
                         finish();

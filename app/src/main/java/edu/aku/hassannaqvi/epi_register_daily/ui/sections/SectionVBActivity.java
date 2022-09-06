@@ -375,15 +375,20 @@ public class SectionVBActivity extends AppCompatActivity {
 
         setGPS();
 
-        vaccines.setFrontfilename(formVB.getFrontfilename());
-        vaccines.setBackfilename(formVB.getBackfilename());
-        vaccines.setChildfilename(formVB.getChildfilename());
+
         if(flag) {
+
+            vaccines.setFrontfilename(formVB.getFrontfilename());
+            vaccines.setBackfilename(formVB.getBackfilename());
+            vaccines.setChildfilename(formVB.getChildfilename());
             vaccines.setGpsLat(formVB.getGpsLat());
             vaccines.setGpsLng(formVB.getGpsLng());
             vaccines.setGpsAcc(formVB.getGpsAcc());
             vaccines.setGpsDT(formVB.getGpsDT());
         }else{
+            vaccines.setFrontfilename(bi.frontFileName.getText().toString());
+            vaccines.setBackfilename(bi.backFileName.getText().toString());
+            vaccines.setChildfilename(bi.childFileName.getText().toString());
             vaccines.setGpsLat(vaccines.getGpsLat());
             vaccines.setGpsLng(vaccines.getGpsLng());
             vaccines.setGpsAcc(vaccines.getGpsAcc());
@@ -491,11 +496,10 @@ public class SectionVBActivity extends AppCompatActivity {
 
 
     public void btnContinue(View view) {
+        //vaccines = new Vaccines();
         if (!formValidation()) return;
 //        if (b) if (!insertNewRecord()) return;
 
-
-        vaccines = new Vaccines();
         if (flag) {
             vaccines.populateMeta();
         } else {
@@ -622,18 +626,36 @@ public class SectionVBActivity extends AppCompatActivity {
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
             return false;
         }
-        if (formVB.getVb03().equals("2") && formVB.getFrontfilename().equals("")) {
+        if(flag) {
+            if (formVB.getVb03().equals("2") && formVB.getFrontfilename().equals("")) {
+                return Validator.emptyCustomTextBox(this, bi.frontFileName, "Please take front photo of Vaccination Card.");
+            }
+
+            // Check back photo taken
+            if (formVB.getVb03().equals("2") && formVB.getBackfilename().equals("")) {
+                return Validator.emptyCustomTextBox(this, bi.backFileName, "Please take back photo of Vaccination Card.");
+
+            }
+
+            // Check back photo taken
+            if (formVB.getVb03().equals("2") && formVB.getChildfilename().equals("")) {
+                return Validator.emptyCustomTextBox(this, bi.childFileName, "Please take photo of Child.");
+
+            }
+        }else{
+
+        }if (vaccinesData.getVBO3().equals("2") && bi.frontFileName.getText().toString().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.frontFileName, "Please take front photo of Vaccination Card.");
         }
 
         // Check back photo taken
-        if (formVB.getVb03().equals("2") && formVB.getBackfilename().equals("")) {
+        if (vaccinesData.getVBO3().equals("2") && bi.backFileName.getText().toString().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.backFileName, "Please take back photo of Vaccination Card.");
 
         }
 
         // Check back photo taken
-        if (formVB.getVb03().equals("2") && formVB.getChildfilename().equals("")) {
+        if (vaccinesData.getVBO3().equals("2") && bi.childFileName.getText().toString().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.childFileName, "Please take photo of Child.");
 
         }
@@ -681,8 +703,13 @@ public class SectionVBActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, TakePhoto.class);
 
-        intent.putExtra("picID", formVB.getVb02() + "_" + MainApp.formVB.getVb02() + "_");
-        intent.putExtra("Name", formVB.getVb04a());
+        if(flag) {
+            intent.putExtra("picID", formVB.getVb02() + "_" + MainApp.formVB.getVb02() + "_");
+            intent.putExtra("Name", formVB.getVb04a());
+        }else {
+            intent.putExtra("picID", vaccinesData.getVBO2() + "_" + vaccinesData.getVBO2() + "_");
+            intent.putExtra("Name", vaccinesData.getVB04A());
+        }
 
         if (view.getId() == R.id.frontPhoto) {
             intent.putExtra("picView", "front".toUpperCase());
