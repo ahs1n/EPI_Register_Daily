@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -37,7 +36,6 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTa
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
-import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 
@@ -295,6 +293,17 @@ public class SectionVBActivity extends AppCompatActivity {
 
     private void setupListeners() {
         bi.vb08w.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08wdt));
+
+        bi.vb08ca.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cadt)));
+        bi.vb08cb.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cbdt)));
+        bi.vb08cc.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08ccdt)));
+        bi.vb08cd.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cddt)));
+        bi.vb08ce.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cedt)));
+        bi.vb08cf.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cfdt)));
+        bi.vb08cg.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cgdt)));
+        bi.vb08ch.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08chdt)));
+        bi.vb08ci.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cidt)));
+
     }
 
     private View getViewDynamically(String viewId) {
