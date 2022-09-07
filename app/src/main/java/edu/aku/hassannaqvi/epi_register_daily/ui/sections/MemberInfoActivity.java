@@ -32,8 +32,6 @@ import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMemberInfoBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
-import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredChildListActivity;
-import edu.aku.hassannaqvi.epi_register_daily.ui.lists.RegisteredWomenListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedChildListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedWomenListActivity;
 
@@ -212,8 +210,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (bi.vb04by.getText().toString().isEmpty() || bi.vb04bm.getText().toString().isEmpty() || bi.vb04bd.getText().toString().isEmpty())
-                    return;
+                if (bi.vb04by.getText().toString().isEmpty()) return;
                 bi.vb04bm.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR) ?
                         Calendar.getInstance().get(Calendar.MONTH) + 1 : 12f);
                 bi.vb04bd.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR)
@@ -233,7 +230,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (bi.vb04by.getText().toString().isEmpty() || bi.vb04bm.getText().toString().isEmpty() || bi.vb04bd.getText().toString().isEmpty())
+                if (bi.vb04by.getText().toString().isEmpty() || bi.vb04bm.getText().toString().isEmpty())
                     return;
                 bi.vb04bd.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR)
                         && Integer.parseInt(bi.vb04bm.getText().toString()) == Calendar.getInstance().get(Calendar.MONTH) + 1 ?
@@ -245,7 +242,7 @@ public class MemberInfoActivity extends AppCompatActivity {
             }
         });
 
-        bi.vb04bd.addTextChangedListener(new TextWatcher() {
+        /*bi.vb04bd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -262,7 +259,7 @@ public class MemberInfoActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
             }
-        });
+        });*/
     }
 
 
