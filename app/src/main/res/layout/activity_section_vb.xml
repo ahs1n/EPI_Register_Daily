@@ -1059,10 +1059,9 @@
                                         android:layout_width="@dimen/_85sdp"
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
-                                        android:backgroundTint="@color/colorAccent"
+                                        android:background="@drawable/opv"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:onClick="@{()->form.setVb08cb(``) + form.setVb08cbdt(``) + vb08cb.clearCheck()}"
-                                        android:text="OPV" />
+                                        android:onClick="@{()->form.setVb08cb(``) + form.setVb08cbdt(``) + vb08cb.clearCheck()}" />
 
                                     <LinearLayout
                                         android:id="@+id/fldGrpVB08cb"
@@ -1302,10 +1301,9 @@
                                         android:layout_width="@dimen/_85sdp"
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
-                                        android:backgroundTint="@color/colorAccent"
+                                        android:background="@drawable/hepb"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:onClick="@{()->form.setVb08cc(``) + form.setVb08ccdt(``) + vb08cc.clearCheck()}"
-                                        android:text="Hep B" />
+                                        android:onClick="@{()->form.setVb08cc(``) + form.setVb08ccdt(``) + vb08cc.clearCheck()}" />
 
                                     <LinearLayout
                                         android:id="@+id/fldGrpVB08cc"
@@ -1506,10 +1504,9 @@
                                         android:layout_width="@dimen/_85sdp"
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
-                                        android:backgroundTint="@color/colorAccent"
+                                        android:background="@drawable/penta"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:onClick="@{()->form.setVb08cd(``) + form.setVb08cddt(``) + vb08cd.clearCheck()}"
-                                        android:text="Penta" />
+                                        android:onClick="@{()->form.setVb08cd(``) + form.setVb08cddt(``) + vb08cd.clearCheck()}" />
 
                                     <LinearLayout
                                         android:id="@+id/fldGrpVB08cd"
@@ -1733,10 +1730,9 @@
                                         android:layout_width="@dimen/_85sdp"
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
-                                        android:backgroundTint="@color/colorAccent"
+                                        android:background="@drawable/pcv"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:onClick="@{()->form.setVb08ce(``) + form.setVb08cedt(``) + vb08ce.clearCheck()}"
-                                        android:text="PCV" />
+                                        android:onClick="@{()->form.setVb08ce(``) + form.setVb08cedt(``) + vb08ce.clearCheck()}" />
 
                                     <LinearLayout
                                         android:id="@+id/fldGrpVB08ce"
@@ -1960,10 +1956,9 @@
                                         android:layout_width="@dimen/_85sdp"
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
-                                        android:backgroundTint="@color/colorAccent"
+                                        android:background="@drawable/rota"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:onClick="@{()->form.setVb08cf(``) + form.setVb08cfdt(``) + vb08cf.clearCheck()}"
-                                        android:text="Rota" />
+                                        android:onClick="@{()->form.setVb08cf(``) + form.setVb08cfdt(``) + vb08cf.clearCheck()}" />
 
                                     <LinearLayout
                                         android:id="@+id/fldGrpVB08cf"
@@ -2174,10 +2169,9 @@
                                         android:layout_width="@dimen/_85sdp"
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
-                                        android:backgroundTint="@color/colorAccent"
+                                        android:background="@drawable/ipv"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:onClick="@{()->form.setVb08cg(``) + form.setVb08cgdt(``) + vb08cg.clearCheck()}"
-                                        android:text="IPV" />
+                                        android:onClick="@{()->form.setVb08cg(``) + form.setVb08cgdt(``) + vb08cg.clearCheck()}" />
 
                                     <LinearLayout
                                         android:id="@+id/fldGrpVB08cg"
@@ -2388,10 +2382,9 @@
                                         android:layout_width="@dimen/_85sdp"
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
-                                        android:backgroundTint="@color/colorAccent"
+                                        android:background="@drawable/measles"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:onClick="@{()->form.setVb08ch(``) + form.setVb08chdt(``) + vb08ch.clearCheck()}"
-                                        android:text="Measles" />
+                                        android:onClick="@{()->form.setVb08ch(``) + form.setVb08chdt(``) + vb08ch.clearCheck()}" />
 
                                     <LinearLayout
                                         android:id="@+id/fldGrpVB08ch"
@@ -2602,10 +2595,9 @@
                                         android:layout_width="@dimen/_85sdp"
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
-                                        android:backgroundTint="@color/colorAccent"
+                                        android:background="@drawable/typhoid"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:onClick="@{()->form.setVb08ci(``) + form.setVb08cidt(``) + vb08ci.clearCheck()}"
-                                        android:text="Typhoid" />
+                                        android:onClick="@{()->form.setVb08ci(``) + form.setVb08cidt(``) + vb08ci.clearCheck()}" />
 
                                     <LinearLayout
                                         android:id="@+id/fldGrpVB08ci"
@@ -2888,14 +2880,13 @@
                                     android:layout_height="match_parent"
                                     android:orientation="horizontal">
 
-                                    <TextView
-                                        android:layout_width="@dimen/_65sdp"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginTop="0dp"
-                                        android:background="@color/colorAccent"
-                                        android:gravity="center_vertical|center_horizontal"
-                                        android:textColor="@color/black"
-                                        android:text="@string/vb08wa" />
+                            <TextView
+                                android:layout_width="@dimen/_65sdp"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="0dp"
+                                android:background="@drawable/tt"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:textColor="@color/black" />
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
