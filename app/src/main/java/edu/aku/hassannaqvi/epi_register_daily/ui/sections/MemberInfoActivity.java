@@ -182,7 +182,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         }));
 
 
-        bi.vb04by.addTextChangedListener(new TextWatcher() {
+        /*bi.vb04by.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -198,6 +198,65 @@ public class MemberInfoActivity extends AppCompatActivity {
                         && Integer.parseInt(bi.vb04bm.getText().toString()) == Calendar.getInstance().get(Calendar.MONTH) + 1 ?
                         Calendar.getInstance().get(Calendar.DAY_OF_MONTH) : 31f);
 
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });*/
+
+        bi.vb04by.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (bi.vb04by.getText().toString().isEmpty() || bi.vb04bm.getText().toString().isEmpty() || bi.vb04bd.getText().toString().isEmpty())
+                    return;
+                bi.vb04bm.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR) ?
+                        Calendar.getInstance().get(Calendar.MONTH) + 1 : 12f);
+                bi.vb04bd.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR)
+                        && Integer.parseInt(bi.vb04bm.getText().toString()) == Calendar.getInstance().get(Calendar.MONTH) + 1 ?
+                        Calendar.getInstance().get(Calendar.DAY_OF_MONTH) : 31f);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        bi.vb04bm.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (bi.vb04by.getText().toString().isEmpty() || bi.vb04bm.getText().toString().isEmpty() || bi.vb04bd.getText().toString().isEmpty())
+                    return;
+                bi.vb04bd.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR)
+                        && Integer.parseInt(bi.vb04bm.getText().toString()) == Calendar.getInstance().get(Calendar.MONTH) + 1 ?
+                        Calendar.getInstance().get(Calendar.DAY_OF_MONTH) : 31f);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        bi.vb04bd.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (bi.vb04by.getText().toString().isEmpty() || bi.vb04bm.getText().toString().isEmpty() || bi.vb04bd.getText().toString().isEmpty())
+                    return;
+                bi.vb04bd.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR)
+                        && Integer.parseInt(bi.vb04bd.getText().toString()) == Calendar.getInstance().get(Calendar.MONTH) + 1 ?
+                        Calendar.getInstance().get(Calendar.DAY_OF_MONTH) : 31f);
             }
 
             @Override

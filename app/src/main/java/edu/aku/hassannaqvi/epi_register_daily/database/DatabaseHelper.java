@@ -85,7 +85,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_COPY = PROJECT_NAME + "_copy.db";
     private final String TAG = "DatabaseHelper";
     public static final String DATABASE_PASSWORD = IBAHC;
+    private static final int DATABASE_VERSION = 2;
     private final Context mContext;
+    private static final String SQL_DELETE_VACCINESDATA = "DROP TABLE IF EXISTS " + TableContracts.TableVaccinesData.TABLE_NAME;
 
 
 
@@ -105,7 +107,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ATTENDANCE);
         db.execSQL(SQL_CREATE_HF);
         db.execSQL(SQL_CREATE_UC);
-        db.execSQL(SQL_CREATE_VACCINESDATA);
+        //db.execSQL(SQL_CREATE_VACCINESDATA);
         db.execSQL(SQL_CREATE_VILLAGES);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ENTRYLOGS);
@@ -116,6 +118,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         switch (oldVersion) {
             case 1:
+                db.execSQL(SQL_DELETE_VACCINESDATA);
+                db.execSQL(SQL_CREATE_VACCINESDATA);
             case 2:
         }
     }
