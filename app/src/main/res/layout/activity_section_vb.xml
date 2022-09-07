@@ -634,20 +634,21 @@
                 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/all_round_corners"
                     android:stretchColumns="2">
 
                     <TableRow>
 
                         <TextView
                             android:layout_column="1"
-                            android:background="@color/white"
                             android:text="@string/vb02"
-                            android:textColor="@color/black" />
+                            android:background="@color/white"
+                            android:textColor="@color/colorPrimaryDark" />
 
                         <TextView
                             android:id="@+id/cardNo"
-                            android:background="@color/white"
                             android:text="xxx"
+                            android:background="@drawable/all_round_corners"
                             android:textAlignment="center"
                             android:textColor="@color/gray" />
                     </TableRow>
@@ -658,11 +659,11 @@
                             android:layout_column="1"
                             android:background="@color/white"
                             android:text="@string/vb04a"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/colorPrimaryDark" />
 
                         <TextView
                             android:id="@+id/pName"
-                            android:background="@color/white"
+                            android:background="@drawable/all_round_corners"
                             android:text="xxx"
                             android:textAlignment="center"
                             android:textColor="@color/gray" />
@@ -674,11 +675,11 @@
                             android:layout_column="1"
                             android:background="@color/white"
                             android:text="@string/vb04"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/colorPrimaryDark" />
 
                         <TextView
                             android:id="@+id/hName"
-                            android:background="@color/white"
+                            android:background="@drawable/all_round_corners"
                             android:text="xxx"
                             android:textAlignment="center"
                             android:textColor="@color/gray" />
@@ -687,7 +688,7 @@
                     <TableRow
                         android:id="@+id/wraVACINFO"
                         android:visibility="gone"
-                        tools:visibility="visible">
+                        tools:visibility="gone">
 
                         <TextView
                             android:layout_column="1"
@@ -854,10 +855,9 @@
                                         android:layout_width="@dimen/_85sdp"
                                         android:layout_height="match_parent"
                                         android:layout_marginTop="0dp"
-                                        android:backgroundTint="@color/colorAccent"
+                                        android:background="@drawable/bcg"
                                         android:gravity="center_vertical|center_horizontal"
-                                        android:onClick="@{()->form.setVb08ca(``) + form.setVb08cadt(``) + vb08ca.clearCheck()}"
-                                        android:text="BCG" />
+                                        android:onClick="@{()->form.setVb08ca(``) + form.setVb08cadt(``) + vb08ca.clearCheck()}" />
 
                                     <LinearLayout
                                         android:id="@+id/fldGrpVB08ca"

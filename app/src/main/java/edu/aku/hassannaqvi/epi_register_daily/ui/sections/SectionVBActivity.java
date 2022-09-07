@@ -70,7 +70,7 @@ public class SectionVBActivity extends AppCompatActivity {
             bi.fldGrpCVvb08c.setVisibility(View.VISIBLE);
             bi.fldGrpCVtakePhoto.setVisibility(View.VISIBLE);
         } else {
-            bi.wraVACINFO.setVisibility(View.VISIBLE);
+            //bi.wraVACINFO.setVisibility(View.VISIBLE);
             bi.fldGrpCVvb08w.setVisibility(View.VISIBLE);
         }
 
