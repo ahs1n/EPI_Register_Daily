@@ -105,7 +105,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
             for (VaccinesData vaccines : vaccinesDataList) {
 
-                if(vaccinesData.getVBO3().equals("2")) {
+                if (vaccinesData.getVBO3().equals("2")) {
 
                     //BCG
                     baseId = "vb08ca";
@@ -170,7 +170,7 @@ public class SectionVBActivity extends AppCompatActivity {
                     results.clear();
                     results.add(showHideDoneCheckWithText(vaccines.getTyphoid(), baseId, "a"));
                     verifyCrossTicks(results, baseId);
-                }else {
+                } else {
 
                     // TT
                     baseId = "vb08wa";
@@ -385,7 +385,7 @@ public class SectionVBActivity extends AppCompatActivity {
         setGPS();
 
 
-        if(flag) {
+        if (flag) {
 
             vaccines.setFrontfilename(formVB.getFrontfilename());
             vaccines.setBackfilename(formVB.getBackfilename());
@@ -394,7 +394,7 @@ public class SectionVBActivity extends AppCompatActivity {
             vaccines.setGpsLng(formVB.getGpsLng());
             vaccines.setGpsAcc(formVB.getGpsAcc());
             vaccines.setGpsDT(formVB.getGpsDT());
-        }else{
+        } else {
             vaccines.setFrontfilename(bi.frontFileName.getText().toString());
             vaccines.setBackfilename(bi.backFileName.getText().toString());
             vaccines.setChildfilename(bi.childFileName.getText().toString());
@@ -635,7 +635,7 @@ public class SectionVBActivity extends AppCompatActivity {
         if (!Validator.emptyCheckingContainer(this, bi.GrpName)) {
             return false;
         }
-        if(flag) {
+        if (flag) {
             if (formVB.getVb03().equals("2") && formVB.getFrontfilename().equals("")) {
                 return Validator.emptyCustomTextBox(this, bi.frontFileName, "Please take front photo of Vaccination Card.");
             }
@@ -651,9 +651,10 @@ public class SectionVBActivity extends AppCompatActivity {
                 return Validator.emptyCustomTextBox(this, bi.childFileName, "Please take photo of Child.");
 
             }
-        }else{
+        } else {
 
-        }if (vaccinesData.getVBO3().equals("2") && bi.frontFileName.getText().toString().equals("")) {
+        }
+        if (vaccinesData.getVBO3().equals("2") && bi.frontFileName.getText().toString().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.frontFileName, "Please take front photo of Vaccination Card.");
         }
 
@@ -707,15 +708,21 @@ public class SectionVBActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Back Press Not Allowed", Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainApp.lockScreen(this);
+    }
+
 
     public void takePhoto(View view) {
 
         Intent intent = new Intent(this, TakePhoto.class);
 
-        if(flag) {
+        if (flag) {
             intent.putExtra("picID", formVB.getVb02() + "_" + MainApp.formVB.getVb02() + "_");
             intent.putExtra("Name", formVB.getVb04a());
-        }else {
+        } else {
             intent.putExtra("picID", vaccinesData.getVBO2() + "_" + vaccinesData.getVBO2() + "_");
             intent.putExtra("Name", vaccinesData.getVB04A());
         }

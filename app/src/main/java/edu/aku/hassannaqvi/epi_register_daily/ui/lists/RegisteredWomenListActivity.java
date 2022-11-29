@@ -26,7 +26,6 @@ import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityRegisteredListWomenBinding;
-import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityVaccinatedListWomenBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
@@ -103,6 +102,7 @@ public class RegisteredWomenListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        MainApp.lockScreen(this);
         Toast.makeText(this, "Activity Resumed!", Toast.LENGTH_SHORT).show();
         //MainApp.formVB.setUuid(MainApp.formVA.getUid());
         formVA = new FormVA();

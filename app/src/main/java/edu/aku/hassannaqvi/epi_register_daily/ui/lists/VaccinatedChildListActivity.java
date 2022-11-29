@@ -1,7 +1,6 @@
 
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
 
@@ -33,7 +32,6 @@ import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersFollowup
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityVaccinatedListChildBinding;
-import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
@@ -120,6 +118,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        MainApp.lockScreen(this);
         Toast.makeText(this, "Activity Resumed!", Toast.LENGTH_SHORT).show();
         //MainApp.formVB.setUuid(MainApp.formVA.getUid());
 //        formVA = new FormVA();

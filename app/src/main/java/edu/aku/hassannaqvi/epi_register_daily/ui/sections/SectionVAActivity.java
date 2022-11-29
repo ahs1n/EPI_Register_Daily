@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -121,7 +120,6 @@ public class SectionVAActivity extends AppCompatActivity {
                 bi.va02a.setAdapter(new ArrayAdapter<>(SectionVAActivity.this, R.layout.custom_spinner, healthFacilityNames));
 
 
-
             }
 
             @Override
@@ -191,7 +189,7 @@ public class SectionVAActivity extends AppCompatActivity {
         if (!formValidation()) return;
         if (!insertNewRecord()) return;
 
-        if(insertNewRecord()) setCurrentDate();
+        if (insertNewRecord()) setCurrentDate();
         setCurrentDate();
         if (updateDB()) {
             finish();
@@ -238,6 +236,12 @@ public class SectionVAActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainApp.lockScreen(this);
+    }
+
     public void setGPS() {
         SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
         try {
@@ -265,7 +269,5 @@ public class SectionVAActivity extends AppCompatActivity {
         }
 
     }
-
-
 
 }

@@ -121,6 +121,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        MainApp.lockScreen(this);
         Toast.makeText(this, "Activity Resumed!", Toast.LENGTH_SHORT).show();
         //MainApp.formVB.setUuid(MainApp.formVA.getUid());
         formVA = new FormVA();

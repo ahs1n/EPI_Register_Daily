@@ -153,6 +153,7 @@ public class MemberInfoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        MainApp.lockScreen(this);
 
 /*        if (MainApp.formVA.getUid().equals("")){
             try {
