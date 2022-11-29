@@ -294,15 +294,15 @@ public class SectionVBActivity extends AppCompatActivity {
     private void setupListeners() {
         bi.vb08w.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08wdt));
 
-        bi.vb08ca.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cadt)));
-        bi.vb08cb.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cbdt)));
-        bi.vb08cc.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08ccdt)));
-        bi.vb08cd.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cddt)));
-        bi.vb08ce.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cedt)));
-        bi.vb08cf.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cfdt)));
-        bi.vb08cg.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cgdt)));
-        bi.vb08ch.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08chdt)));
-        bi.vb08ci.setOnCheckedChangeListener(((radioGroup, i) -> Clear.clearAllFields(bi.vb08cidt)));
+        bi.vb08ca.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08cadt));
+        bi.vb08cb.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08cbdt));
+        bi.vb08cc.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08ccdt));
+        bi.vb08cd.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08cddt));
+        bi.vb08ce.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08cedt));
+        bi.vb08cf.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08cfdt));
+        bi.vb08cg.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08cgdt));
+        bi.vb08ch.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08chdt));
+        bi.vb08ci.setOnCheckedChangeListener((radioGroup, i) -> Clear.clearAllFields(bi.vb08cidt));
 
     }
 
