@@ -7,11 +7,8 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.uploadData;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -143,7 +140,7 @@ public class SyncActivity extends AppCompatActivity {
     @SuppressLint("NonConstantResourceId")
     public void ProcessStart(View view) {
 
-        if (!isNetworkAvailable())
+        if (!MainApp.isNetworkAvailable(this))
             return;
 
         switch (view.getId()) {
@@ -905,27 +902,6 @@ public class SyncActivity extends AppCompatActivity {
                 return (int) (t.length() - t1.length());
             }
         });
-    }
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager cm = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (activeNetwork != null) {
-            // connected to the internet
-            switch (activeNetwork.getType()) {
-                case ConnectivityManager.TYPE_WIFI:
-                    // connected to wifi
-                    return true;
-                case ConnectivityManager.TYPE_MOBILE:
-                    // connected to mobile data
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            // not connected to the internet
-        }
-        return false;
     }
 
     private void showDateError(String serverTime, String deviceTime) {
