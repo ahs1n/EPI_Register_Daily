@@ -104,6 +104,10 @@
             android:value="2" />
 
         <activity
+            android:name=".ui.LockActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".ui.ChangePasswordActivity"
             android:exported="true"
             android:theme="@style/Theme.main"
