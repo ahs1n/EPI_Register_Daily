@@ -79,6 +79,7 @@ public class FormVB extends BaseObservable implements Observable {
     private String vb05d = _EMPTY_;
     private String vb05a = _EMPTY_;
     private String vb06 = _EMPTY_;
+    private String vb06a = _EMPTY_;
     private String vb07 = _EMPTY_;
     private String vb08c = _EMPTY_;
     private String vb08ca = _EMPTY_;
@@ -569,6 +570,16 @@ public class FormVB extends BaseObservable implements Observable {
     }
 
     @Bindable
+    public String getVb06a() {
+        return vb06a;
+    }
+
+    public void setVb06a(String vb06a) {
+        this.vb06a = vb06a;
+        notifyPropertyChanged(BR.vb06a);
+    }
+
+    @Bindable
     public String getVb07() {
         return vb07;
     }
@@ -1005,6 +1016,7 @@ public class FormVB extends BaseObservable implements Observable {
             this.vb05d = json.getString("vb05d");
             this.vb05a = json.getString("vb05a");
             this.vb06 = json.getString("vb06");
+            this.vb06a = json.getString("vb06a");
             this.vb07 = json.getString("vb07");
             this.vb09 = json.getString("vb09");
 
@@ -1060,6 +1072,7 @@ public class FormVB extends BaseObservable implements Observable {
                 .put("vb05d", vb05d)
                 .put("vb05a", vb05a)
                 .put("vb06", vb06)
+                .put("vb06a", vb06a)
                 .put("vb07", vb07)
                 .put("vb09", vb09);
         return json.toString();

@@ -412,6 +412,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
+                            android:visibility="gone"
                             android:backgroundTint="@color/redOverlay"
                             android:checked="@{form.vb04dk.equals(`98`)}"
                             android:onClick="@{()->form.setVb04dk(form.vb04dk.equals(`98`)?``:`98`)}"
@@ -645,6 +646,49 @@
                             android:text="@={form.vb06}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <!-- vb06a  Input   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVvb06a"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_vb06a" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/va02" />
+
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/vb06a"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                            android:hint="@string/va02"
+                            android:text="@={form.vb06a}" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+
+
 
                 <!-- vb07  Input   -->
                 <androidx.cardview.widget.CardView

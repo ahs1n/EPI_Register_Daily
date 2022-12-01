@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui;
 
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PAKISTAN;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
 
 import android.content.Context;
@@ -8,10 +9,14 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -52,6 +57,7 @@ public class CreateLocationActivity extends AppCompatActivity {
                 populateFacilitySpinner();
                 villageCodes = new ArrayList<>();
                 villageNames = new ArrayList<>();
+
                 bi.wlVillageName.setAdapter(null);
             }
 
@@ -63,6 +69,8 @@ public class CreateLocationActivity extends AppCompatActivity {
                 bi.wlFacilityName.setAdapter(null);
             }
         });
+
+
     }
 
 
@@ -136,7 +144,8 @@ public class CreateLocationActivity extends AppCompatActivity {
             villageCodes.add("002");
             villageCodes.add("003");
         }
-        // Apply the adapter to the spinner
+
+        /*// Apply the adapter to the spinner
         bi.wlVillageName.setAdapter(new ArrayAdapter<>(CreateLocationActivity.this, R.layout.custom_spinner, villageNames));
 
         bi.wlVillageName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -156,7 +165,40 @@ public class CreateLocationActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
 
-        });
+        });*/
+
+
+        // Hide certain element in the spinner
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.custom_spinner, villageNames){
+
+            @Override
+            public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+                View v = null;
+
+                if(bi.attendat01.isChecked()  && villageCodes.contains("99"))
+                {
+                    TextView tv = new TextView(getContext());
+                    tv.setHeight(0);
+                    tv.setVisibility(View.GONE);
+                    v = tv;
+                }else{
+                    v = super.getDropDownView(position, null, parent);
+                }
+
+
+                return v;
+            }
+        };
+
+        dataAdapter.setDropDownViewResource(R.layout.custom_spinner);
+
+
+        bi.wlVillageName.setAdapter(dataAdapter);
+
+
+
     }
 
 
