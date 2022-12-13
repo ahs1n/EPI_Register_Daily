@@ -1183,7 +1183,7 @@
 
                                         </RadioGroup>
 
-                                        <LinearLayout
+                                        <LinearLayout android:id="@+id/vb08cbll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
                                             android:orientation="horizontal"
