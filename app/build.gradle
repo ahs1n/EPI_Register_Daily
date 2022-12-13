@@ -57,7 +57,7 @@ android {
             versionCode versionBuild
             versionName "${versionNumber}.${versionPatch}${versionType}"
             minSdkVersion 22
-            targetSdkVersion 29
+            targetSdkVersion 31
         }
 
         applicationVariants.all { variant ->
@@ -145,5 +145,7 @@ dependencies {
 
 // Debug Database
     debugImplementation 'com.amitshekhar.android:debug-db-encrypt:1.0.6'
+
+    //implementation 'com.github.jodaorg:joda-time:2.12.1'
 
 }

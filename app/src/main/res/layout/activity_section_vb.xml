@@ -1090,9 +1090,9 @@
                                                 android:layout_gravity="center_horizontal|center_vertical"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cb.equals(`1`)}"
+                                                android:checked="@{form.vb08cb01.equals(`1`)}"
                                                 android:enabled="@{vb08cb98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cb(`1`)}" />
+                                                android:onClick="@{()->form.setVb08cb01(`1`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cbatick"
@@ -1117,9 +1117,9 @@
                                                 android:layout_gravity="center_horizontal|center_vertical"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cb.equals(`2`)}"
+                                                android:checked="@{form.vb08cb02.equals(`2`)}"
                                                 android:enabled="@{vb08cb98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cb(`2`)}" />
+                                                android:onClick="@{()->form.setVb08cb02(`2`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cbbtick"
@@ -1143,9 +1143,9 @@
                                                 android:layout_gravity="center_horizontal|center_vertical"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cb.equals(`3`)}"
+                                                android:checked="@{form.vb08cb03.equals(`3`)}"
                                                 android:enabled="@{vb08cb98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cb(`3`)}" />
+                                                android:onClick="@{()->form.setVb08cb03(`3`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cbctick"
@@ -1168,9 +1168,9 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cb.equals(`4`)}"
+                                                android:checked="@{form.vb08cb04.equals(`4`)}"
                                                 android:enabled="@{vb08cb98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cb(`4`)}" />
+                                                android:onClick="@{()->form.setVb08cb04(`4`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cbdtick"
@@ -1276,7 +1276,7 @@
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
-                                            android:enabled="@{vb08cb98.checked &amp;&amp; !form.vb08cb.equals(``) ? true : false}"
+                                            android:enabled="@{vb08cb98.checked &amp;&amp; !form.vb08cb01.equals(``) || !form.vb08cb02.equals(``) || !form.vb08cb03.equals(``) || !form.vb08cb04.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
                                             android:text="@={form.vb08cbdt}"
@@ -1547,9 +1547,9 @@
                                                 android:layout_gravity="center_horizontal|center_vertical"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cd.equals(`1`)}"
+                                                android:checked="@{form.vb08cd01.equals(`1`)}"
                                                 android:enabled="@{vb08cd98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cd(`1`)}" />
+                                                android:onClick="@{()->form.setVb08cd01(`1`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cdatick"
@@ -1572,9 +1572,9 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cd.equals(`2`)}"
+                                                android:checked="@{form.vb08cd02.equals(`2`)}"
                                                 android:enabled="@{vb08cd98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cd(`2`)}" />
+                                                android:onClick="@{()->form.setVb08cd02(`2`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cdbtick"
@@ -1597,9 +1597,9 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cd.equals(`3`)}"
+                                                android:checked="@{form.vb08cd03.equals(`3`)}"
                                                 android:enabled="@{vb08cd98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cd(`3`)}" />
+                                                android:onClick="@{()->form.setVb08cd03(`3`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cdctick"
@@ -1705,7 +1705,7 @@
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
-                                            android:enabled="@{vb08cd98.checked &amp;&amp; !form.vb08cd.equals(``) ? true : false}"
+                                            android:enabled="@{vb08cd98.checked &amp;&amp; !form.vb08cd01.equals(``) || !form.vb08cd02.equals(``) || !form.vb08cd03.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
                                             android:text="@={form.vb08cddt}"
@@ -1773,9 +1773,9 @@
                                                 android:layout_gravity="center_horizontal|center_vertical"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08ce.equals(`1`)}"
+                                                android:checked="@{form.vb08ce01.equals(`1`)}"
                                                 android:enabled="@{vb08ce98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08ce(`1`)}" />
+                                                android:onClick="@{()->form.setVb08ce01(`1`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08ceatick"
@@ -1798,9 +1798,9 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08ce.equals(`2`)}"
+                                                android:checked="@{form.vb08ce02.equals(`2`)}"
                                                 android:enabled="@{vb08ce98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08ce(`2`)}" />
+                                                android:onClick="@{()->form.setVb08ce02(`2`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cebtick"
@@ -1823,9 +1823,9 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08ce.equals(`3`)}"
+                                                android:checked="@{form.vb08ce03.equals(`3`)}"
                                                 android:enabled="@{vb08ce98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08ce(`3`)}" />
+                                                android:onClick="@{()->form.setVb08ce03(`3`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cectick"
@@ -1931,7 +1931,7 @@
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
-                                            android:enabled="@{vb08ce98.checked &amp;&amp; !form.vb08ce.equals(``) ? true : false}"
+                                            android:enabled="@{vb08ce98.checked &amp;&amp; !form.vb08ce01.equals(``) || !form.vb08ce03.equals(``) || !form.vb08ce03.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
                                             android:text="@={form.vb08cedt}"
@@ -1999,9 +1999,9 @@
                                                 android:layout_gravity="center_horizontal|center_vertical"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cf.equals(`1`)}"
+                                                android:checked="@{form.vb08cf01.equals(`1`)}"
                                                 android:enabled="@{vb08cf98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cf(`1`)}" />
+                                                android:onClick="@{()->form.setVb08cf01(`1`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cfatick"
@@ -2024,9 +2024,9 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cf.equals(`2`)}"
+                                                android:checked="@{form.vb08cf02.equals(`2`)}"
                                                 android:enabled="@{vb08cf98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cf(`2`)}" />
+                                                android:onClick="@{()->form.setVb08cf02(`2`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cfbtick"
@@ -2144,7 +2144,7 @@
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
-                                            android:enabled="@{vb08cf98.checked &amp;&amp; !form.vb08cf.equals(``) ? true : false}"
+                                            android:enabled="@{vb08cf98.checked &amp;&amp; !form.vb08cf01.equals(``) || !form.vb08cf02.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
                                             android:text="@={form.vb08cfdt}"
@@ -2212,9 +2212,9 @@
                                                 android:layout_gravity="center_horizontal|center_vertical"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cg.equals(`1`)}"
+                                                android:checked="@{form.vb08cg01.equals(`1`)}"
                                                 android:enabled="@{vb08cg98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cg(`1`)}" />
+                                                android:onClick="@{()->form.setVb08cg01(`1`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cgatick"
@@ -2237,9 +2237,9 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08cg.equals(`2`)}"
+                                                android:checked="@{form.vb08cg02.equals(`2`)}"
                                                 android:enabled="@{vb08cg98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08cg(`2`)}" />
+                                                android:onClick="@{()->form.setVb08cg02(`2`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08cgbtick"
@@ -2356,7 +2356,7 @@
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
-                                            android:enabled="@{vb08cg98.checked &amp;&amp; !form.vb08cg.equals(``) ? true : false}"
+                                            android:enabled="@{vb08cg98.checked &amp;&amp; !form.vb08cg01.equals(``) || !form.vb08cg02.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
                                             android:text="@={form.vb08cgdt}"
@@ -2424,9 +2424,9 @@
                                                 android:layout_gravity="center_horizontal|center_vertical"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08ch.equals(`1`)}"
+                                                android:checked="@{form.vb08ch01.equals(`1`)}"
                                                 android:enabled="@{vb08ch98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08ch(`1`)}" />
+                                                android:onClick="@{()->form.setVb08ch01(`1`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08chatick"
@@ -2449,9 +2449,9 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="2"
                                                 android:background="@null"
-                                                android:checked="@{form.vb08ch.equals(`2`)}"
+                                                android:checked="@{form.vb08ch02.equals(`2`)}"
                                                 android:enabled="@{vb08ch98.checked ? true : false}"
-                                                android:onClick="@{()->form.setVb08ch(`2`)}" />
+                                                android:onClick="@{()->form.setVb08ch02(`2`)}" />
 
                                             <ImageView
                                                 android:id="@+id/vb08chbtick"
@@ -2569,7 +2569,7 @@
                                             android:layout_height="wrap_content"
                                             android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
-                                            android:enabled="@{vb08ch98.checked &amp;&amp; !form.vb08ch.equals(``) ? true : false}"
+                                            android:enabled="@{vb08ch98.checked &amp;&amp; !form.vb08ch01.equals(``) || !form.vb08ch02.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
                                             android:text="@={form.vb08chdt}"

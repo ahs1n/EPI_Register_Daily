@@ -116,6 +116,41 @@ public class FormVB extends BaseObservable implements Observable {
     private String vb08cidt = _EMPTY_;
 
 
+    // Additional variables
+    private String vb08cb01 = _EMPTY_;
+    private String vb08cb02 = _EMPTY_;
+    private String vb08cb03 = _EMPTY_;
+    private String vb08cb04 = _EMPTY_;
+    private String vb08cb01dt = _EMPTY_;
+    private String vb08cb02dt = _EMPTY_;
+    private String vb08cb03dt = _EMPTY_;
+    private String vb08cb04dt = _EMPTY_;
+    private String vb08cd01 = _EMPTY_;
+    private String vb08cd02 = _EMPTY_;
+    private String vb08cd03 = _EMPTY_;
+    private String vb08cd01dt = _EMPTY_;
+    private String vb08cd02dt = _EMPTY_;
+    private String vb08cd03dt = _EMPTY_;
+    private String vb08ce01 = _EMPTY_;
+    private String vb08ce02 = _EMPTY_;
+    private String vb08ce03 = _EMPTY_;
+    private String vb08ce01dt = _EMPTY_;
+    private String vb08ce02dt = _EMPTY_;
+    private String vb08ce03dt = _EMPTY_;
+    private String vb08cf01 = _EMPTY_;
+    private String vb08cf02 = _EMPTY_;
+    private String vb08cf01dt = _EMPTY_;
+    private String vb08cf02dt = _EMPTY_;
+    private String vb08cg01 = _EMPTY_;
+    private String vb08cg02 = _EMPTY_;
+    private String vb08cg01dt = _EMPTY_;
+    private String vb08cg02dt = _EMPTY_;
+    private String vb08ch01 = _EMPTY_;
+    private String vb08ch02 = _EMPTY_;
+    private String vb08ch01dt = _EMPTY_;
+    private String vb08ch02dt = _EMPTY_;
+
+
     public FormVB() {
 
 /*        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
@@ -852,6 +887,16 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVb08cbdt(String vb08cbdt) {
         this.vb08cbdt = vb08cbdt;
+        if (vb08cb01.equals("1")) {
+            this.vb08cb01dt = vb08cbdt;
+        } else if (vb08cb02.equals("2")) {
+            this.vb08cb02dt = vb08cbdt;
+        } else if (vb08cb03.equals("3")) {
+            this.vb08cb03dt = vb08cbdt;
+        } else if (vb08cb04.equals("4")) {
+            this.vb08cb04dt = vb08cbdt;
+        }
+
         notifyPropertyChanged(BR.vb08cbdt);
     }
 
@@ -872,6 +917,13 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVb08cddt(String vb08cddt) {
         this.vb08cddt = vb08cddt;
+        if (vb08cd01.equals("1")) {
+            this.vb08cd01dt = vb08cddt;
+        } else if (vb08cd01.equals("2")) {
+            this.vb08cd02dt = vb08cddt;
+        } else if (vb08cd01.equals("3")) {
+            this.vb08cd03dt = vb08cddt;
+        }
         notifyPropertyChanged(BR.vb08cddt);
     }
 
@@ -882,6 +934,13 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVb08cedt(String vb08cedt) {
         this.vb08cedt = vb08cedt;
+        if (vb08ce01.equals("1")) {
+            this.vb08ce01dt = vb08cedt;
+        } else if (vb08ce01.equals("2")) {
+            this.vb08ce02dt = vb08cedt;
+        } else if (vb08ce01.equals("3")) {
+            this.vb08ce03dt = vb08cedt;
+        }
         notifyPropertyChanged(BR.vb08cedt);
     }
 
@@ -892,6 +951,11 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVb08cfdt(String vb08cfdt) {
         this.vb08cfdt = vb08cfdt;
+        if (vb08cf01.equals("1")) {
+            this.vb08cf01dt = vb08cfdt;
+        } else if (vb08cf01.equals("2")) {
+            this.vb08cf02dt = vb08cfdt;
+        }
         notifyPropertyChanged(BR.vb08cfdt);
     }
 
@@ -902,6 +966,11 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVb08cgdt(String vb08cgdt) {
         this.vb08cgdt = vb08cgdt;
+        if (vb08cg01.equals("1")) {
+            this.vb08cg01dt = vb08cgdt;
+        } else if (vb08cg01.equals("2")) {
+            this.vb08cg02dt = vb08cgdt;
+        }
         notifyPropertyChanged(BR.vb08cgdt);
     }
 
@@ -912,6 +981,11 @@ public class FormVB extends BaseObservable implements Observable {
 
     public void setVb08chdt(String vb08chdt) {
         this.vb08chdt = vb08chdt;
+        if (vb08ch01.equals("1")) {
+            this.vb08ch01dt = vb08chdt;
+        } else if (vb08ch01.equals("2")) {
+            this.vb08ch02dt = vb08chdt;
+        }
         notifyPropertyChanged(BR.vb08chdt);
     }
 
@@ -964,6 +1038,326 @@ public class FormVB extends BaseObservable implements Observable {
         notifyPropertyChanged(BR.wlArea);
     }
 
+    @Bindable
+    public String getVb08cb01() {
+        return vb08cb01;
+    }
+
+    public void setVb08cb01(String vb08cb01) {
+        this.vb08cb01 = vb08cb01;
+        notifyPropertyChanged(BR.vb08cb01);
+    }
+
+    @Bindable
+    public String getVb08cb02() {
+        return vb08cb02;
+    }
+
+    public void setVb08cb02(String vb08cb02) {
+        this.vb08cb02 = vb08cb02;
+        notifyPropertyChanged(BR.vb08cb02);
+    }
+
+    @Bindable
+    public String getVb08cb03() {
+        return vb08cb03;
+    }
+
+    public void setVb08cb03(String vb08cb03) {
+        this.vb08cb03 = vb08cb03;
+        notifyPropertyChanged(BR.vb08cb03);
+    }
+
+    @Bindable
+    public String getVb08cb04() {
+        return vb08cb04;
+    }
+
+    public void setVb08cb04(String vb08cb04) {
+        this.vb08cb04 = vb08cb04;
+        notifyPropertyChanged(BR.vb08cb04);
+    }
+
+    @Bindable
+    public String getVb08cb01dt() {
+        return vb08cb01dt;
+    }
+
+    public void setVb08cb01dt(String vb08cb01dt) {
+        this.vb08cb01dt = vb08cb01dt;
+        notifyPropertyChanged(BR.vb08cb01dt);
+    }
+
+    @Bindable
+    public String getVb08cb02dt() {
+        return vb08cb02dt;
+    }
+
+    public void setVb08cb02dt(String vb08cb02dt) {
+        this.vb08cb02dt = vb08cb02dt;
+        this.vb08cb02dt = vb08cbdt;
+        notifyPropertyChanged(BR.vb08cb02dt);
+    }
+
+    @Bindable
+    public String getVb08cb03dt() {
+        return vb08cb03dt;
+    }
+
+    public void setVb08cb03dt(String vb08cb03dt) {
+        this.vb08cb03dt = vb08cb03dt;
+        notifyPropertyChanged(BR.vb08cb03dt);
+    }
+
+    @Bindable
+    public String getVb08cb04dt() {
+        return vb08cb04dt;
+    }
+
+    public void setVb08cb04dt(String vb08cb04dt) {
+        this.vb08cb04dt = vb08cb04dt;
+        notifyPropertyChanged(BR.vb08cb04dt);
+    }
+
+    @Bindable
+    public String getVb08cd01() {
+        return vb08cd01;
+    }
+
+    public void setVb08cd01(String vb08cd01) {
+        this.vb08cd01 = vb08cd01;
+        notifyPropertyChanged(BR.vb08cd01);
+    }
+
+    @Bindable
+    public String getVb08cd02() {
+        return vb08cd02;
+    }
+
+    public void setVb08cd02(String vb08cd02) {
+        this.vb08cd02 = vb08cd02;
+        notifyPropertyChanged(BR.vb08cd02);
+    }
+
+    @Bindable
+    public String getVb08cd03() {
+        return vb08cd03;
+    }
+
+    public void setVb08cd03(String vb08cd03) {
+        this.vb08cd03 = vb08cd03;
+        notifyPropertyChanged(BR.vb08cd03);
+    }
+
+    @Bindable
+    public String getVb08cd01dt() {
+        return vb08cd01dt;
+    }
+
+    public void setVb08cd01dt(String vb08cd01dt) {
+        this.vb08cd01dt = vb08cd01dt;
+        notifyPropertyChanged(BR.vb08cd01dt);
+    }
+
+    @Bindable
+    public String getVb08cd02dt() {
+        return vb08cd02dt;
+    }
+
+    public void setVb08cd02dt(String vb08cd02dt) {
+        this.vb08cd02dt = vb08cd02dt;
+        notifyPropertyChanged(BR.vb08cd02dt);
+    }
+
+    @Bindable
+    public String getVb08cd03dt() {
+        return vb08cd03dt;
+    }
+
+    public void setVb08cd03dt(String vb08cd03dt) {
+        this.vb08cd03dt = vb08cd03dt;
+        notifyPropertyChanged(BR.vb08cd03dt);
+    }
+
+    @Bindable
+    public String getVb08ce01() {
+        return vb08ce01;
+    }
+
+    public void setVb08ce01(String vb08ce01) {
+        this.vb08ce01 = vb08ce01;
+        notifyPropertyChanged(BR.vb08ce01);
+    }
+
+    @Bindable
+    public String getVb08ce02() {
+        return vb08ce02;
+    }
+
+    public void setVb08ce02(String vb08ce02) {
+        this.vb08ce02 = vb08ce02;
+        notifyPropertyChanged(BR.vb08ce02);
+    }
+
+    @Bindable
+    public String getVb08ce03() {
+        return vb08ce03;
+    }
+
+    public void setVb08ce03(String vb08ce03) {
+        this.vb08ce03 = vb08ce03;
+        notifyPropertyChanged(BR.vb08ce03);
+    }
+
+    @Bindable
+    public String getVb08ce01dt() {
+        return vb08ce01dt;
+    }
+
+    public void setVb08ce01dt(String vb08ce01dt) {
+        this.vb08ce01dt = vb08ce01dt;
+        notifyPropertyChanged(BR.vb08ce01dt);
+    }
+
+    @Bindable
+    public String getVb08ce02dt() {
+        return vb08ce02dt;
+    }
+
+    public void setVb08ce02dt(String vb08ce02dt) {
+        this.vb08ce02dt = vb08ce02dt;
+        notifyPropertyChanged(BR.vb08ce02dt);
+    }
+
+    @Bindable
+    public String getVb08ce03dt() {
+        return vb08ce03dt;
+    }
+
+    public void setVb08ce03dt(String vb08ce03dt) {
+        this.vb08ce03dt = vb08ce03dt;
+        notifyPropertyChanged(BR.vb08ce03dt);
+    }
+
+    @Bindable
+    public String getVb08cf01() {
+        return vb08cf01;
+    }
+
+    public void setVb08cf01(String vb08cf01) {
+        this.vb08cf01 = vb08cf01;
+        notifyPropertyChanged(BR.vb08cf01);
+    }
+
+    @Bindable
+    public String getVb08cf02() {
+        return vb08cf02;
+    }
+
+    public void setVb08cf02(String vb08cf02) {
+        this.vb08cf02 = vb08cf02;
+        notifyPropertyChanged(BR.vb08cf02);
+    }
+
+    @Bindable
+    public String getVb08cf01dt() {
+        return vb08cf01dt;
+    }
+
+    public void setVb08cf01dt(String vb08cf01dt) {
+        this.vb08cf01dt = vb08cf01dt;
+        notifyPropertyChanged(BR.vb08cf01dt);
+    }
+
+    @Bindable
+    public String getVb08cf02dt() {
+        return vb08cf02dt;
+    }
+
+    public void setVb08cf02dt(String vb08cf02dt) {
+        this.vb08cf02dt = vb08cf02dt;
+        notifyPropertyChanged(BR.vb08cf02dt);
+    }
+
+    @Bindable
+    public String getVb08cg01() {
+        return vb08cg01;
+    }
+
+    public void setVb08cg01(String vb08cg01) {
+        this.vb08cg01 = vb08cg01;
+        notifyPropertyChanged(BR.vb08cg01);
+    }
+
+    @Bindable
+    public String getVb08cg02() {
+        return vb08cg02;
+    }
+
+    public void setVb08cg02(String vb08cg02) {
+        this.vb08cg02 = vb08cg02;
+        notifyPropertyChanged(BR.vb08cg02);
+    }
+
+    @Bindable
+    public String getVb08cg01dt() {
+        return vb08cg01dt;
+    }
+
+    public void setVb08cg01dt(String vb08cg01dt) {
+        this.vb08cg01dt = vb08cg01dt;
+        notifyPropertyChanged(BR.vb08cg01dt);
+    }
+
+    @Bindable
+    public String getVb08cg02dt() {
+        return vb08cg02dt;
+    }
+
+    public void setVb08cg02dt(String vb08cg02dt) {
+        this.vb08cg02dt = vb08cg02dt;
+        notifyPropertyChanged(BR.vb08cg02dt);
+    }
+
+    @Bindable
+    public String getVb08ch01() {
+        return vb08ch01;
+    }
+
+    public void setVb08ch01(String vb08ch01) {
+        this.vb08ch01 = vb08ch01;
+        notifyPropertyChanged(BR.vb08ch01);
+    }
+
+    @Bindable
+    public String getVb08ch02() {
+        return vb08ch02;
+    }
+
+    public void setVb08ch02(String vb08ch02) {
+        this.vb08ch02 = vb08ch02;
+        notifyPropertyChanged(BR.vb08ch02);
+    }
+
+    @Bindable
+    public String getVb08ch01dt() {
+        return vb08ch01dt;
+    }
+
+    public void setVb08ch01dt(String vb08ch01dt) {
+        this.vb08ch01dt = vb08ch01dt;
+        notifyPropertyChanged(BR.vb08ch01dt);
+    }
+
+    @Bindable
+    public String getVb08ch02dt() {
+        return vb08ch02dt;
+    }
+
+    public void setVb08ch02dt(String vb08ch02dt) {
+        this.vb08ch02dt = vb08ch02dt;
+        notifyPropertyChanged(BR.vb08ch02dt);
+    }
 
     public FormVB Hydrate(Cursor cursor) throws JSONException {
         this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsVBTable.COLUMN_ID));
@@ -1029,22 +1423,53 @@ public class FormVB extends BaseObservable implements Observable {
             JSONObject json = null;
             json = new JSONObject(string);
             this.vb08ca = json.getString("vb08ca");
-
             this.vb08cadt = json.getString("vb08cadt");
             this.vb08cb = json.getString("vb08cb");
             this.vb08cbdt = json.getString("vb08cbdt");
+            this.vb08cb01 = json.getString("vb08cb01");
+            this.vb08cb01dt = json.getString("vb08cb01dt");
+            this.vb08cb02 = json.getString("vb08cb02");
+            this.vb08cb02dt = json.getString("vb08cb02dt");
+            this.vb08cb03 = json.getString("vb08cb03");
+            this.vb08cb03dt = json.getString("vb08cb03dt");
+            this.vb08cb04 = json.getString("vb08cb04");
+            this.vb08cb04dt = json.getString("vb08cb04dt");
             this.vb08cc = json.getString("vb08cc");
             this.vb08ccdt = json.getString("vb08ccdt");
             this.vb08cd = json.getString("vb08cd");
             this.vb08cddt = json.getString("vb08cddt");
+            this.vb08cd01 = json.getString("vb08cd01");
+            this.vb08cd01dt = json.getString("vb08cd01dt");
+            this.vb08cd02 = json.getString("vb08cd02");
+            this.vb08cd02dt = json.getString("vb08cd02dt");
+            this.vb08cd03 = json.getString("vb08cd03");
+            this.vb08cd03dt = json.getString("vb08cd03dt");
             this.vb08ce = json.getString("vb08ce");
             this.vb08cedt = json.getString("vb08cedt");
+            this.vb08ce01 = json.getString("vb08ce01");
+            this.vb08ce01dt = json.getString("vb08ce01dt");
+            this.vb08ce02 = json.getString("vb08ce02");
+            this.vb08ce02dt = json.getString("vb08ce02dt");
+            this.vb08ce03 = json.getString("vb08ce03");
+            this.vb08ce03dt = json.getString("vb08ce03dt");
             this.vb08cf = json.getString("vb08cf");
             this.vb08cfdt = json.getString("vb08cfdt");
+            this.vb08cf01 = json.getString("vb08cf01");
+            this.vb08cf01dt = json.getString("vb08cf01dt");
+            this.vb08cf02 = json.getString("vb08cf02");
+            this.vb08cf02dt = json.getString("vb08cf02dt");
             this.vb08cg = json.getString("vb08cg");
             this.vb08cgdt = json.getString("vb08cgdt");
+            this.vb08cg01 = json.getString("vb08cg01");
+            this.vb08cg01dt = json.getString("vb08cg01dt");
+            this.vb08cg02 = json.getString("vb08cg02");
+            this.vb08cg02dt = json.getString("vb08cg02dt");
             this.vb08ch = json.getString("vb08ch");
             this.vb08chdt = json.getString("vb08chdt");
+            this.vb08ch01 = json.getString("vb08ch01");
+            this.vb08ch01dt = json.getString("vb08ch01dt");
+            this.vb08ch02 = json.getString("vb08ch02");
+            this.vb08ch02dt = json.getString("vb08ch02dt");
             this.vb08ci = json.getString("vb08ci");
             this.vb08cidt = json.getString("vb08cidt");
             this.vb08w = json.getString("vb08w");
@@ -1086,18 +1511,50 @@ public class FormVB extends BaseObservable implements Observable {
                 .put("vb08cadt", vb08cadt)
                 .put("vb08cb", vb08cb)
                 .put("vb08cbdt", vb08cbdt)
+                .put("vb08cb01", vb08cb01)
+                .put("vb08cb01dt", vb08cb01dt)
+                .put("vb08cb02", vb08cb02)
+                .put("vb08cb02dt", vb08cb02dt)
+                .put("vb08cb03", vb08cb03)
+                .put("vb08cb03dt", vb08cb03dt)
+                .put("vb08cb04", vb08cb04)
+                .put("vb08cb04dt", vb08cb04dt)
                 .put("vb08cc", vb08cc)
                 .put("vb08ccdt", vb08ccdt)
                 .put("vb08cd", vb08cd)
                 .put("vb08cddt", vb08cddt)
+                .put("vb08cd01", vb08cd01)
+                .put("vb08cd01dt", vb08cd01dt)
+                .put("vb08cd02", vb08cd02)
+                .put("vb08cd02dt", vb08cd02dt)
+                .put("vb08cd03", vb08cd03)
+                .put("vb08cd03dt", vb08cd03dt)
                 .put("vb08ce", vb08ce)
                 .put("vb08cedt", vb08cedt)
+                .put("vb08ce01", vb08ce01)
+                .put("vb08ce01dt", vb08ce01dt)
+                .put("vb08ce02", vb08ce02)
+                .put("vb08ce02dt", vb08ce02dt)
+                .put("vb08ce03", vb08ce03)
+                .put("vb08ce03dt", vb08ce03dt)
                 .put("vb08cf", vb08cf)
                 .put("vb08cfdt", vb08cfdt)
+                .put("vb08cf01", vb08cf01)
+                .put("vb08cf01dt", vb08cf01dt)
+                .put("vb08cf02", vb08cf02)
+                .put("vb08cf02dt", vb08cf02dt)
                 .put("vb08cg", vb08cg)
                 .put("vb08cgdt", vb08cgdt)
+                .put("vb08cg01", vb08cg01)
+                .put("vb08cg01dt", vb08cg01dt)
+                .put("vb08cg02", vb08cg02)
+                .put("vb08cg02dt", vb08cg02dt)
                 .put("vb08ch", vb08ch)
                 .put("vb08chdt", vb08chdt)
+                .put("vb08ch01", vb08ch01)
+                .put("vb08ch01dt", vb08ch01dt)
+                .put("vb08ch02", vb08ch02)
+                .put("vb08ch02dt", vb08ch02dt)
                 .put("vb08ci", vb08ci)
                 .put("vb08cidt", vb08cidt)
                 .put("vb08w", vb08w)
