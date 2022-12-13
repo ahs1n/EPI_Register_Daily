@@ -24,7 +24,8 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.WorkLocat
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 
 
-public class WorkLocation extends BaseObservable implements Observable {
+public class
+WorkLocation extends BaseObservable implements Observable {
 
     private final String TAG = "WorkLocation";
     private final transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();

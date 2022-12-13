@@ -1029,6 +1029,7 @@ public class FormVB extends BaseObservable implements Observable {
             JSONObject json = null;
             json = new JSONObject(string);
             this.vb08ca = json.getString("vb08ca");
+
             this.vb08cadt = json.getString("vb08cadt");
             this.vb08cb = json.getString("vb08cb");
             this.vb08cbdt = json.getString("vb08cbdt");
