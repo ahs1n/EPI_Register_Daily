@@ -100,6 +100,11 @@ public class SectionVBActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 currentSelectedRadioButtonId = checkedId;
+                if (checkedId != -1)
+                {
+                    bi.vb08cbdt.setText("");
+                }
+
             }
         });
         bi.vb08cbdt.addTextChangedListener(new TextWatcher() {
@@ -127,23 +132,31 @@ public class SectionVBActivity extends AppCompatActivity {
                         }
 
                         if (currentSelectedRadioButtonId == currentView.getId()) {
-                            View possibleTextView = bi.vb08cbll.getChildAt(i);
-                            if (possibleTextView != null) {
-                                TextView txtVaccineDate = (TextView) possibleTextView;
-                                if (txtVaccineDate != null) {
-                                    // This is the next TextView
-                                    String prevDateStr = userSelectedDate;
+                            for (int j=i; j<bi.vb08cbll.getChildCount(); j++) {
+                                View possibleTextView = bi.vb08cbll.getChildAt(j);
+                                if (possibleTextView != null && possibleTextView instanceof TextView) {
+                                    TextView txtVaccineDate = (TextView) possibleTextView;
+                                    if (txtVaccineDate != null) {
+                                        // This is the next TextView
+                                        String prevDateStr = userSelectedDate;
 
-                                    DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-                                    DateTime prevDate = fmt.parseDateTime(prevDateStr);
+                                        if(!prevDateStr.equals("")) {
+                                            DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
+                                            DateTime prevDate = fmt.parseDateTime(prevDateStr);
 
-                                    int days = getDaysOfVaccineType(baseId, doseNumber);
-                                    DateTime nextDate = prevDate.plusDays(days);
-                                    txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
-                                    txtVaccineDate.setVisibility(View.VISIBLE);
+                                            int days = getDaysOfVaccineType(baseId, doseNumber);
+                                            DateTime nextDate = prevDate.plusDays(days);
+                                            txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
+                                            txtVaccineDate.setVisibility(View.VISIBLE);
+                                            break;
+                                        }
+
+
+                                    }
                                 }
+
                             }
-                            break;
+                                break;
                         }
                     }
                 }
@@ -198,6 +211,7 @@ public class SectionVBActivity extends AppCompatActivity {
                     results.add(showHideDoneCheckWithText(vaccines.getPenta2(), baseId, "b"));
                     results.add(showHideDoneCheckWithText(vaccines.getPenta3(), baseId, "c"));
                     verifyCrossTicks(results, baseId);
+                    calculateNextVaccineDate(results, baseId);
 
                     // PCV
                     baseId = "vb08ce";
@@ -402,21 +416,26 @@ public class SectionVBActivity extends AppCompatActivity {
 
     private void calculateNextVaccineDate(ArrayList<Boolean> results, String baseId) {
         int firstTrue = results.lastIndexOf(true);
-        if (firstTrue > 0) {
+
+        String vaccineType = baseId;
+        int doseNumber = firstTrue;
+        RadioButton radioButton;
+        TextView txtVaccineDatePrevious;
+        TextView txtVaccineDate;
+
+
+
+        if (firstTrue > -1) {
             String prevLetter = String.valueOf(getChar(firstTrue));
             String letter = String.valueOf(getChar(firstTrue + 1));
             if (letter.equals("?") || prevLetter.equals("?"))
                 return;
-
-            String vaccineType = baseId;
-            int doseNumber = firstTrue;
-
             // baseId = opv
             // letter = dose number
 
-            RadioButton radioButton = (RadioButton) getViewDynamically(baseId + letter);
-            TextView txtVaccineDatePrevious = (TextView) getViewDynamically(baseId + prevLetter + "txt");
-            TextView txtVaccineDate = (TextView) getViewDynamically(baseId + letter + "txt");
+            radioButton = (RadioButton) getViewDynamically(baseId + letter);
+            txtVaccineDatePrevious = (TextView) getViewDynamically(baseId + prevLetter + "txt");
+            txtVaccineDate = (TextView) getViewDynamically(baseId + letter + "txt");
 
             if (radioButton != null && txtVaccineDate != null && txtVaccineDatePrevious != null) {
                 String prevDateStr = txtVaccineDatePrevious.getText().toString();
@@ -429,6 +448,20 @@ public class SectionVBActivity extends AppCompatActivity {
                 txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
                 txtVaccineDate.setVisibility(View.VISIBLE);
             }
+        }else{
+
+            // TODO calculate date according to DOB of registered child
+
+            String prevLetter = String.valueOf(getChar(firstTrue));
+            String letter = String.valueOf(getChar(firstTrue + 1));
+            if (letter.equals("?") || prevLetter.equals("?"))
+                return;
+
+            radioButton = (RadioButton) getViewDynamically(baseId + letter);
+            txtVaccineDatePrevious = (TextView) getViewDynamically(baseId + prevLetter + "txt");
+            txtVaccineDate = (TextView) getViewDynamically(baseId + letter + "txt");
+
+
         }
     }
 
@@ -442,6 +475,18 @@ public class SectionVBActivity extends AppCompatActivity {
                     days = 28;
                 else days = 30;
                 break;
+
+            case "vb08cd":
+
+            case "vb08ce":
+
+            case "vb08cf":
+                if(currentDose == -1)
+                days = 42;
+                else days = 28;
+                break;
+
+
         }
 
         return days;
@@ -470,9 +515,10 @@ public class SectionVBActivity extends AppCompatActivity {
                 imgDone.setVisibility(View.VISIBLE);
 
             return true;
-        }// else radioButton.setVisibility(View.VISIBLE);
+        }
         return false;
     }
+
 
 
     private boolean insertVaccineRecord(String vaccCode, String antigen, String vaccDate) {
