@@ -29,6 +29,13 @@ import android.widget.CheckBox;
 import androidx.core.app.ActivityCompat;
 
 import com.edittextpicker.aliazaz.EditTextPicker;
+import com.facebook.flipper.android.AndroidFlipperClient;
+import com.facebook.flipper.android.utils.FlipperUtils;
+import com.facebook.flipper.core.FlipperClient;
+import com.facebook.flipper.plugins.databases.DatabasesFlipperPlugin;
+import com.facebook.flipper.plugins.inspector.DescriptorMapping;
+import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin;
+import com.facebook.soloader.SoLoader;
 import com.validatorcrawler.aliazaz.Clear;
 
 import net.sqlcipher.database.SQLiteDatabase;
@@ -268,6 +275,16 @@ public class MainApp extends Application {
         initSecure();
 
         toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+
+        SoLoader.init(this, false);
+
+        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(this)) {
+            final FlipperClient client = AndroidFlipperClient.getInstance(this);
+            client.addPlugin(new InspectorFlipperPlugin(this, DescriptorMapping.withDefaults()));
+            client.addPlugin(new DatabasesFlipperPlugin(this));
+
+            client.start();
+        }
     }
 
     private void initSecure() {
