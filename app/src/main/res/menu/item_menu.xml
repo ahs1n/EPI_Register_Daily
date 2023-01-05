@@ -47,6 +47,13 @@
                 android:titleCondensed="List of all forms by date"
                 app:showAsAction="collapseActionView" />
 
+            <item
+                android:id="@+id/sendDB"
+                android:title="Send DB"
+                android:titleCondensed="Email database"
+                android:visible="true"
+                app:showAsAction="collapseActionView" />
+
         </menu>
     </item>
 </menu>
