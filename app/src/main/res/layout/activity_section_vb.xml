@@ -685,6 +685,22 @@
                             android:textColor="@color/gray" />
                     </TableRow>
 
+                    <TableRow>
+
+                        <TextView
+                            android:layout_column="1"
+                            android:background="@color/white"
+                            android:text="@string/dob"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:id="@+id/dob"
+                            android:background="@drawable/all_round_corners"
+                            android:text="xxx"
+                            android:textAlignment="center"
+                            android:textColor="@color/gray" />
+                    </TableRow>
+
                     <TableRow
                         android:id="@+id/wraVACINFO"
                         android:visibility="gone"
@@ -1183,7 +1199,8 @@
 
                                         </RadioGroup>
 
-                                        <LinearLayout android:id="@+id/vb08cbll"
+                                        <LinearLayout
+                                            android:id="@+id/vb08cbll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
                                             android:orientation="horizontal"
@@ -1613,6 +1630,7 @@
                                         </RadioGroup>
 
                                         <LinearLayout
+                                            android:id="@+id/vb08cdll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
                                             android:orientation="horizontal"
@@ -1839,6 +1857,7 @@
                                         </RadioGroup>
 
                                         <LinearLayout
+                                            android:id="@+id/vb08cell"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
                                             android:orientation="horizontal"
@@ -2053,6 +2072,7 @@
                                         </RadioGroup>
 
                                         <LinearLayout
+                                            android:id="@+id/vb08cfll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
                                             android:orientation="horizontal"
@@ -2266,6 +2286,7 @@
                                         </RadioGroup>
 
                                         <LinearLayout
+                                            android:id="@+id/vb08cgll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
                                             android:orientation="horizontal"
@@ -2478,6 +2499,7 @@
                                         </RadioGroup>
 
                                         <LinearLayout
+                                            android:id="@+id/vb08chll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
                                             android:orientation="horizontal"

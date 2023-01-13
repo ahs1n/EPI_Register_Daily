@@ -6,6 +6,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.attendance;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_DOB;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ATTENDANCE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ENTRYLOGS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_FORMSVA;
@@ -84,7 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_COPY = PROJECT_NAME + "_copy.db";
     private final String TAG = "DatabaseHelper";
     public static final String DATABASE_PASSWORD = IBAHC;
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private final Context mContext;
     private static final String SQL_DELETE_VACCINESDATA = "DROP TABLE IF EXISTS " + TableContracts.TableVaccinesData.TABLE_NAME;
 
@@ -120,6 +121,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_DELETE_VACCINESDATA);
                 db.execSQL(SQL_CREATE_VACCINESDATA);
             case 2:
+                db.execSQL(SQL_ALTER_ADD_DOB);
+            case 3:
         }
     }
 
@@ -1296,6 +1299,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableVaccinesData.COLUMN_VB05D, vaccinesData.getVBO5D());
             values.put(TableVaccinesData.COLUMN_VB05M, vaccinesData.getVBO5M());
             values.put(TableVaccinesData.COLUMN_VB05Y, vaccinesData.getVBO5Y());
+            values.put(TableVaccinesData.COLUMN_DOB, vaccinesData.getDob());
             values.put(TableVaccinesData.COLUMN_BCG, vaccinesData.getBcg());
             values.put(TableVaccinesData.COLUMN_OPV0, vaccinesData.getOpv0());
             values.put(TableVaccinesData.COLUMN_OPV1, vaccinesData.getOpv1());

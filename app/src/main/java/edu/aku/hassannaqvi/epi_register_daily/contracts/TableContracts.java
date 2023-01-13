@@ -260,6 +260,7 @@ public class TableContracts {
         public static final String COLUMN_VB05A = "vb05a";
         public static final String COLUMN_VB05D = "vb05d";
         public static final String COLUMN_VB05M = "vb05m";
+        public static final String COLUMN_DOB = "dob";
         public static final String COLUMN_VB05Y = "vb05y";
         public static final String COLUMN_BCG = "bcg";
         public static final String COLUMN_OPV0 = "opv0";

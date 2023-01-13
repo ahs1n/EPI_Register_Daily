@@ -25,6 +25,7 @@ class VaccinesData {
     var vBO5D: String = _EMPTY_
     var vBO5M: String = _EMPTY_
     var vBO5Y: String = _EMPTY_
+    var dob: String = _EMPTY_
     var bcg: String = _EMPTY_
     var opv0: String = _EMPTY_
     var opv1: String = _EMPTY_
@@ -64,6 +65,7 @@ class VaccinesData {
         vBO5D = jsonObject.getString(TableVaccinesData.COLUMN_VB05D)
         vBO5M = jsonObject.getString(TableVaccinesData.COLUMN_VB05M)
         vBO5Y = jsonObject.getString(TableVaccinesData.COLUMN_VB05Y)
+        dob = jsonObject.getString(TableVaccinesData.COLUMN_DOB);
         bcg = jsonObject.getString(TableVaccinesData.COLUMN_BCG)
         opv0 = jsonObject.getString(TableVaccinesData.COLUMN_OPV0)
         opv1 = jsonObject.getString(TableVaccinesData.COLUMN_OPV1)
@@ -117,6 +119,8 @@ class VaccinesData {
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05M))
         vBO5Y =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05Y))
+        dob =
+                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_DOB))
         bcg =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_BCG))
         opv0 =
