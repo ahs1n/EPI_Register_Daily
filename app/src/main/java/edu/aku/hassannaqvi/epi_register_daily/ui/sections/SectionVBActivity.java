@@ -16,7 +16,9 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -97,17 +99,13 @@ public class SectionVBActivity extends AppCompatActivity {
 
         }
 
-        bi.vb08cb.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                currentSelectedRadioButtonId = checkedId;
-                if (checkedId != -1)
-                {
-                    bi.vb08cbdt.setText("");
-                }
+        onCheckChanged(bi.vb08cb, bi.vb08cbdt);
+        onCheckChanged(bi.vb08cd, bi.vb08cddt);
+        onCheckChanged(bi.vb08ce, bi.vb08cedt);
+        onCheckChanged(bi.vb08cf, bi.vb08cfdt);
+        onCheckChanged(bi.vb08cg, bi.vb08cgdt);
+        onCheckChanged(bi.vb08ch, bi.vb08chdt);
 
-            }
-        });
 
         // OPV date
         bi.vb08cbdt.addTextChangedListener(new TextWatcher() {
@@ -136,7 +134,13 @@ public class SectionVBActivity extends AppCompatActivity {
 
                         if (currentSelectedRadioButtonId == currentView.getId()) {
                             for (int j=i; j<bi.vb08cbll.getChildCount(); j++) {
-                                View possibleTextView = bi.vb08cbll.getChildAt(j);
+                                View possibleTextView = null;
+                                if(i == 1)
+                                {
+                                   possibleTextView = bi.vb08cbll.getChildAt(j+1);
+                                }else{
+                                    possibleTextView = bi.vb08cbll.getChildAt(j);
+                                }
                                 if (possibleTextView != null && possibleTextView instanceof TextView) {
                                     TextView txtVaccineDate = (TextView) possibleTextView;
                                     if (txtVaccineDate != null) {
@@ -167,291 +171,19 @@ public class SectionVBActivity extends AppCompatActivity {
         });
 
         // Penta Date
-        bi.vb08cddt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (currentSelectedRadioButtonId != -1) {
-                    String baseId = "vb08cd";
-                    String userSelectedDate = editable.toString();
-
-                    int doseNumber = -1;
-                    for (int i=0; i<bi.vb08cd.getChildCount(); i++) {
-                        View currentView = bi.vb08cd.getChildAt(i);
-                        if (currentView instanceof RadioButton) {
-                            doseNumber++;
-                        }
-
-                        if (currentSelectedRadioButtonId == currentView.getId()) {
-                            for (int j=i; j<bi.vb08cdll.getChildCount(); j++) {
-                                View possibleTextView = bi.vb08cdll.getChildAt(j);
-                                if (possibleTextView != null && possibleTextView instanceof TextView) {
-                                    TextView txtVaccineDate = (TextView) possibleTextView;
-                                    if (txtVaccineDate != null) {
-                                        // This is the next TextView
-                                        String prevDateStr = userSelectedDate;
-
-                                        if(!prevDateStr.equals("")) {
-                                            DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-                                            DateTime prevDate = fmt.parseDateTime(prevDateStr);
-
-                                            int days = getDaysOfVaccineType(baseId, doseNumber);
-                                            DateTime nextDate = prevDate.plusDays(days);
-                                            txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
-                                            txtVaccineDate.setVisibility(View.VISIBLE);
-                                            break;
-                                        }
-
-
-                                    }
-                                }
-
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        });
+        defaultTextWatcher(bi.vb08cddt, bi.vb08cd, bi.vb08cdll, "vb08cd");
 
         // PCV date
-        bi.vb08cedt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (currentSelectedRadioButtonId != -1) {
-                    String baseId = "vb08ce";
-                    String userSelectedDate = editable.toString();
-
-                    int doseNumber = -1;
-                    for (int i=0; i<bi.vb08ce.getChildCount(); i++) {
-                        View currentView = bi.vb08ce.getChildAt(i);
-                        if (currentView instanceof RadioButton) {
-                            doseNumber++;
-                        }
-
-                        if (currentSelectedRadioButtonId == currentView.getId()) {
-                            for (int j=i; j<bi.vb08cell.getChildCount(); j++) {
-                                View possibleTextView = bi.vb08cell.getChildAt(j);
-                                if (possibleTextView != null && possibleTextView instanceof TextView) {
-                                    TextView txtVaccineDate = (TextView) possibleTextView;
-                                    if (txtVaccineDate != null) {
-                                        // This is the next TextView
-                                        String prevDateStr = userSelectedDate;
-
-                                        if(!prevDateStr.equals("")) {
-                                            DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-                                            DateTime prevDate = fmt.parseDateTime(prevDateStr);
-
-                                            int days = getDaysOfVaccineType(baseId, doseNumber);
-                                            DateTime nextDate = prevDate.plusDays(days);
-                                            txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
-                                            txtVaccineDate.setVisibility(View.VISIBLE);
-                                            break;
-                                        }
-
-
-                                    }
-                                }
-
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        });
+        defaultTextWatcher(bi.vb08cedt, bi.vb08ce, bi.vb08cell, "vb08ce");
 
         // Rota Date
-        bi.vb08cfdt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (currentSelectedRadioButtonId != -1) {
-                    String baseId = "vb08cf";
-                    String userSelectedDate = editable.toString();
-
-                    int doseNumber = -1;
-                    for (int i=0; i<bi.vb08cf.getChildCount(); i++) {
-                        View currentView = bi.vb08cf.getChildAt(i);
-                        if (currentView instanceof RadioButton) {
-                            doseNumber++;
-                        }
-
-                        if (currentSelectedRadioButtonId == currentView.getId()) {
-                            for (int j=i; j<bi.vb08cfll.getChildCount(); j++) {
-                                View possibleTextView = bi.vb08cfll.getChildAt(j);
-                                if (possibleTextView != null && possibleTextView instanceof TextView) {
-                                    TextView txtVaccineDate = (TextView) possibleTextView;
-                                    if (txtVaccineDate != null) {
-                                        // This is the next TextView
-                                        String prevDateStr = userSelectedDate;
-
-                                        if(!prevDateStr.equals("")) {
-                                            DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-                                            DateTime prevDate = fmt.parseDateTime(prevDateStr);
-
-                                            int days = getDaysOfVaccineType(baseId, doseNumber);
-                                            DateTime nextDate = prevDate.plusDays(days);
-                                            txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
-                                            txtVaccineDate.setVisibility(View.VISIBLE);
-                                            break;
-                                        }
-
-
-                                    }
-                                }
-
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        });
+        defaultTextWatcher(bi.vb08cfdt, bi.vb08cf, bi.vb08cfll, "vb08cf");
 
         // IPV
-        bi.vb08cgdt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (currentSelectedRadioButtonId != -1) {
-                    String baseId = "vb08cg";
-                    String userSelectedDate = editable.toString();
-
-                    int doseNumber = -1;
-                    for (int i=0; i<bi.vb08cg.getChildCount(); i++) {
-                        View currentView = bi.vb08cg.getChildAt(i);
-                        if (currentView instanceof RadioButton) {
-                            doseNumber++;
-                        }
-
-                        if (currentSelectedRadioButtonId == currentView.getId()) {
-                            for (int j=i; j<bi.vb08cgll.getChildCount(); j++) {
-                                View possibleTextView = bi.vb08cgll.getChildAt(j);
-                                if (possibleTextView != null && possibleTextView instanceof TextView) {
-                                    TextView txtVaccineDate = (TextView) possibleTextView;
-                                    if (txtVaccineDate != null) {
-                                        // This is the next TextView
-                                        String prevDateStr = userSelectedDate;
-
-                                        if(!prevDateStr.equals("")) {
-                                            DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-                                            DateTime prevDate = fmt.parseDateTime(prevDateStr);
-
-                                            int days = getDaysOfVaccineType(baseId, doseNumber);
-                                            DateTime nextDate = prevDate.plusDays(days);
-                                            txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
-                                            txtVaccineDate.setVisibility(View.VISIBLE);
-                                            break;
-                                        }
-
-
-                                    }
-                                }
-
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        });
+        defaultTextWatcher(bi.vb08cgdt, bi.vb08cg, bi.vb08cgll, "vb08cg");
 
         // Measles
-        bi.vb08chdt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (currentSelectedRadioButtonId != -1) {
-                    String baseId = "vb08ch";
-                    String userSelectedDate = editable.toString();
-
-                    int doseNumber = -1;
-                    for (int i=0; i<bi.vb08ch.getChildCount(); i++) {
-                        View currentView = bi.vb08ch.getChildAt(i);
-                        if (currentView instanceof RadioButton) {
-                            doseNumber++;
-                        }
-
-                        if (currentSelectedRadioButtonId == currentView.getId()) {
-                            for (int j=i; j<bi.vb08chll.getChildCount(); j++) {
-                                View possibleTextView = bi.vb08chll.getChildAt(j);
-                                if (possibleTextView != null && possibleTextView instanceof TextView) {
-                                    TextView txtVaccineDate = (TextView) possibleTextView;
-                                    if (txtVaccineDate != null) {
-                                        // This is the next TextView
-                                        String prevDateStr = userSelectedDate;
-
-                                        if(!prevDateStr.equals("")) {
-                                            DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-                                            DateTime prevDate = fmt.parseDateTime(prevDateStr);
-
-                                            int days = getDaysOfVaccineType(baseId, doseNumber);
-                                            DateTime nextDate = prevDate.plusDays(days);
-                                            txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
-                                            txtVaccineDate.setVisibility(View.VISIBLE);
-                                            break;
-                                        }
-
-
-                                    }
-                                }
-
-                            }
-                            break;
-                        }
-                    }
-                }
-            }
-        });
-
-
+        defaultTextWatcher(bi.vb08chdt, bi.vb08ch, bi.vb08chll, "vb08ch");
 
         //vaccinesList = new ArrayList<>();
         MainApp.vaccinesDataList = new ArrayList<>();
@@ -749,7 +481,7 @@ public class SectionVBActivity extends AppCompatActivity {
                 if(currentDose == -1)
                     days = 98;
                 // IPV 2 at 18 weeks
-                else days = 28;
+                else days = 154;
                 break;
             case "vb08ch":      // Measles
                 // Measles 1 at 9 months
@@ -1048,6 +780,91 @@ public class SectionVBActivity extends AppCompatActivity {
         finish();
 //        MainApp.memberCount --;
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+    private void onCheckChanged(RadioGroup rd, EditText ed)
+    {
+        rd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                currentSelectedRadioButtonId = checkedId;
+                if (checkedId != -1)
+                {
+                    ed.setText("");
+                }
+
+            }
+        });
+    }
+
+    private void defaultTextWatcher(EditText ed, RadioGroup rd, LinearLayout li, String baseId)
+    {
+        ed.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                if (currentSelectedRadioButtonId != -1) {
+                    String userSelectedDate = editable.toString();
+                    int doseNumber = -1;
+                    for (int i=0; i<rd.getChildCount(); i++) {
+                        View currentView = rd.getChildAt(i);
+                        if (currentView instanceof RadioButton) {
+                            doseNumber++;
+                        }
+
+                        if (currentSelectedRadioButtonId == currentView.getId()) {
+                            for (int j=i; j<li.getChildCount(); j++) {
+                                View possibleTextView = null;
+                                if(baseId.equals("vb08cd") || baseId.equals("vb08ce")) {
+                                    if (i == 3) {
+                                        possibleTextView = li.getChildAt(j + 1);
+                                    } else {
+                                        possibleTextView = li.getChildAt(j);
+                                    }
+                                }else{
+                                    if (i == 3) {
+                                        possibleTextView = li.getChildAt(j + 1);
+                                    }
+                                }
+                                if (possibleTextView != null && possibleTextView instanceof TextView) {
+                                    TextView txtVaccineDate = (TextView) possibleTextView;
+                                    if (txtVaccineDate != null) {
+                                        // This is the next TextView
+                                        String prevDateStr = userSelectedDate;
+
+                                        if(!prevDateStr.equals("")) {
+                                            DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
+                                            DateTime prevDate = fmt.parseDateTime(prevDateStr);
+
+                                            int days = getDaysOfVaccineType(baseId, doseNumber);
+                                            DateTime nextDate = prevDate.plusDays(days);
+                                            txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
+                                            txtVaccineDate.setVisibility(View.VISIBLE);
+                                            break;
+                                        }
+
+
+                                    }
+                                }
+
+                            }
+                            break;
+                        }
+                    }
+                }
+
+            }
+        });
     }
 
 

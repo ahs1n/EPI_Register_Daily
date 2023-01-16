@@ -957,11 +957,11 @@
                                         </RadioGroup>
 
                                         <LinearLayout
+                                            android:id="@+id/vb08call"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
                                             android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
-
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
