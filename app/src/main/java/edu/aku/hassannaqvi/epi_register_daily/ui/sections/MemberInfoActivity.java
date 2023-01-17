@@ -78,6 +78,24 @@ public class MemberInfoActivity extends AppCompatActivity {
             bi.fldGrpCVvb04c.setVisibility(View.VISIBLE);
         } else formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
 
+        bi.vb04.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+            }
+        });
+
     }
 
     private void populateVillageSpinner() {
