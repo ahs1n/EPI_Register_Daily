@@ -146,6 +146,17 @@ object CreateTable {
             + " );"
             )
 
+    const val SQL_CREATE_VACCINESCHEDULE = ("CREATE TABLE "
+            + VaccineSchedule.TABLE_NAME + "("
+            + VaccineSchedule.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + VaccineSchedule.COLUMN_VNAME + " TEXT,"
+            + VaccineSchedule.COLUMN_VGROUP + " TEXT,"
+            + VaccineSchedule.COLUMN_BYDOB + " TEXT,"
+            + VaccineSchedule.COLUMN_BYPRVDOZE + " TEXT,"
+            + VaccineSchedule.COLUMN_COMMENTS + " TEXT"
+            + " );"
+            )
+
     const val SQL_CREATE_FORMCR = ("CREATE TABLE "
             + FormCRTable.TABLE_NAME + "("
             + FormCRTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"

@@ -15,6 +15,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CR
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_UC;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_USERS;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VACCINE;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VACCINESCHEDULE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VACCINESDATA;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VILLAGES;
@@ -43,6 +44,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccineSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.EntryLogTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
@@ -68,6 +70,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.UCs;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 
@@ -85,9 +88,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_COPY = PROJECT_NAME + "_copy.db";
     private final String TAG = "DatabaseHelper";
     public static final String DATABASE_PASSWORD = IBAHC;
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private final Context mContext;
     private static final String SQL_DELETE_VACCINESDATA = "DROP TABLE IF EXISTS " + TableContracts.TableVaccinesData.TABLE_NAME;
+    private static final String SQL_DELETE_VACCINESSCHEDULE = "DROP TABLE IF EXISTS " + TableContracts.VaccineSchedule.TABLE_NAME;
 
 
 
@@ -111,6 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_VILLAGES);
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ENTRYLOGS);
+        db.execSQL(SQL_CREATE_VACCINESCHEDULE);
 
     }
 
@@ -123,6 +128,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case 2:
                 db.execSQL(SQL_ALTER_ADD_DOB);
             case 3:
+                db.execSQL(SQL_DELETE_VACCINESSCHEDULE);
+                db.execSQL(SQL_CREATE_VACCINESCHEDULE);
+            case 4:
         }
     }
 
@@ -1271,6 +1279,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
+    // Sync VACCINESDATA
+    public int syncvaccine_schedule(JSONArray vaccineSchedule) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        db.delete(VaccineSchedule.TABLE_NAME, null, null);
+        int insertCount = 0;
+
+        for (int i = 0; i < vaccineSchedule.length(); i++) {
+            JSONObject json = vaccineSchedule.getJSONObject(i);
+            VaccinesSchedule vaccineschedule = new VaccinesSchedule();
+            vaccineschedule.sync(json);
+            ContentValues values = new ContentValues();
+
+            values.put(VaccineSchedule.COLUMN_VNAME, vaccineschedule.getVname());
+            values.put(VaccineSchedule.COLUMN_VGROUP, vaccineschedule.getVgroup());
+            values.put(VaccineSchedule.COLUMN_BYDOB, vaccineschedule.getBydob());
+            values.put(VaccineSchedule.COLUMN_BYPRVDOZE, vaccineschedule.getByprvdoze());
+            values.put(VaccineSchedule.COLUMN_COMMENTS, vaccineschedule.getComments());
+
+            long rowID = db.insert(VaccineSchedule.TABLE_NAME, null, values);
+            if (rowID != -1) insertCount++;
+        }
+
+        return insertCount;
+    }
 
     // Sync VACCINESDATA
     public int syncvaccinesFollowUp(JSONArray vaccinesdata) throws JSONException {

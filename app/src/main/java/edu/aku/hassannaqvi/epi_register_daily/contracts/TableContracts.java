@@ -290,6 +290,21 @@ public class TableContracts {
 
     }
 
+    public static abstract class VaccineSchedule implements BaseColumns {
+        public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
+        public static final String TABLE_NAME = "vaccine_schedule";
+        public static final String COLUMN_ID = "_id";
+        public static final String COLUMN_VNAME = "vname";
+        public static final String COLUMN_VGROUP = "vgroup";
+        public static final String COLUMN_BYDOB = "bydob";
+        public static final String COLUMN_BYPRVDOZE = "byprvdoze";
+        public static final String COLUMN_COMMENTS = "comments";
+
+
+
+    }
+
+
 
     public static abstract class TableVillages implements BaseColumns {
         public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";

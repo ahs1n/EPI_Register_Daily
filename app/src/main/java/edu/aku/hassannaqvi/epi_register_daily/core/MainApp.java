@@ -47,6 +47,7 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.BuildConfig;
 import edu.aku.hassannaqvi.epi_register_daily.R;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormCR;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
@@ -55,6 +56,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 import edu.aku.hassannaqvi.epi_register_daily.ui.LockActivity;
 
@@ -97,6 +99,7 @@ public class MainApp extends Application {
     public static List<Vaccines> vaccinesList;
     public static List<VaccinesData> vaccinesDataList;
     public static VaccinesData vaccinesData;
+    public static VaccinesSchedule vaccinesSchedule;
     public static boolean superuser;
     public static String selectedVillageCode;
     public static String selectedUCCode;

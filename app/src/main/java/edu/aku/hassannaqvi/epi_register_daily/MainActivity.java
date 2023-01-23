@@ -47,6 +47,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 import edu.aku.hassannaqvi.epi_register_daily.ui.ChangePasswordActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.CreateLocationActivity;
@@ -197,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
                     MainApp.flag = false;
                     MainApp.formVB = new FormVB();
                     MainApp.vaccinesData = new VaccinesData();
+                    MainApp.vaccinesSchedule = new VaccinesSchedule();
                     MainApp.vaccines = new Vaccines();
                     if (formVA != null && !formVA.getId().isEmpty()) {
                         bi.openChildVacForm.setClickable(true);

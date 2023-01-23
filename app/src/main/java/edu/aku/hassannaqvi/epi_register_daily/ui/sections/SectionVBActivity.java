@@ -46,6 +46,7 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 
 public class SectionVBActivity extends AppCompatActivity {
@@ -496,6 +497,23 @@ public class SectionVBActivity extends AppCompatActivity {
                 if(currentDose == -1)
                 days = 252;
                 break;
+
+
+        }
+
+        return days;
+    }
+
+    private int getDaysOfVaccineTypeFromVaccineSchedule(String vaccineName, int currentDose, String group) {
+        int days = 0;
+        MainApp.vaccinesSchedule = new VaccinesSchedule();
+        ArrayList<VaccinesSchedule> vaccinesSchedules = new ArrayList<>();
+
+
+        switch (vaccineName) {
+
+
+
 
 
         }
