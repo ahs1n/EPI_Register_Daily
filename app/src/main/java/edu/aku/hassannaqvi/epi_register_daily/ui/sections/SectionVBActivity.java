@@ -6,6 +6,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccineCount;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesSchedule;
 
 import android.content.Context;
 import android.content.Intent;
@@ -188,6 +189,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
         //vaccinesList = new ArrayList<>();
         MainApp.vaccinesDataList = new ArrayList<>();
+        MainApp.vaccinesSchedule = new VaccinesSchedule();
 
         vaccineCount = 0;
 
@@ -504,22 +506,7 @@ public class SectionVBActivity extends AppCompatActivity {
         return days;
     }
 
-    private int getDaysOfVaccineTypeFromVaccineSchedule(String vaccineName, int currentDose, String group) {
-        int days = 0;
-        MainApp.vaccinesSchedule = new VaccinesSchedule();
-        ArrayList<VaccinesSchedule> vaccinesSchedules = new ArrayList<>();
 
-
-        switch (vaccineName) {
-
-
-
-
-
-        }
-
-        return days;
-    }
 
     private boolean showHideDoneCheckWithText(
             String conditionText,

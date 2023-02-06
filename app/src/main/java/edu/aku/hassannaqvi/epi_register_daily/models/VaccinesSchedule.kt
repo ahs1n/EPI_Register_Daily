@@ -1,7 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily.models
 
 import android.database.Cursor
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccineSchedule
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVaccineSchedule
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp._EMPTY_
 import org.json.JSONObject
 
@@ -19,26 +19,26 @@ class VaccinesSchedule {
 
 
     fun sync(jsonObject: JSONObject): VaccinesSchedule {
-        vname = jsonObject.getString(VaccineSchedule.COLUMN_VNAME)
-        vgroup = jsonObject.getString(VaccineSchedule.COLUMN_VGROUP)
-        bydob = jsonObject.getString(VaccineSchedule.COLUMN_BYDOB)
-        byprvdoze = jsonObject.getString(VaccineSchedule.COLUMN_BYPRVDOZE)
-        comments = jsonObject.getString(VaccineSchedule.COLUMN_COMMENTS)
+        vname = jsonObject.getString(TableVaccineSchedule.COLUMN_VNAME)
+        vgroup = jsonObject.getString(TableVaccineSchedule.COLUMN_VGROUP)
+        bydob = jsonObject.getString(TableVaccineSchedule.COLUMN_BYDOB)
+        byprvdoze = jsonObject.getString(TableVaccineSchedule.COLUMN_BYPRVDOZE)
+        comments = jsonObject.getString(TableVaccineSchedule.COLUMN_COMMENTS)
 
         return this
     }
 
     fun hydrate(cursor: Cursor): VaccinesSchedule {
         vname =
-            cursor.getString(cursor.getColumnIndexOrThrow(VaccineSchedule.COLUMN_VNAME))
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccineSchedule.COLUMN_VNAME))
         vgroup =
-            cursor.getString(cursor.getColumnIndexOrThrow(VaccineSchedule.COLUMN_VGROUP))
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccineSchedule.COLUMN_VGROUP))
         bydob =
-            cursor.getString(cursor.getColumnIndexOrThrow(VaccineSchedule.COLUMN_BYDOB))
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccineSchedule.COLUMN_BYDOB))
         byprvdoze =
-            cursor.getString(cursor.getColumnIndexOrThrow(VaccineSchedule.COLUMN_BYPRVDOZE))
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccineSchedule.COLUMN_BYPRVDOZE))
         comments =
-            cursor.getString(cursor.getColumnIndexOrThrow(VaccineSchedule.COLUMN_COMMENTS))
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccineSchedule.COLUMN_COMMENTS))
 
         return this
     }

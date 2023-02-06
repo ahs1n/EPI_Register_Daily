@@ -44,7 +44,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccineSchedule;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVaccineSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.EntryLogTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
@@ -91,7 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 4;
     private final Context mContext;
     private static final String SQL_DELETE_VACCINESDATA = "DROP TABLE IF EXISTS " + TableContracts.TableVaccinesData.TABLE_NAME;
-    private static final String SQL_DELETE_VACCINESSCHEDULE = "DROP TABLE IF EXISTS " + TableContracts.VaccineSchedule.TABLE_NAME;
+    private static final String SQL_DELETE_VACCINESSCHEDULE = "DROP TABLE IF EXISTS " + TableVaccineSchedule.TABLE_NAME;
 
 
 
@@ -1282,7 +1282,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Sync VACCINESDATA
     public int syncvaccine_schedule(JSONArray vaccineSchedule) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
-        db.delete(VaccineSchedule.TABLE_NAME, null, null);
+        db.delete(TableVaccineSchedule.TABLE_NAME, null, null);
         int insertCount = 0;
 
         for (int i = 0; i < vaccineSchedule.length(); i++) {
@@ -1291,13 +1291,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             vaccineschedule.sync(json);
             ContentValues values = new ContentValues();
 
-            values.put(VaccineSchedule.COLUMN_VNAME, vaccineschedule.getVname());
-            values.put(VaccineSchedule.COLUMN_VGROUP, vaccineschedule.getVgroup());
-            values.put(VaccineSchedule.COLUMN_BYDOB, vaccineschedule.getBydob());
-            values.put(VaccineSchedule.COLUMN_BYPRVDOZE, vaccineschedule.getByprvdoze());
-            values.put(VaccineSchedule.COLUMN_COMMENTS, vaccineschedule.getComments());
+            values.put(TableVaccineSchedule.COLUMN_VNAME, vaccineschedule.getVname());
+            values.put(TableVaccineSchedule.COLUMN_VGROUP, vaccineschedule.getVgroup());
+            values.put(TableVaccineSchedule.COLUMN_BYDOB, vaccineschedule.getBydob());
+            values.put(TableVaccineSchedule.COLUMN_BYPRVDOZE, vaccineschedule.getByprvdoze());
+            values.put(TableVaccineSchedule.COLUMN_COMMENTS, vaccineschedule.getComments());
 
-            long rowID = db.insert(VaccineSchedule.TABLE_NAME, null, values);
+            long rowID = db.insert(TableVaccineSchedule.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
 
@@ -1980,6 +1980,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while (c.moveToNext()) {
             VaccinesData vd = new VaccinesData().hydrate(c);
             if (vd.getVBO3().equals("2"))
+                allForm.add(vd);
+        }
+        c.close();
+        return allForm;
+    }
+
+    public List<VaccinesSchedule> getVaccineDaysByVgroup(String vGroup) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+
+        String whereClause = TableVaccineSchedule.COLUMN_VGROUP + " = ? ";
+        String[] whereArgs = new String[]{vGroup};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                TableVaccineSchedule.COLUMN_ID + " ASC";
+
+        List<VaccinesSchedule> allForm = new ArrayList<>();
+
+        c = db.query(
+                TableVaccineSchedule.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            VaccinesSchedule vd = new VaccinesSchedule().hydrate(c);
                 allForm.add(vd);
         }
         c.close();

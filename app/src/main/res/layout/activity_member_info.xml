@@ -1,5 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -413,6 +414,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
                             android:visibility="gone"
+                            tools:visibility="visible"
                             android:backgroundTint="@color/redOverlay"
                             android:checked="@{form.vb04dk.equals(`98`)}"
                             android:onClick="@{()->form.setVb04dk(form.vb04dk.equals(`98`)?``:`98`)}"

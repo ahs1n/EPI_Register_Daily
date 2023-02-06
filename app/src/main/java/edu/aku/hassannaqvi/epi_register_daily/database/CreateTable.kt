@@ -147,13 +147,13 @@ object CreateTable {
             )
 
     const val SQL_CREATE_VACCINESCHEDULE = ("CREATE TABLE "
-            + VaccineSchedule.TABLE_NAME + "("
-            + VaccineSchedule.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + VaccineSchedule.COLUMN_VNAME + " TEXT,"
-            + VaccineSchedule.COLUMN_VGROUP + " TEXT,"
-            + VaccineSchedule.COLUMN_BYDOB + " TEXT,"
-            + VaccineSchedule.COLUMN_BYPRVDOZE + " TEXT,"
-            + VaccineSchedule.COLUMN_COMMENTS + " TEXT"
+            + TableVaccineSchedule.TABLE_NAME + "("
+            + TableVaccineSchedule.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + TableVaccineSchedule.COLUMN_VNAME + " TEXT,"
+            + TableVaccineSchedule.COLUMN_VGROUP + " TEXT,"
+            + TableVaccineSchedule.COLUMN_BYDOB + " TEXT,"
+            + TableVaccineSchedule.COLUMN_BYPRVDOZE + " TEXT,"
+            + TableVaccineSchedule.COLUMN_COMMENTS + " TEXT"
             + " );"
             )
 
