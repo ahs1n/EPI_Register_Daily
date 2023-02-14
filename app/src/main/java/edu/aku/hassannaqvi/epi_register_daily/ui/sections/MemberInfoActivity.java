@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import org.json.JSONException;
@@ -53,7 +54,6 @@ public class MemberInfoActivity extends AppCompatActivity {
         setRange();
         populateVillageSpinner();
 
-        MainApp.formVB.setUuid(MainApp.formVA.getUid());
         MainApp.flag = true;
 
         b = getIntent().getBooleanExtra("b", true);
@@ -68,9 +68,12 @@ public class MemberInfoActivity extends AppCompatActivity {
         } else formVB.setVb03("1");
 
         bi.setForm(formVB);
+        initUI();
 
+    }
 
-
+    private void initUI() {
+        formVB.setUuid(MainApp.formVA.getUid());
         formVB.setFacilityCode(MainApp.workLocation.getWlFacilityCode());
         formVB.setWlArea(MainApp.workLocation.getWlArea());
 
@@ -78,24 +81,9 @@ public class MemberInfoActivity extends AppCompatActivity {
             bi.fldGrpCVvb04c.setVisibility(View.VISIBLE);
         } else formVB.setVillageCode(MainApp.workLocation.getWlVillageCode());
 
-        bi.vb04.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-
-            }
-        });
-
+        MainApp.setMaxYearByCurrent(bi.vb04by);
+        MainApp.setMaxMonthByCurrent(bi.vb04bm);
+        MainApp.setMaxDayByCurrent(bi.vb04bd);
     }
 
     private void populateVillageSpinner() {
@@ -131,6 +119,12 @@ public class MemberInfoActivity extends AppCompatActivity {
                 if (position != 0) {
 
                     formVB.setVillageCode(villageCodes.get(bi.villageName.getSelectedItemPosition()));
+                    if (villageCodes.get(bi.villageName.getSelectedItemPosition()).equals("99")) {
+                        bi.fldGrpCVvb06a.setVisibility(View.VISIBLE);
+                    } else {
+                        Clear.clearAllFields(bi.fldGrpCVvb06a);
+                        bi.fldGrpCVvb06a.setVisibility(View.GONE);
+                    }
                     //workLocation.setWlVillageName(villageNames.get(bi.villageName.getSelectedItemPosition()));
 
 //                    MainApp.selectedVillageCode = (villageCodes.get(bi.wlVillageName.getSelectedItemPosition()));
@@ -192,11 +186,11 @@ public class MemberInfoActivity extends AppCompatActivity {
     }
 
     private void setupListeners() {
-        bi.vb03.setOnCheckedChangeListener(((radioGroup, i) -> {
+/*        bi.vb03.setOnCheckedChangeListener(((radioGroup, i) -> {
             if (bi.vb03a.isChecked()) {
                 bi.vb04Name.setText(R.string.vb0402);
             } else bi.vb04Name.setText(R.string.vb0401);
-        }));
+        }));*/
 
 
         /*bi.vb04by.addTextChangedListener(new TextWatcher() {

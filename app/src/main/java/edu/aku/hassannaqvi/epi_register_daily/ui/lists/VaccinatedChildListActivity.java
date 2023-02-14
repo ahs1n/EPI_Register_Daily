@@ -1,7 +1,6 @@
 
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
 
 import android.annotation.SuppressLint;
@@ -11,7 +10,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,16 +29,19 @@ import org.json.JSONException;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
+import edu.aku.hassannaqvi.epi_register_daily.adapters.GenericRVAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersFollowupsAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityVaccinatedListChildBinding;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
 
 public class VaccinatedChildListActivity extends AppCompatActivity {
 
+    private final int VACC_CHILD_RV = 102;
     private VaccinatedMembersFollowupsAdapter adapterLable;
 
 
@@ -64,6 +68,13 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
                 }
             });
     private VaccinatedMembersFollowupsAdapter vaccinatedMembersAdapter;
+    GenericRVAdapter.IRVOnItemClickListener iRVOnItemClickListener = (recyclerView, obj, index) -> {
+        int recyclerViewTag = (int) recyclerView.getTag();
+        if (recyclerViewTag == VACC_CHILD_RV) {
+            VaccinesData childVacc = (VaccinesData) obj;
+            startActivity(new Intent(this, SectionVBActivity.class));
+        }
+    };
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
@@ -76,9 +87,11 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         db = MainApp.appInfo.dbHelper;
         vaccinesDataList = db.getAllFollowupChilds();
 
-        initSearchFilter();
+        initVacChildRV();
 
-        vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
+//        initSearchFilter();
+
+        /*vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
             try {
                 vaccinesData = db.getFollowupSelectedMembers(member.getUID());
                 Toast.makeText(VaccinatedChildListActivity.this,
@@ -93,7 +106,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         });
         bi.rvMember.setAdapter(vaccinatedMembersAdapter);
 
-        vaccinatedMembersAdapter.notifyDataSetChanged();
+        vaccinatedMembersAdapter.notifyDataSetChanged();*/
         bi.rvMember.setLayoutManager(new LinearLayoutManager(this));
 
         bi.fab.setOnClickListener(view -> {
@@ -105,14 +118,43 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         bi.searchBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(bi.searchByName.isChecked()) {
+                if (bi.searchByName.isChecked()) {
                     bi.memberId.setHint("Name");
-                }else{
+                } else {
                     bi.memberId.setHint("Card No.");
                 }
             }
         });
 
+    }
+
+    private void initVacChildRV() {
+        GenericRVAdapter<VaccinesData> genericRVAdapter = new GenericRVAdapter<VaccinesData>(this,
+                vaccinesDataList, bi.rvMember, iRVOnItemClickListener, false) {
+            @Override
+            protected View createView(Activity activity, ViewGroup viewGroup, int viewType) {
+                return LayoutInflater.from(activity)
+                        .inflate(R.layout.vaccinated_member_row, viewGroup, false);
+            }
+
+            @Override
+            protected void bindView(VaccinesData item, GenericRVAdapter.ViewHolder viewHolder, int position, boolean isMultiSelect) {
+                if (item != null) {
+                    viewHolder.itemView.setTag(position);
+                    TextView mName = (TextView) viewHolder.getView(R.id.mName);
+                    mName.setText(item.getVB04A());
+                    mName.setTag(position);
+                    TextView ageY = (TextView) viewHolder.getView(R.id.ageY);
+                    ageY.setText(item.getDob());
+                    TextView fName = (TextView) viewHolder.getView(R.id.fName);
+                    fName.setText(item.getVB04());
+                    TextView cardNo = (TextView) viewHolder.getView(R.id.cardNo);
+                    cardNo.setText(item.getVBO2());
+                }
+            }
+        };
+        bi.rvMember.setTag(VACC_CHILD_RV);
+        bi.rvMember.setAdapter(genericRVAdapter);
     }
 
     @Override
@@ -138,7 +180,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         MemberInfoLauncher.launch(intent);
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    /*@SuppressLint("NotifyDataSetChanged")
     public void filterForms(View view) {
 
         if (bi.searchByName.isChecked()) {
@@ -183,7 +225,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
             bi.rvMember.setAdapter(vaccinatedMembersAdapter);
         }
 
-    }
+    }*/
 
     public void btnEnd(View view) {
 

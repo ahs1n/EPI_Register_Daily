@@ -281,13 +281,29 @@ public class TableContracts {
         public static final String COLUMN_MEASLES1 = "Measles1";
         public static final String COLUMN_MEASLES2 = "Measles2";
         public static final String COLUMN_TYPHOID = "Typhoid";
+    }
+
+
+    public static abstract class TableWomenFollowUP implements BaseColumns {
+        public static final String COLUMN_NAME_NULLABLE = "nullColumnHack";
+        public static final String TABLE_NAME = "womenfollowup";
+        public static final String COLUMN_ID = "_id";
+        public static final String COLUMN_UC_CODE = "uccode";
+        public static final String COLUMN_AID = "_aid";
+        public static final String COLUMN_UID = "_uid";
+        public static final String COLUMN_VILLAGE_CODE = "villagecode";
+        public static final String COLUMN_FACILITY_CODE = "facilityCode";
+        public static final String COLUMN_VB02 = "vb02";
+        public static final String COLUMN_VB03 = "vb03";
+        public static final String COLUMN_VB04 = "vb04";
+        public static final String COLUMN_VB04A = "vb04a";
+        public static final String COLUMN_VB05A = "vb05a";
+        public static final String COLUMN_AGE = "age";
         public static final String COLUMN_TT1 = "tt1";
         public static final String COLUMN_TT2 = "tt2";
         public static final String COLUMN_TT3 = "tt3";
         public static final String COLUMN_TT4 = "tt4";
         public static final String COLUMN_TT5 = "tt5";
-
-
     }
 
     public static abstract class TableVaccineSchedule implements BaseColumns {

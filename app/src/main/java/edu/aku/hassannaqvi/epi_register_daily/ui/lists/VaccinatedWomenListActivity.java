@@ -1,17 +1,16 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.womenFollowUP;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.womenFollowUPList;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,16 +27,19 @@ import org.json.JSONException;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
-import edu.aku.hassannaqvi.epi_register_daily.adapters.VaccinatedMembersFollowupsAdapter;
+import edu.aku.hassannaqvi.epi_register_daily.adapters.GenericRVAdapter;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityVaccinatedListWomenBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
+import edu.aku.hassannaqvi.epi_register_daily.models.WomenFollowUP;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 
 
 public class VaccinatedWomenListActivity extends AppCompatActivity {
+
+    private final int VACC_WOMEN_RV = 101;
 
 
     private static final String TAG = "VaccinationActivity";
@@ -53,7 +55,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                         //Intent data = result.getData();
                         Intent data = result.getData();
 
-                        vaccinesDataList.add(vaccinesData);
+                        womenFollowUPList.add(womenFollowUP);
 
                     }
 
@@ -62,7 +64,14 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                     }
                 }
             });
-    private VaccinatedMembersFollowupsAdapter vaccinatedMembersAdapter;
+    //    private VaccinatedMembersFollowupsAdapter vaccinatedMembersAdapter;
+    GenericRVAdapter.IRVOnItemClickListener iRVOnItemClickListener = (recyclerView, obj, index) -> {
+        int recyclerViewTag = (int) recyclerView.getTag();
+        if (recyclerViewTag == VACC_WOMEN_RV) {
+            WomenFollowUP womenFollowUP = (WomenFollowUP) obj;
+            startActivity(new Intent(this, SectionVBActivity.class));
+        }
+    };
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
@@ -73,11 +82,11 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_vaccinated_list_women);
         bi.setCallback(this);
         db = MainApp.appInfo.dbHelper;
-        vaccinesDataList = db.getAllFollowupWomen();
+        womenFollowUPList = db.getAllFollowupWomen();
 
-        initSearchFilter();
+//        initSearchFilter();
 
-        vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
+        /*vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, womenFollowUPList, member -> {
             try {
                 vaccinesData = db.getFollowupSelectedMembers(member.getUID());
                 Toast.makeText(VaccinatedWomenListActivity.this,
@@ -90,9 +99,11 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
-        bi.rvMember.setAdapter(vaccinatedMembersAdapter);
+        bi.rvMember.setAdapter(vaccinatedMembersAdapter);*/
 
-        vaccinatedMembersAdapter.notifyDataSetChanged();
+        initVacWomenRV();
+
+//        vaccinatedMembersAdapter.notifyDataSetChanged();
         bi.rvMember.setLayoutManager(new LinearLayoutManager(this));
 
         bi.fab.setOnClickListener(view -> {
@@ -102,13 +113,42 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
         bi.searchBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(bi.searchByName.isChecked()) {
+                if (bi.searchByName.isChecked()) {
                     bi.memberId.setHint("Card Number");
-                }else{
+                } else {
                     bi.memberId.setHint("Name");
                 }
             }
         });
+    }
+
+    private void initVacWomenRV() {
+        GenericRVAdapter<WomenFollowUP> genericRVAdapter = new GenericRVAdapter<WomenFollowUP>(this,
+                womenFollowUPList, bi.rvMember, iRVOnItemClickListener, false) {
+            @Override
+            protected View createView(Activity activity, ViewGroup viewGroup, int viewType) {
+                return LayoutInflater.from(activity)
+                        .inflate(R.layout.vaccinated_member_row, viewGroup, false);
+            }
+
+            @Override
+            protected void bindView(WomenFollowUP item, ViewHolder viewHolder, int position, boolean isMultiSelect) {
+                if (item != null) {
+                    viewHolder.itemView.setTag(position);
+                    TextView mName = (TextView) viewHolder.getView(R.id.mName);
+                    mName.setText(item.getVB04A());
+                    mName.setTag(position);
+                    TextView ageY = (TextView) viewHolder.getView(R.id.ageY);
+                    ageY.setText(item.getAge());
+                    TextView fName = (TextView) viewHolder.getView(R.id.fName);
+                    fName.setText(item.getVB04());
+                    TextView cardNo = (TextView) viewHolder.getView(R.id.cardNo);
+                    cardNo.setText(item.getVBO2());
+                }
+            }
+        };
+        bi.rvMember.setTag(VACC_WOMEN_RV);
+        bi.rvMember.setAdapter(genericRVAdapter);
     }
 
 /*    @Override
@@ -140,7 +180,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
         MemberInfoLauncher.launch(intent);
     }
 
-    @SuppressLint("NotifyDataSetChanged")
+    /*@SuppressLint("NotifyDataSetChanged")
     public void filterForms(View view) {
 
         if (bi.searchByName.isChecked()) {
@@ -185,7 +225,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
             bi.rvMember.setAdapter(vaccinatedMembersAdapter);
         }
 
-    }
+    }*/
 
     public void btnEnd(View view) {
 
@@ -199,7 +239,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
     }
 
-    // Search Filter
+    /*// Search Filter
     private void initSearchFilter() {
         bi.memberId.addTextChangedListener(new TextWatcher() {
             @Override
@@ -225,5 +265,5 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
+    }*/
 }

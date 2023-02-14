@@ -19,6 +19,7 @@ import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CR
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VACCINESDATA;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VERSIONAPP;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_VILLAGES;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_WOMENFOLLOWUP;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_WORK_LOCATION;
 
 import android.content.ContentValues;
@@ -44,7 +45,6 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVaccineSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.EntryLogTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTable;
@@ -53,8 +53,10 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATa
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVaccineSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVillages;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableWomenFollowUP;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.WorkLocationTable;
@@ -72,6 +74,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
+import edu.aku.hassannaqvi.epi_register_daily.models.WomenFollowUP;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 
 
@@ -94,8 +97,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_VACCINESSCHEDULE = "DROP TABLE IF EXISTS " + TableVaccineSchedule.TABLE_NAME;
 
 
-
-
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         mContext = context;
@@ -116,6 +117,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_VERSIONAPP);
         db.execSQL(SQL_CREATE_ENTRYLOGS);
         db.execSQL(SQL_CREATE_VACCINESCHEDULE);
+        db.execSQL(SQL_CREATE_WOMENFOLLOWUP);
 
     }
 
@@ -130,6 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case 3:
                 db.execSQL(SQL_DELETE_VACCINESSCHEDULE);
                 db.execSQL(SQL_CREATE_VACCINESCHEDULE);
+                db.execSQL(SQL_CREATE_WOMENFOLLOWUP);
             case 4:
         }
     }
@@ -1351,13 +1354,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableVaccinesData.COLUMN_MEASLES1, vaccinesData.getMeasles1());
             values.put(TableVaccinesData.COLUMN_MEASLES2, vaccinesData.getMeasles2());
             values.put(TableVaccinesData.COLUMN_TYPHOID, vaccinesData.getTyphoid());
-            values.put(TableVaccinesData.COLUMN_TT1, vaccinesData.getTt1());
-            values.put(TableVaccinesData.COLUMN_TT2, vaccinesData.getTt2());
-            values.put(TableVaccinesData.COLUMN_TT3, vaccinesData.getTt3());
-            values.put(TableVaccinesData.COLUMN_TT4, vaccinesData.getTt4());
-            values.put(TableVaccinesData.COLUMN_TT5, vaccinesData.getTt5());
 
             long rowID = db.insert(TableVaccinesData.TABLE_NAME, null, values);
+            if (rowID != -1) insertCount++;
+        }
+
+        return insertCount;
+    }
+
+    public int syncwomenfollowup(JSONArray vaccinesdata) throws JSONException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        db.delete(TableWomenFollowUP.TABLE_NAME, null, null);
+        int insertCount = 0;
+
+        for (int i = 0; i < vaccinesdata.length(); i++) {
+            JSONObject json = vaccinesdata.getJSONObject(i);
+            WomenFollowUP vaccinesData = new WomenFollowUP();
+            vaccinesData.sync(json);
+            ContentValues values = new ContentValues();
+
+            values.put(TableWomenFollowUP.COLUMN_UC_CODE, vaccinesData.getUcCode());
+            values.put(TableWomenFollowUP.COLUMN_AID, vaccinesData.getAID());
+            values.put(TableWomenFollowUP.COLUMN_UID, vaccinesData.getUID());
+            values.put(TableWomenFollowUP.COLUMN_VILLAGE_CODE, vaccinesData.getVillageCode());
+            values.put(TableWomenFollowUP.COLUMN_FACILITY_CODE, vaccinesData.getFacilityCode());
+            values.put(TableWomenFollowUP.COLUMN_VB02, vaccinesData.getVBO2());
+            values.put(TableWomenFollowUP.COLUMN_VB03, vaccinesData.getVBO3());
+            values.put(TableWomenFollowUP.COLUMN_VB04, vaccinesData.getVB04());
+            values.put(TableWomenFollowUP.COLUMN_VB04A, vaccinesData.getVB04A());
+            values.put(TableWomenFollowUP.COLUMN_VB05A, vaccinesData.getVBO5A());
+            values.put(TableWomenFollowUP.COLUMN_AGE, vaccinesData.getAge());
+            values.put(TableWomenFollowUP.COLUMN_TT1, vaccinesData.getTt1());
+            values.put(TableWomenFollowUP.COLUMN_TT2, vaccinesData.getTt2());
+            values.put(TableWomenFollowUP.COLUMN_TT3, vaccinesData.getTt3());
+            values.put(TableWomenFollowUP.COLUMN_TT4, vaccinesData.getTt4());
+            values.put(TableWomenFollowUP.COLUMN_TT5, vaccinesData.getTt5());
+
+            long rowID = db.insert(TableWomenFollowUP.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
 
@@ -1662,12 +1695,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (vd.getVBO3().equals("2"))
                 allForm.add(vd);
         }
-            c.close();
+        c.close();
         return allForm;
     }
 
 
-    public List<VaccinesData> getAllFollowupWomen() {
+    /*public List<VaccinesData> getAllFollowupWomen() {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c;
         String[] columns = null;
@@ -1690,6 +1723,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
         while (c.moveToNext()) {
             VaccinesData vd = new VaccinesData().hydrate(c);
+            if (vd.getVBO3().equals("1"))
+                allForm.add(vd);
+        }
+        c.close();
+        return allForm;
+    }*/
+
+
+    public List<WomenFollowUP> getAllFollowupWomen() {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+        String whereClause = null;
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+
+        String orderBy = TableWomenFollowUP.COLUMN_ID + " ASC";
+        List<WomenFollowUP> allForm = new ArrayList<>();
+
+        c = db.query(
+                TableWomenFollowUP.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            WomenFollowUP vd = new WomenFollowUP().hydrate(c);
             if (vd.getVBO3().equals("1"))
                 allForm.add(vd);
         }
@@ -1952,7 +2016,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     public List<VaccinesData> getFollowupChildsByName(String memberName) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c;
@@ -2012,7 +2075,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
         while (c.moveToNext()) {
             VaccinesSchedule vd = new VaccinesSchedule().hydrate(c);
-                allForm.add(vd);
+            allForm.add(vd);
         }
         c.close();
         return allForm;
@@ -2156,6 +2219,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         );
         while (c.moveToNext()) {
             vaccinesByUID.add(new VaccinesData().hydrate(c));
+        }
+
+        if (c != null && !c.isClosed()) {
+            c.close();
+        }
+        c.close();
+        return vaccinesByUID;
+    }
+
+
+    public List<WomenFollowUP> getSyncedVaccinatedWomenBYUID(String uid) throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = TableWomenFollowUP.COLUMN_UID + "=? ";
+        String[] whereArgs = {uid};
+        String groupBy = null;
+        String having = null;
+        String orderBy = TableWomenFollowUP.COLUMN_ID + " ASC";
+
+        List<WomenFollowUP> vaccinesByUID = new ArrayList<>();
+        c = db.query(
+                TableWomenFollowUP.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            vaccinesByUID.add(new WomenFollowUP().hydrate(c));
         }
 
         if (c != null && !c.isClosed()) {

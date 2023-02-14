@@ -43,11 +43,12 @@ import net.sqlcipher.database.SQLiteDatabase;
 import org.json.JSONArray;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import edu.aku.hassannaqvi.epi_register_daily.BuildConfig;
 import edu.aku.hassannaqvi.epi_register_daily.R;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.models.Attendance;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormCR;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
@@ -57,6 +58,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.Users;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
+import edu.aku.hassannaqvi.epi_register_daily.models.WomenFollowUP;
 import edu.aku.hassannaqvi.epi_register_daily.models.WorkLocation;
 import edu.aku.hassannaqvi.epi_register_daily.ui.LockActivity;
 
@@ -98,6 +100,8 @@ public class MainApp extends Application {
     public static Vaccines vaccines;
     public static List<Vaccines> vaccinesList;
     public static List<VaccinesData> vaccinesDataList;
+    public static List<WomenFollowUP> womenFollowUPList;
+    public static WomenFollowUP womenFollowUP;
     public static VaccinesData vaccinesData;
     public static VaccinesSchedule vaccinesSchedule;
     public static boolean superuser;
@@ -309,5 +313,23 @@ public class MainApp extends Application {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    // Set max value by current month
+    public static void setMaxDayByCurrent(EditTextPicker et) {
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+        et.setMaxvalue(cal.get(Calendar.DAY_OF_MONTH));
+    }
+
+    // Set max value by current month
+    public static void setMaxMonthByCurrent(EditTextPicker et) {
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+        et.setMaxvalue(cal.get(Calendar.MONTH) + 1);
+    }
+
+    // Set max value by current year
+    public static void setMaxYearByCurrent(EditTextPicker et) {
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+        et.setMaxvalue(cal.get(Calendar.YEAR));
     }
 }

@@ -413,15 +413,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
-                            android:visibility="gone"
-                            tools:visibility="visible"
                             android:backgroundTint="@color/redOverlay"
                             android:checked="@{form.vb04dk.equals(`98`)}"
                             android:onClick="@{()->form.setVb04dk(form.vb04dk.equals(`98`)?``:`98`)}"
                             android:paddingStart="0dp"
                             android:tag="-1"
                             android:text="@string/vb04dk"
-                            android:textColor="@color/redDark" />
+                            android:textColor="@color/redDark"
+                            android:visibility="gone"
+                            tools:visibility="visible" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -652,6 +652,7 @@
                 <!-- vb06a  Input   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb06a"
+                    android:visibility="gone"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -687,9 +688,6 @@
                             android:text="@={form.vb06a}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
-
-
 
 
                 <!-- vb07  Input   -->
@@ -812,8 +810,8 @@
                         android:layout_width="130dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="12dp"
-                        android:backgroundTint="@color/redOverlay"
                         android:background="@drawable/all_round_corners"
+                        android:backgroundTint="@color/redOverlay"
                         android:elevation="20dp"
                         android:onClick="btnEnd"
                         android:text="@string/cancel"

@@ -583,18 +583,6 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/btn_End"
-                        android:layout_width="130dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="12dp"
-                        android:background="@drawable/all_round_corners"
-                        android:backgroundTint="@color/redOverlay"
-                        android:elevation="20dp"
-                        android:onClick="btnEnd"
-                        android:text="@string/cancel"
-                        android:textColor="@color/white" />
-
-                    <Button
                         android:id="@+id/btn_Continue"
                         android:layout_width="130dp"
                         android:layout_height="50dp"
@@ -604,6 +592,18 @@
                         android:elevation="20dp"
                         android:onClick="btnContinue"
                         android:text="@string/btnSave"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/btn_End"
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/all_round_corners"
+                        android:backgroundTint="@color/redOverlay"
+                        android:elevation="20dp"
+                        android:onClick="btnEnd"
+                        android:text="@string/cancel"
                         android:textColor="@color/white" />
 
                 </LinearLayout>

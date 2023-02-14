@@ -152,13 +152,6 @@ public class FormVB extends BaseObservable implements Observable {
 
 
     public FormVB() {
-
-/*        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
-        setUserName(MainApp.user.getUserName());
-        setDeviceId(MainApp.deviceid);
-        setAppver(MainApp.appInfo.getAppVersion());
-        setAppver(MainApp.appInfo.getAppVersion());*/
-
     }
 
 

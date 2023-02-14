@@ -18,28 +18,15 @@ import edu.aku.hassannaqvi.epi_register_daily.R;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 
-public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<VaccinatedMembersFollowupsAdapter.ViewHolder> {
+public abstract class VaccinatedMembersFollowupsAdapter<T> extends RecyclerView.Adapter<VaccinatedMembersFollowupsAdapter<T>.ViewHolder> {
     private static final String TAG = "VaccinatedMembers2Adapter";
     private final Context mContext;
-    //private final List<FormVB> member;
-    private final List<VaccinesData> member;
-    private final List<VaccinesData> backupItems = new ArrayList<>();
+    private final List<T> member, backupItems = new ArrayList<>();
     private final int completeCount;
     private final boolean motherPresent = false;
     private final OnItemClickListener onItemClickListener;
 
-    /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param members List<MembersModel> containing the data to populate views to be used by RecyclerView.
-     */
-   /* public VaccinatedMembersAdapter(Context mContext, List<FormVB> members) {
-        this.member = members;
-        this.mContext = mContext;
-        completeCount = 0;
-
-    }*/
-    public VaccinatedMembersFollowupsAdapter(Context mContext, List<VaccinesData> members, OnItemClickListener onItemClickListener) {
+    public VaccinatedMembersFollowupsAdapter(Context mContext, List<T> members, OnItemClickListener onItemClickListener) {
         this.member = members;
         backupItems.clear();
         backupItems.addAll(members);
@@ -58,12 +45,12 @@ public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<Vacc
             member.addAll(backupItems);
             notifyDataSetChanged();
         } else {
-            member.clear();
+            /*member.clear();
             for (VaccinesData vaccinesData : backupItems) {
                 if (vaccinesData.getVBO2().toLowerCase().contains(query) || vaccinesData.getVB04A().toLowerCase().contains(query)) {
                     member.add(vaccinesData);
                 }
-            }
+            }*/
             notifyDataSetChanged();
         }
     }
@@ -73,7 +60,7 @@ public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<Vacc
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         Log.d(TAG, "Element " + position + " set.");
-        VaccinesData members = this.member.get(position);        // Get element from your dataset at this position and replace the contents of the view
+//        VaccinesData members = this.member.get(position);        // Get element from your dataset at this position and replace the contents of the view
         // with that element
 
         TextView fName = viewHolder.mName;
@@ -82,7 +69,7 @@ public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<Vacc
         TextView cardNo = viewHolder.cardNo;
         ImageView mainIcon = viewHolder.mainIcon;
 
-        fName.setText(members.getVB04A());
+       /* fName.setText(members.getVB04A());
         if (members.getVBO3().equals("1")) {
             fAgeY.setText(members.getVBO5Y() + " Y ");
         } else fAgeY.setText(members.getVBO5Y() + " Y " + members.getVBO5M() + " M ");
@@ -90,9 +77,7 @@ public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<Vacc
         cardNo.setText(members.getVBO2());
 
         mainIcon.setImageResource(members.getVBO3().equals("2") ? (members.getVBO5A().equals("1") ? R.drawable.malebabyicon : R.drawable.femalebabyicon) : R.drawable.mwraicon);
-
-
-        viewHolder.itemView.setOnClickListener(view -> onItemClickListener.onItemClick(member.get(position)));
+        viewHolder.itemView.setOnClickListener(view -> onItemClickListener.onItemClick(member.get(position)));*/
     }
 
     @Override
@@ -132,13 +117,10 @@ public class VaccinatedMembersFollowupsAdapter extends RecyclerView.Adapter<Vacc
             fatherName = v.findViewById(R.id.fName);
             cardNo = v.findViewById(R.id.cardNo);
             mainIcon = v.findViewById(R.id.mainIcon);
-
         }
 
         public TextView getTextView() {
             return mName;
         }
     }
-
-
 }

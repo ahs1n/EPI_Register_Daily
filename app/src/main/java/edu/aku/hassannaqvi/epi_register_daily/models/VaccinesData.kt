@@ -45,11 +45,6 @@ class VaccinesData {
     var Measles1: String = _EMPTY_
     var Measles2: String = _EMPTY_
     var Typhoid: String = _EMPTY_
-    var tt1: String = _EMPTY_
-    var tt2: String = _EMPTY_
-    var tt3: String = _EMPTY_
-    var tt4: String = _EMPTY_
-    var tt5: String = _EMPTY_
 
 
     fun sync(jsonObject: JSONObject): VaccinesData {
@@ -65,7 +60,7 @@ class VaccinesData {
         vBO5D = jsonObject.getString(TableVaccinesData.COLUMN_VB05D)
         vBO5M = jsonObject.getString(TableVaccinesData.COLUMN_VB05M)
         vBO5Y = jsonObject.getString(TableVaccinesData.COLUMN_VB05Y)
-        dob = jsonObject.getString(TableVaccinesData.COLUMN_DOB);
+        dob = jsonObject.getString(TableVaccinesData.COLUMN_DOB)
         bcg = jsonObject.getString(TableVaccinesData.COLUMN_BCG)
         opv0 = jsonObject.getString(TableVaccinesData.COLUMN_OPV0)
         opv1 = jsonObject.getString(TableVaccinesData.COLUMN_OPV1)
@@ -85,11 +80,6 @@ class VaccinesData {
         Measles1 = jsonObject.getString(TableVaccinesData.COLUMN_MEASLES1)
         Measles2 = jsonObject.getString(TableVaccinesData.COLUMN_MEASLES2)
         Typhoid = jsonObject.getString(TableVaccinesData.COLUMN_TYPHOID)
-        tt1 = jsonObject.getString(TableVaccinesData.COLUMN_TT1)
-        tt2 = jsonObject.getString(TableVaccinesData.COLUMN_TT2)
-        tt3 = jsonObject.getString(TableVaccinesData.COLUMN_TT3)
-        tt4 = jsonObject.getString(TableVaccinesData.COLUMN_TT4)
-        tt5 = jsonObject.getString(TableVaccinesData.COLUMN_TT5)
 
         return this
     }
@@ -159,16 +149,6 @@ class VaccinesData {
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_MEASLES2))
         Typhoid =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TYPHOID))
-        tt1 =
-                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TT1))
-        tt2 =
-                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TT2))
-        tt3 =
-                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TT3))
-        tt4 =
-                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TT4))
-        tt5 =
-                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_TT5))
 
 
         return this
