@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public abstract class GenericRVAdapter<T> extends RecyclerView.Adapter<GenericRVAdapter<T>.ViewHolder> {
@@ -18,14 +20,31 @@ public abstract class GenericRVAdapter<T> extends RecyclerView.Adapter<GenericRV
     private final IRVOnItemClickListener onItemClickListener;
     private final boolean isMultiSelect;
     private List<T> mainList;
+    private List<T> backupItems = new ArrayList<>();
 
     public GenericRVAdapter(Activity activity, List<T> mainList, RecyclerView recyclerView,
                             IRVOnItemClickListener onItemClickListener, boolean isMultiSelect) {
         this.activity = activity;
         this.mainList = mainList;
+        backupItems.clear();
+        backupItems.addAll(mainList);
         this.recyclerView = recyclerView;
         this.onItemClickListener = onItemClickListener;
         this.isMultiSelect = isMultiSelect;
+    }
+
+    // Add filter
+    @SuppressLint("NotifyDataSetChanged")
+    public void filter(String query) {
+        if (query.equals("")) {
+            // Show original list
+            mainList.clear();
+            mainList.addAll(backupItems);
+            notifyDataSetChanged();
+        } else {
+            mainList.clear();
+            notifyDataSetChanged();
+        }
     }
 
     protected abstract View createView(Activity activity, ViewGroup viewGroup, int viewType);

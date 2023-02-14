@@ -55,7 +55,7 @@ public class SectionVBActivity extends AppCompatActivity {
     private static final String TAG = "SectionVBActivity";
     ActivitySectionVbBinding bi;
     private DatabaseHelper db;
-    boolean btn, group, b;
+    boolean btn, group, b, woman;
 
     public static char getChar(int i) {
         return i < 0 || i > 25 ? '?' : (char) ('a' + i);
@@ -74,11 +74,13 @@ public class SectionVBActivity extends AppCompatActivity {
 
         formVB.setUuid(MainApp.formVA.getUid());
 
+
         btn = getIntent().getBooleanExtra("btn", true);
         if (btn) bi.btnEnd.setVisibility(View.VISIBLE);
 
         group = getIntent().getBooleanExtra("group", true);
-        if (formVB.getVb03().equals("2") || vaccinesData.getVBO3().equals("2")) {
+        woman = getIntent().getBooleanExtra("woman", true);
+        if (formVB.getVb03().equals("2") || !woman) {
             bi.fldGrpCVvb08c.setVisibility(View.VISIBLE);
             bi.fldGrpCVtakePhoto.setVisibility(View.VISIBLE);
         } else {
@@ -94,11 +96,16 @@ public class SectionVBActivity extends AppCompatActivity {
                 bi.vacStatus.setText("TT" + formVB.getVb08w());
             }
             bi.vacDate.setText(formVB.getVb08wdt());
-        } else {
+        } else if(!woman) {
             bi.pName.setText(vaccinesData.getVB04A());
             bi.hName.setText(vaccinesData.getVB04());
             bi.cardNo.setText(vaccinesData.getVBO2());
             bi.dob.setText(vaccinesData.getDob());
+        }else{
+            bi.pName.setText(womenFollowUP.getVB04A());
+            bi.hName.setText(womenFollowUP.getVB04());
+            bi.cardNo.setText(womenFollowUP.getVBO2());
+            bi.dob.setText(womenFollowUP.getAge());
 
         }
 
@@ -190,6 +197,7 @@ public class SectionVBActivity extends AppCompatActivity {
         //vaccinesList = new ArrayList<>();
         MainApp.vaccinesDataList = new ArrayList<>();
         MainApp.vaccinesSchedule = new VaccinesSchedule();
+        MainApp.womenFollowUPList = new ArrayList<>();
 
         vaccineCount = 0;
 
@@ -197,123 +205,128 @@ public class SectionVBActivity extends AppCompatActivity {
         Bundle groupBundle;
         ArrayList<Boolean> results = new ArrayList<Boolean>();
 
-        Log.d(TAG, "onCreate(vaccineList): " + vaccinesDataList.size());
-        try {
-            //vaccinesList = db.getVaccinatedMembersBYUID();
-            vaccinesDataList.clear();
-            vaccinesDataList = db.getSyncedVaccinatedMembersBYUID(vaccinesData.getUID());
+        if(!woman) {
+            Log.d(TAG, "onCreate(vaccineList): " + vaccinesDataList.size());
+            try {
+                //vaccinesList = db.getVaccinatedMembersBYUID();
+                vaccinesDataList.clear();
+                vaccinesDataList = db.getSyncedVaccinatedMembersBYUID(vaccinesData.getUID(), vaccinesData.getVBO2());
 
-            for (VaccinesData vaccines : vaccinesDataList) {
+                for (VaccinesData vaccines : vaccinesDataList) {
 
-                //BCG - Group 0
-                baseId = "vb08ca";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getBcg(), baseId, "a"));
-                verifyCrossTicks(results, baseId);
-                calculateNextDoseDate(results, baseId);
-                groupBundle = new Bundle();
-                groupBundle.putString("date", vaccinesData.getDob());
-                groupBundle.putInt("group", 0);
-
-
-                // OPV
-                baseId = "vb08cb";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getOpv0(), baseId, "a")); // Group - 0
-                results.add(showHideDoneCheckWithText(vaccines.getOpv1(), baseId, "b"));  // Group 1
-                results.add(showHideDoneCheckWithText(vaccines.getOpv2(), baseId, "c"));    // Group 2
-                results.add(showHideDoneCheckWithText(vaccines.getOpv3(), baseId, "d"));    // Group 3
-                verifyCrossTicks(results, baseId);
-                groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
+                    //BCG - Group 0
+                    baseId = "vb08ca";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getBcg(), baseId, "a"));
+                    verifyCrossTicks(results, baseId);
+                    calculateNextDoseDate(results, baseId);
+                    groupBundle = new Bundle();
+                    groupBundle.putString("date", vaccinesData.getDob());
+                    groupBundle.putInt("group", 0);
 
 
-                //Hep B   Group 0
-                baseId = "vb08cc";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getHepB(), baseId, "a"));
-                verifyCrossTicks(results, baseId);
-                calculateNextDoseDate(results, baseId);
-                groupBundle = new Bundle();
-                groupBundle.putString("date", vaccinesData.getDob());
-                groupBundle.putInt("group", 0);
+                    // OPV
+                    baseId = "vb08cb";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getOpv0(), baseId, "a")); // Group - 0
+                    results.add(showHideDoneCheckWithText(vaccines.getOpv1(), baseId, "b"));  // Group 1
+                    results.add(showHideDoneCheckWithText(vaccines.getOpv2(), baseId, "c"));    // Group 2
+                    results.add(showHideDoneCheckWithText(vaccines.getOpv3(), baseId, "d"));    // Group 3
+                    verifyCrossTicks(results, baseId);
+                    groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
 
-                // Penta
-                baseId = "vb08cd";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getPenta1(), baseId, "a"));  // Group 1
-                results.add(showHideDoneCheckWithText(vaccines.getPenta2(), baseId, "b"));  // Group 2
-                results.add(showHideDoneCheckWithText(vaccines.getPenta3(), baseId, "c"));  // Group 3
-                verifyCrossTicks(results, baseId);
-                groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
 
-                // PCV
-                baseId = "vb08ce";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getPcv1(), baseId, "a"));    // Group 1
-                results.add(showHideDoneCheckWithText(vaccines.getPcv2(), baseId, "b"));    // Group 2
-                results.add(showHideDoneCheckWithText(vaccines.getPcv3(), baseId, "c"));    // Group 3
-                verifyCrossTicks(results, baseId);
-                groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
+                    //Hep B   Group 0
+                    baseId = "vb08cc";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getHepB(), baseId, "a"));
+                    verifyCrossTicks(results, baseId);
+                    calculateNextDoseDate(results, baseId);
+                    groupBundle = new Bundle();
+                    groupBundle.putString("date", vaccinesData.getDob());
+                    groupBundle.putInt("group", 0);
 
-                // Rota
-                baseId = "vb08cf";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getRota1(), baseId, "a"));   // Group 1
-                results.add(showHideDoneCheckWithText(vaccines.getRota2(), baseId, "b"));   // Group 2
-                verifyCrossTicks(results, baseId);
-                groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
+                    // Penta
+                    baseId = "vb08cd";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getPenta1(), baseId, "a"));  // Group 1
+                    results.add(showHideDoneCheckWithText(vaccines.getPenta2(), baseId, "b"));  // Group 2
+                    results.add(showHideDoneCheckWithText(vaccines.getPenta3(), baseId, "c"));  // Group 3
+                    verifyCrossTicks(results, baseId);
+                    groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
 
-                // IPV
-                baseId = "vb08cg";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getIpv1(), baseId, "a"));    // Group 3
-                results.add(showHideDoneCheckWithText(vaccines.getIpv2(), baseId, "b"));    // Group 4
-                verifyCrossTicks(results, baseId);
-                groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
+                    // PCV
+                    baseId = "vb08ce";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getPcv1(), baseId, "a"));    // Group 1
+                    results.add(showHideDoneCheckWithText(vaccines.getPcv2(), baseId, "b"));    // Group 2
+                    results.add(showHideDoneCheckWithText(vaccines.getPcv3(), baseId, "c"));    // Group 3
+                    verifyCrossTicks(results, baseId);
+                    groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
 
-                // Measles
-                baseId = "vb08ch";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getMeasles1(), baseId, "a"));       // Group 4
-                results.add(showHideDoneCheckWithText(vaccines.getMeasles2(), baseId, "b"));        // Group 5
-                verifyCrossTicks(results, baseId);
-                groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
+                    // Rota
+                    baseId = "vb08cf";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getRota1(), baseId, "a"));   // Group 1
+                    results.add(showHideDoneCheckWithText(vaccines.getRota2(), baseId, "b"));   // Group 2
+                    verifyCrossTicks(results, baseId);
+                    groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
 
-                // Typhoid
-                baseId = "vb08ci";
-                results.clear();
-                results.add(showHideDoneCheckWithText(vaccines.getTyphoid(), baseId, "a"));     // Group 4
-                verifyCrossTicks(results, baseId);
-                groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
+                    // IPV
+                    baseId = "vb08cg";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getIpv1(), baseId, "a"));    // Group 3
+                    results.add(showHideDoneCheckWithText(vaccines.getIpv2(), baseId, "b"));    // Group 4
+                    verifyCrossTicks(results, baseId);
+                    groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
+
+                    // Measles
+                    baseId = "vb08ch";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getMeasles1(), baseId, "a"));       // Group 4
+                    results.add(showHideDoneCheckWithText(vaccines.getMeasles2(), baseId, "b"));        // Group 5
+                    verifyCrossTicks(results, baseId);
+                    groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
+
+                    // Typhoid
+                    baseId = "vb08ci";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(vaccines.getTyphoid(), baseId, "a"));     // Group 4
+                    verifyCrossTicks(results, baseId);
+                    groupBundle = calculateNextDoseDate(results, baseId, groupBundle);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "JSONException(FormVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
+        }else {
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "JSONException(FormVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+            Log.d(TAG, "onCreate(womenVaccineList): " + womenFollowUPList.size());
 
-        Log.d(TAG, "onCreate(womenVaccineList): " + womenFollowUPList.size());
-        try {
-            //vaccinesList = db.getVaccinatedMembersBYUID();
-            womenFollowUPList.clear();
-            womenFollowUPList = db.getSyncedVaccinatedWomenBYUID(womenFollowUP.getUID());
 
-            for (WomenFollowUP womenFollowUP : womenFollowUPList) {
-                // TT
-                baseId = "vb08wa";
-                results.clear();
-                results.add(showHideDoneCheckWithText(womenFollowUP.getTt1(), baseId, "a"));
-                results.add(showHideDoneCheckWithText(womenFollowUP.getTt2(), baseId, "b"));
-                results.add(showHideDoneCheckWithText(womenFollowUP.getTt3(), baseId, "c"));
-                results.add(showHideDoneCheckWithText(womenFollowUP.getTt4(), baseId, "d"));
-                results.add(showHideDoneCheckWithText(womenFollowUP.getTt5(), baseId, "e"));
-                verifyCrossTicks(results, baseId);
-                calculateNextDoseDate(results, baseId);
+            try {
+                //vaccinesList = db.getVaccinatedMembersBYUID();
+                womenFollowUPList.clear();
+                womenFollowUPList = db.getSyncedVaccinatedWomenBYUID(womenFollowUP.getUID(), womenFollowUP.getVBO2());
+
+                for (WomenFollowUP womenFollowUP : womenFollowUPList) {
+                    // TT
+                    baseId = "vb08wa";
+                    results.clear();
+                    results.add(showHideDoneCheckWithText(womenFollowUP.getTt1(), baseId, "a"));
+                    results.add(showHideDoneCheckWithText(womenFollowUP.getTt2(), baseId, "b"));
+                    results.add(showHideDoneCheckWithText(womenFollowUP.getTt3(), baseId, "c"));
+                    results.add(showHideDoneCheckWithText(womenFollowUP.getTt4(), baseId, "d"));
+                    results.add(showHideDoneCheckWithText(womenFollowUP.getTt5(), baseId, "e"));
+                    verifyCrossTicks(results, baseId);
+                    //calculateNextDoseDate(results, baseId);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "JSONException(FormVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "JSONException(FormVB): " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         if (vaccinesDataList.size() == 19) {
@@ -452,37 +465,8 @@ public class SectionVBActivity extends AppCompatActivity {
                 if (group == previousGroup) {
                     txtVaccineDate.setText(prevBundle.getString("date"));
                     txtVaccineDate.setVisibility(View.VISIBLE);
-                }/*else{
-                    group ++;
-                    prevBundle.putInt("group", group);
-                    txtVaccineDate.setText(prevBundle.getString("date"));
-                    txtVaccineDate.setVisibility(View.VISIBLE);
-                }*/
-            }
-
-            /*if(!vaccinesData.getDob().equals("")) {
-                //String prevLetter = String.valueOf(getChar(firstTrue));
-                String letter = String.valueOf(getChar(firstTrue + 1));
-                if (letter.equals("?"))
-                    return;
-
-                radioButton = (RadioButton) getViewDynamically(baseId + letter);
-                //txtVaccineDatePrevious = (TextView) getViewDynamically(baseId + prevLetter + "txt");
-                txtVaccineDate = (TextView) getViewDynamically(baseId + letter + "txt");
-                String dob = vaccinesData.getDob();
-
-                if (radioButton != null && txtVaccineDate != null) {
-                    //String prevDateStr = txtVaccineDatePrevious.getText().toString();
-
-                    DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-                    DateTime prevDate = fmt.parseDateTime(dob);
-
-                    int days = getDaysOfVaccineType(vaccineType, doseNumber);
-                    DateTime nextDate = prevDate.plusDays(days);
-                    txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
-                    txtVaccineDate.setVisibility(View.VISIBLE);
                 }
-            }*/
+            }
 
 
         }
@@ -531,33 +515,6 @@ public class SectionVBActivity extends AppCompatActivity {
 
 
             }
-        } else {
-
-            /*if(!vaccinesData.getDob().equals("")) {
-                //String prevLetter = String.valueOf(getChar(firstTrue));
-                String letter = String.valueOf(getChar(firstTrue + 1));
-                if (letter.equals("?"))
-                    return;
-
-                radioButton = (RadioButton) getViewDynamically(baseId + letter);
-                //txtVaccineDatePrevious = (TextView) getViewDynamically(baseId + prevLetter + "txt");
-                txtVaccineDate = (TextView) getViewDynamically(baseId + letter + "txt");
-                String dob = vaccinesData.getDob();
-
-                if (radioButton != null && txtVaccineDate != null) {
-                    //String prevDateStr = txtVaccineDatePrevious.getText().toString();
-
-                    DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
-                    DateTime prevDate = fmt.parseDateTime(dob);
-
-                    int days = getDaysOfVaccineType(vaccineType, doseNumber);
-                    DateTime nextDate = prevDate.plusDays(days);
-                    txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
-                    txtVaccineDate.setVisibility(View.VISIBLE);
-                }
-            }*/
-
-
         }
     }
 
@@ -568,115 +525,94 @@ public class SectionVBActivity extends AppCompatActivity {
             case "vb08ca":      // BCG  Group 0
                 if (currentDose == -1) {
                     days = 0;
-                    group = 0;
                 }
                 break;
             case "vb08cb":      // OPV
                 // OPV0 at birth    Group 0
                 if (currentDose == -1) {
                     days = 0;
-                    group = 0;
                 }
                 // OPV1 at 6 weeks      Group 1
                 else if (currentDose == 0) {
                     days = 42;
-                    group = 1;
                 }
                 // Opv2 at 10 weeks     Group 2
                 else if (currentDose == 1) {
                     days = 28;
-                    group = 2;
                 }
                 // OPV3 at 14 weeks     Group 3
                 else {
                     days = 28;
-                    group = 3;
                 }
                 break;
             case "vb08cc":      // HEP - B  Group 0
                 if (currentDose == -1) {
                     days = 0;
-                    group = 0;
                 }
                 break;
             case "vb08cd":      // Penta
                 // Penta 1 at 6 weeks   Group 1
                 if (currentDose == -1) {
                     days = 42;
-                    group = 1;
                 }
                 // Penta 2 at 10 weeks and Penta 3 at 14 weeks
                 else if (currentDose == 0) {
                     days = 28;
-                    group = 2;
                 } else {
                     days = 28;
-                    group = 3;
+
                 }
                 break;
             case "vb08ce":      // PCV
                 // PCV1 at 6 weeks      Group 1
                 if (currentDose == -1) {
                     days = 42;
-                    group = 1;
                 }
                 // PCV 2 and PCV 3 at 10 and 14 weeks respectively
                 else if (currentDose == 0) {
                     days = 28;
-                    group = 2;
                 } else {
                     days = 28;
-                    group = 3;
                 }
                 break;
             case "vb08cf":      // ROTA
                 // ROTA1 at 6 weeks     Group 1
                 if (currentDose == -1) {
                     days = 42;
-                    group = 1;
                 }
                 // Rota 2 and Rota 3 at 10 and 14 weeks respectively.
                 else if (currentDose == 0) {
                     days = 28;
-                    group = 2;
                 } else {
                     days = 28;
-                    group = 3;
                 }
                 break;
             case "vb08cg":      // IPV
                 // IPV1 at 14 weeks Group 3
                 if (currentDose == -1) {
                     days = 98;
-                    group = 3;
                 }
                 // IPV 2 at 18 weeks    Group 4
                 else {
                     days = 154;
-                    group = 4;
                 }
                 break;
             case "vb08ch":      // Measles
                 // Measles 1 at 9 months        Group 4
                 if (currentDose == -1) {
                     days = 252;
-                    group = 4;
                 }
                 // Measles 2 at 15 months       Group 5
                 else {
                     days = 168;
-                    group = 5;
                 }
                 break;
             case "vb08ci":      // Typhoid
                 // Typhoid at 9 months      Group 4
                 if (currentDose == -1) {
                     days = 252;
-                    group = 4;
                 }
                 break;
-
-
         }
 
         return days;
@@ -817,7 +753,7 @@ public class SectionVBActivity extends AppCompatActivity {
         if (!conditionText.equals("")) {
             if (txtVaccine != null) {
                 txtVaccine.setVisibility(View.VISIBLE);
-                txtVaccine.setTextColor(getResources().getColor(R.color.colorPrimary));
+                txtVaccine.setTextColor(getResources().getColor(R.color.green));
                 txtVaccine.setText(conditionText);
             }
 

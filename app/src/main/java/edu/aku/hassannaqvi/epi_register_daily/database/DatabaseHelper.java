@@ -2140,12 +2140,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public VaccinesData getFollowupSelectedMembers(String uid) throws JSONException {
+    public VaccinesData getFollowupSelectedMembers(String uid, String cardNo) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c;
         String[] columns = null;
-        String whereClause = TableVaccinesData.COLUMN_UID + " = ? ";
-        String[] whereArgs = new String[]{uid};
+        String whereClause = TableVaccinesData.COLUMN_UID + " = ?  AND " +
+                TableVaccinesData.COLUMN_VB02 + " = ? ";
+        String[] whereArgs = new String[]{uid, cardNo};
         String groupBy = null;
         String having = null;
         String orderBy = TableVaccinesData.COLUMN_ID + " ASC";
@@ -2197,12 +2198,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<VaccinesData> getSyncedVaccinatedMembersBYUID(String uid) throws JSONException {
+    public List<VaccinesData> getSyncedVaccinatedMembersBYUID(String uid, String cardNo) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause = TableVaccinesData.COLUMN_UID + "=? ";
-        String[] whereArgs = {uid};
+        String whereClause = TableVaccinesData.COLUMN_UID + "=? AND " + TableVaccinesData.COLUMN_VB02  + "=?";
+        String[] whereArgs = {uid, cardNo};
         String groupBy = null;
         String having = null;
         String orderBy = TableVaccinesData.COLUMN_ID + " ASC";
@@ -2229,12 +2230,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<WomenFollowUP> getSyncedVaccinatedWomenBYUID(String uid) throws JSONException {
+    public List<WomenFollowUP> getSyncedVaccinatedWomenBYUID(String uid, String cardNo) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause = TableWomenFollowUP.COLUMN_UID + "=? ";
-        String[] whereArgs = {uid};
+        String whereClause = TableWomenFollowUP.COLUMN_UID + "=? AND " + TableWomenFollowUP.COLUMN_VB02 + " = ? " ;
+        String[] whereArgs = {uid, cardNo};
         String groupBy = null;
         String having = null;
         String orderBy = TableWomenFollowUP.COLUMN_ID + " ASC";
@@ -2258,6 +2259,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         c.close();
         return vaccinesByUID;
+    }
+
+    public WomenFollowUP getFollowupSelectedWoman(String uid, String cardNo) throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c;
+        String[] columns = null;
+        String whereClause = TableWomenFollowUP.COLUMN_UID + " = ?  AND " +
+                TableWomenFollowUP.COLUMN_VB02 + " = ? ";
+        String[] whereArgs = new String[]{uid, cardNo};
+        String groupBy = null;
+        String having = null;
+        String orderBy = TableWomenFollowUP.COLUMN_ID + " ASC";
+        WomenFollowUP vb = new WomenFollowUP();
+        c = db.query(
+                TableWomenFollowUP.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) vb = new WomenFollowUP().hydrate(c);
+        c.close();
+        return vb;
     }
 
 

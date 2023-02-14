@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.lists;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVA;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.womenFollowUP;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.womenFollowUPList;
 
@@ -8,9 +9,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +45,7 @@ import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 public class VaccinatedWomenListActivity extends AppCompatActivity {
 
     private final int VACC_WOMEN_RV = 101;
+    private GenericRVAdapter<WomenFollowUP> genericRVAdapter;
 
 
     private static final String TAG = "VaccinationActivity";
@@ -69,7 +75,12 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
         int recyclerViewTag = (int) recyclerView.getTag();
         if (recyclerViewTag == VACC_WOMEN_RV) {
             WomenFollowUP womenFollowUP = (WomenFollowUP) obj;
-            startActivity(new Intent(this, SectionVBActivity.class));
+            try {
+                MainApp.womenFollowUP = db.getFollowupSelectedWoman(womenFollowUP.getUID(), womenFollowUP.getVBO2());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            startActivity(new Intent(this, SectionVBActivity.class).putExtra("woman", true));
         }
     };
 
@@ -84,33 +95,16 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
         db = MainApp.appInfo.dbHelper;
         womenFollowUPList = db.getAllFollowupWomen();
 
-//        initSearchFilter();
-
-        /*vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, womenFollowUPList, member -> {
-            try {
-                vaccinesData = db.getFollowupSelectedMembers(member.getUID());
-                Toast.makeText(VaccinatedWomenListActivity.this,
-                        "Selected Member\n Line No: "
-                                + member.getVBO2() + "\nName: "
-                                + member.getVB04A(),
-                        Toast.LENGTH_LONG).show();
-                VaccinatedWomenListActivity.this.startActivity(new Intent(VaccinatedWomenListActivity.this, SectionVBActivity.class).putExtra("group", false));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        });
-        bi.rvMember.setAdapter(vaccinatedMembersAdapter);*/
-
         initVacWomenRV();
+        initSearchFilter();
 
-//        vaccinatedMembersAdapter.notifyDataSetChanged();
         bi.rvMember.setLayoutManager(new LinearLayoutManager(this));
 
         bi.fab.setOnClickListener(view -> {
             addMoreMember();
         });
 
-        bi.searchBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        /*bi.searchBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (bi.searchByName.isChecked()) {
@@ -119,11 +113,11 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                     bi.memberId.setHint("Name");
                 }
             }
-        });
+        });*/
     }
 
     private void initVacWomenRV() {
-        GenericRVAdapter<WomenFollowUP> genericRVAdapter = new GenericRVAdapter<WomenFollowUP>(this,
+        genericRVAdapter = new GenericRVAdapter<WomenFollowUP>(this,
                 womenFollowUPList, bi.rvMember, iRVOnItemClickListener, false) {
             @Override
             protected View createView(Activity activity, ViewGroup viewGroup, int viewType) {
@@ -139,11 +133,13 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                     mName.setText(item.getVB04A());
                     mName.setTag(position);
                     TextView ageY = (TextView) viewHolder.getView(R.id.ageY);
-                    ageY.setText(item.getAge());
+                    ageY.setText(String.format("%s Y", item.getAge()));
                     TextView fName = (TextView) viewHolder.getView(R.id.fName);
                     fName.setText(item.getVB04());
                     TextView cardNo = (TextView) viewHolder.getView(R.id.cardNo);
                     cardNo.setText(item.getVBO2());
+                    ImageView iv = (ImageView) viewHolder.getView(R.id.mainIcon);
+                    iv.setImageResource(R.drawable.mwraicon);
                 }
             }
         };
@@ -151,12 +147,6 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
         bi.rvMember.setAdapter(genericRVAdapter);
     }
 
-/*    @Override
-    protected void onResume() {
-        super.onResume();
-        Toast.makeText(this, "Activity Resumed!", Toast.LENGTH_SHORT).show();
-
-    }*/
 
     @Override
     protected void onResume() {
@@ -180,53 +170,6 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
         MemberInfoLauncher.launch(intent);
     }
 
-    /*@SuppressLint("NotifyDataSetChanged")
-    public void filterForms(View view) {
-
-        if (bi.searchByName.isChecked()) {
-            Toast.makeText(this, "Searched", Toast.LENGTH_SHORT).show();
-
-            vaccinesDataList = db.getFollowupWomensByName(bi.memberId.getText().toString());
-            vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
-
-                try {
-                    vaccinesData = db.getFollowupSelectedMembers(member.getUID());
-                    Toast.makeText(VaccinatedWomenListActivity.this,
-                            "Selected Member\n Line No: "
-                                    + member.getVBO2() + "\nName: "
-                                    + member.getVB04A(),
-                            Toast.LENGTH_LONG).show();
-                    VaccinatedWomenListActivity.this.startActivity(new Intent(VaccinatedWomenListActivity.this, SectionVBActivity.class).putExtra("group", false));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            });
-            vaccinatedMembersAdapter.notifyDataSetChanged();
-            bi.rvMember.setAdapter(vaccinatedMembersAdapter);
-        } else {
-            Toast.makeText(this, "Searched", Toast.LENGTH_SHORT).show();
-
-            vaccinesDataList= db.getFollowupWomenByCardNo(bi.memberId.getText().toString());
-            vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
-
-                try {
-                    vaccinesData = db.getFollowupSelectedMembers(member.getUID());
-                    Toast.makeText(VaccinatedWomenListActivity.this,
-                            "Selected Member\n Line No: "
-                                    + member.getVBO2() + "\nName: "
-                                    + member.getVB04A(),
-                            Toast.LENGTH_LONG).show();
-                    VaccinatedWomenListActivity.this.startActivity(new Intent(VaccinatedWomenListActivity.this, SectionVBActivity.class).putExtra("group", false));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            });
-            vaccinatedMembersAdapter.notifyDataSetChanged();
-            bi.rvMember.setAdapter(vaccinatedMembersAdapter);
-        }
-
-    }*/
-
     public void btnEnd(View view) {
 
         finish();
@@ -239,7 +182,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
     }
 
-    /*// Search Filter
+    // Search Filter
     private void initSearchFilter() {
         bi.memberId.addTextChangedListener(new TextWatcher() {
             @Override
@@ -249,21 +192,22 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                genericRVAdapter.filter(s.toString());
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                vaccinatedMembersAdapter.filter(s.toString());
+
             }
         });
 
         bi.memberId.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                vaccinatedMembersAdapter.filter(v.getText().toString());
+
                 return true;
             }
         });
-    }*/
+    }
 }

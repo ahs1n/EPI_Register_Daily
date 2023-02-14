@@ -50,8 +50,8 @@ public abstract class VaccinatedMembersFollowupsAdapter<T> extends RecyclerView.
                 if (vaccinesData.getVBO2().toLowerCase().contains(query) || vaccinesData.getVB04A().toLowerCase().contains(query)) {
                     member.add(vaccinesData);
                 }
-            }*/
-            notifyDataSetChanged();
+            }
+            notifyDataSetChanged();*/
         }
     }
 
