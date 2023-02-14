@@ -110,7 +110,8 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
                 if (bi.searchByName.isChecked()) {
                     bi.memberId.setHint("Card Number");
                 } else {
-                    bi.memberId.setHint("Name");
+                    bi.
+                    memberId.setHint("Name");
                 }
             }
         });*/
@@ -192,13 +193,11 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                genericRVAdapter.filter(s.toString());
-
+                genericRVAdapter.filter(s.toString(), womenFollowUP -> (womenFollowUP.getVBO2().toLowerCase().contains(s.toString()) || womenFollowUP.getVB04A().toLowerCase().contains(s.toString())));
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 

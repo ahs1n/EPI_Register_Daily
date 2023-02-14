@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.util.Predicate;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -43,6 +44,25 @@ public abstract class GenericRVAdapter<T> extends RecyclerView.Adapter<GenericRV
             notifyDataSetChanged();
         } else {
             mainList.clear();
+
+            notifyDataSetChanged();
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void filter(String query, Predicate<T> predicate) {
+        if (query.equals("")) {
+            // Show original list
+            mainList.clear();
+            mainList.addAll(backupItems);
+            notifyDataSetChanged();
+        } else {
+            mainList.clear();
+            for (T item : backupItems) {
+                if (predicate.test(item)) {
+                    mainList.add(item);
+                }
+            }
             notifyDataSetChanged();
         }
     }
