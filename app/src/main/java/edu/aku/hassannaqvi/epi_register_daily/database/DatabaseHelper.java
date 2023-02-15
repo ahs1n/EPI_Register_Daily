@@ -94,6 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 4;
     private final Context mContext;
     private static final String SQL_DELETE_VACCINESDATA = "DROP TABLE IF EXISTS " + TableContracts.TableVaccinesData.TABLE_NAME;
+    private static final String SQL_DELETE_WOMEN_FOLLOWUP = "DROP TABLE IF EXISTS " + TableContracts.TableWomenFollowUP.TABLE_NAME;
     private static final String SQL_DELETE_VACCINESSCHEDULE = "DROP TABLE IF EXISTS " + TableVaccineSchedule.TABLE_NAME;
 
 
@@ -132,6 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case 3:
                 db.execSQL(SQL_DELETE_VACCINESSCHEDULE);
                 db.execSQL(SQL_CREATE_VACCINESCHEDULE);
+                //db.execSQL(SQL_DELETE_WOMEN_FOLLOWUP);
                 db.execSQL(SQL_CREATE_WOMENFOLLOWUP);
             case 4:
         }
@@ -1238,6 +1240,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Sync Villages
     public int syncVillages(JSONArray villagesList) throws JSONException {
+        Log.e("HERE", "syncVillages");
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(TableVillages.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1261,6 +1264,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Sync HF
     public int synchf_list(JSONArray healthfacilities) throws JSONException {
+        Log.e("HERE", "synchf_list");
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(TableHealthFacilities.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1284,6 +1288,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Sync VACCINESDATA
     public int syncvaccine_schedule(JSONArray vaccineSchedule) throws JSONException {
+        Log.e("HERE", "syncvaccine_schedule");
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(TableVaccineSchedule.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1309,8 +1314,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Sync VACCINESDATA
     public int syncvaccinesFollowUp(JSONArray vaccinesdata) throws JSONException {
+        Log.e("HERE", "syncvaccinesFollowUp");
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
-        db.delete(TableVaccinesData.TABLE_NAME, null, null);
+        int deleted = db.delete(TableVaccinesData.TABLE_NAME, null, null);
+        Log.e("DELETED_vaccinesFollowUp", Integer.toString(deleted));
+
         int insertCount = 0;
 
         for (int i = 0; i < vaccinesdata.length(); i++) {
@@ -1362,33 +1370,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
-    public int syncwomenfollowup(JSONArray vaccinesdata) throws JSONException {
+    public int syncwomenfollowup(JSONArray data) throws JSONException {
+        Log.e("HERE", "syncwomenfollowup");
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
-        db.delete(TableWomenFollowUP.TABLE_NAME, null, null);
+        int deleted = db.delete(TableWomenFollowUP.TABLE_NAME, null, null);
+        Log.e("DELETED_womenfollowup", Integer.toString(deleted));
+
         int insertCount = 0;
 
-        for (int i = 0; i < vaccinesdata.length(); i++) {
-            JSONObject json = vaccinesdata.getJSONObject(i);
-            WomenFollowUP vaccinesData = new WomenFollowUP();
-            vaccinesData.sync(json);
+        for (int i = 0; i < data.length(); i++) {
+
+            JSONObject json = data.getJSONObject(i);
+
+            WomenFollowUP womenData = new WomenFollowUP();
+            womenData.sync(json);
             ContentValues values = new ContentValues();
 
-            values.put(TableWomenFollowUP.COLUMN_UC_CODE, vaccinesData.getUcCode());
-            values.put(TableWomenFollowUP.COLUMN_AID, vaccinesData.getAID());
-            values.put(TableWomenFollowUP.COLUMN_UID, vaccinesData.getUID());
-            values.put(TableWomenFollowUP.COLUMN_VILLAGE_CODE, vaccinesData.getVillageCode());
-            values.put(TableWomenFollowUP.COLUMN_FACILITY_CODE, vaccinesData.getFacilityCode());
-            values.put(TableWomenFollowUP.COLUMN_VB02, vaccinesData.getVBO2());
-            values.put(TableWomenFollowUP.COLUMN_VB03, vaccinesData.getVBO3());
-            values.put(TableWomenFollowUP.COLUMN_VB04, vaccinesData.getVB04());
-            values.put(TableWomenFollowUP.COLUMN_VB04A, vaccinesData.getVB04A());
-            values.put(TableWomenFollowUP.COLUMN_VB05A, vaccinesData.getVBO5A());
-            values.put(TableWomenFollowUP.COLUMN_AGE, vaccinesData.getAge());
-            values.put(TableWomenFollowUP.COLUMN_TT1, vaccinesData.getTt1());
-            values.put(TableWomenFollowUP.COLUMN_TT2, vaccinesData.getTt2());
-            values.put(TableWomenFollowUP.COLUMN_TT3, vaccinesData.getTt3());
-            values.put(TableWomenFollowUP.COLUMN_TT4, vaccinesData.getTt4());
-            values.put(TableWomenFollowUP.COLUMN_TT5, vaccinesData.getTt5());
+            values.put(TableWomenFollowUP.COLUMN_UC_CODE, womenData.getUcCode());
+            values.put(TableWomenFollowUP.COLUMN_AID, womenData.getAID());
+            values.put(TableWomenFollowUP.COLUMN_UID, womenData.getUID());
+            values.put(TableWomenFollowUP.COLUMN_VILLAGE_CODE, womenData.getVillageCode());
+            values.put(TableWomenFollowUP.COLUMN_FACILITY_CODE, womenData.getFacilityCode());
+            values.put(TableWomenFollowUP.COLUMN_VB02, womenData.getVBO2());
+            values.put(TableWomenFollowUP.COLUMN_VB03, womenData.getVBO3());
+            values.put(TableWomenFollowUP.COLUMN_VB04, womenData.getVB04());
+            values.put(TableWomenFollowUP.COLUMN_VB04A, womenData.getVB04A());
+            values.put(TableWomenFollowUP.COLUMN_VB05A, womenData.getVBO5A());
+            values.put(TableWomenFollowUP.COLUMN_AGE, womenData.getAge());
+            values.put(TableWomenFollowUP.COLUMN_TT1, womenData.getTt1());
+            values.put(TableWomenFollowUP.COLUMN_TT2, womenData.getTt2());
+            values.put(TableWomenFollowUP.COLUMN_TT3, womenData.getTt3());
+            values.put(TableWomenFollowUP.COLUMN_TT4, womenData.getTt4());
+            values.put(TableWomenFollowUP.COLUMN_TT5, womenData.getTt5());
 
             long rowID = db.insert(TableWomenFollowUP.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;

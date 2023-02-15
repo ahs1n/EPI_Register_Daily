@@ -466,6 +466,4 @@ public class DataUpWorkerALL extends Worker {
 
         return toMinutes > 0 ? toMinutes + "m " + toSeconds + "s" : toSeconds > 0 ? TimeUnit.MILLISECONDS.toSeconds(timeElapsed) + "s" : timeElapsed + "ms";
     }
-
-
 }

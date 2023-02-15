@@ -36,20 +36,6 @@ public abstract class GenericRVAdapter<T> extends RecyclerView.Adapter<GenericRV
 
     // Add filter
     @SuppressLint("NotifyDataSetChanged")
-    public void filter(String query) {
-        if (query.equals("")) {
-            // Show original list
-            mainList.clear();
-            mainList.addAll(backupItems);
-            notifyDataSetChanged();
-        } else {
-            mainList.clear();
-
-            notifyDataSetChanged();
-        }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
     public void filter(String query, Predicate<T> predicate) {
         if (query.equals("")) {
             // Show original list

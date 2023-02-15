@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -89,8 +90,9 @@ public class SyncActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_sync);
-//        bi.setCallback(this);
-        //setSupportActionBar(bi.toolbar);
+        setSupportActionBar(bi.toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         db = MainApp.appInfo.getDbHelper();
         uploadTables = new ArrayList<>();
         downloadTables = new ArrayList<>();
@@ -146,6 +148,8 @@ public class SyncActivity extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.btnUpload:
+                bi.activityTitle.setText("Upload Data");
+
                 bi.dataLayout.setVisibility(View.VISIBLE);
                 bi.photoLayout.setVisibility(View.GONE);
                 bi.mTextViewS.setVisibility(View.GONE);
@@ -218,6 +222,8 @@ public class SyncActivity extends AppCompatActivity {
                 break;
             case R.id.btnSync:
 
+                bi.activityTitle.setText("Download Data");
+
                 MainApp.downloadData = new String[0];
                 bi.dataLayout.setVisibility(View.VISIBLE);
                 bi.photoLayout.setVisibility(View.GONE);
@@ -243,8 +249,8 @@ public class SyncActivity extends AppCompatActivity {
                     downloadTables.add(new SyncModel(TableHealthFacilities.TABLE_NAME, select, filter));
                     select = " * ";
                     filter = " uccode = '" + MainApp.user.getUccode() + "' ";
-                    downloadTables.add(new SyncModel(TableVaccinesData.TABLE_NAME, select, filter));
                     downloadTables.add(new SyncModel(TableContracts.TableWomenFollowUP.TABLE_NAME, select, filter));
+                    downloadTables.add(new SyncModel(TableVaccinesData.TABLE_NAME, select, filter));
                     downloadTables.add(new SyncModel(TableContracts.TableVaccineSchedule.TABLE_NAME, select));
                 }
 
@@ -509,7 +515,7 @@ public class SyncActivity extends AppCompatActivity {
                     downloadTables.get(position).setstatus("Process Failed7");
                     downloadTables.get(position).setstatusID(1);
                     downloadTables.get(position).setInfo("Time: " + time + "/" + getTime() + "\t Size: " + size);
-                    downloadTables.get(position).setmessage(message.contains("No such file or directory") ? "Testing" : message);
+                    downloadTables.get(position).setmessage(message);
                     syncListAdapter.updatesyncList(downloadTables);
 
                     if (position == 0 && workInfo.getOutputData().getString("deviceTime") != null) {
@@ -525,7 +531,7 @@ public class SyncActivity extends AppCompatActivity {
     }
 
     private void BeginUpload() {
-
+        Log.e("HERE", "UPLOAD");
         Constraints constraints = new Constraints.Builder()
                 .setRequiredNetworkType(NetworkType.CONNECTED)
                 .build();
@@ -710,6 +716,7 @@ public class SyncActivity extends AppCompatActivity {
                 }
             }
         });
+
 
     }
 
@@ -905,6 +912,34 @@ public class SyncActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                //NavUtils.navigateUpFromSameTask(this);
+                //onBackPressed();
+                finish();
+                //   downloadApp();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /*    private void downloadApp() throws MalformedURLException {
+
+        URL url = new URL(MainApp._HOST_URL + _UPDATE_URL);
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
+        intentFilter.addAction(Intent.ACTION_PACKAGE_INSTALL);
+        intentFilter.addDataScheme("package");
+        registerReceiver(br, intentFilter);
+
+    }*/
+
 
     private void showDateError(String serverTime, String deviceTime) {
 

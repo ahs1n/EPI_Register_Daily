@@ -45,6 +45,7 @@ import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
 public class VaccinatedChildListActivity extends AppCompatActivity {
 
     private final int VACC_CHILD_RV = 102;
+    GenericRVAdapter<VaccinesData> genericRVAdapter;
 
 
     private static final String TAG = "VaccinationActivity";
@@ -97,24 +98,8 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
 
         initVacChildRV();
 
-//        initSearchFilter();
+        initSearchFilter();
 
-        /*vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
-            try {
-                vaccinesData = db.getFollowupSelectedMembers(member.getUID());
-                Toast.makeText(VaccinatedChildListActivity.this,
-                        "Selected Member\n Line No: "
-                                + member.getVBO2() + "\nName: "
-                                + member.getVB04A(),
-                        Toast.LENGTH_LONG).show();
-                VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("group", false));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        });
-        bi.rvMember.setAdapter(vaccinatedMembersAdapter);
-
-        vaccinatedMembersAdapter.notifyDataSetChanged();*/
         bi.rvMember.setLayoutManager(new LinearLayoutManager(this));
 
         bi.fab.setOnClickListener(view -> {
@@ -137,7 +122,7 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
     }
 
     private void initVacChildRV() {
-        GenericRVAdapter<VaccinesData> genericRVAdapter = new GenericRVAdapter<VaccinesData>(this,
+        genericRVAdapter = new GenericRVAdapter<VaccinesData>(this,
                 vaccinesDataList, bi.rvMember, iRVOnItemClickListener, false) {
 
             @Override
@@ -195,52 +180,6 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         MemberInfoLauncher.launch(intent);
     }
 
-    /*@SuppressLint("NotifyDataSetChanged")
-    public void filterForms(View view) {
-
-        if (bi.searchByName.isChecked()) {
-            Toast.makeText(this, "Searched", Toast.LENGTH_SHORT).show();
-
-            vaccinesDataList = db.getFollowupChildsByName(bi.memberId.getText().toString());
-            vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
-
-                try {
-                    vaccinesData = db.getFollowupSelectedMembers(member.getUID());
-                    Toast.makeText(VaccinatedChildListActivity.this,
-                            "Selected Member\n Line No: "
-                                    + member.getVBO2() + "\nName: "
-                                    + member.getVB04A(),
-                            Toast.LENGTH_LONG).show();
-                    VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("group", false));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            });
-            vaccinatedMembersAdapter.notifyDataSetChanged();
-            bi.rvMember.setAdapter(vaccinatedMembersAdapter);
-        } else {
-            Toast.makeText(this, "Searched", Toast.LENGTH_SHORT).show();
-
-            vaccinesDataList = db.getFollowupChildsByCardNo(bi.memberId.getText().toString());
-            vaccinatedMembersAdapter = new VaccinatedMembersFollowupsAdapter(this, vaccinesDataList, member -> {
-
-                try {
-                    vaccinesData = db.getFollowupSelectedMembers(member.getUID());
-                    Toast.makeText(VaccinatedChildListActivity.this,
-                            "Selected Member\n Line No: "
-                                    + member.getVBO2() + "\nName: "
-                                    + member.getVB04A(),
-                            Toast.LENGTH_LONG).show();
-                    VaccinatedChildListActivity.this.startActivity(new Intent(VaccinatedChildListActivity.this, SectionVBActivity.class).putExtra("group", false));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            });
-            vaccinatedMembersAdapter.notifyDataSetChanged();
-            bi.rvMember.setAdapter(vaccinatedMembersAdapter);
-        }
-
-    }*/
 
     public void btnEnd(View view) {
 
@@ -270,14 +209,15 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                vaccinatedMembersAdapter.filter(s.toString());
+                genericRVAdapter.filter(s.toString(), vaccinesData -> (vaccinesData.getVBO2().toLowerCase().contains(s.toString())
+                        || vaccinesData.getVB04A().toLowerCase().contains(s.toString())));
             }
         });
 
         bi.memberId.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                vaccinatedMembersAdapter.filter(v.getText().toString());
+                //genericRVAdapter.filter(v.getText().toString());
                 return true;
             }
         });

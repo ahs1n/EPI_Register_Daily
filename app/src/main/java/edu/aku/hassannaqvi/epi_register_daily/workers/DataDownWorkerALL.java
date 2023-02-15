@@ -244,7 +244,7 @@ public class DataDownWorkerALL extends Worker {
                 jsonTable.put("check", "");
 
                 if (uploadTable.equals("versionApp")) {
-                    jsonTable.put("folder", _APP_FOLDER);
+                    jsonTable.put("folder", MainApp._APP_FOLDER);
                 }
 
                 //jsonTable.put("limit", "3");
@@ -392,7 +392,7 @@ public class DataDownWorkerALL extends Worker {
                 .putString("size", getSize(requestLength) + "/" + getSize(responseLength))
                 .build();
 
-
+        Log.e("HERE", Integer.toString(position));
         return Result.success(data);
     }
 

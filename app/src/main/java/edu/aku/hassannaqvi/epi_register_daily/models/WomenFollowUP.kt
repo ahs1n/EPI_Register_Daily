@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.epi_register_daily.models
 import android.database.Cursor
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableWomenFollowUP
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp._EMPTY_
+import org.json.JSONException
 import org.json.JSONObject
 
 /**
@@ -32,7 +33,11 @@ class WomenFollowUP {
     var tt4: String = _EMPTY_
     var tt5: String = _EMPTY_
 
+    constructor() {
+        // Default Constructor
+    }
 
+    @Throws(JSONException::class)
     fun sync(jsonObject: JSONObject): WomenFollowUP {
         ucCode = jsonObject.getString(TableWomenFollowUP.COLUMN_UC_CODE)
         aID = jsonObject.getString(TableWomenFollowUP.COLUMN_AID)
