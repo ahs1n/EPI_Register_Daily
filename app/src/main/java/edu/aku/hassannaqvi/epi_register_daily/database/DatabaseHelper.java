@@ -1312,12 +1312,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
+    public static boolean isSyncVaccDB = false;
     // Sync VACCINESDATA
     public int syncvaccinesFollowUp(JSONArray vaccinesdata) throws JSONException {
         Log.e("HERE", "syncvaccinesFollowUp");
+        if (isSyncVaccDB) return vaccinesdata.length();
+        isSyncVaccDB = true;
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         int deleted = db.delete(TableVaccinesData.TABLE_NAME, null, null);
-        Log.e("DELETED_vaccinesFollowUp", Integer.toString(deleted));
+        Log.e("DELETED_vaccFollowUp", Integer.toString(deleted));
 
         int insertCount = 0;
 
@@ -1366,12 +1369,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             long rowID = db.insert(TableVaccinesData.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
-
+        isSyncVaccDB = false;
         return insertCount;
     }
 
+    public static boolean isSyncWomenDB = false;
+
     public int syncwomenfollowup(JSONArray data) throws JSONException {
         Log.e("HERE", "syncwomenfollowup");
+        if (isSyncWomenDB) return data.length();
+        isSyncWomenDB = true;
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         int deleted = db.delete(TableWomenFollowUP.TABLE_NAME, null, null);
         Log.e("DELETED_womenfollowup", Integer.toString(deleted));
@@ -1406,7 +1413,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             long rowID = db.insert(TableWomenFollowUP.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
-
+        isSyncWomenDB = false;
         return insertCount;
     }
 
@@ -2215,7 +2222,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause = TableVaccinesData.COLUMN_UID + "=? AND " + TableVaccinesData.COLUMN_VB02  + "=?";
+        String whereClause = TableVaccinesData.COLUMN_UID + "=? AND " + TableVaccinesData.COLUMN_VB02 + "=?";
         String[] whereArgs = {uid, cardNo};
         String groupBy = null;
         String having = null;
@@ -2247,7 +2254,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause = TableWomenFollowUP.COLUMN_UID + "=? AND " + TableWomenFollowUP.COLUMN_VB02 + " = ? " ;
+        String whereClause = TableWomenFollowUP.COLUMN_UID + "=? AND " + TableWomenFollowUP.COLUMN_VB02 + " = ? ";
         String[] whereArgs = {uid, cardNo};
         String groupBy = null;
         String having = null;

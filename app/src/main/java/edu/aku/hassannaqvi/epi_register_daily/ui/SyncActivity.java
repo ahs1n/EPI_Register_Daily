@@ -289,6 +289,15 @@ public class SyncActivity extends AppCompatActivity {
         WorkManager wm = WorkManager.getInstance(this);
         WorkContinuation wc = wm.beginWith(workRequests);
         wc.enqueue();
+       /* WorkManager wm = WorkManager.getInstance(this);
+        WorkContinuation wc = wm.beginWith(workRequests.get(0));
+        List<WorkContinuation> wcList = new ArrayList<>();
+        wcList.add(wc);
+        for (int i = 1; i < workRequests.size(); i++) {
+            wcList.add(wc.then(workRequests.get(i)));
+        }
+        wc = WorkContinuation.combine(wcList);
+        wc.enqueue();*/
 
         wc.getWorkInfosLiveData().observe(this, workInfos -> {
             Log.d(TAG, "workInfos: " + workInfos.size());
