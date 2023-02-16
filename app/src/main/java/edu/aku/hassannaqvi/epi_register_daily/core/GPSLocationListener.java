@@ -135,5 +135,4 @@ public class GPSLocationListener implements LocationListener {
         return provider1.equals(provider2);
     }
 
-
 }

@@ -6,8 +6,6 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccineCount;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesData;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.womenFollowUP;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.womenFollowUPList;
 
 import android.content.Context;
 import android.content.Intent;
@@ -48,7 +46,6 @@ import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
-import edu.aku.hassannaqvi.epi_register_daily.models.WomenFollowUP;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
 
 public class SectionVBActivity extends AppCompatActivity {
@@ -89,6 +86,7 @@ public class SectionVBActivity extends AppCompatActivity {
             bi.pName.setText(formVB.getVb04a());
             bi.hName.setText(formVB.getVb04());
             bi.cardNo.setText(formVB.getVb02());
+            bi.dob.setText(String.format("%s-%s-%s", formVB.getVb04bd(), formVB.getVb04bm(), formVB.getVb04by()));
 
         } else {
             bi.pName.setText(vaccinesData.getVB04A());
