@@ -66,6 +66,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeUrdu"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.sections.SectionVB_womanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeUrdu"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.lists.RegisteredChildListActivity"
             android:screenOrientation="portrait"

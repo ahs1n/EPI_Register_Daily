@@ -167,7 +167,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08c"
                     style="@style/cardView"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     tools:visibility="visible">
 
                     <LinearLayout
@@ -2221,7 +2221,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- vb08w  CheckBox   -->
+                <!--&lt;!&ndash; vb08w  CheckBox   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb08w"
                     style="@style/cardView"
@@ -2263,7 +2263,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1.5"
                                 android:gravity="center_vertical|center_horizontal"
-                                android:text="------"
+                                android:text="&#45;&#45;&#45;&#45;&#45;&#45;"
                                 android:visibility="invisible" />
 
 
@@ -2332,12 +2332,12 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <!--<TextView
+                            &lt;!&ndash;<TextView
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="3"
                                 android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/vb08wa" />-->
+                                android:text="@string/vb08wa" />&ndash;&gt;
 
                             <View
                                 android:layout_width="0dp"
@@ -2364,14 +2364,14 @@
                                 android:background="@drawable/tick_mark"
                                 android:visibility="gone" />
 
-                            <!--<ImageView
+                            &lt;!&ndash;<ImageView
                                 android:id="@+id/vb08waaCross"
                                 android:layout_width="0.5dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="center_horizontal|center_vertical"
                                 android:layout_weight="2"
                                 android:background="@drawable/tick_mark"
-                                android:visibility="gone" />-->
+                                android:visibility="gone" />&ndash;&gt;
 
 
                             <View
@@ -2598,7 +2598,7 @@
                     </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>-->
 
                 <!-- vb09  Radio   -->
                 <!--<androidx.cardview.widget.CardView
@@ -2671,7 +2671,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVtakePhoto"
                     style="@style/cardView"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     tools:visibility="visible">
 
                     <LinearLayout

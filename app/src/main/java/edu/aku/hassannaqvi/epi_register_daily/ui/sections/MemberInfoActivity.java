@@ -333,7 +333,11 @@ public class MemberInfoActivity extends AppCompatActivity {
         if (updateDB()) {
             finish();
             Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, SectionVBActivity.class).putExtra("btn", false));
+            if(formVB.getVb03().equals("1")) {
+                startActivity(new Intent(this, SectionVB_womanActivity.class).putExtra("btn", false));
+            }else{
+                startActivity(new Intent(this, SectionVBActivity.class).putExtra("btn", false));
+            }
         } else {
             Toast.makeText(this, R.string.fail_db_upd, Toast.LENGTH_SHORT).show();
         }

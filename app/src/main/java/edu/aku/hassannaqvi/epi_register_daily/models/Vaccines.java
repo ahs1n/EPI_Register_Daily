@@ -105,6 +105,23 @@ public class Vaccines extends BaseObservable implements Observable {
         setProjectName(PROJECT_NAME);
     }
 
+    public void populateMetaFollowUpWoman() {
+        setUserName(MainApp.user.getUserName());
+        setUcCode(MainApp.user.getUccode());
+        setDeviceId(MainApp.attendance.getDeviceId());
+        setUuid(MainApp.womenFollowUP.getUID());
+        setAid(MainApp.attendance.getUid());
+        setVb02(MainApp.womenFollowUP.getVBO2());
+        setVb04a(MainApp.womenFollowUP.getVB04A());
+        setVb04(MainApp.womenFollowUP.getVB04());
+        setVillageCode(MainApp.workLocation.getWlVillageCode());
+        setFacilityCode(MainApp.workLocation.getWlFacilityCode());
+        setWlArea(MainApp.workLocation.getWlArea());
+        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
+        setAppver(MainApp.appInfo.getAppVersion());
+        setProjectName(PROJECT_NAME);
+    }
+
 
     public String getProjectName() {
         return projectName;
@@ -558,15 +575,22 @@ public class Vaccines extends BaseObservable implements Observable {
         return json;
     }
 
+    public void updateAntigenWoman(String vaccCode, String antigen, String vaccDate) {
+            setVb08WCode(vaccCode);
+            setVb08WAntigen(antigen);
+            setVb08WDate(vaccDate);
+
+    }
+
     public void updateAntigen(String vaccCode, String antigen, String vaccDate) {
         if (MainApp.formVB.getVb03().equals("2") || MainApp.vaccinesData.getVBO3().equals("2")) {
             setVb08CCode(vaccCode);
             setVb08CAntigen(antigen);
             setVb08CDate(vaccDate);
-        } else {
+        } /*else {
             setVb08WCode(vaccCode);
             setVb08WAntigen(antigen);
             setVb08WDate(vaccDate);
-        }
+        }*/
     }
 }

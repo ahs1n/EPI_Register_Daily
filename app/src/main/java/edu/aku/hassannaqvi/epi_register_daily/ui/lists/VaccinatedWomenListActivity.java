@@ -40,6 +40,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.WomenFollowUP;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVBActivity;
+import edu.aku.hassannaqvi.epi_register_daily.ui.sections.SectionVB_womanActivity;
 
 
 public class VaccinatedWomenListActivity extends AppCompatActivity {
@@ -80,7 +81,7 @@ public class VaccinatedWomenListActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            startActivity(new Intent(this, SectionVBActivity.class).putExtra("woman", true));
+            startActivity(new Intent(this, SectionVB_womanActivity.class).putExtra("woman", true));
         }
     };
 
