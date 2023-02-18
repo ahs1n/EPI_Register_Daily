@@ -86,7 +86,7 @@
                         <TextView
                             android:layout_column="1"
                             android:background="@color/white"
-                            android:text="@string/vb04"
+                            android:text="@string/vb0401"
                             android:textColor="@color/colorPrimaryDark" />
 
                         <TextView
@@ -392,7 +392,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -635,7 +635,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -654,7 +654,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -673,7 +673,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -692,7 +692,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -837,7 +837,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1064,7 +1064,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textColor="@color/redLight"
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
@@ -1084,7 +1084,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1103,7 +1103,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1122,7 +1122,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1291,7 +1291,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textColor="@color/redLight"
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
@@ -1311,7 +1311,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1330,7 +1330,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1349,7 +1349,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1506,7 +1506,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textColor="@color/redLight"
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
@@ -1526,7 +1526,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1545,7 +1545,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1563,7 +1563,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1720,7 +1720,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1739,7 +1739,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1758,7 +1758,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1776,7 +1776,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1933,7 +1933,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textColor="@color/redLight"
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
@@ -1953,7 +1953,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1972,7 +1972,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -1990,7 +1990,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -2134,7 +2134,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textColor="@color/redLight"
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
@@ -2154,7 +2154,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textColor="@color/redLight"
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
@@ -2173,7 +2173,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textColor="@color/redLight"
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
@@ -2192,7 +2192,7 @@
                                                 android:fontFamily="@font/roboto"
                                                 android:includeFontPadding="false"
                                                 android:lineSpacingExtra="0dp"
-                                                android:text="2022-08-20"
+                                                android:text=""
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
@@ -2221,451 +2221,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!--&lt;!&ndash; vb08w  CheckBox   &ndash;&gt;
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVvb08w"
-                    style="@style/cardView"
-                    android:visibility="gone"
-                    tools:visibility="visible">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bottom"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                style="@style/quesNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="@string/Q_vb08w" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="@string/vb08w" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                style="@style/sub_labels"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1.5"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="&#45;&#45;&#45;&#45;&#45;&#45;"
-                                android:visibility="invisible" />
-
-
-                            <TextView
-                                style="@style/sub_labels"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="I" />
-
-                            <TextView
-                                style="@style/sub_labels"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="II" />
-
-                            <TextView
-                                style="@style/sub_labels"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="III" />
-
-                            <TextView
-                                style="@style/sub_labels"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="IV" />
-
-                            <TextView
-                                style="@style/sub_labels"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="V" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="@dimen/_65sdp"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/tt"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:textColor="@color/black" />
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="vertical">
-                        <RadioGroup
-                            android:id="@+id/vb08w"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            &lt;!&ndash;<TextView
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="3"
-                                android:gravity="center_vertical|center_horizontal"
-                                android:text="@string/vb08wa" />&ndash;&gt;
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/vb08waa"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="2"
-                                android:background="@null"
-                                android:checked="@{form.vb08w.equals(`1`)}"
-                                android:onClick="@{()->form.setVb08w(`1`)}" />
-
-                            <ImageView
-                                android:id="@+id/vb08waatick"
-                                android:layout_width="0.5dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="2"
-                                android:background="@drawable/tick_mark"
-                                android:visibility="gone" />
-
-                            &lt;!&ndash;<ImageView
-                                android:id="@+id/vb08waaCross"
-                                android:layout_width="0.5dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="2"
-                                android:background="@drawable/tick_mark"
-                                android:visibility="gone" />&ndash;&gt;
-
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/vb08wab"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:background="@null"
-                                android:checked="@{form.vb08w.equals(`2`)}"
-                                android:onClick="@{()->form.setVb08w(`2`)}" />
-
-                            <ImageView
-                                android:id="@+id/vb08wabtick"
-                                android:layout_width="0.5dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="2"
-                                android:background="@drawable/tick_mark"
-                                android:visibility="gone" />
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/vb08wac"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:background="@null"
-                                android:checked="@{form.vb08w.equals(`3`)}"
-                                android:onClick="@{()->form.setVb08w(`3`)}" />
-
-                            <ImageView
-                                android:id="@+id/vb08wactick"
-                                android:layout_width="0.5dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="2"
-                                android:background="@drawable/tick_mark"
-                                android:visibility="gone" />
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/vb08wad"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:background="@null"
-                                android:checked="@{form.vb08w.equals(`4`)}"
-                                android:onClick="@{()->form.setVb08w(`4`)}" />
-
-                            <ImageView
-                                android:id="@+id/vb08wadtick"
-                                android:layout_width="0.5dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="2"
-                                android:background="@drawable/tick_mark"
-                                android:visibility="gone" />
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="1" />
-
-                            <RadioButton
-                                android:id="@+id/vb08wae"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="2"
-                                android:background="@null"
-                                android:checked="@{form.vb08w.equals(`5`)}"
-                                android:onClick="@{()->form.setVb08w(`5`)}" />
-
-                            <ImageView
-                                android:id="@+id/vb08waetick"
-                                android:layout_width="0.5dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="2"
-                                android:background="@drawable/tick_mark"
-                                android:visibility="gone" />
-
-                        </RadioGroup>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="20dp"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="0dp"
-                            android:padding="0dp"
-                            android:paddingTop="0dp">
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="0.1" />
-
-                            <TextView
-                                android:id="@+id/vb08waatxt"
-                                style="@style/badges"
-                                android:layout_width="0dp"
-                                android:layout_height="18dp"
-                                android:layout_weight="1.5"
-                                android:fontFamily="@font/roboto"
-                                android:includeFontPadding="false"
-                                android:lineSpacingExtra="0dp"
-                                android:text="2022-08-20"
-                                android:textColor="@color/redLight"
-                                android:textSize="@dimen/_6sdp"
-                                android:visibility="invisible" />
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="0.1" />
-
-                            <TextView
-                                android:id="@+id/vb08wabtxt"
-                                style="@style/badges"
-                                android:layout_width="0dp"
-                                android:layout_height="18dp"
-                                android:layout_weight="1.5"
-                                android:fontFamily="@font/roboto"
-                                android:includeFontPadding="false"
-                                android:lineSpacingExtra="0dp"
-                                android:text="2022-08-20"
-                                android:textColor="@color/redLight"
-                                android:textSize="@dimen/_6sdp"
-                                android:visibility="invisible" />
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="0.1" />
-
-                            <TextView
-                                android:id="@+id/vb08wactxt"
-                                style="@style/badges"
-                                android:layout_width="0dp"
-                                android:layout_height="18dp"
-                                android:layout_weight="1.5"
-                                android:fontFamily="@font/roboto"
-                                android:includeFontPadding="false"
-                                android:lineSpacingExtra="0dp"
-                                android:text="2022-08-20"
-                                android:textColor="@color/redLight"
-                                android:textSize="@dimen/_6sdp"
-                                android:visibility="invisible" />
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="0.1" />
-
-                            <TextView
-                                android:id="@+id/vb08wadtxt"
-                                style="@style/badges"
-                                android:layout_width="0dp"
-                                android:layout_height="18dp"
-                                android:layout_weight="1.5"
-                                android:fontFamily="@font/roboto"
-                                android:includeFontPadding="false"
-                                android:lineSpacingExtra="0dp"
-                                android:text="2022-08-20"
-                                android:textColor="@color/redLight"
-                                android:textSize="@dimen/_6sdp"
-                                android:visibility="invisible" />
-
-
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_weight="0.1" />
-
-                            <TextView
-                                android:id="@+id/vb08waetxt"
-                                style="@style/badges"
-                                android:layout_width="0dp"
-                                android:layout_height="18dp"
-                                android:layout_weight="1.5"
-                                android:fontFamily="@font/roboto"
-                                android:includeFontPadding="false"
-                                android:lineSpacingExtra="0dp"
-                                android:text="2022-08-20"
-                                android:textColor="@color/redLight"
-                                android:textSize="@dimen/_6sdp"
-                                android:visibility="invisible" />
-
-                        </LinearLayout>
-
-                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
-                            android:id="@+id/vb08wdt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:enabled="@{!form.vb08w.equals(``) ? true : false}"
-                            android:gravity="center"
-                            android:hint="YYYY-MM-DD"
-                            android:text="@={form.vb08wdt}"
-                            app:dateFormat="yyyy-MM-dd"
-                            app:maxDate="CR_DATE"
-                            app:theme="@style/DatePickerEditTextDialogTheme" />
-                    </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>-->
-
-                <!-- vb09  Radio   -->
-                <!--<androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVvb09"
-                    style="@style/cardView"
-                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bottom"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                style="@style/quesNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="@string/Q_vb09" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="@string/vb09" />
-
-                        </LinearLayout>
-
-                        <RadioGroup
-                            android:id="@+id/vb09"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:id="@+id/vb09a"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:checked="@{form.vb09.equals(`1`)}"
-                                android:onClick="@{()->form.setVb09(`1`)}"
-                                android:text="@string/vb09a" />
-
-                            <RadioButton
-                                android:id="@+id/vb09b"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:checked="@{form.vb09.equals(`2`)}"
-                                android:onClick="@{()->form.setVb09(`2`)}"
-                                android:text="@string/vb09b" />
-
-                            <RadioButton
-                                android:id="@+id/vb0998"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:checked="@{form.vb09.equals(`98`)}"
-                                android:onClick="@{()->form.setVb09(`98`)}"
-                                android:text="@string/vb0998" />
-                        </RadioGroup>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>-->
 
                 <!-- Take Photo   -->
                 <androidx.cardview.widget.CardView

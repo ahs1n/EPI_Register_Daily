@@ -1216,8 +1216,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public static boolean isSyncUCs = false;
+
     // Sync UCs
     public int syncuclist(JSONArray ucList) throws JSONException {
+        if (isSyncUCs) return ucList.length();
+        isSyncUCs = true;
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(TableUCs.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1234,13 +1238,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             long rowID = db.insert(TableUCs.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
+        isSyncUCs = false;
         return insertCount;
     }
 
-
+    public static boolean isSyncVillages = false;
     // Sync Villages
     public int syncVillages(JSONArray villagesList) throws JSONException {
         Log.e("HERE", "syncVillages");
+        if (isSyncVillages) return villagesList.length();
+        isSyncVillages = true;
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(TableVillages.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1258,13 +1265,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             long rowID = db.insertOrThrow(TableVillages.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
+        isSyncVillages = false;
         return insertCount;
     }
 
 
+
+    public static boolean isSyncHF = false;
     // Sync HF
     public int synchf_list(JSONArray healthfacilities) throws JSONException {
         Log.e("HERE", "synchf_list");
+        if (isSyncHF) return healthfacilities.length();
+        isSyncHF = true;
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(TableHealthFacilities.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -1283,6 +1295,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (rowID != -1) insertCount++;
         }
 
+        isSyncHF = false;
         return insertCount;
     }
 
