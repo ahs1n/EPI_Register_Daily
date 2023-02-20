@@ -55,6 +55,7 @@ import edu.aku.hassannaqvi.epi_register_daily.models.FormVA;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormWR;
 import edu.aku.hassannaqvi.epi_register_daily.models.Users;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccDueDates;
 import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
@@ -98,6 +99,7 @@ public class MainApp extends Application {
     public static WorkLocation workLocation;
     public static Attendance attendance;
     public static Vaccines vaccines;
+    public static VaccDueDates vaccDueDates;
     public static List<Vaccines> vaccinesList;
     public static List<VaccinesData> vaccinesDataList;
     public static List<WomenFollowUP> womenFollowUPList;
