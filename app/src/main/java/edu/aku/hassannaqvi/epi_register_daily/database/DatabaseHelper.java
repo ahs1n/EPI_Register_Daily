@@ -109,22 +109,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE_USERS);
-        db.execSQL(SQL_CREATE_FORMSVA);
-        db.execSQL(SQL_CREATE_FORMSVB);
-        db.execSQL(SQL_CREATE_VACCINE);
-        db.execSQL(SQL_CREATE_DUE_VACCINE);
-        db.execSQL(SQL_CREATE_WORK_LOCATION);
-        db.execSQL(SQL_CREATE_ATTENDANCE);
-        db.execSQL(SQL_CREATE_HF);
-        db.execSQL(SQL_CREATE_UC);
-        db.execSQL(SQL_CREATE_VACCINESDATA);
-        db.execSQL(SQL_CREATE_VILLAGES);
-        db.execSQL(SQL_CREATE_VERSIONAPP);
-        db.execSQL(SQL_CREATE_ENTRYLOGS);
-        db.execSQL(SQL_CREATE_VACCINESCHEDULE);
-        db.execSQL(SQL_CREATE_WOMENFOLLOWUP);
-
+        try {
+            db.execSQL(SQL_CREATE_USERS);
+            db.execSQL(SQL_CREATE_FORMSVA);
+            db.execSQL(SQL_CREATE_FORMSVB);
+            db.execSQL(SQL_CREATE_VACCINE);
+            db.execSQL(SQL_CREATE_DUE_VACCINE);
+            db.execSQL(SQL_CREATE_WORK_LOCATION);
+            db.execSQL(SQL_CREATE_ATTENDANCE);
+            db.execSQL(SQL_CREATE_HF);
+            db.execSQL(SQL_CREATE_UC);
+            db.execSQL(SQL_CREATE_VACCINESDATA);
+            db.execSQL(SQL_CREATE_VILLAGES);
+            db.execSQL(SQL_CREATE_VERSIONAPP);
+            db.execSQL(SQL_CREATE_ENTRYLOGS);
+            db.execSQL(SQL_CREATE_VACCINESCHEDULE);
+            db.execSQL(SQL_CREATE_WOMENFOLLOWUP);
+        } catch (Exception ex) {
+            Log.e(TAG, "onCreate: " + "Database Crash");
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -1820,37 +1824,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         c.close();
         return allForm;
     }
-
-
-    /*public List<VaccinesData> getAllFollowupWomen() {
-        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
-        Cursor c;
-        String[] columns = null;
-        String whereClause = null;
-        String[] whereArgs = null;
-        String groupBy = null;
-        String having = null;
-
-        String orderBy = TableVaccinesData.COLUMN_ID + " ASC";
-        List<VaccinesData> allForm = new ArrayList<>();
-
-        c = db.query(
-                TableVaccinesData.TABLE_NAME,  // The table to query
-                columns,                   // The columns to return
-                whereClause,               // The columns for the WHERE clause
-                whereArgs,                 // The values for the WHERE clause
-                groupBy,                   // don't group the rows
-                having,                    // don't filter by row groups
-                orderBy                    // The sort order
-        );
-        while (c.moveToNext()) {
-            VaccinesData vd = new VaccinesData().hydrate(c);
-            if (vd.getVBO3().equals("1"))
-                allForm.add(vd);
-        }
-        c.close();
-        return allForm;
-    }*/
 
 
     public List<WomenFollowUP> getAllFollowupWomen() {
