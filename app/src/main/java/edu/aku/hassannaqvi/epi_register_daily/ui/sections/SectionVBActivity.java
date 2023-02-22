@@ -308,8 +308,11 @@ public class SectionVBActivity extends AppCompatActivity {
                                     /*Saving Vaccines Due Dates*/
                                     MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
-                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber +1));
-                                    insertDueVaccines();
+                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+
+                                    if(!nextVaccineDate.getText().toString().equals("")) {
+                                        insertDueVaccines();
+                                    }
                                 }
 
 
@@ -377,8 +380,10 @@ public class SectionVBActivity extends AppCompatActivity {
                                             /*Saving Vaccines Due Dates*/
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]+1));
-                                            insertDueVaccines();
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            if(!txtVaccineDate.getText().toString().equals("")){
+                                                insertDueVaccines();
+                                            }
 
                                             String letter = String.valueOf(getChar(0));
 
@@ -404,7 +409,9 @@ public class SectionVBActivity extends AppCompatActivity {
                                                         MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                         MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
                                                         MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber +1));
-                                                        insertDueVaccines();
+                                                        if(!nextVaccineDate.getText().toString().equals("")){
+                                                            insertDueVaccines();
+                                                        }
                                                     }
                                                 }
                                             }
@@ -481,8 +488,10 @@ public class SectionVBActivity extends AppCompatActivity {
                                             /*Saving Vaccines Due Dates*/
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]+1));
-                                            insertDueVaccines();
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            if(!txtVaccineDate.getText().toString().equals("")){
+                                                insertDueVaccines();
+                                            }
 
                                             String letter = String.valueOf(getChar(0));
 
@@ -506,7 +515,9 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
                                                     MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber +1));
-                                                    insertDueVaccines();
+                                                    if(!nextVaccineDate.getText().toString().equals("")){
+                                                        insertDueVaccines();
+                                                    }
                                                 }
                                             }
 
@@ -585,8 +596,10 @@ public class SectionVBActivity extends AppCompatActivity {
                                             /*Saving Vaccines Due Dates*/
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]+1));
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            if(!txtVaccineDate.getText().toString().equals("")){
                                             insertDueVaccines();
+                                            }
 
                                             String letter = String.valueOf(getChar(0));
 
@@ -612,7 +625,9 @@ public class SectionVBActivity extends AppCompatActivity {
                                                         MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                         MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
                                                         MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber +1));
-                                                        insertDueVaccines();
+                                                        if(!nextVaccineDate.getText().toString().equals("")){
+                                                            insertDueVaccines();
+                                                        }
                                                     }
 
 
@@ -691,8 +706,10 @@ public class SectionVBActivity extends AppCompatActivity {
                                             /*Saving Vaccines Due Dates*/
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]+1));
-                                            insertDueVaccines();
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            if(!txtVaccineDate.getText().toString().equals("")){
+                                                insertDueVaccines();
+                                            }
 
                                             String letter = String.valueOf(getChar(0));
 
@@ -717,7 +734,9 @@ public class SectionVBActivity extends AppCompatActivity {
                                                         MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                         MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
                                                         MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber +1));
-                                                        insertDueVaccines();
+                                                        if(!nextVaccineDate.getText().toString().equals("")){
+                                                            insertDueVaccines();
+                                                        }
                                                     }
                                                 }
                                             }
@@ -792,8 +811,10 @@ public class SectionVBActivity extends AppCompatActivity {
                                             /*Saving Vaccines Due Dates*/
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]+1));
-                                            insertDueVaccines();
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            if(!txtVaccineDate.getText().toString().equals("")){
+                                                insertDueVaccines();
+                                            }
 
                                             String letter = String.valueOf(getChar(0));
 
@@ -818,7 +839,9 @@ public class SectionVBActivity extends AppCompatActivity {
                                                         MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                         MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
                                                         MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber +1));
-                                                        insertDueVaccines();
+                                                        if(!nextVaccineDate.getText().toString().equals("")){
+                                                            insertDueVaccines();
+                                                        }
                                                     }
                                                 }
                                             }
@@ -896,7 +919,9 @@ public class SectionVBActivity extends AppCompatActivity {
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
                                             MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber +1));
-                                            insertDueVaccines();
+                                            if(!txtVaccineDate.getText().toString().equals("")){
+                                                insertDueVaccines();
+                                            }
 
                                             break;
                                         }
@@ -957,7 +982,7 @@ public class SectionVBActivity extends AppCompatActivity {
      */
     private Bundle calculateNextDoseDate(ArrayList<Boolean> results, String baseId, Bundle... previousGroupBundleArr) {
         int firstTrue = results.lastIndexOf(true);
-        List<VaccDueDates> dueDates = new ArrayList<>();
+        VaccDueDates dueDates = new VaccDueDates();
 
         int group = 0;
         Bundle prevBundle = new Bundle();
@@ -1011,15 +1036,15 @@ public class SectionVBActivity extends AppCompatActivity {
                     }
                     MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseGroup[1] + 1));
+                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                 }
                 try {
-                    dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(), vaccDueDates.getVb02(),
+                    dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                             vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                if(dueDates.size() == 0) {
+                if(dueDates.getUid().equals("")) {
                     insertDueVaccines();
                 }
 
@@ -1052,14 +1077,14 @@ public class SectionVBActivity extends AppCompatActivity {
                         }
                         MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                         MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                        MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(groupDays[1] + 1));
+                        MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 2));
                         try {
                             dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                     vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        if(dueDates.size() == 0) {
+                        if(dueDates.getUid().equals("")) {
                             insertDueVaccines();
                         }
                     }

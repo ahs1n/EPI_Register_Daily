@@ -2324,18 +2324,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return vaccinesByUID;
     }
 
-    public List<VaccDueDates> getDueVaccinesBYAntigen(String uuid, String cardNo, String vaccineName, String doseNumber) throws JSONException {
+    public VaccDueDates getDueVaccinesBYAntigen(String uuid, String cardNo, String vaccineName, String doseNumber) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
         String whereClause = VaccinesDueTable.COLUMN_UUID + "=? AND " + VaccinesDueTable.COLUMN_VB02 + "=? AND "
-                + VaccinesDueTable.COLUMN_VB08C_CODE + "=? AND " + VaccinesDueTable.COLUMN_VB08C_ANTIGEN;
+                + VaccinesDueTable.COLUMN_VB08C_CODE + "=? AND " + VaccinesDueTable.COLUMN_VB08C_ANTIGEN + "=?";
         String[] whereArgs = {uuid, cardNo, vaccineName, doseNumber};
         String groupBy = null;
         String having = null;
         String orderBy = VaccinesDueTable.COLUMN_ID + " ASC";
 
-        List<VaccDueDates> vaccinesByUID = new ArrayList<>();
+        VaccDueDates vaccinesByUID = new VaccDueDates();
         c = db.query(
                 VaccinesDueTable.TABLE_NAME,  // The table to query
                 columns,                   // The columns to return
@@ -2345,14 +2345,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 having,                    // don't filter by row groups
                 orderBy                    // The sort order
         );
-        while (c.moveToNext()) {
-            vaccinesByUID.add(new VaccDueDates().Hydrate(c));
-        }
+        if (c != null) {
+            while (c.moveToNext()) {
+                vaccinesByUID = new VaccDueDates().Hydrate(c);
+            }
 
-        if (c != null && !c.isClosed()) {
-            c.close();
+            if (!c.isClosed()) {
+                c.close();
+            }
         }
-        c.close();
         return vaccinesByUID;
     }
 
