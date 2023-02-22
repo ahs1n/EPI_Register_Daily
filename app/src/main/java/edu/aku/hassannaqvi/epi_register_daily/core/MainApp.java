@@ -106,6 +106,7 @@ public class MainApp extends Application {
     public static WomenFollowUP womenFollowUP;
     public static VaccinesData vaccinesData;
     public static VaccinesSchedule vaccinesSchedule;
+    public static VaccDueDates dueDates;
     public static boolean superuser;
     public static String selectedVillageCode;
     public static String selectedUCCode;
