@@ -4,7 +4,6 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.IBAHC;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.attendance;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccDueDates;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_DOB;
@@ -53,7 +52,6 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormCRTab
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormWRTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVATable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.FormsVBTable;
-import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesDueTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableHealthFacilities;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableUCs;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVaccineSchedule;
@@ -61,6 +59,7 @@ import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVacc
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableVillages;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.TableWomenFollowUP;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.UsersTable;
+import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesDueTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.VaccinesTable;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.WorkLocationTable;
 import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
@@ -1618,6 +1617,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int count = db.update(
                 VaccinesTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+
+    public void updateSyncedVaccDueDates(String id) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        ContentValues values = new ContentValues();
+        values.put(VaccinesDueTable.COLUMN_SYNCED, true);
+        values.put(VaccinesDueTable.COLUMN_SYNC_DATE, new Date().toString());
+        String where = VaccinesDueTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+        int count = db.update(
+                VaccinesDueTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
