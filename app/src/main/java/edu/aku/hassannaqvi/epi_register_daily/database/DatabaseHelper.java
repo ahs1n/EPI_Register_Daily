@@ -1623,6 +1623,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 whereArgs);
     }
 
+    public void updateSyncedVaccDueDates(String id) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(TableContracts.VaccinesDueTable.COLUMN_SYNCED, true);
+        values.put(TableContracts.VaccinesDueTable.COLUMN_SYNC_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = TableContracts.VaccinesDueTable.COLUMN_ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                VaccinesDueTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
 
     public void updateSyncedEntryLog(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
