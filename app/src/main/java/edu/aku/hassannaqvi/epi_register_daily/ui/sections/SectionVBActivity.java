@@ -1123,8 +1123,12 @@ public class SectionVBActivity extends AppCompatActivity {
                                             int[] days = getDaysAndGroupOfVaccineType(baseId, doseNumber);
                                             DateTime nextDate = prevDate.plusDays(days[0]);
                                             //previousGroup = days[1];
-                                            txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
-                                            txtVaccineDate.setVisibility(View.VISIBLE);
+                                            if(doseNumber < 2) {
+                                                txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
+                                                txtVaccineDate.setVisibility(View.VISIBLE);
+                                            }else {
+                                                txtVaccineDate.setText("");
+                                            }
 
                                             /*Saving Vaccines Due Dates*/
                                             if(flag)

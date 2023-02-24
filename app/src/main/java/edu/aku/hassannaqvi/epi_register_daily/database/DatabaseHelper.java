@@ -1642,19 +1642,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void updateSyncedVaccDueDates(String id) {
-        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
-        ContentValues values = new ContentValues();
-        values.put(VaccinesDueTable.COLUMN_SYNCED, true);
-        values.put(VaccinesDueTable.COLUMN_SYNC_DATE, new Date().toString());
-        String where = VaccinesDueTable.COLUMN_ID + " = ?";
-        String[] whereArgs = {id};
-        int count = db.update(
-                VaccinesDueTable.TABLE_NAME,
-                values,
-                where,
-                whereArgs);
-    }
 
 
     public void updateSyncedEntryLog(String id) {

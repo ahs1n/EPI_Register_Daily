@@ -306,13 +306,12 @@ public class VaccDueDates extends BaseObservable implements Observable {
         this.appver = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_APPVERSION));
         this.synced = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_SYNCED));
         this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_SYNC_DATE));
-
         this.vb02 = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_VB02));
         this.vb04a = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_VB04A));
         this.vb04 = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_VB04));
         this.vb08CDueCode = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_VB08C_CODE));
         this.vb08CDueAntigen = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_VB08C_ANTIGEN));
-        this.vb08CDueAntigen = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_VB08C_DATE));
+        this.vb08CDueDate = cursor.getString(cursor.getColumnIndexOrThrow(VaccinesDueTable.COLUMN_VB08C_DATE));
         return this;
     }
 
