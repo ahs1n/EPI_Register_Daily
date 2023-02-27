@@ -46,6 +46,11 @@
                 android:title="Forms Report by Cluster"
                 android:titleCondensed="List of all forms by date"
                 app:showAsAction="collapseActionView" />
+            <item
+                android:id="@+id/summary"
+                android:title="Summary"
+                android:titleCondensed="Summary"
+                app:showAsAction="collapseActionView" />
 
         </menu>
     </item>

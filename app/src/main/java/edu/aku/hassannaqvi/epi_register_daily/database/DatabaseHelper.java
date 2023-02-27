@@ -40,10 +40,12 @@ import org.json.JSONObject;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
@@ -1642,8 +1644,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
-
     public void updateSyncedEntryLog(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         ContentValues values = new ContentValues();
@@ -2691,5 +2691,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return formVA;
 
+    }
+
+    /* FOR SUMMARY */
+    public List<String> getTodaysVaccinesByAntigen(String antigenCode) {
+
+        String sysDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(new Date().getTime());
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = {VaccinesTable.COLUMN_VB08C_CODE,
+                VaccinesTable.COLUMN_VB08C_ANTIGEN};
+        String whereClause = VaccinesTable.COLUMN_VB08C_CODE + " = ? AND " + VaccinesTable.COLUMN_SYSDATE + " Like ? ";
+        String[] whereArgs = new String[]{antigenCode, "%" + sysDate + "%"};
+        String groupBy = null;
+        String having = null;
+        String orderBy = VaccinesTable.COLUMN_ID + " ASC";
+        List<String> vaccines = new ArrayList<>();
+        c = db.query(
+                VaccinesTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            vaccines.add(c.getString(c.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08C_CODE))
+                    + c.getString(c.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08C_ANTIGEN)));
+        }
+        return vaccines;
     }
 }
