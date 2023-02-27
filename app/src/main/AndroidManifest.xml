@@ -27,12 +27,15 @@
         android:theme="@style/Theme.main"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DailySummaryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.sections.MemberInfoActivity"
             android:exported="true" />
         <activity
             android:name=".ui.LoginActivity"
-            android:screenOrientation="portrait"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.splashscreen"
             android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
@@ -66,7 +69,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeUrdu"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".ui.sections.SectionVB_womanActivity"
             android:screenOrientation="portrait"
@@ -82,7 +84,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.main"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".ui.lists.VaccinatedChildListActivity"
             android:screenOrientation="portrait"
@@ -113,7 +114,6 @@
         <activity
             android:name=".ui.LockActivity"
             android:exported="true" />
-
         <activity
             android:name=".ui.ChangePasswordActivity"
             android:exported="true"
