@@ -2695,8 +2695,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /* FOR SUMMARY */
     public List<String> getTodaysVaccinesByAntigen(String antigenCode) {
-
         String sysDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(new Date().getTime());
+
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = {VaccinesTable.COLUMN_VB08C_CODE,
@@ -2721,5 +2721,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + c.getString(c.getColumnIndexOrThrow(VaccinesTable.COLUMN_VB08C_ANTIGEN)));
         }
         return vaccines;
+    }
+
+    public int getTodaysVaccinesCount() {
+        String sysDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(new Date().getTime());
+
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = VaccinesTable.COLUMN_VB08C_DATE + " Like ? ";
+        String[] whereArgs = new String[]{"%" + sysDate + "%"};
+        String groupBy = null;
+        String having = null;
+        String orderBy = VaccinesTable.COLUMN_ID + " ASC";
+        int count = 0;
+        c = db.query(
+                VaccinesTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        if (null != c)
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                count = c.getCount();
+            }
+        return count;
     }
 }

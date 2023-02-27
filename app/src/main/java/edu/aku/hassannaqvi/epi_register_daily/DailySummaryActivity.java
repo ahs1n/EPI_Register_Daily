@@ -29,6 +29,10 @@ public class DailySummaryActivity extends AppCompatActivity {
 
     // Initialize summary UI
     private void initSummaryUI() {
+        // Today's Total
+        int todaysTotal = db.getTodaysVaccinesCount();
+        bi.totalAnt.setText(String.valueOf(todaysTotal));
+
         // BCG
         List<String> bcg = db.getTodaysVaccinesByAntigen("BCG");
         bi.bcgAnt.setText(String.valueOf(bcg.size()));
