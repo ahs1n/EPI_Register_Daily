@@ -495,4 +495,5 @@
     <string name="hh_not_found" translatable="false">Household not Found</string>
     <string name="hh_exists_form" translatable="false"> JSONException(Form): \t </string>
     <string name="child_info_missing" translatable="false">Please fill child sections before entering this information</string>
+    <string name="file_not_found">File not found</string>
 </resources>
