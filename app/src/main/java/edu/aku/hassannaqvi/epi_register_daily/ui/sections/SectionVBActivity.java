@@ -46,6 +46,7 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccDueDates;
+import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
@@ -1261,7 +1262,7 @@ public class SectionVBActivity extends AppCompatActivity {
                     }
                     MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(daysGroup[1]));
+                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(firstTrue+2));
                 }
                 try {
                     MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
@@ -1555,7 +1556,7 @@ public class SectionVBActivity extends AppCompatActivity {
                 else if (currentDose == 0) {
                     days = 28;
                     group = 2;
-                } else if (currentDose == 1) {
+                } else {
                     days = 28;
                     group = 3;
                 }/*else if(currentDose == 2)
@@ -1571,12 +1572,9 @@ public class SectionVBActivity extends AppCompatActivity {
                     group = 1;
                 }
                 // PCV 2 and PCV 3 at 10 and 14 weeks respectively
-                else if (currentDose == 0) {
+                else{
                     days = 28;
                     group = 2;
-                } else if (currentDose == 1) {
-                    days = 28;
-                    group = 3;
                 }
                 break;
             case "vb08cf":      // ROTA
@@ -1586,12 +1584,9 @@ public class SectionVBActivity extends AppCompatActivity {
                     group = 1;
                 }
                 // Rota 2 and Rota 3 at 10 and 14 weeks respectively.
-                else if (currentDose == 0) {
+                else{
                     days = 28;
                     group = 2;
-                } else if (currentDose == 1) {
-                    days = 28;
-                    group = 3;
                 }
                 break;
             case "vb08cg":      // IPV
@@ -1601,7 +1596,7 @@ public class SectionVBActivity extends AppCompatActivity {
                     group = 3;
                 }
                 // IPV 2 at 18 weeks    Group 4
-                else if (currentDose == 0) {
+                else {
                     days = 154;
                     group = 4;
                 }
@@ -1613,7 +1608,7 @@ public class SectionVBActivity extends AppCompatActivity {
                     group = 4;
                 }
                 // Measles 2 at 15 months       Group 5
-                else if (currentDose == 0) {
+                else {
                     days = 168;
                     group = 5;
                 }
@@ -1725,9 +1720,7 @@ public class SectionVBActivity extends AppCompatActivity {
         }
         vaccDueDates.setId(String.valueOf(rowId));
         if (rowId > 0) {
-            if (dueDates.getUid().equals("")) {
-                vaccDueDates.setUid(vaccDueDates.getDeviceId() + vaccDueDates.getId());
-            }
+            vaccDueDates.setUid(vaccDueDates.getDeviceId() + vaccDueDates.getId());
             db.updatesDueVaccineColumn(TableContracts.VaccinesDueTable.COLUMN_UID, vaccDueDates.getUid());
             vaccDueDates.updateDueAntigen();
             return true;

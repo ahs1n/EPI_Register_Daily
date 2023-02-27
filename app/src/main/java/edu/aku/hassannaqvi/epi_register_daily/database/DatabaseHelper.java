@@ -497,7 +497,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(column, value);
 
         String selection = VaccinesDueTable._ID + " =? ";
-        String[] selectionArgs = {MainApp.dueDates.getId()};
+        String[] selectionArgs = {MainApp.vaccDueDates.getId()};
 
         return db.update(VaccinesDueTable.TABLE_NAME,
                 values,
