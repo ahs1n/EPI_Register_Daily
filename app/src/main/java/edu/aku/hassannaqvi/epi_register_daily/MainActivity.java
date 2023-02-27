@@ -281,6 +281,11 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, ChangePasswordActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.summary:
+                intent = new Intent(MainActivity.this, DailySummaryActivity.class);
+                startActivity(intent);
+                break;
             case R.id.sendDB:
                 sendEmail();
                 return true;

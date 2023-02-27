@@ -96,6 +96,7 @@
     <string name="cr_hep_b1">ٹک کا نشان</string>
     <string name="cr_hep_b2">تاریخ پڑھی نہیں جا رہی</string>
     <!--    <string name="cr_hep_na">تاریخ نہیں لکھی </string>-->
+    <string name="cr_opv">او پی وی</string>
     <string name="cr_opv0">او پی وی 0</string>
     <string name="cr_opv0_d">تاریخ کی نوعیت</string>
     <string name="cr_opv0_d1">ٹک کا نشان</string>
@@ -116,6 +117,7 @@
     <string name="cr_opv3_d1">ٹک کا نشان</string>
     <string name="cr_opv3_d2">تاریخ پڑھی نہیں جا رہی</string>
     <!--    <string name="cr_opv3_na">تاریخ نہیں لکھی </string>-->
+    <string name="cr_rota">روٹا</string>
     <string name="cr_rota1">روٹا1</string>
     <string name="cr_rota1_d">تاریخ کی نوعیت</string>
     <string name="cr_rota1_d1">ٹک کا نشان</string>
@@ -131,6 +133,7 @@
     <string name="cr_ipv_d1">ٹک کا نشان</string>
     <string name="cr_ipv_d2">تاریخ پڑھی نہیں جا رہی</string>
     <!--    <string name="cr_rota2_na">تاریخ نہیں لکھی </string>-->
+    <string name="cr_pcv">پی سی وی</string>
     <string name="cr_pcv1">پی سی وی 1</string>
     <string name="cr_pcv1_d">تاریخ کی نوعیت</string>
     <string name="cr_pcv1_d1">ٹک کا نشان</string>
@@ -146,6 +149,7 @@
     <string name="cr_pcv3_d1">ٹک کا نشان</string>
     <string name="cr_pcv3_d2">تاریخ پڑھی نہیں جا رہی</string>
     <!--    <string name="cr_pcv3_na">تاریخ نہیں لکھی </string>-->
+    <string name="cr_penta">پینٹا</string>
     <string name="cr_penta1">پینٹا1</string>
     <string name="cr_penta1_d">تاریخ کی نوعیت</string>
     <string name="cr_penta1_d1">ٹک کا نشان</string>
@@ -161,6 +165,7 @@
     <string name="cr_penta3_d1">ٹک کا نشان</string>
     <string name="cr_penta3_d2">تاریخ پڑھی نہیں جا رہی</string>
     <!--    <string name="cr_penta3_na">تاریخ نہیں لکھی </string>-->
+    <string name="cr_measles">خسرہ</string>
     <string name="cr_measles1">خسرہ1</string>
     <string name="cr_measles1_d">تاریخ کی نوعیت</string>
     <string name="cr_measles1_d1">ٹک کا نشان</string>
@@ -171,6 +176,7 @@
     <string name="cr_measles2_d1">ٹک کا نشان</string>
     <string name="cr_measles2_d2">تاریخ پڑھی نہیں جا رہی</string>
     <!--    <string name="cr_measles2_na">تاریخ نہیں لکھی </string>-->
+    <string name="cr_typhoid">ٹائیفائیڈ</string>
     <string name="cr_birth_status">کیا پیدائش پر بچہ محفوظ تھا</string>
     <string name="cr_birth_status1">ہاں</string>
     <string name="cr_birth_status2">نہیں</string>
