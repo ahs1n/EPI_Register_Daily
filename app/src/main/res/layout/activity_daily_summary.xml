@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
+    tools:context=".DailySummaryActivity">
+
+    <TextView
+        android:id="@+id/txtSummary"
+        style="@style/labelsHead"
+        android:layout_marginTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@color/grayDark1"
+        android:elevation="@dimen/_1sdp"
+        android:text="SUMMARY"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_11sdp"
+        app:backgroundTint="@null" />
+
+    <TextView
+        android:id="@+id/filterTitleTV"
+        android:layout_marginTop="@dimen/_25sdp"
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtSummary"
+        android:gravity="center"
+        android:text="Today's Vaccinations"
+        android:textColor="@color/gray" />
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/filterTitleTV"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/all_round_corners"
+        android:stretchColumns="5">
+
+        <TableRow
+            style="@style/labels"
+            android:padding="6dp">
+
+            <TextView
+                android:id="@+id/vaccName"
+                android:layout_column="0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="Vaccine Name" />
+
+            <TextView
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="0" />
+
+            <TextView
+                android:layout_column="2"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="I" />
+
+            <TextView
+                android:layout_column="3"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="II" />
+
+            <TextView
+                android:layout_column="4"
+                android:layout_weight="1"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="III" />
+
+
+        </TableRow>
+
+
+        <TableRow
+            style="@style/labels"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <TextView
+                android:layout_column="0"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="BCG"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+            <TextView
+                android:id="@+id/bcg0"
+                android:layout_column="1"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_column="2"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_column="3"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_column="4"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+        </TableRow>
+
+        <TableRow
+            style="@style/labels"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <TextView
+                android:layout_column="0"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="OPV"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+            <TextView
+                android:id="@+id/opv0"
+                android:layout_column="1"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/opv1"
+                android:layout_column="2"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/opv2"
+                android:layout_column="3"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/opv3"
+                android:layout_column="4"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+        </TableRow>
+
+        <TableRow
+            style="@style/labels"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/_5sdp">
+
+            <TextView
+                android:layout_column="0"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Penta"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+            <TextView
+                android:layout_column="1"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/penta1"
+                android:layout_column="2"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/penta2"
+                android:layout_column="3"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/penta3"
+                android:layout_column="4"
+                android:background="@color/white"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+        </TableRow>
+
+
+
+
+
+    </TableLayout>
+
+
+</RelativeLayout>
