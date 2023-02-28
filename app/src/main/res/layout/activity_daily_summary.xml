@@ -31,14 +31,67 @@
             app:title="@string/records_summary"
             app:titleTextColor="@color/white" />
 
+        <LinearLayout
+            android:id="@+id/filterCG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/all_round_corners_stroke"
+            android:foregroundGravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_10sdp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/todaysChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:dropDownSelector="@android:color/transparent"
+                android:text="@string/today"
+                android:textAppearance="@style/Theme.EPI_Register.ChipText"
+                android:textColor="@color/text_selector"
+                android:textSize="@dimen/_9sdp"
+                android:theme="@style/Theme.MaterialComponents.Light"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/chip_selector"
+                app:chipCornerRadius="@dimen/_50sdp"
+                app:chipMinHeight="@dimen/_23sdp"
+                app:closeIconVisible="false"
+                app:shapeAppearanceOverlay="@null" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/byDateChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:dropDownSelector="@android:color/transparent"
+                android:text="@string/by_date"
+                android:textAppearance="@style/Theme.EPI_Register.ChipText"
+                android:textColor="@color/text_selector"
+                android:textSize="@dimen/_9sdp"
+                android:theme="@style/Theme.MaterialComponents.Light"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="@color/chip_selector"
+                app:chipCornerRadius="@dimen/_50sdp"
+                app:chipMinHeight="@dimen/_23sdp"
+                app:closeIconVisible="false"
+                app:shapeAppearanceOverlay="@null" />
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/filterTitleTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtSummary"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
-            android:text="Today's Vaccinations"
+            android:text="@string/todays_vaccinations"
             android:textColor="@color/gray"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />

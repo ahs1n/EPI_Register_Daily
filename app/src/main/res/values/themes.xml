@@ -584,6 +584,56 @@
 
 
     <!-- Chip Theme - Choice -->
+    <style name="Theme.EPI_Register.Chip.Choice" parent="@style/Theme.MaterialComponents.Light">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipBackgroundColor">@color/chip_selector</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="closeIconVisible">false</item>
+        <item name="android:textSize">@dimen/_9sdp</item>
+        <item name="android:textColor">@color/text_selector</item>
+        <item name="android:textAppearance">@style/Theme.EPI_Register.ChipText</item>
+        <item name="chipCornerRadius">@dimen/_50sdp</item>
+        <item name="android:dropDownSelector">@android:color/transparent</item>
+        <item name="chipMinHeight">@dimen/_30sdp</item>
+    </style>
+
+    <!-- Chip Text Theme -->
+    <style name="Theme.EPI_Register.ChipText" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">@dimen/_9sdp</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <!-- DatePicker Theme -->
+    <style name="Theme.EPI_Register.DatePickerStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorPrimary
+        </item>                   <!--header background-->
+        <item name="android:windowBackground">@color/white</item>     <!--calendar background-->
+        <item name="android:colorControlActivated">@color/colorPrimary</item> <!--selected day-->
+        <item name="android:textColorPrimary">@color/black</item> <!--days of the month-->
+        <item name="android:textColorSecondary">@color/colorPrimaryDark
+        </item>    <!--days of the week-->
+        <item name="android:datePickerMode">calendar</item>
+        <item name="android:buttonBarPositiveButtonStyle">
+            @style/Theme.EPI_Register.DatePickerStyle.Button.Positive
+        </item>
+        <item name="android:buttonBarNeutralButtonStyle">
+            @style/Theme.EPI_Register.DatePickerStyle.Button.Negative
+        </item>
+    </style>
+
+    <style name="Theme.EPI_Register.DatePickerStyle.Button.Positive" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="Theme.EPI_Register.DatePickerStyle.Button.Negative" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@color/grayLight</item>
+    </style>
+
+    <style name="Theme.EPI_Register.DatePickerStyle.Button.Neutral" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+    </style>
 
 
 </resources>

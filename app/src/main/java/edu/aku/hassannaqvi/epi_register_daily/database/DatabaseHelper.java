@@ -2694,15 +2694,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /* FOR SUMMARY */
-    public List<String> getTodaysVaccinesByAntigen(String antigenCode) {
-        String sysDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(new Date().getTime());
-
+    public List<String> getVaccinesByAntigenCodeAndDate(String antigenCode, String date) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = {VaccinesTable.COLUMN_VB08C_CODE,
                 VaccinesTable.COLUMN_VB08C_ANTIGEN};
         String whereClause = VaccinesTable.COLUMN_VB08C_CODE + " = ? AND " + VaccinesTable.COLUMN_SYSDATE + " Like ? ";
-        String[] whereArgs = new String[]{antigenCode, "%" + sysDate + "%"};
+        String[] whereArgs = new String[]{antigenCode, "%" + date + "%"};
         String groupBy = null;
         String having = null;
         String orderBy = VaccinesTable.COLUMN_ID + " ASC";
@@ -2723,14 +2721,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return vaccines;
     }
 
-    public int getTodaysVaccinesCount() {
-        String sysDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(new Date().getTime());
-
+    public int getTotalVaccinesByDate(String date) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
         String whereClause = VaccinesTable.COLUMN_VB08C_DATE + " Like ? ";
-        String[] whereArgs = new String[]{"%" + sysDate + "%"};
+        String[] whereArgs = new String[]{"%" + date + "%"};
         String groupBy = null;
         String having = null;
         String orderBy = VaccinesTable.COLUMN_ID + " ASC";
