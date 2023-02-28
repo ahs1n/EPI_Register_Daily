@@ -2351,13 +2351,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return vaccinesByUID;
     }
 
-    public VaccDueDates getDueVaccinesBYAntigen(String uuid, String cardNo, String vaccineName, String doseNumber) throws JSONException {
+    public VaccDueDates getDueVaccinesBYAntigen(String cardNo, String vaccineName, String doseNumber) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause = VaccinesDueTable.COLUMN_UUID + "=? AND " + VaccinesDueTable.COLUMN_VB02 + "=? AND "
+        String whereClause = VaccinesDueTable.COLUMN_VB02 + "=? AND "
                 + VaccinesDueTable.COLUMN_VB08C_CODE + "=? AND " + VaccinesDueTable.COLUMN_VB08C_ANTIGEN + "=?";
-        String[] whereArgs = {uuid, cardNo, vaccineName, doseNumber};
+        String[] whereArgs = {cardNo, vaccineName, doseNumber};
         String groupBy = null;
         String having = null;
         String orderBy = VaccinesDueTable.COLUMN_ID + " ASC";
