@@ -3,7 +3,9 @@ package edu.aku.hassannaqvi.epi_register_daily.database;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.IBAHC;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.attendance;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.dueDates;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccDueDates;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_DOB;
@@ -497,7 +499,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(column, value);
 
         String selection = VaccinesDueTable._ID + " =? ";
-        String[] selectionArgs = {MainApp.vaccDueDates.getId()};
+        String[] selectionArgs;
+        if(!vaccDueDates.getId().equals("")) {
+            selectionArgs = new String[]{String.valueOf(vaccDueDates.getId())};
+        }else{
+            selectionArgs = new String[]{String.valueOf(dueDates.getId())};
+        }
 
         return db.update(VaccinesDueTable.TABLE_NAME,
                 values,
@@ -2342,13 +2349,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return vaccinesByUID;
     }
 
-    public VaccDueDates getDueVaccinesBYAntigen(String uuid, String cardNo, String vaccineName, String doseNumber) throws JSONException {
+    public VaccDueDates getDueVaccinesBYAntigen(String cardNo, String vaccineName, String doseNumber) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause = VaccinesDueTable.COLUMN_UUID + "=? AND " + VaccinesDueTable.COLUMN_VB02 + "=? AND "
+        String whereClause = VaccinesDueTable.COLUMN_VB02 + "=? AND "
                 + VaccinesDueTable.COLUMN_VB08C_CODE + "=? AND " + VaccinesDueTable.COLUMN_VB08C_ANTIGEN + "=?";
-        String[] whereArgs = {uuid, cardNo, vaccineName, doseNumber};
+        String[] whereArgs = {cardNo, vaccineName, doseNumber};
         String groupBy = null;
         String having = null;
         String orderBy = VaccinesDueTable.COLUMN_ID + " ASC";
