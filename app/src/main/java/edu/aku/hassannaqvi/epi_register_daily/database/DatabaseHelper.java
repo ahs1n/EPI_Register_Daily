@@ -40,12 +40,10 @@ import org.json.JSONObject;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts;
 import edu.aku.hassannaqvi.epi_register_daily.contracts.TableContracts.AttendanceTable;
@@ -2728,6 +2726,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String whereClause = VaccinesTable.COLUMN_VB08C_DATE + " Like ? ";
         String[] whereArgs = new String[]{"%" + date + "%"};
         String groupBy = null;
+        String having = null;
+        String orderBy = VaccinesTable.COLUMN_ID + " ASC";
+        int count = 0;
+        c = db.query(
+                VaccinesTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        if (null != c)
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                count = c.getCount();
+            }
+        return count;
+    }
+
+    public int getChildrenVaccinatedByDate(String date) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause = VaccinesTable.COLUMN_VB08C_DATE + " Like ? ";
+        String[] whereArgs = new String[]{"%" + date + "%"};
+        String groupBy = VaccinesTable.COLUMN_VB02 + "," + VaccinesTable.COLUMN_VB04;
         String having = null;
         String orderBy = VaccinesTable.COLUMN_ID + " ASC";
         int count = 0;

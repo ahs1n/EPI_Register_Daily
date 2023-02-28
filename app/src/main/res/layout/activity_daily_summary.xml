@@ -99,7 +99,6 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/filterTitleTV"
             android:layout_marginTop="@dimen/_10sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_10sdp">
@@ -110,6 +109,51 @@
                 android:layout_height="wrap_content"
                 android:columnCount="2"
                 android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/totalChildCV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:elevation="@dimen/_3sdp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="@dimen/_1sdp"
+                    app:cardCornerRadius="@dimen/_5sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/green"
+                            android:gravity="center"
+                            android:padding="@dimen/_2sdp"
+                            android:text="@string/total_child_vaccinated"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <TextView
+                            android:id="@+id/totalChildAnt"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_summary_ant"
+                            android:gravity="center"
+                            android:padding="@dimen/_2sdp"
+                            android:text="0"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/totalCV"
@@ -154,7 +198,6 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
-
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/bcgCV"

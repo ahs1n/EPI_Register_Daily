@@ -49,6 +49,10 @@ public class DailySummaryActivity extends AppCompatActivity implements View.OnCl
 
     // Initialize summary Data
     private void initSummaryData() {
+        // Today's Children Vaccinated
+        int totalChild = db.getChildrenVaccinatedByDate(selectedDate);
+        bi.totalChildAnt.setText(String.valueOf(totalChild));
+
         // Today's Total
         int todaysTotal = db.getTotalVaccinesByDate(selectedDate);
         bi.totalAnt.setText(String.valueOf(todaysTotal));
