@@ -3,7 +3,9 @@ package edu.aku.hassannaqvi.epi_register_daily.database;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.IBAHC;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.attendance;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.dueDates;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccDueDates;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_DOB;
@@ -499,7 +501,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(column, value);
 
         String selection = VaccinesDueTable._ID + " =? ";
-        String[] selectionArgs = {MainApp.vaccDueDates.getId()};
+        String[] selectionArgs;
+        if(!vaccDueDates.getId().equals("")) {
+            selectionArgs = new String[]{String.valueOf(vaccDueDates.getId())};
+        }else{
+            selectionArgs = new String[]{String.valueOf(dueDates.getId())};
+        }
 
         return db.update(VaccinesDueTable.TABLE_NAME,
                 values,

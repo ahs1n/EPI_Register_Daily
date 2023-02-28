@@ -308,6 +308,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
                                 /*Saving Vaccines Due Dates*/
 
+
                                 if (flag) {
                                     vaccDueDates.populateMeta();
                                 } else {
@@ -315,7 +316,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                 }
                                 MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                 MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
-                                MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
 
                                 try {
                                     MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
@@ -407,7 +408,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             }
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
                                                 MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -425,6 +426,8 @@ public class SectionVBActivity extends AppCompatActivity {
                                             String letter = String.valueOf(getChar(0));
 
                                             for (String s : nextBaseId) {
+
+                                                int currentDose = -1;
 
                                                 RadioButton radioButton = (RadioButton) getViewDynamically(s + letter);
                                                 nextVaccineDate = (TextView) getViewDynamically(s + letter + "txt");
@@ -451,7 +454,7 @@ public class SectionVBActivity extends AppCompatActivity {
 
                                                     MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
-                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
+                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
 
                                                     try {
                                                         MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
@@ -553,7 +556,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             }
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
                                                 MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -572,6 +575,8 @@ public class SectionVBActivity extends AppCompatActivity {
                                             String letter = String.valueOf(getChar(0));
 
                                             for (String s : nextBaseId) {
+
+                                                int currentDose = -1;
 
                                                 RadioButton radioButton = (RadioButton) getViewDynamically(s + letter);
                                                 nextVaccineDate = (TextView) getViewDynamically(s + letter + "txt");
@@ -595,7 +600,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     }
                                                     MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
-                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
+                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
                                                     try {
                                                         MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                                 vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -697,7 +702,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             }
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
                                                 MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -716,6 +721,8 @@ public class SectionVBActivity extends AppCompatActivity {
                                             String letter = String.valueOf(getChar(0));
 
                                             for (String s : nextBaseId) {
+
+                                                int currentDose = -1;
 
                                                 RadioButton radioButton = (RadioButton) getViewDynamically(s + letter);
                                                 nextVaccineDate = (TextView) getViewDynamically(s + letter + "txt");
@@ -741,7 +748,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     }
                                                     MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
-                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
+                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
                                                     try {
                                                         MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                                 vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -845,7 +852,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             }
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
                                                 MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -864,6 +871,8 @@ public class SectionVBActivity extends AppCompatActivity {
                                             String letter = String.valueOf(getChar(0));
 
                                             for (String s : nextBaseId) {
+
+                                                int currentDose = -1;
 
                                                 RadioButton radioButton = (RadioButton) getViewDynamically(s + letter);
                                                 nextVaccineDate = (TextView) getViewDynamically(s + letter + "txt");
@@ -888,7 +897,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     }
                                                     MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
-                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
+                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
                                                     try {
                                                         MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                                 vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -988,7 +997,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             }
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
                                                 MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -1007,6 +1016,8 @@ public class SectionVBActivity extends AppCompatActivity {
                                             String letter = String.valueOf(getChar(0));
 
                                             for (String s : nextBaseId) {
+
+                                                int currentDose = -1;
 
                                                 RadioButton radioButton = (RadioButton) getViewDynamically(s + letter);
                                                 nextVaccineDate = (TextView) getViewDynamically(s + letter + "txt");
@@ -1031,7 +1042,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     }
                                                     MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
-                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
+                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
                                                     try {
                                                         MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                                 vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -1133,7 +1144,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             }
                                             MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(days[1]));
+                                            MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
                                                 MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
@@ -1247,7 +1258,6 @@ public class SectionVBActivity extends AppCompatActivity {
                 DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
                 DateTime prevDate = fmt.parseDateTime(prevDateStr);
                 int[] daysGroup = getDaysAndGroupOfVaccineType(vaccineType, doseNumber);
-                int[] doseGroup = getDaysAndGroupOfVaccineType(vaccineType, doseNumber);
                 DateTime nextDate = prevDate.plusDays(daysGroup[0]);
 
                 txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
@@ -1262,7 +1272,11 @@ public class SectionVBActivity extends AppCompatActivity {
                     }
                     MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(firstTrue+2));
+                    if(firstTrue == 0) {
+                        MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(firstTrue + 2));
+                    }else {
+                        MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(firstTrue + 1));
+                    }
                 }
                 try {
                     MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUuid(), vaccDueDates.getVb02(),
