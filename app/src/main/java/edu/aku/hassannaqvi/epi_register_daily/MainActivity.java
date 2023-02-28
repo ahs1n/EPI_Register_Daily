@@ -461,8 +461,8 @@ public class MainActivity extends AppCompatActivity {
     private void sendEmail() {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"hussain.siddiqui@aku.edu", "omar.shoaib@aku.edu"});
-        emailIntent.putExtra(Intent.EXTRA_CC, new String[]{"khalid.feroz@aku.edu"});
+        emailIntent.putExtra(Intent.EXTRA_CC, new String[]{"hussain.siddiqui@aku.edu", "omar.shoaib@aku.edu"});
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"khalid.feroz@aku.edu"});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "EPI Register Daily Database - For Issue Monitoring");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "EPI Register Daily database upload from the device which has issues while uploading the data." +
                 "This is just for testing/checking purpose.");
@@ -475,7 +475,7 @@ public class MainActivity extends AppCompatActivity {
         Uri uri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             emailIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            uri = FileProvider.getUriForFile(this, "edu.aku.abdulsajid.nanm2022.fileProvider", file);
+            uri = FileProvider.getUriForFile(this, "edu.aku.hassannaqvi.epi_register_daily.fileProvider", file);
         } else {
             uri = Uri.fromFile(file);
         }

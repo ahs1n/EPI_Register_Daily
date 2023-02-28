@@ -46,7 +46,6 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivitySectionVbBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccDueDates;
-import edu.aku.hassannaqvi.epi_register_daily.models.Vaccines;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesSchedule;
 import edu.aku.hassannaqvi.epi_register_daily.ui.TakePhoto;
@@ -100,7 +99,6 @@ public class SectionVBActivity extends AppCompatActivity {
 
 
         // To get the previous data and calculate next dose
-
         MainApp.vaccinesDataList = new ArrayList<>();
         MainApp.vaccinesSchedule = new VaccinesSchedule();
 
@@ -224,9 +222,7 @@ public class SectionVBActivity extends AppCompatActivity {
             formVB.setBackfilename("");
             formVB.setChildfilename("");
         }
-
         bi.setForm(formVB);
-
     }
 
     private void setupListeners() {
@@ -255,12 +251,10 @@ public class SectionVBActivity extends AppCompatActivity {
         bi.vb08cadt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -307,8 +301,6 @@ public class SectionVBActivity extends AppCompatActivity {
                                 nextVaccineDate.setVisibility(View.VISIBLE);
 
                                 /*Saving Vaccines Due Dates*/
-
-
                                 if (flag) {
                                     vaccDueDates.populateMeta();
                                 } else {
@@ -330,9 +322,6 @@ public class SectionVBActivity extends AppCompatActivity {
                                     updateDueVaccines();
                                 }
                             }
-
-
-                            //}
                         }
                     }
                 }
@@ -470,19 +459,12 @@ public class SectionVBActivity extends AppCompatActivity {
                                                             updateDueVaccines();
                                                         }
                                                     }
-
-                                                    //}
                                                 }
                                             }
-
-
                                             break;
                                         }
-
-
                                     }
                                 }
-
                             }
                             break;
                         }
@@ -492,16 +474,13 @@ public class SectionVBActivity extends AppCompatActivity {
         });
 
         // Penta
-
         bi.vb08cddt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -617,23 +596,15 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     }
                                                 }
                                             }
-
-
                                             break;
                                         }
-
-
                                     }
                                 }
-
                             }
                             break;
-
-
                         }
                     }
                 }
-
             }
         });
 
@@ -641,12 +612,10 @@ public class SectionVBActivity extends AppCompatActivity {
         bi.vb08cedt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -763,26 +732,17 @@ public class SectionVBActivity extends AppCompatActivity {
                                                             updateDueVaccines();
                                                         }
                                                     }
-                                                    //}
-
-
                                                 }
                                             }
-
-
                                             break;
                                         }
-
-
                                     }
                                 }
-
                             }
                             break;
                         }
                     }
                 }
-
             }
         });
 
@@ -790,12 +750,10 @@ public class SectionVBActivity extends AppCompatActivity {
         bi.vb08cfdt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -912,24 +870,17 @@ public class SectionVBActivity extends AppCompatActivity {
                                                             updateDueVaccines();
                                                         }
                                                     }
-                                                    //}
                                                 }
                                             }
-
-
                                             break;
                                         }
-
-
                                     }
                                 }
-
                             }
                             break;
                         }
                     }
                 }
-
             }
         });
 
@@ -937,12 +888,10 @@ public class SectionVBActivity extends AppCompatActivity {
         bi.vb08cgdt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -1057,24 +1006,17 @@ public class SectionVBActivity extends AppCompatActivity {
                                                             updateDueVaccines();
                                                         }
                                                     }
-                                                    //}
                                                 }
                                             }
-
-
                                             break;
                                         }
-
-
                                     }
                                 }
-
                             }
                             break;
                         }
                     }
                 }
-
             }
         });
 
@@ -1159,24 +1101,17 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     updateDueVaccines();
                                                 }
                                             }
-
                                             break;
                                         }
-
-
                                     }
                                 }
-
                             }
                             break;
                         }
                     }
                 }
-
             }
         });
-
-
     }
 
     private View getViewDynamically(String viewId) {
@@ -1334,8 +1269,6 @@ public class SectionVBActivity extends AppCompatActivity {
                     }
                 }
             }
-
-
         }
         return prevBundle;
     }
@@ -1379,8 +1312,6 @@ public class SectionVBActivity extends AppCompatActivity {
                 DateTime nextDate = prevDate.plusDays(days);
                 txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));
                 txtVaccineDate.setVisibility(View.VISIBLE);
-
-
             }
         }
     }
@@ -1516,9 +1447,7 @@ public class SectionVBActivity extends AppCompatActivity {
             case "vb08ci":
                 vaccineName = "Typhoid";
                 break;
-
         }
-
         return vaccineName;
     }
 
@@ -1672,12 +1601,8 @@ public class SectionVBActivity extends AppCompatActivity {
 
 
     private boolean insertVaccineRecord(String vaccCode, String antigen, String vaccDate) {
-
         setGPS();
-
-
         if (flag) {
-
             vaccines.setFrontfilename(formVB.getFrontfilename());
             vaccines.setBackfilename(formVB.getBackfilename());
             vaccines.setChildfilename(formVB.getChildfilename());

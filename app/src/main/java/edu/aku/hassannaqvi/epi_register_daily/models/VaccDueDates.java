@@ -56,14 +56,14 @@ public class VaccDueDates extends BaseObservable implements Observable {
 
 
     public void populateMeta() {
-        setUserName(MainApp.vaccines.getUserName());
+        setUserName(MainApp.formVB.getUserName());
         setUcCode(MainApp.user.getUccode());
         setDeviceId(MainApp.deviceid);
-        setUuid(MainApp.vaccines.getUid());
+        setUuid(MainApp.formVB.getUid());
         setAid(MainApp.attendance.getUid());
-        setVb02(MainApp.vaccines.getVb02());
-        setVb04a(MainApp.vaccines.getVb04a());
-        setVb04(MainApp.vaccines.getVb04());
+        setVb02(MainApp.formVB.getVb02());
+        setVb04a(MainApp.formVB.getVb04a());
+        setVb04(MainApp.formVB.getVb04());
         setVillageCode(MainApp.workLocation.getWlVillageCode());
         setFacilityCode(MainApp.workLocation.getWlFacilityCode());
         setWlArea(MainApp.workLocation.getWlArea());
