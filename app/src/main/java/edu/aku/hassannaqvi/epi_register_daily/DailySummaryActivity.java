@@ -49,17 +49,16 @@ public class DailySummaryActivity extends AppCompatActivity implements View.OnCl
 
     // Initialize summary Data
     private void initSummaryData() {
-        // Today's Children Vaccinated
+        int total = 0;
+
+        // Children Vaccinated
         int totalChild = db.getChildrenVaccinatedByDate(selectedDate);
         bi.totalChildAnt.setText(String.valueOf(totalChild));
-
-        // Today's Total
-        int todaysTotal = db.getTotalVaccinesByDate(selectedDate);
-        bi.totalAnt.setText(String.valueOf(todaysTotal));
 
         // BCG
         List<String> bcg = db.getVaccinesByAntigenCodeAndDate("BCG", selectedDate);
         bi.bcgAnt.setText(String.valueOf(bcg.size()));
+        total += bcg.size();
 
         // OPV
         List<String> opv = db.getVaccinesByAntigenCodeAndDate("OPV", selectedDate);
@@ -67,41 +66,52 @@ public class DailySummaryActivity extends AppCompatActivity implements View.OnCl
         bi.opvAnt1.setText(String.valueOf(Collections.frequency(opv, "OPV2")));
         bi.opvAnt2.setText(String.valueOf(Collections.frequency(opv, "OPV3")));
         bi.opvAnt3.setText(String.valueOf(Collections.frequency(opv, "OPV4")));
+        total += opv.size();
 
         // HepB
         List<String> hepB = db.getVaccinesByAntigenCodeAndDate("HepB", selectedDate);
         bi.hepBAnt.setText(String.valueOf(hepB.size()));
+        total += hepB.size();
 
         // Penta
         List<String> penta = db.getVaccinesByAntigenCodeAndDate("Penta", selectedDate);
         bi.pentaAnt1.setText(String.valueOf(Collections.frequency(penta, "Penta1")));
         bi.pentaAnt2.setText(String.valueOf(Collections.frequency(penta, "Penta2")));
         bi.pentaAnt3.setText(String.valueOf(Collections.frequency(penta, "Penta3")));
+        total += penta.size();
 
         // PCV
         List<String> pcv = db.getVaccinesByAntigenCodeAndDate("PCV", selectedDate);
         bi.pcvAnt1.setText(String.valueOf(Collections.frequency(pcv, "PCV1")));
         bi.pcvAnt2.setText(String.valueOf(Collections.frequency(pcv, "PCV2")));
         bi.pcvAnt3.setText(String.valueOf(Collections.frequency(pcv, "PCV3")));
+        total += pcv.size();
 
         // Rota
         List<String> rota = db.getVaccinesByAntigenCodeAndDate("Rota", selectedDate);
         bi.rotaAnt1.setText(String.valueOf(Collections.frequency(rota, "Rota1")));
         bi.rotaAnt2.setText(String.valueOf(Collections.frequency(rota, "Rota2")));
+        total += rota.size();
 
         // IPV
         List<String> ipv = db.getVaccinesByAntigenCodeAndDate("IPV", selectedDate);
         bi.ipvAnt1.setText(String.valueOf(Collections.frequency(ipv, "IPV1")));
         bi.ipvAnt2.setText(String.valueOf(Collections.frequency(ipv, "IPV2")));
+        total += ipv.size();
 
         // Measles
         List<String> measles = db.getVaccinesByAntigenCodeAndDate("Measles", selectedDate);
         bi.measlesAnt1.setText(String.valueOf(Collections.frequency(measles, "Measles1")));
         bi.measlesAnt2.setText(String.valueOf(Collections.frequency(measles, "Measles2")));
+        total += measles.size();
 
         // Typhoid
         List<String> typhoid = db.getVaccinesByAntigenCodeAndDate("Typhoid", selectedDate);
         bi.typhoidAnt.setText(String.valueOf(typhoid.size()));
+        total += typhoid.size();
+
+        // Total
+        bi.totalAnt.setText(String.valueOf(total));
 
     }
 
