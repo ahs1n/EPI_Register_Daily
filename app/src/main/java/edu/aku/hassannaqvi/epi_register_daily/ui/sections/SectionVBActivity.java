@@ -311,7 +311,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                 MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
 
                                 try {
-                                    MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                    MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                             vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -399,7 +399,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
                                             MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
-                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
@@ -446,7 +446,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
 
                                                     try {
-                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                                 vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                                     } catch (JSONException e) {
                                                         e.printStackTrace();
@@ -537,7 +537,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
                                             MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
-                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
@@ -581,7 +581,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
                                                     MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
                                                     try {
-                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                                 vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                                     } catch (JSONException e) {
                                                         e.printStackTrace();
@@ -673,7 +673,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
                                             MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
-                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
@@ -719,7 +719,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
                                                     MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
                                                     try {
-                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                                 vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                                     } catch (JSONException e) {
                                                         e.printStackTrace();
@@ -812,7 +812,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
                                             MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
-                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
@@ -857,7 +857,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
                                                     MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
                                                     try {
-                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                                 vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                                     } catch (JSONException e) {
                                                         e.printStackTrace();
@@ -948,7 +948,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
                                             MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
-                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
@@ -993,7 +993,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
                                                     MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
                                                     try {
-                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                                 vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                                     } catch (JSONException e) {
                                                         e.printStackTrace();
@@ -1088,7 +1088,7 @@ public class SectionVBActivity extends AppCompatActivity {
                                             MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
                                             MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                                             try {
-                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                                                MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                                         vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
@@ -1214,7 +1214,7 @@ public class SectionVBActivity extends AppCompatActivity {
                     }
                 }
                 try {
-                    MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                    MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                             vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -1256,7 +1256,7 @@ public class SectionVBActivity extends AppCompatActivity {
                         // As current dose is initially -1 so dosenumber +2 will give 1st dose.
                         MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 2));
                         try {
-                            MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getUid(),vaccDueDates.getVb02(),
+                            MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                     vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
                         } catch (JSONException e) {
                             e.printStackTrace();
