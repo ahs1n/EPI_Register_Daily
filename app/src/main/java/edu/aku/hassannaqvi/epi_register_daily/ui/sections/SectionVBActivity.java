@@ -1909,11 +1909,10 @@ public class SectionVBActivity extends AppCompatActivity {
 
             }
 
-            // Check back photo taken
-            if (formVB.getVb03().equals("2") && formVB.getChildfilename().equals("")) {
+            // Check child photo taken
+/*            if (formVB.getVb03().equals("2") && formVB.getChildfilename().equals("")) {
                 return Validator.emptyCustomTextBox(this, bi.childFileName, "Please take photo of Child.");
-
-            }
+            }*/
         } else {
 
         }
@@ -1930,10 +1929,10 @@ public class SectionVBActivity extends AppCompatActivity {
         }
 
         // Check child photo taken
-        if (vaccinesData.getVBO3().equals("2") && bi.childFileName.getText().toString().equals("")) {
+/*        if (vaccinesData.getVBO3().equals("2") && bi.childFileName.getText().toString().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.childFileName, "Please take photo of Child.");
 
-        }
+        }*/
 
         if (bi.vb08ca98.isChecked() && formVB.getVb08ca().equals("") || bi.vb08ca98.isChecked() && formVB.getVb08cadt().equals(""))
 //            return Validator.emptyRadioButton(this, bi.vb08ca, bi.vb08caa);

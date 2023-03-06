@@ -53,14 +53,14 @@
 
                         <TextView
                             android:layout_column="1"
-                            android:text="@string/vb02"
                             android:background="@color/white"
+                            android:text="@string/vb02"
                             android:textColor="@color/colorPrimaryDark" />
 
                         <TextView
                             android:id="@+id/cardNo"
-                            android:text="xxx"
                             android:background="@drawable/all_round_corners"
+                            android:text="xxx"
                             android:textAlignment="center"
                             android:textColor="@color/gray" />
                     </TableRow>
@@ -372,8 +372,8 @@
                                             android:id="@+id/vb08call"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
-                                            android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
+                                            android:orientation="horizontal"
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
@@ -403,17 +403,16 @@
                                                 android:layout_weight="0.2" />
 
                                             <TextView
-                                                android:background="@color/lightPink"
                                                 android:layout_width="0dp"
-                                                android:layout_weight="2"
                                                 android:layout_height="wrap_content"
-                                                android:textSize="@dimen/_7sdp"
                                                 android:layout_gravity="center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@color/lightPink"
                                                 android:gravity="center"
                                                 android:text="abc"
                                                 android:textColor="@color/redLight"
-                                                android:visibility="invisible"
-                                                />
+                                                android:textSize="@dimen/_7sdp"
+                                                android:visibility="invisible" />
 
                                             <View
                                                 android:layout_width="0dp"
@@ -422,17 +421,16 @@
                                                 android:layout_weight="0.2" />
 
                                             <TextView
-                                                android:background="@color/lightPink"
                                                 android:layout_width="0dp"
-                                                android:layout_weight="2"
                                                 android:layout_height="wrap_content"
-                                                android:textSize="@dimen/_7sdp"
                                                 android:layout_gravity="center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@color/lightPink"
                                                 android:gravity="center"
                                                 android:text="abc"
                                                 android:textColor="@color/redLight"
-                                                android:visibility="invisible"
-                                                />
+                                                android:textSize="@dimen/_7sdp"
+                                                android:visibility="invisible" />
 
                                             <View
                                                 android:layout_width="0dp"
@@ -441,17 +439,16 @@
                                                 android:layout_weight="0.2" />
 
                                             <TextView
-                                                android:background="@color/lightPink"
                                                 android:layout_width="0dp"
-                                                android:layout_weight="2"
                                                 android:layout_height="wrap_content"
-                                                android:textSize="@dimen/_7sdp"
                                                 android:layout_gravity="center_vertical"
+                                                android:layout_weight="2"
+                                                android:background="@color/lightPink"
                                                 android:gravity="center"
                                                 android:text="abc"
                                                 android:textColor="@color/redLight"
-                                                android:visibility="invisible"
-                                                />
+                                                android:textSize="@dimen/_7sdp"
+                                                android:visibility="invisible" />
 
 
                                         </LinearLayout>
@@ -460,8 +457,8 @@
                                             android:id="@+id/vb08cadt"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
+                                            android:background="@drawable/all_round_corners"
                                             android:enabled="@{vb08ca98.checked &amp;&amp; !form.vb08ca.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
@@ -615,8 +612,8 @@
                                             android:id="@+id/vb08cbll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
-                                            android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
+                                            android:orientation="horizontal"
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
@@ -703,8 +700,8 @@
                                             android:id="@+id/vb08cbdt"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
+                                            android:background="@drawable/all_round_corners"
                                             android:enabled="@{vb08cb98.checked &amp;&amp; !form.vb08cb01.equals(``) || !form.vb08cb02.equals(``) || !form.vb08cb03.equals(``) || !form.vb08cb04.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
@@ -817,8 +814,8 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
-                                            android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
+                                            android:orientation="horizontal"
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
@@ -906,8 +903,8 @@
                                             android:id="@+id/vb08ccdt"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
+                                            android:background="@drawable/all_round_corners"
                                             android:enabled="@{vb08cc98.checked &amp;&amp; !form.vb08cc.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
@@ -1045,8 +1042,8 @@
                                             android:id="@+id/vb08cdll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
-                                            android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
+                                            android:orientation="horizontal"
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
@@ -1133,8 +1130,8 @@
                                             android:id="@+id/vb08cddt"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
+                                            android:background="@drawable/all_round_corners"
                                             android:enabled="@{vb08cd98.checked &amp;&amp; !form.vb08cd01.equals(``) || !form.vb08cd02.equals(``) || !form.vb08cd03.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
@@ -1272,8 +1269,8 @@
                                             android:id="@+id/vb08cell"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
-                                            android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
+                                            android:orientation="horizontal"
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
@@ -1360,8 +1357,8 @@
                                             android:id="@+id/vb08cedt"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
+                                            android:background="@drawable/all_round_corners"
                                             android:enabled="@{vb08ce98.checked &amp;&amp; !form.vb08ce01.equals(``) || !form.vb08ce03.equals(``) || !form.vb08ce03.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
@@ -1487,8 +1484,8 @@
                                             android:id="@+id/vb08cfll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
-                                            android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
+                                            android:orientation="horizontal"
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
@@ -1574,8 +1571,8 @@
                                             android:id="@+id/vb08cfdt"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
+                                            android:background="@drawable/all_round_corners"
                                             android:enabled="@{vb08cf98.checked &amp;&amp; !form.vb08cf01.equals(``) || !form.vb08cf02.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
@@ -1701,8 +1698,8 @@
                                             android:id="@+id/vb08cgll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
-                                            android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
+                                            android:orientation="horizontal"
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
@@ -1787,8 +1784,8 @@
                                             android:id="@+id/vb08cgdt"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
+                                            android:background="@drawable/all_round_corners"
                                             android:enabled="@{vb08cg98.checked &amp;&amp; !form.vb08cg01.equals(``) || !form.vb08cg02.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
@@ -1914,8 +1911,8 @@
                                             android:id="@+id/vb08chll"
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
-                                            android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
+                                            android:orientation="horizontal"
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
@@ -2001,8 +1998,8 @@
                                             android:id="@+id/vb08chdt"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
+                                            android:background="@drawable/all_round_corners"
                                             android:enabled="@{vb08ch98.checked &amp;&amp; !form.vb08ch01.equals(``) || !form.vb08ch02.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
@@ -2115,8 +2112,8 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="20dp"
-                                            android:orientation="horizontal"
                                             android:layout_marginTop="0dp"
+                                            android:orientation="horizontal"
                                             android:padding="0dp"
                                             android:paddingTop="0dp">
 
@@ -2203,8 +2200,8 @@
                                             android:id="@+id/vb08cidt"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/all_round_corners"
                                             android:layout_weight="1"
+                                            android:background="@drawable/all_round_corners"
                                             android:enabled="@{vb08ci98.checked &amp;&amp; !form.vb08ci.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
@@ -2306,6 +2303,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
                             android:layoutDirection="ltr"
+                            android:layout_marginBottom="@dimen/_12sdp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -2338,55 +2336,63 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
-                            <TextView
-                                style="@style/sub_labels"
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/sub_labels"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:background="@null"
+                                    android:gravity="start|center_vertical"
+                                    android:text="Child Photo" />
+
+                                <ImageView
+                                    android:layout_width="5dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/childvaccine" />
+
+                            </LinearLayout>
+
+
+                            <Button
+                                android:id="@+id/childPhoto"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="2"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="15dp"
+                                android:background="@drawable/button_shape_gray"
+                                android:backgroundTint="@color/colorAccent"
+                                android:drawableStart="@drawable/ic_camera"
+                                android:onClick="takePhoto"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:text="Take Child Photo"
+                                android:textSize="10sp" />
+
+                            <TextView
+                                android:id="@+id/childFileName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:background="@null"
-                                android:gravity="start|center_vertical"
-                                android:text="Child Photo" />
-
-                            <ImageView
-                                android:layout_width="5dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                app:srcCompat="@drawable/childvaccine" />
-
+                                android:enabled="false"
+                                android:gravity="center"
+                                android:minHeight="48dp"
+                                android:text="@={form.childfilename}"
+                                android:textColor="#7f7f7f7f"
+                                android:textSize="14sp" />
                         </LinearLayout>
-
-
-                        <Button
-                            android:id="@+id/childPhoto"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="15dp"
-                            android:background="@drawable/button_shape_gray"
-                            android:backgroundTint="@color/colorAccent"
-                            android:drawableStart="@drawable/ic_camera"
-                            android:onClick="takePhoto"
-                            android:paddingStart="12dp"
-                            android:paddingEnd="12dp"
-                            android:text="Take Child Photo"
-                            android:textSize="10sp" />
-
-                        <TextView
-                            android:id="@+id/childFileName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:enabled="false"
-                            android:gravity="center"
-                            android:minHeight="48dp"
-                            android:text="@={form.childfilename}"
-                            android:textColor="#7f7f7f7f"
-                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -2418,8 +2424,8 @@
                         android:layout_width="130dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="12dp"
-                        android:backgroundTint="@color/greenOverlay"
                         android:background="@drawable/all_round_corners"
+                        android:backgroundTint="@color/greenOverlay"
                         android:elevation="20dp"
                         android:onClick="btnContinue"
                         android:text="@string/btnSave"
