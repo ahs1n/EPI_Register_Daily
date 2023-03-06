@@ -50,28 +50,20 @@
         <entry key="..\:/Android/EPI_Register/app/src/main/res/layout/activity_main.xml" value="0.56328125" />
         <entry key="..\:/Android/EPI_Register/app/src/main/res/layout/activity_section_cr.xml" value="0.5503816793893129" />
         <entry key="..\:/Android/EPI_Register/app/src/main/res/layout/activity_section_wr.xml" value="0.5034916201117319" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/drawable/all_round_corners_stroke.xml" value="0.2365" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/drawable/bg_summary_ant.xml" value="0.25" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/drawable/bg_summary_ant_border.xml" value="0.25" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/drawable/bg_summary_ant_title.xml" value="0.25" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/layout/activity_daily_summary.xml" value="0.35260416666666666" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/layout/activity_member_info.xml" value="0.30572916666666666" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/layout/activity_section_va.xml" value="0.36666666666666664" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/layout/activity_section_vb.xml" value="0.35260416666666666" />
-        <entry key="..\:/OmarShoaib/Android_Projects/EPI_Register_Daily/app/src/main/res/menu/item_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_login.xml" value="0.58125" />
         <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_main.xml" value="0.58125" />
         <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_cr.xml" value="0.56015625" />
         <entry key="..\:/Users/Hassan.naqvi/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_wr.xml" value="0.56015625" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/drawable/tick_mark.xml" value="0.1825" />
+        <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout-v17/activity_section_vb_woman.xml" value="0.2078125" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout-v26/activity_section_vb.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_login.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_main.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_member_info.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_registered_list_child.xml" value="0.2520833333333333" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_va.xml" value="0.33" />
-        <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_vb.xml" value="0.26464323748668794" />
+        <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_vb.xml" value="0.2604166666666667" />
+        <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_section_vb_woman.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/activity_sync.xml" value="0.19722222222222222" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/sync_list_adapter.xml" value="0.12552083333333333" />
         <entry key="..\:/Users/gul.sanober/StudioProjects/EPI_Register_Daily/app/src/main/res/layout/vaccinated_member_row.xml" value="0.2520833333333333" />
@@ -97,7 +89,7 @@
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="16" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
