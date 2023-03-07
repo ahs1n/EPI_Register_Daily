@@ -28,6 +28,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.snackbar.SnackbarContentLayout;
+
 import org.json.JSONException;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
@@ -95,6 +98,15 @@ public class VaccinatedChildListActivity extends AppCompatActivity {
         bi.setCallback(this);
         db = MainApp.appInfo.dbHelper;
         vaccinesDataList = db.getAllFollowupChilds();
+
+        if(vaccinesDataList.size() == 0)
+        {
+            bi.memberId.setEnabled(false);
+            Snackbar.make(bi.parentLayout, "No data available, Please download Vaccines followup data to proceed", Snackbar.LENGTH_LONG).show();
+
+        }else{
+            bi.memberId.setEnabled(true);
+        }
 
         initVacChildRV();
 

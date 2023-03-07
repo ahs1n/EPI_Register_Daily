@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
+import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
 
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
@@ -24,6 +26,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.List;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
@@ -32,6 +35,7 @@ import edu.aku.hassannaqvi.epi_register_daily.core.MainApp;
 import edu.aku.hassannaqvi.epi_register_daily.database.DatabaseHelper;
 import edu.aku.hassannaqvi.epi_register_daily.databinding.ActivityMemberInfoBinding;
 import edu.aku.hassannaqvi.epi_register_daily.models.FormVB;
+import edu.aku.hassannaqvi.epi_register_daily.models.VaccinesData;
 import edu.aku.hassannaqvi.epi_register_daily.models.Villages;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedChildListActivity;
 import edu.aku.hassannaqvi.epi_register_daily.ui.lists.VaccinatedWomenListActivity;
@@ -58,7 +62,6 @@ public class MemberInfoActivity extends AppCompatActivity {
 
         b = getIntent().getBooleanExtra("b", true);
 
-        //formVA = db.getFormVA(UID);
         if (b) formVB = new FormVB();
         formVB.setVb01(String.valueOf(++MainApp.memberCount));
 
@@ -167,54 +170,9 @@ public class MemberInfoActivity extends AppCompatActivity {
         super.onResume();
         MainApp.lockScreen(this);
 
-/*        if (MainApp.formVA.getUid().equals("")){
-            try {
-                MainApp.formVA = db.getFormByuid(MainApp.formVA.getId());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }*/
-/*
-        String workLocationUID = sharedPref.getString("workLocationUID", "");
-        try {
-            MainApp.workLocation = db.getCurrentWorkLocation(workLocationUID);
-            MainApp.selectedVillageCode = (MainApp.workLocation.getWlVillageCode());
-
-        } catch (JSONException e) {
-            Toast.makeText(this, "JSONException(WorkLocation): " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }*/
     }
 
     private void setupListeners() {
-/*        bi.vb03.setOnCheckedChangeListener(((radioGroup, i) -> {
-            if (bi.vb03a.isChecked()) {
-                bi.vb04Name.setText(R.string.vb0402);
-            } else bi.vb04Name.setText(R.string.vb0401);
-        }));*/
-
-
-        /*bi.vb04by.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (bi.vb04by.getText().toString().isEmpty() || bi.vb04bm.getText().toString().isEmpty() || bi.vb04bd.getText().toString().isEmpty())
-
-                    return;
-                bi.vb04bm.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR) ?
-                        Calendar.getInstance().get(Calendar.MONTH) + 1 : 12f);
-                bi.vb04bd.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR)
-                        && Integer.parseInt(bi.vb04bm.getText().toString()) == Calendar.getInstance().get(Calendar.MONTH) + 1 ?
-                        Calendar.getInstance().get(Calendar.DAY_OF_MONTH) : 31f);
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });*/
 
         bi.vb04by.addTextChangedListener(new TextWatcher() {
             @Override
@@ -259,24 +217,6 @@ public class MemberInfoActivity extends AppCompatActivity {
             }
         });
 
-        /*bi.vb04bd.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (bi.vb04by.getText().toString().isEmpty() || bi.vb04bm.getText().toString().isEmpty() || bi.vb04bd.getText().toString().isEmpty())
-                    return;
-                bi.vb04bd.setMaxvalue(Integer.parseInt(bi.vb04by.getText().toString()) == Calendar.getInstance().get(Calendar.YEAR)
-                        && Integer.parseInt(bi.vb04bd.getText().toString()) == Calendar.getInstance().get(Calendar.MONTH) + 1 ?
-                        Calendar.getInstance().get(Calendar.DAY_OF_MONTH) : 31f);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });*/
     }
 
 
@@ -333,9 +273,9 @@ public class MemberInfoActivity extends AppCompatActivity {
         if (updateDB()) {
             finish();
             Toast.makeText(this, "Form saved", Toast.LENGTH_SHORT).show();
-            if(formVB.getVb03().equals("1")) {
+            if (formVB.getVb03().equals("1")) {
                 startActivity(new Intent(this, SectionVB_womanActivity.class).putExtra("btn", false));
-            }else{
+            } else {
                 startActivity(new Intent(this, SectionVBActivity.class).putExtra("btn", false));
             }
         } else {
@@ -348,6 +288,53 @@ public class MemberInfoActivity extends AppCompatActivity {
         finish();
         MainApp.memberCount--;
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+    public void checkMember(View view) {
+
+       /* if(bi.vb03b.isChecked()) {
+            List<VaccinesData> vaccinesDataArrayList = new ArrayList<>();
+            try {
+
+                vaccinesDataArrayList = db.getSyncedVaccinatedChildBYCardNo(bi.vb02.getText().toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if (vaccinesDataArrayList.size() > 0) {
+                Snackbar.make(bi.toolbar, "This child is already registered, please do followup from followups List", Snackbar.LENGTH_LONG).show();
+                //bi.fldGrpInfo.setVisibility(View.GONE);
+                bi.vb04by.setText("");
+                bi.vb04bm.setText("");
+                bi.vb04bd.setText("");
+                bi.ageY.setText("");
+                bi.vb05m.setText("");
+                bi.vb05d.setText("");
+                bi.vb05a.clearCheck();
+                bi.vb06.setText("");
+                bi.vb06a.setText("");
+                bi.vb07.setText("");
+                bi.vb09.clearCheck();
+
+            } else {
+                bi.fldGrpCVvb04b.setVisibility(View.VISIBLE);
+                bi.fldGrpCVvb05a.setVisibility(View.VISIBLE);
+                bi.fldGrpCVvb05b.setVisibility(View.VISIBLE);
+                bi.fldGrpCVvb09.setVisibility(View.VISIBLE);
+            }
+        }else{
+            *//*bi.fldGrpCVvb04b.setVisibility(View.GONE);
+            bi.vb04by.setText("");
+            bi.vb04bm.setText("");
+            bi.vb04bd.setText("");
+            bi.fldGrpCVvb05a.setVisibility(View.GONE);
+            bi.vb05a.clearCheck();
+            bi.fldGrpCVvb05b.setVisibility(View.GONE);
+            bi.vb05b.clearCheck();
+            bi.fldGrpCVvb09.setVisibility(View.GONE);
+            bi.vb09.clearCheck();*//*
+
+        }*/
     }
 
 

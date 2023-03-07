@@ -248,22 +248,44 @@
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
                         <EditText
                             android:id="@+id/vb04"
+                            android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz "
                             android:hint="@string/vb04"
                             android:text="@={form.vb04}" />
+
+                        <Button
+                            android:layout_width="56dp"
+                            android:layout_height="match_parent"
+                            android:drawableStart="@drawable/search"
+                            android:onClick="checkMember" />
+
+                        </LinearLayout>
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <!--<LinearLayout
+                    android:id="@+id/fldGrpInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">-->
 
 
                 <!-- wlVillageName  Spinner   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb04c"
                     style="@style/cardView"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -298,11 +320,12 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+
                 <!-- vb04b  Date   -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb04b"
                     style="@style/cardView"
-                    android:visibility="@{form.vb03.equals(`2`)  ? View.VISIBLE : View.GONE}">
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -613,7 +636,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb05b"
                     style="@style/cardView"
-                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
+                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -719,6 +743,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb06a"
                     android:visibility="gone"
+                    tools:visibility="visible"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -800,7 +825,8 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVvb09"
                     style="@style/cardView"
-                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
+                    android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}"
+                    tools:visibility="visible">
 
 
                     <LinearLayout
@@ -862,6 +888,8 @@
                         </RadioGroup>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
+                <!--</LinearLayout>-->
 
                 <!--EndButton LinearLayout-->
                 <LinearLayout
