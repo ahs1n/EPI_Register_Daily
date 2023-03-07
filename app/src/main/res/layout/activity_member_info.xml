@@ -278,7 +278,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
 
                     <!-- wlVillageName  Spinner   -->
@@ -632,7 +633,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- vb05b  Radio   -->
+                    <!-- vb05b  CheckBox   -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVvb05b"
                         style="@style/cardView"
@@ -662,39 +663,40 @@
 
                             </LinearLayout>
 
-                            <RadioGroup
-                                android:id="@+id/vb05b"
+                            <LinearLayout
+                                android:id="@+id/vb05bcheck"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:tag="0">
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/vb05ba"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:checked="@{form.vb05b.equals(`1`)}"
-                                    android:onClick="@{()->form.setVb05b(`1`)}"
+                                    android:checked="@{form.refusal.equals(`1`)}"
+                                    android:onClick="@{()->form.setRefusal(form.refusal.equals(`1`)?``:`1`)}"
                                     android:text="@string/vb05ba" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/vb05bb"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:checked="@{form.vb05b.equals(`2`)}"
-                                    android:onClick="@{()->form.setVb05b(`2`)}"
+                                    android:checked="@{form.missed.equals(`2`)}"
+                                    android:onClick="@{()->form.setMissed(form.missed.equals(`2`)?``:`2`)}"
                                     android:text="@string/vb05bb" />
 
-                                <RadioButton
+                                <CheckBox
                                     android:id="@+id/vb05bc"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:checked="@{form.vb05b.equals(`3`)}"
-                                    android:onClick="@{()->form.setVb05b(`3`)}"
+                                    android:checked="@{form.zeerodoze.equals(`3`)}"
+                                    android:onClick="@{()->form.setZeerodoze(form.zeerodoze.equals(`3`)?``:`3`)}"
                                     android:text="@string/vb05bc" />
-                            </RadioGroup>
+                            </LinearLayout>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 

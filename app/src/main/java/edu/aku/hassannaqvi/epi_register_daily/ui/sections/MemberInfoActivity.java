@@ -291,18 +291,17 @@ public class MemberInfoActivity extends AppCompatActivity {
 
     public void checkMember(View view) {
 
-        if (formVB.getVb03().equals("2")) {
             List<VaccinesData> vaccinesDataArrayList = new ArrayList<>();
             try {
-
                 vaccinesDataArrayList = db.getSyncedVaccinatedChildBYCardNo(bi.vb02.getText().toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             if (vaccinesDataArrayList.size() > 0) {
-                Snackbar.make(bi.toolbar, "This child is already registered, please do followup from followups List", Snackbar.LENGTH_LONG).show();
-                //bi.fldGrpInfo.setVisibility(View.GONE);
+                Snackbar.make(bi.toolbar, R.string.alreadyExistMember, Snackbar.LENGTH_LONG).show();
+                bi.fldGrpInfo.setVisibility(View.GONE);
+                bi.villageName.setSelection(0);
                 bi.vb04by.setText("");
                 bi.vb04bm.setText("");
                 bi.vb04bd.setText("");
@@ -310,31 +309,16 @@ public class MemberInfoActivity extends AppCompatActivity {
                 bi.vb05m.setText("");
                 bi.vb05d.setText("");
                 bi.vb05a.clearCheck();
+                bi.vb05ba.setChecked(false);
+                bi.vb05bb.setChecked(false);
+                bi.vb05bc.setChecked(false);
                 bi.vb06.setText("");
                 bi.vb06a.setText("");
                 bi.vb07.setText("");
                 bi.vb09.clearCheck();
-
             } else {
                 bi.fldGrpInfo.setVisibility(View.VISIBLE);
-                bi.fldGrpCVvb04b.setVisibility(View.VISIBLE);
-                bi.fldGrpCVvb05a.setVisibility(View.VISIBLE);
-                bi.fldGrpCVvb05b.setVisibility(View.VISIBLE);
-                bi.fldGrpCVvb09.setVisibility(View.VISIBLE);
             }
-        } else {
-            bi.fldGrpCVvb04b.setVisibility(View.GONE);
-            bi.vb04by.setText("");
-            bi.vb04bm.setText("");
-            bi.vb04bd.setText("");
-            bi.fldGrpCVvb05a.setVisibility(View.GONE);
-            bi.vb05a.clearCheck();
-            bi.fldGrpCVvb05b.setVisibility(View.GONE);
-            bi.vb05b.clearCheck();
-            bi.fldGrpCVvb09.setVisibility(View.GONE);
-            bi.vb09.clearCheck();
-
-        }
     }
 
 
