@@ -292,16 +292,16 @@ public class MemberInfoActivity extends AppCompatActivity {
 
     public void checkMember(View view) {
 
-        if (formVB.getVb03().equals("2")) {
+        if (!bi.vb02.getText().toString().equals("") && formVB.getVb03().equals("2")) {
             List<VaccinesData> vaccinesDataArrayList = new ArrayList<>();
             try {
-                vaccinesDataArrayList = db.getSyncedVaccinatedChildBYCardNo(bi.vb02.getText().toString());
+                vaccinesDataArrayList = db.getSyncedVaccinatedChildBYCardNo(bi.vb02.getText().toString(), MainApp.user.getUserName());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             if (vaccinesDataArrayList.size() > 0) {
-                Snackbar.make(bi.toolbar, R.string.alreadyExistMember, Snackbar.LENGTH_LONG).show();
+                Snackbar.make(bi.toolbar, R.string.alreadyExistChild, Snackbar.LENGTH_LONG).show();
                 bi.fldGrpInfo.setVisibility(View.GONE);
                 bi.villageName.setSelection(0);
                 bi.vb04by.setText("");
@@ -321,16 +321,16 @@ public class MemberInfoActivity extends AppCompatActivity {
             } else {
                 bi.fldGrpInfo.setVisibility(View.VISIBLE);
             }
-        } else {
+        } else if (!bi.vb02.getText().toString().equals("") && formVB.getVb03().equals("1")) {
             List<WomenFollowUP> vaccinesDataArrayList = new ArrayList<>();
             try {
-                vaccinesDataArrayList = db.getSyncedVaccinatedWomenBYCardNo(bi.vb02.getText().toString());
+                vaccinesDataArrayList = db.getSyncedVaccinatedWomenBYCardNo(bi.vb02.getText().toString(), MainApp.user.getUserName());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             if (vaccinesDataArrayList.size() > 0) {
-                Snackbar.make(bi.toolbar, R.string.alreadyExistMember, Snackbar.LENGTH_LONG).show();
+                Snackbar.make(bi.toolbar, R.string.alreadyExistWomen, Snackbar.LENGTH_LONG).show();
                 bi.fldGrpInfo.setVisibility(View.GONE);
                 bi.villageName.setSelection(0);
                 bi.vb04by.setText("");

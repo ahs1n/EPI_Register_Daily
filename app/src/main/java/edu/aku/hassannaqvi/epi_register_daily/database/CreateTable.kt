@@ -287,6 +287,7 @@ object CreateTable {
             + TableVaccinesData.COLUMN_UID + " TEXT,"
             + TableVaccinesData.COLUMN_UUID + " TEXT,"
             + TableVaccinesData.COLUMN_VILLAGE_CODE + " TEXT,"
+            + TableVaccinesData.COLUMN_USERNAME + " TEXT,"
             + TableVaccinesData.COLUMN_FACILITY_CODE + " TEXT,"
             + TableVaccinesData.COLUMN_VILLAGE_NAME + " TEXT,"
             + TableVaccinesData.COLUMN_VB02 + " TEXT,"
@@ -331,6 +332,7 @@ object CreateTable {
             + TableWomenFollowUP.COLUMN_AID + " TEXT,"
             + TableWomenFollowUP.COLUMN_UID + " TEXT,"
             + TableWomenFollowUP.COLUMN_VILLAGE_CODE + " TEXT,"
+            + TableWomenFollowUP.COLUMN_USERNAME + " TEXT,"
             + TableWomenFollowUP.COLUMN_FACILITY_CODE + " TEXT,"
             + TableWomenFollowUP.COLUMN_VB02 + " TEXT,"
             + TableWomenFollowUP.COLUMN_VB03 + " TEXT,"
@@ -355,4 +357,12 @@ object CreateTable {
     const val SQL_ALTER_ADD_DOB = ("ALTER TABLE "
             + TableVaccinesData.TABLE_NAME + " ADD COLUMN "
             + TableVaccinesData.COLUMN_DOB + " TEXT;")
+
+    const val SQL_ALTER_ADD_USERNAME_CHILD = ("ALTER TABLE "
+            + TableVaccinesData.TABLE_NAME + " ADD COLUMN "
+            + TableVaccinesData.COLUMN_USERNAME + " TEXT;")
+
+    const val SQL_ALTER_ADD_USERNAME_WRA = ("ALTER TABLE "
+            + TableWomenFollowUP.TABLE_NAME + " ADD COLUMN "
+            + TableWomenFollowUP.COLUMN_USERNAME + " TEXT;")
 }

@@ -279,6 +279,7 @@ public class TableContracts {
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_UUID = "_uuid";
         public static final String COLUMN_VILLAGE_CODE = "villagecode";
+        public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_FACILITY_CODE = "facilitycode";
         public static final String COLUMN_VILLAGE_NAME = "villageName";
         public static final String COLUMN_VB02 = "vb02";
@@ -320,6 +321,7 @@ public class TableContracts {
         public static final String COLUMN_AID = "_aid";
         public static final String COLUMN_UID = "_uid";
         public static final String COLUMN_VILLAGE_CODE = "villagecode";
+        public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_FACILITY_CODE = "facilityCode";
         public static final String COLUMN_VB02 = "vb02";
         public static final String COLUMN_VB03 = "vb03";

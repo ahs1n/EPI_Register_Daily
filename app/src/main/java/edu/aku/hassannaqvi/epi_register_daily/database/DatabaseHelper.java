@@ -9,6 +9,8 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccDueDates;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_DOB;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_USERNAME_CHILD;
+import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_USERNAME_WRA;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ATTENDANCE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_DUE_VACCINE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ENTRYLOGS;
@@ -96,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_COPY = PROJECT_NAME + "_copy.db";
     private final String TAG = "DatabaseHelper";
     public static final String DATABASE_PASSWORD = IBAHC;
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private final Context mContext;
     private static final String SQL_DELETE_VACCINESDATA = "DROP TABLE IF EXISTS " + TableContracts.TableVaccinesData.TABLE_NAME;
     private static final String SQL_DELETE_WOMEN_FOLLOWUP = "DROP TABLE IF EXISTS " + TableContracts.TableWomenFollowUP.TABLE_NAME;
@@ -146,6 +148,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_CREATE_WOMENFOLLOWUP);
                 db.execSQL(SQL_CREATE_DUE_VACCINE);
             case 4:
+                db.execSQL(SQL_ALTER_ADD_USERNAME_CHILD);
+                db.execSQL(SQL_ALTER_ADD_USERNAME_WRA);
         }
     }
 
@@ -1447,7 +1451,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableVaccinesData.COLUMN_UID, vaccinesData.getUID());
             //values.put(TableVaccinesData.COLUMN_UUID, vaccinesData.getUID());
             values.put(TableVaccinesData.COLUMN_VILLAGE_CODE, vaccinesData.getVillageCode());
-            //values.put(TableVaccinesData.COLUMN_FACILITY_CODE, vaccinesData.getFacilityCode());
+            values.put(TableVaccinesData.COLUMN_USERNAME, vaccinesData.getUsername());
             //values.put(TableVaccinesData.COLUMN_VILLAGE_NAME, vaccinesData.getVillageName());
             values.put(TableVaccinesData.COLUMN_VB02, vaccinesData.getVBO2());
             values.put(TableVaccinesData.COLUMN_VB03, vaccinesData.getVBO3());
@@ -1510,6 +1514,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(TableWomenFollowUP.COLUMN_UID, womenData.getUID());
             values.put(TableWomenFollowUP.COLUMN_VILLAGE_CODE, womenData.getVillageCode());
             values.put(TableWomenFollowUP.COLUMN_FACILITY_CODE, womenData.getFacilityCode());
+            values.put(TableWomenFollowUP.COLUMN_USERNAME, womenData.getUsername());
             values.put(TableWomenFollowUP.COLUMN_VB02, womenData.getVBO2());
             values.put(TableWomenFollowUP.COLUMN_VB03, womenData.getVBO3());
             values.put(TableWomenFollowUP.COLUMN_VB04, womenData.getVB04());
@@ -2317,12 +2322,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return vaccinesByUID;
     }
 
-    public List<VaccinesData> getSyncedVaccinatedChildBYCardNo(String cardNo) throws JSONException {
+    public List<VaccinesData> getSyncedVaccinatedChildBYCardNo(String cardNo, String username) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause =  TableVaccinesData.COLUMN_VB02 + "=?";
-        String[] whereArgs = {cardNo};
+        String whereClause = TableVaccinesData.COLUMN_VB02 + " = ?  AND " +
+                UsersTable.COLUMN_USERNAME + " = ? ";
+        String[] whereArgs = {cardNo, username};
         String groupBy = null;
         String having = null;
         String orderBy = TableVaccinesData.COLUMN_ID + " ASC";
@@ -2348,12 +2354,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return vaccinesByUID;
     }
 
-    public List<WomenFollowUP> getSyncedVaccinatedWomenBYCardNo(String cardNo) throws JSONException {
+    public List<WomenFollowUP> getSyncedVaccinatedWomenBYCardNo(String cardNo, String username) throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
-        String whereClause = TableWomenFollowUP.COLUMN_VB02 + "=?";
-        String[] whereArgs = {cardNo};
+        String whereClause = TableWomenFollowUP.COLUMN_VB02 + " = ?  AND " +
+                UsersTable.COLUMN_USERNAME + " = ? ";
+        String[] whereArgs = {cardNo, username};
         String groupBy = null;
         String having = null;
         String orderBy = TableWomenFollowUP.COLUMN_ID + " ASC";

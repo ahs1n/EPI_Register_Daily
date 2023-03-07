@@ -16,6 +16,8 @@ class VaccinesData {
     var uID: String = _EMPTY_
     var villageCode: String = _EMPTY_
     var villageName: String = _EMPTY_
+    var username: String = _EMPTY_
+
     //var facilityCode: String = _EMPTY_
     var vBO2: String = _EMPTY_
     var vBO3: String = _EMPTY_
@@ -52,6 +54,7 @@ class VaccinesData {
         aID = jsonObject.getString(TableVaccinesData.COLUMN_AID)
         uID = jsonObject.getString(TableVaccinesData.COLUMN_UID)
         villageCode = jsonObject.getString(TableVaccinesData.COLUMN_VILLAGE_CODE)
+        username = jsonObject.getString(TableVaccinesData.COLUMN_USERNAME)
         vBO2 = jsonObject.getString(TableVaccinesData.COLUMN_VB02)
         vBO3 = jsonObject.getString(TableVaccinesData.COLUMN_VB03)
         vB04 = jsonObject.getString(TableVaccinesData.COLUMN_VB04)
@@ -93,16 +96,18 @@ class VaccinesData {
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_UID))
         villageCode =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VILLAGE_CODE))
+        username =
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_USERNAME))
         vBO2 =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB02))
         vBO3 =
-                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB03))
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB03))
         vB04 =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB04))
         vB04A =
             cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB04A))
         vBO5A =
-                cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05A))
+            cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05A))
         vBO5D =
                 cursor.getString(cursor.getColumnIndexOrThrow(TableVaccinesData.COLUMN_VB05D))
         vBO5M =

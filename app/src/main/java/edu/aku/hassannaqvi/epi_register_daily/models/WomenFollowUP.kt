@@ -18,6 +18,7 @@ class WomenFollowUP {
     var uID: String = _EMPTY_
     var villageCode: String = _EMPTY_
     var villageName: String = _EMPTY_
+    var username: String = _EMPTY_
 
     //var facilityCode: String = _EMPTY_
     var vBO2: String = _EMPTY_
@@ -43,6 +44,7 @@ class WomenFollowUP {
         aID = jsonObject.getString(TableWomenFollowUP.COLUMN_AID)
         uID = jsonObject.getString(TableWomenFollowUP.COLUMN_UID)
         villageCode = jsonObject.getString(TableWomenFollowUP.COLUMN_VILLAGE_CODE)
+        username = jsonObject.getString(TableWomenFollowUP.COLUMN_USERNAME)
         vBO2 = jsonObject.getString(TableWomenFollowUP.COLUMN_VB02)
         vBO3 = jsonObject.getString(TableWomenFollowUP.COLUMN_VB03)
         vB04 = jsonObject.getString(TableWomenFollowUP.COLUMN_VB04)
@@ -68,6 +70,8 @@ class WomenFollowUP {
             cursor.getString(cursor.getColumnIndexOrThrow(TableWomenFollowUP.COLUMN_UID))
         villageCode =
             cursor.getString(cursor.getColumnIndexOrThrow(TableWomenFollowUP.COLUMN_VILLAGE_CODE))
+        username =
+            cursor.getString(cursor.getColumnIndexOrThrow(TableWomenFollowUP.COLUMN_USERNAME))
         vBO2 =
             cursor.getString(cursor.getColumnIndexOrThrow(TableWomenFollowUP.COLUMN_VB02))
         vBO3 =
