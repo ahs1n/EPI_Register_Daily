@@ -326,7 +326,8 @@
                     <!-- vb04b  Date   -->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVvb04b"
-                        style="@style/cardView">
+                        style="@style/cardView"
+                        android:visibility="@{form.vb03.equals(`2`)  ? View.VISIBLE : View.GONE}">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -580,7 +581,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVvb05a"
                         style="@style/cardView"
-                        android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
+                        android:visibility="@{form.vb03.equals(`2`) ? View.VISIBLE : View.GONE}">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -637,7 +638,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVvb05b"
                         style="@style/cardView"
-                        android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
+                        android:visibility="@{form.vb03.equals(`2`) ? View.VISIBLE : View.GONE}">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -827,7 +828,6 @@
                         android:id="@+id/fldGrpCVvb09"
                         style="@style/cardView"
                         android:visibility="@{form.vb03.equals(`1`) ? View.GONE : View.VISIBLE}">
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
