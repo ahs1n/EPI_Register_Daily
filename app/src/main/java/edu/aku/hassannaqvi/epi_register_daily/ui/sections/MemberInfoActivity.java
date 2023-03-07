@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.epi_register_daily.ui.sections;
 
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.formVB;
-import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccinesDataList;
 import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.workLocation;
 
 import android.content.Intent;
@@ -292,7 +291,7 @@ public class MemberInfoActivity extends AppCompatActivity {
 
     public void checkMember(View view) {
 
-       /* if(bi.vb03b.isChecked()) {
+        if (formVB.getVb03().equals("2")) {
             List<VaccinesData> vaccinesDataArrayList = new ArrayList<>();
             try {
 
@@ -317,13 +316,14 @@ public class MemberInfoActivity extends AppCompatActivity {
                 bi.vb09.clearCheck();
 
             } else {
+                bi.fldGrpInfo.setVisibility(View.VISIBLE);
                 bi.fldGrpCVvb04b.setVisibility(View.VISIBLE);
                 bi.fldGrpCVvb05a.setVisibility(View.VISIBLE);
                 bi.fldGrpCVvb05b.setVisibility(View.VISIBLE);
                 bi.fldGrpCVvb09.setVisibility(View.VISIBLE);
             }
-        }else{
-            *//*bi.fldGrpCVvb04b.setVisibility(View.GONE);
+        } else {
+            bi.fldGrpCVvb04b.setVisibility(View.GONE);
             bi.vb04by.setText("");
             bi.vb04bm.setText("");
             bi.vb04bd.setText("");
@@ -332,9 +332,9 @@ public class MemberInfoActivity extends AppCompatActivity {
             bi.fldGrpCVvb05b.setVisibility(View.GONE);
             bi.vb05b.clearCheck();
             bi.fldGrpCVvb09.setVisibility(View.GONE);
-            bi.vb09.clearCheck();*//*
+            bi.vb09.clearCheck();
 
-        }*/
+        }
     }
 
 
