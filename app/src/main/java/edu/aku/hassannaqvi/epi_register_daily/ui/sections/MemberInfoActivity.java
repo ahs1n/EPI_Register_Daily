@@ -301,17 +301,17 @@ public class MemberInfoActivity extends AppCompatActivity {
         bi.fldGrpInfo.setVisibility(View.GONE);
         bi.villageName.setSelection(0);
         bi.btnContinue.setEnabled(false);
-        for (EditTextPicker editTextPicker : Arrays.asList(bi.vb04by, bi.vb04bm, bi.vb04bd, bi.ageY, bi.vb05m, bi.vb05d)) {
-            editTextPicker.setText("");
+        for (EditTextPicker et : Arrays.asList(bi.vb04by, bi.vb04bm, bi.vb04bd, bi.ageY, bi.vb05m, bi.vb05d)) {
+            et.setText("");
         }
-        for (EditText editText : Arrays.asList(bi.vb04, bi.vb04a, bi.vb06, bi.vb06a, bi.vb07)) {
-            editText.setText("");
+        for (EditText et : Arrays.asList(bi.vb04, bi.vb04a, bi.vb06, bi.vb06a, bi.vb07)) {
+            et.setText("");
         }
-        for (CheckBox checkBox : Arrays.asList(bi.vb05ba, bi.vb05bb, bi.vb05bc)) {
-            checkBox.setChecked(false);
+        for (CheckBox cb : Arrays.asList(bi.vb05ba, bi.vb05bb, bi.vb05bc)) {
+            cb.setChecked(false);
         }
-        for (RadioGroup radioGroup : Arrays.asList(bi.vb05a, bi.vb09)) {
-            radioGroup.clearCheck();
+        for (RadioGroup rg : Arrays.asList(bi.vb05a, bi.vb09)) {
+            rg.clearCheck();
         }
     }
 
