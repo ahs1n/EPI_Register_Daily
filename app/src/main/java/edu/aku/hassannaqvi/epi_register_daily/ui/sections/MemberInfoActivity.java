@@ -301,8 +301,8 @@ public class MemberInfoActivity extends AppCompatActivity {
         bi.fldGrpInfo.setVisibility(View.GONE);
         bi.villageName.setSelection(0);
         bi.btnContinue.setEnabled(false);
-        for (EditTextPicker et : Arrays.asList(bi.vb04by, bi.vb04bm, bi.vb04bd, bi.ageY, bi.vb05m, bi.vb05d)) {
-            et.setText("");
+        for (EditTextPicker etp : Arrays.asList(bi.vb04by, bi.vb04bm, bi.vb04bd, bi.ageY, bi.vb05m, bi.vb05d)) {
+            etp.setText("");
         }
         for (EditText et : Arrays.asList(bi.vb04, bi.vb04a, bi.vb06, bi.vb06a, bi.vb07)) {
             et.setText("");
