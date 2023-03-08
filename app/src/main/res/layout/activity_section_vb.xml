@@ -1350,7 +1350,6 @@
                                                 android:textSize="@dimen/_6sdp"
                                                 android:visibility="invisible" />
 
-
                                         </LinearLayout>
 
                                         <io.blackbox_vision.datetimepickeredittext.view.DatePickerEditText
@@ -1359,7 +1358,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
                                             android:background="@drawable/all_round_corners"
-                                            android:enabled="@{vb08ce98.checked &amp;&amp; !form.vb08ce01.equals(``) || !form.vb08ce03.equals(``) || !form.vb08ce03.equals(``) ? true : false}"
+                                            android:enabled="@{vb08ce98.checked &amp;&amp; !form.vb08ce01.equals(``) || !form.vb08ce02.equals(``) || !form.vb08ce03.equals(``) ? true : false}"
                                             android:gravity="center"
                                             android:hint="YYYY-MM-DD"
                                             android:text="@={form.vb08cedt}"
