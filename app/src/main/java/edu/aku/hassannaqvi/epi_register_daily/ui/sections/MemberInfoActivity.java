@@ -302,7 +302,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         for (EditTextPicker editTextPicker : Arrays.asList(bi.vb04by, bi.vb04bm, bi.vb04bd, bi.ageY, bi.vb05m, bi.vb05d)) {
             editTextPicker.setText("");
         }
-        for (EditText editText : Arrays.asList(bi.vb06, bi.vb06a, bi.vb07)) {
+        for (EditText editText : Arrays.asList(bi.vb04, bi.vb04a, bi.vb06, bi.vb06a, bi.vb07)) {
             editText.setText("");
         }
         for (CheckBox checkBox : Arrays.asList(bi.vb05ba, bi.vb05bb, bi.vb05bc)) {
