@@ -74,6 +74,7 @@ public class MemberInfoActivity extends AppCompatActivity {
         group = getIntent().getBooleanExtra("group", true);
         if (group) {
             formVB.setVb03("2");
+            bi.vb04Name.setText(R.string.vb0401);
         } else formVB.setVb03("1");
 
         bi.setForm(formVB);
