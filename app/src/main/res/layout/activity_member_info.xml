@@ -925,6 +925,7 @@
                         android:background="@drawable/all_round_corners"
                         android:backgroundTint="@color/greenOverlay"
                         android:elevation="20dp"
+                        android:enabled="false"
                         android:onClick="btnContinue"
                         android:text="@string/btnSave"
                         android:textColor="@color/white" />

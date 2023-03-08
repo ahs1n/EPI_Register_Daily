@@ -299,6 +299,7 @@ public class MemberInfoActivity extends AppCompatActivity {
     public void clearChecks() {
         bi.fldGrpInfo.setVisibility(View.GONE);
         bi.villageName.setSelection(0);
+        bi.btnContinue.setEnabled(false);
         for (EditTextPicker editTextPicker : Arrays.asList(bi.vb04by, bi.vb04bm, bi.vb04bd, bi.ageY, bi.vb05m, bi.vb05d)) {
             editTextPicker.setText("");
         }
@@ -332,6 +333,7 @@ public class MemberInfoActivity extends AppCompatActivity {
                 clearChecks();
             } else {
                 bi.fldGrpInfo.setVisibility(View.VISIBLE);
+                bi.btnContinue.setEnabled(true);
             }
         } else if (!bi.vb02.getText().toString().trim().equals("") && formVB.getVb03().equals("1")) {
             List<WomenFollowUP> vaccinesDataArrayList = new ArrayList<>();
@@ -346,6 +348,7 @@ public class MemberInfoActivity extends AppCompatActivity {
                 clearChecks();
             } else {
                 bi.fldGrpInfo.setVisibility(View.VISIBLE);
+                bi.btnContinue.setEnabled(true);
             }
         }
     }
