@@ -1192,7 +1192,12 @@ public class SectionVBActivity extends AppCompatActivity {
 
                 DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
                 DateTime prevDate = fmt.parseDateTime(prevDateStr);
-                int[] daysGroup = getDaysAndGroupOfVaccineType(vaccineType, doseNumber);
+                int[] daysGroup;
+                if(baseId.equals("vb08cb")) {
+                     daysGroup = getDaysAndGroupOfVaccineType(vaccineType, doseNumber + 1);
+                }else{
+                    daysGroup = getDaysAndGroupOfVaccineType(vaccineType, doseNumber);
+                }
                 DateTime nextDate = prevDate.plusDays(daysGroup[0]);
 
                 txtVaccineDate.setText(nextDate.toString("yyyy-MM-dd"));

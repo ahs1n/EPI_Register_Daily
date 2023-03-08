@@ -1534,6 +1534,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return insertCount;
     }
 
+    // Delete Table
+    public void deleteTable(String tableName) {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        db.delete(tableName, null, null);
+    }
+
     //update SyncedTables
     public void updateSyncedFormVA(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
