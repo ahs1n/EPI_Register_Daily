@@ -9,6 +9,10 @@
         <variable
             name="form"
             type="edu.aku.hassannaqvi.epi_register_daily.models.FormVB" />
+
+        <variable
+            name="callback"
+            type="edu.aku.hassannaqvi.epi_register_daily.ui.sections.MemberInfoActivity" />
     </data>
 
     <LinearLayout
@@ -116,6 +120,7 @@
                             android:layout_height="wrap_content"
                             android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                             android:hint="@string/vb02"
+                            android:onTextChanged="@{callback::checkCard}"
                             android:text="@={form.vb02}" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
