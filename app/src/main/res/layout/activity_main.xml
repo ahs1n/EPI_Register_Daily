@@ -74,6 +74,7 @@
             android:layout_height="@dimen/_90sdp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/_6sdp"
+            app:tint="@color/black"
             android:src="@drawable/app_icon" />
 
 

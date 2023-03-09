@@ -10,7 +10,6 @@ import static edu.aku.hassannaqvi.epi_register_daily.core.MainApp.vaccines;
 import static edu.aku.hassannaqvi.epi_register_daily.core.UserAuth.checkPassword;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_DOB;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_USERNAME_CHILD;
-import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_ALTER_ADD_USERNAME_WRA;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ATTENDANCE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_DUE_VACCINE;
 import static edu.aku.hassannaqvi.epi_register_daily.database.CreateTable.SQL_CREATE_ENTRYLOGS;
@@ -149,7 +148,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_CREATE_DUE_VACCINE);
             case 4:
                 db.execSQL(SQL_ALTER_ADD_USERNAME_CHILD);
-                db.execSQL(SQL_ALTER_ADD_USERNAME_WRA);
         }
     }
 
@@ -504,9 +502,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String selection = VaccinesDueTable._ID + " =? ";
         String[] selectionArgs;
-        if(!vaccDueDates.getId().equals("")) {
+        if (!vaccDueDates.getId().equals("")) {
             selectionArgs = new String[]{String.valueOf(vaccDueDates.getId())};
-        }else{
+        } else {
             selectionArgs = new String[]{String.valueOf(dueDates.getId())};
         }
 

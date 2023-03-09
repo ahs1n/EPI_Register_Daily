@@ -361,8 +361,4 @@ object CreateTable {
     const val SQL_ALTER_ADD_USERNAME_CHILD = ("ALTER TABLE "
             + TableVaccinesData.TABLE_NAME + " ADD COLUMN "
             + TableVaccinesData.COLUMN_USERNAME + " TEXT;")
-
-    const val SQL_ALTER_ADD_USERNAME_WRA = ("ALTER TABLE "
-            + TableWomenFollowUP.TABLE_NAME + " ADD COLUMN "
-            + TableWomenFollowUP.COLUMN_USERNAME + " TEXT;")
 }

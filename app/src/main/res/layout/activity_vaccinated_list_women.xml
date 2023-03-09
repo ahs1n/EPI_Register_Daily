@@ -135,6 +135,7 @@
                     android:layout_alignStart="@+id/fmHeading"
                     android:layout_centerVertical="true"
                     android:elevation="2dp"
+                    app:tint="@color/black"
                     android:src="@drawable/app_icon" />
 
                 <TextView

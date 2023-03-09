@@ -541,7 +541,7 @@ public class SyncActivity extends AppCompatActivity {
                     if (message != null && message.contains("No record found")) {
                         if (downloadTables.get(position).gettableName().equals(TableContracts.TableVaccinesData.TABLE_NAME))
                             db.deleteTable(TableContracts.TableVaccinesData.TABLE_NAME);
-                        else if (downloadTables.get(position).gettableName().equals(TableContracts.TableWomenFollowUP.TABLE_NAME))
+                        if (downloadTables.get(position).gettableName().equals(TableContracts.TableWomenFollowUP.TABLE_NAME))
                             db.deleteTable(TableContracts.TableWomenFollowUP.TABLE_NAME);
                     }
 
