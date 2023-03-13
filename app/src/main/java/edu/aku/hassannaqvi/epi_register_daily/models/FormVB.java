@@ -1441,9 +1441,9 @@ public class FormVB extends BaseObservable implements Observable {
             this.vb05m = json.getString("vb05m");
             this.vb05d = json.getString("vb05d");
             this.vb05a = json.getString("vb05a");
-            this.refusal = json.getString("refusal");
-            this.missed = json.getString("missed");
-            this.zeerodoze = json.getString("zeerodoze");
+            this.refusal = json.has("refusal") ? json.getString("refusal") : "";
+            this.missed = json.has("missed") ? json.getString("missed") : "";
+            this.zeerodoze = json.has("zeerodoze") ? json.getString("zeerodoze") : "";
             this.vb06 = json.getString("vb06");
             this.vb06a = json.getString("vb06a");
             this.vb07 = json.getString("vb07");
