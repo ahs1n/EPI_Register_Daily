@@ -18,6 +18,7 @@ import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -412,51 +413,54 @@ public class SectionVBActivity extends AppCompatActivity {
                                                     updateDueVaccines();
                                                 }
                                             }
-                                            String letter = String.valueOf(getChar(0));
 
-                                            for (String s : nextBaseId) {
+                                            if(bi.vb08cdatxt.getText().toString().equals("") || bi.vb08ceatxt.getText().toString().equals("") || bi.vb08cfatxt.getText().toString().equals("")) {
+                                                String letter = String.valueOf(getChar(0));
 
-                                                int currentDose = -1;
+                                                for (String s : nextBaseId) {
 
-                                                RadioButton radioButton = (RadioButton) getViewDynamically(s + letter);
-                                                nextVaccineDate = (TextView) getViewDynamically(s + letter + "txt");
+                                                    int currentDose = -1;
 
-                                                //if (nextVaccineDate.getText().toString().equals("")) {
-                                                int[] groupDays = new int[0];
+                                                    RadioButton radioButton = (RadioButton) getViewDynamically(s + letter);
+                                                    nextVaccineDate = (TextView) getViewDynamically(s + letter + "txt");
 
-                                                if (radioButton != null && nextVaccineDate != null) {
-                                                    groupDays = getDaysAndGroupOfVaccineType(s, -1);
-                                                }
+                                                    //if (nextVaccineDate.getText().toString().equals("")) {
+                                                    int[] groupDays = new int[0];
 
-                                                currentGroup = groupDays[1];
-
-                                                if (currentGroup == previousGroup) {
-                                                    nextVaccineDate.setText(txtVaccineDate.getText().toString());
-                                                    nextVaccineDate.setVisibility(View.VISIBLE);
-
-                                                    /*Saving Vaccines Due Dates*/
-                                                    if (flag) {
-                                                        vaccDueDates.populateMeta();
-                                                    } else {
-                                                        vaccDueDates.populateMetaFollowUp();
+                                                    if (radioButton != null && nextVaccineDate != null) {
+                                                        groupDays = getDaysAndGroupOfVaccineType(s, -1);
                                                     }
 
-                                                    MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
-                                                    MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
-                                                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
+                                                    currentGroup = groupDays[1];
 
-                                                    try {
-                                                        MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
-                                                                vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
-                                                    } catch (JSONException e) {
-                                                        e.printStackTrace();
-                                                    }
+                                                    if (currentGroup == previousGroup) {
+                                                        nextVaccineDate.setText(txtVaccineDate.getText().toString());
+                                                        nextVaccineDate.setVisibility(View.VISIBLE);
 
-                                                    if (!nextVaccineDate.getText().toString().equals("")) {
-                                                        if (dueDates.getUid().equals("")) {
-                                                            insertDueVaccines();
+                                                        /*Saving Vaccines Due Dates*/
+                                                        if (flag) {
+                                                            vaccDueDates.populateMeta();
                                                         } else {
-                                                            updateDueVaccines();
+                                                            vaccDueDates.populateMetaFollowUp();
+                                                        }
+
+                                                        MainApp.vaccDueDates.setVb08CDueDate(nextVaccineDate.getText().toString());
+                                                        MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(s));
+                                                        MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(currentDose + 2));
+
+                                                        try {
+                                                            MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
+                                                                    vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
+                                                        } catch (JSONException e) {
+                                                            e.printStackTrace();
+                                                        }
+
+                                                        if (!nextVaccineDate.getText().toString().equals("")) {
+                                                            if (dueDates.getUid().equals("")) {
+                                                                insertDueVaccines();
+                                                            } else {
+                                                                updateDueVaccines();
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -1170,10 +1174,11 @@ public class SectionVBActivity extends AppCompatActivity {
         }
 
         String vaccineType = baseId;
-        int doseNumber = firstTrue;
+        int doseNumber = firstTrue + 1;
         RadioButton radioButton;
         TextView txtVaccineDatePrevious;
         TextView txtVaccineDate;
+        CheckBox checkBox;
 
         if (firstTrue > -1) {
             String prevLetter = String.valueOf(getChar(firstTrue));
@@ -1186,8 +1191,10 @@ public class SectionVBActivity extends AppCompatActivity {
             radioButton = (RadioButton) getViewDynamically(baseId + letter);
             txtVaccineDatePrevious = (TextView) getViewDynamically(baseId + prevLetter + "txt");
             txtVaccineDate = (TextView) getViewDynamically(baseId + letter + "txt");
+            checkBox =  (CheckBox) getViewDynamically(baseId + "98");
 
             if (radioButton != null && txtVaccineDate != null && txtVaccineDatePrevious != null) {
+                checkBox.setEnabled(true);
                 String prevDateStr = txtVaccineDatePrevious.getText().toString();
 
                 DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy-MM-dd");
@@ -1212,11 +1219,7 @@ public class SectionVBActivity extends AppCompatActivity {
                     }
                     MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                     MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
-                    if(firstTrue == 0) {
-                        MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(firstTrue + 2));
-                    }else {
-                        MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(firstTrue + 1));
-                    }
+                    MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                 }
                 try {
                     MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
@@ -1233,6 +1236,8 @@ public class SectionVBActivity extends AppCompatActivity {
                 prevBundle.putInt("group", daysGroup[1]);
                 prevBundle.putString("date", nextDate.toString("yyyy-MM-dd"));
                 return prevBundle;
+            }else{
+                checkBox.setEnabled(false);
             }
         } else {
             String letter = String.valueOf(getChar(0));
@@ -1259,7 +1264,7 @@ public class SectionVBActivity extends AppCompatActivity {
                         MainApp.vaccDueDates.setVb08CDueDate(txtVaccineDate.getText().toString());
                         MainApp.vaccDueDates.setVb08CDueCode(getVaccineNameFromBaseID(baseId));
                         // As current dose is initially -1 so dosenumber +2 will give 1st dose.
-                        MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 2));
+                        MainApp.vaccDueDates.setVb08CDueAntigen(String.valueOf(doseNumber + 1));
                         try {
                             MainApp.dueDates = db.getDueVaccinesBYAntigen(vaccDueDates.getVb02(), vaccDueDates.getVb04a(), vaccDueDates.getVb04(),
                                     vaccDueDates.getVb08CDueCode(), vaccDueDates.getVb08CDueAntigen());
