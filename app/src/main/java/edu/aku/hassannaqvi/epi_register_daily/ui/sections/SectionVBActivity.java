@@ -38,6 +38,7 @@ import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import edu.aku.hassannaqvi.epi_register_daily.MainActivity;
 import edu.aku.hassannaqvi.epi_register_daily.R;
@@ -1925,51 +1926,52 @@ public class SectionVBActivity extends AppCompatActivity {
             }*/
         } else {
 
-        }
 
-        // Check front photo taken
-        if (vaccinesData.getVBO3().equals("2") && bi.frontFileName.getText().toString().equals("")) {
-            return Validator.emptyCustomTextBox(this, bi.frontFileName, "Please take front photo of Vaccination Card.");
-        }
+            // Check front photo taken
+            if (vaccinesData.getVBO3().equals("2") && bi.frontFileName.getText().toString().equals("")) {
+                return Validator.emptyCustomTextBox(this, bi.frontFileName, "Please take front photo of Vaccination Card.");
+            }
 
-        // Check back photo taken
-        if (vaccinesData.getVBO3().equals("2") && bi.backFileName.getText().toString().equals("")) {
-            return Validator.emptyCustomTextBox(this, bi.backFileName, "Please take back photo of Vaccination Card.");
+            // Check back photo taken
+            if (vaccinesData.getVBO3().equals("2") && bi.backFileName.getText().toString().equals("")) {
+                return Validator.emptyCustomTextBox(this, bi.backFileName, "Please take back photo of Vaccination Card.");
 
-        }
+            }
 
-        // Check child photo taken
+            // Check child photo taken
 /*        if (vaccinesData.getVBO3().equals("2") && bi.childFileName.getText().toString().equals("")) {
             return Validator.emptyCustomTextBox(this, bi.childFileName, "Please take photo of Child.");
 
         }*/
 
-        if (bi.vb08ca98.isChecked() && formVB.getVb08ca().equals("") || bi.vb08ca98.isChecked() && formVB.getVb08cadt().equals(""))
+        }
+
+        if (bi.vb08ca98.isChecked() && bi.vb08ca.getCheckedRadioButtonId() == -1 || bi.vb08ca98.isChecked() && Objects.requireNonNull(bi.vb08cadt.getText()).toString().equals(""))
 //            return Validator.emptyRadioButton(this, bi.vb08ca, bi.vb08caa);
             return Validator.emptyCheckingContainer(this, bi.fldGrpVB08ca, false);
 
-        if (bi.vb08cb98.isChecked() && formVB.getVb08cb().equals("") || bi.vb08cb98.isChecked() && formVB.getVb08cbdt().equals(""))
+        if (bi.vb08cb98.isChecked() && bi.vb08cb.getCheckedRadioButtonId() == -1 || bi.vb08cb98.isChecked() && Objects.requireNonNull(bi.vb08cbdt.getText()).toString().equals(""))
             return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cb, false);
 
-        if (bi.vb08cc98.isChecked() && formVB.getVb08cc().equals("") || bi.vb08cc98.isChecked() && formVB.getVb08ccdt().equals(""))
+        if (bi.vb08cc98.isChecked() && bi.vb08cc.getCheckedRadioButtonId() == -1 || bi.vb08cc98.isChecked() && Objects.requireNonNull(bi.vb08ccdt.getText()).toString().equals(""))
             return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cc, false);
 
-        if (bi.vb08cd98.isChecked() && formVB.getVb08cd().equals("") || bi.vb08cd98.isChecked() && formVB.getVb08cddt().equals(""))
+        if (bi.vb08cd98.isChecked() && bi.vb08cd.getCheckedRadioButtonId() == -1 || bi.vb08cd98.isChecked() && Objects.requireNonNull(bi.vb08cddt.getText()).toString().equals(""))
             return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cd, false);
 
-        if (bi.vb08ce98.isChecked() && formVB.getVb08ce().equals("") || bi.vb08ce98.isChecked() && formVB.getVb08cedt().equals(""))
+        if (bi.vb08ce98.isChecked() && bi.vb08ce.getCheckedRadioButtonId() == -1 || bi.vb08ce98.isChecked() && Objects.requireNonNull(bi.vb08cedt.getText()).toString().equals(""))
             return Validator.emptyCheckingContainer(this, bi.fldGrpVB08ce, false);
 
-        if (bi.vb08cf98.isChecked() && formVB.getVb08cf().equals("") || bi.vb08cf98.isChecked() && formVB.getVb08cfdt().equals(""))
+        if (bi.vb08cf98.isChecked() && bi.vb08cf.getCheckedRadioButtonId() == -1 || bi.vb08cf98.isChecked() && Objects.requireNonNull(bi.vb08cfdt.getText()).toString().equals(""))
             return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cf, false);
 
-        if (bi.vb08cg98.isChecked() && formVB.getVb08cg().equals("") || bi.vb08cg98.isChecked() && formVB.getVb08cgdt().equals(""))
+        if (bi.vb08cg98.isChecked() && bi.vb08cg.getCheckedRadioButtonId() == -1 || bi.vb08cg98.isChecked() && Objects.requireNonNull(bi.vb08cgdt.getText()).toString().equals(""))
             return Validator.emptyCheckingContainer(this, bi.fldGrpVB08cg, false);
 
-        if (bi.vb08ch98.isChecked() && formVB.getVb08ch().equals("") || bi.vb08ch98.isChecked() && formVB.getVb08chdt().equals(""))
+        if (bi.vb08ch98.isChecked() && bi.vb08ch.getCheckedRadioButtonId() == -1 || bi.vb08ch98.isChecked() && Objects.requireNonNull(bi.vb08chdt.getText()).toString().equals(""))
             return Validator.emptyCheckingContainer(this, bi.fldGrpVB08ch, false);
 
-        if (bi.vb08ci98.isChecked() && formVB.getVb08ci().equals("") || bi.vb08ci98.isChecked() && formVB.getVb08cidt().equals(""))
+        if (bi.vb08ci98.isChecked() && bi.vb08ci.getCheckedRadioButtonId() == -1 || bi.vb08ci98.isChecked() && Objects.requireNonNull(bi.vb08cidt.getText()).toString().equals(""))
             return Validator.emptyCheckingContainer(this, bi.fldGrpVB08ci, false);
 
 
