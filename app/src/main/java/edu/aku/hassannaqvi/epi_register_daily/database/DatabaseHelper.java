@@ -1584,15 +1584,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // New value for one column
         ContentValues values = new ContentValues();
-        values.put(TableContracts.WorkLocationTable.COLUMN_SYNCED, true);
-        values.put(TableContracts.WorkLocationTable.COLUMN_SYNC_DATE, new Date().toString());
+        values.put(TableContracts.AttendanceTable.COLUMN_SYNCED, true);
+        values.put(TableContracts.AttendanceTable.COLUMN_SYNC_DATE, new Date().toString());
 
 // Which row to update, based on the title
-        String where = TableContracts.WorkLocationTable.COLUMN_ID + " = ?";
+        String where = TableContracts.AttendanceTable.COLUMN_ID + " = ?";
         String[] whereArgs = {id};
 
         int count = db.update(
-                WorkLocationTable.TABLE_NAME,
+                AttendanceTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
